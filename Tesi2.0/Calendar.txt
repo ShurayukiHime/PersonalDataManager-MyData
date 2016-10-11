@@ -1,0 +1,8 @@
+44.494695, 11.342940, 6, 9, 2016, 18, 30, questo e' il primo esempio che mi viene in mente
+44.489416, 11.355364, 6, 9, 2016, 18, 35, questo e' il secondo esempio che mi viene in mente
+45, 13, 7, 9, 2016, 12, 0, cambio rotta
+46, 14, 8, 9, 2016, 15, 0, lalala
+47, 15, 8, 9, 2016, 16, 0, lelele
+44.497313, 11.345358, 14, 9, 2016, 20, 30, cena al ristorante giapponese con i compagni di corso
+44.052460, 12.576976, 23, 9, 2016, 17, 00, riunione fefoatleti
+44.052460, 12.576976, 28, 9, 2016, 22, 30, ahdfjolasdnflskdnflksnd
