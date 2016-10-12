@@ -1,4 +1,4 @@
-package model;
+package persistence;
 
 import java.security.InvalidKeyException;
 import java.security.KeyPair;
@@ -20,6 +20,7 @@ import java.util.List;
 public class MyDataUser {
 	private final String keyAlgorithm = "DSA";
 	private final String randomAlgorithm = "SHA1PRNG";
+	//problema dell'username come chiave della mappa, per come l'ha pensato nicolas
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
@@ -30,13 +31,16 @@ public class MyDataUser {
 	// però è giusto che stia qui dentro?
 	// forse è meglio fare una classe nascosta che contiene le chiavi e si occupa di generazione delle stesse,
 	// verifica, firma and so on..?
+	// provvisoriamente metto le chiavi qui
 	private KeyPair keyPair;
-	private List<Consent> consents;
+	private List<ServiceConsent> serviceConsents;
 
+	//potrei volerlo chiamare dall'esterno?
 	private KeyPair generateKeys(String keyAlgorithm, String randomAlgorithm) throws NoSuchAlgorithmException {
 		//era meglio cablarli nel codice? (non so quanto sia utile metterli nel costruttore)
 		KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(keyAlgorithm);
 		SecureRandom random = SecureRandom.getInstance(randomAlgorithm);
+		//1024 e gli altri dati vanno bene?
 		keyPairGen.initialize(1024, random);
 		return keyPairGen.generateKeyPair();
 	}
@@ -61,7 +65,7 @@ public class MyDataUser {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		this.consents = new ArrayList<Consent>();
+		this.serviceConsents = new ArrayList<ServiceConsent>();
 	}
 
 	public String getFirstName() {
@@ -96,13 +100,21 @@ public class MyDataUser {
 		this.emailAddress = emailAddress;
 	}
 
-	public List<Consent> getAllConsents() {
-		return consents;
+	public List<ServiceConsent> getAllServiceConsents() {
+		return serviceConsents;
+	}
+	
+	//da cambiare quando avrò un modo di identificare i servizi!!
+	//ritorna il consent se esiste, altrimenti ritorna null
+	public ServiceConsent getServiceConsentForServiceID (String service) {
+		//TODO
+		return null;
 	}
 
-	public void addConsent(Consent consent) {
-		if (consent != null) {
-			consents.add(consent);
+	public void addServiceConsent(ServiceConsent serviceConsent) {
+		//devo controllare che il service consent passato sia realmente firmato da me...?
+		if (serviceConsent != null) {
+			serviceConsents.add(serviceConsent);
 		}
 	}
 	
