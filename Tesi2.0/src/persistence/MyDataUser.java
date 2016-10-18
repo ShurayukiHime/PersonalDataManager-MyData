@@ -1,15 +1,7 @@
 package persistence;
 
-import java.security.InvalidKeyException;
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.PublicKey;
-import java.security.SecureRandom;
-import java.security.Signature;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 /**
  * This class describes a generic MyData User. This kind of description does not
@@ -18,36 +10,24 @@ import java.util.List;
  */
 
 public class MyDataUser {
-	private final String keyAlgorithm = "DSA";
-	private final String randomAlgorithm = "SHA1PRNG";
-	//problema dell'username come chiave della mappa, per come l'ha pensato nicolas
+	
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	// penso di aver bisogno di una password da qualche parte, ad esempio
+	private ConsentManager consentManager;
+	// penso ci sia bisogno di una password da qualche parte, ad esempio
 	// metti che l'utente vuole cambiare chiavi, bisogna chiedere conferma
 	// o in generale quando bisogna dare un consent (magari non tutte le volte?)
 	// però è giusto che stia qui dentro?
+	// anche perchè c'è una password in service user e forse potremmo avere un problema
+	
 	// forse è meglio fare una classe nascosta che contiene le chiavi e si occupa di generazione delle stesse,
 	// verifica, firma and so on..?
-	// provvisoriamente metto le chiavi qui
-	private KeyPair keyPair;
-	private List<ServiceConsent> serviceConsents;
-
-	//potrei volerlo chiamare dall'esterno?
-	private KeyPair generateKeys(String keyAlgorithm, String randomAlgorithm) throws NoSuchAlgorithmException {
-		//era meglio cablarli nel codice? (non so quanto sia utile metterli nel costruttore)
-		KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(keyAlgorithm);
-		SecureRandom random = SecureRandom.getInstance(randomAlgorithm);
-		//1024 e gli altri dati vanno bene?
-		keyPairGen.initialize(1024, random);
-		return keyPairGen.generateKeyPair();
-	}
+	// andrebbe bene, ma rimarrebbe cmq il problema di chi la invoca, perchè o si hanno 2 pass (una generica, in mydatausr,
+	// una particolare per il servizio in serviceusr) oppure ne si ha una sola per tutto in mydatausr
+	// nessun usr realistico si ricorda due pass, di cui una cambia x ogni servizio
 	
-	public MyDataUser() {
-		super();
-	}
 
 	/**
 	 * This method creates a new MyData user.
@@ -59,13 +39,7 @@ public class MyDataUser {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		try {
-			this.keyPair = generateKeys(keyAlgorithm, randomAlgorithm);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		this.serviceConsents = new ArrayList<ServiceConsent>();
+		this.consentManager = new ConsentManager(this);
 	}
 
 	public String getFirstName() {
@@ -100,31 +74,20 @@ public class MyDataUser {
 		this.emailAddress = emailAddress;
 	}
 
-	public List<ServiceConsent> getAllServiceConsents() {
-		return serviceConsents;
+	public Set<ServiceConsent> getAllServiceConsents() {
+		return this.consentManager.getAllServiceConsents();
 	}
 	
-	//da cambiare quando avrò un modo di identificare i servizi!!
+	//da CAMBIARE quando avrò un modo di identificare i servizi!
 	//ritorna il consent se esiste, altrimenti ritorna null
 	public ServiceConsent getServiceConsentForServiceID (String service) {
-		//TODO
-		return null;
+		return this.consentManager.getServiceConsentForServiceID(service);
 	}
 
-	public void addServiceConsent(ServiceConsent serviceConsent) {
-		//devo controllare che il service consent passato sia realmente firmato da me...?
-		if (serviceConsent != null) {
-			serviceConsents.add(serviceConsent);
-		}
+	public void registerServiceConsent(ServiceConsent serviceConsent) {
+		//TODO
+		//implementare protocollo di firma da entrambe le parti, dipende in parte dall'identificazione del servizio
+		//dopo che si è concluso il protocollo di firma (happy ending) delega al consent manager la creazione del consent
 	}
 	
-	public PublicKey getPublicKey() {
-		return keyPair.getPublic();
-	}
-	
-	public Signature signWithPrivateKey() throws InvalidKeyException, NoSuchAlgorithmException {
-		Signature signature = Signature.getInstance(keyAlgorithm);
-		signature.initSign(keyPair.getPrivate());
-		return signature;
-	}
 }

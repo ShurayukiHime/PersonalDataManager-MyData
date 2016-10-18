@@ -22,6 +22,7 @@ public class Controller {
 	private Position actualPosition;
 	private LocalDateTime date;
 	private String username;
+//	private MyDataUser user;
 	
 	public Controller(String username) {
 		if (username == null || username.length() == 0)
@@ -107,6 +108,17 @@ public class Controller {
 	public void getSuggest (MainFrame panel) throws FileNotFoundException, IOException {
 		if (panel == null)
 			throw new IllegalArgumentException("panel must be initialized");
+		
+		//TODO
+		
+		//da rifattorizzare tutto in qualche modo, prevedendo in ordine
+		
+		//creazione di account MyData
+		//creazione di account presso il servizio   
+		//firma di un service consent per il servizio di previsione di viaggio
+		//firma di uno+ data consent per l'utilizzo effettivo del servizio
+		
+		
 		MyData.getInstance().getDataVault(username).getPreferences().clear();
 		MyData.getInstance().getDataVault(username).getPreferences().addAll(preferences);
 		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition, MyData.getInstance().getDataVault(username));

@@ -8,6 +8,11 @@ import model.*;
 
 public interface IPersonalDataVault {
 	
+	
+	//prevedere primitive diverse da queste che fanno le stesse cose,
+	//ma prima di dare i dati fanno richiesta di un data consent ?
+	
+	
 	public List<ITrip> getAllTrip();
 	public void addTrip(ITrip trip);
 	//addTrip usata in TripDetector

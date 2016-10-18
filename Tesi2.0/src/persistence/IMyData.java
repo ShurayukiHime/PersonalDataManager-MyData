@@ -2,6 +2,6 @@ package persistence;
 
 public interface IMyData {
 	
-	IPersonalDataVault getDataVault(String username);
+	IPersonalDataVault getDataVault(ServiceUser user);
 	
 }
