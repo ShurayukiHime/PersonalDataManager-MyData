@@ -1,33 +1,27 @@
 package persistence;
 
-import java.security.Signature;
 import java.util.Date;
 
 public class ServiceConsent implements IConsent {
-	// la firma del servizio?
-	private Signature userSignature;
+	private byte[] signedByService, signedByUser;
 	private Date timestampGiven;
 	private Date timestampWithdrawn;
-	private String service;
+	private IService service;
 	private ConsentStatus consentStatus;
 
-	public ServiceConsent(Signature userSignature, Date timestamp, String service) {
+	public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service) {
 		super();
-		this.userSignature = userSignature;
+		this.signedByService = signedByService;
+		this.signedByUser = signedByUser;
 		this.timestampGiven = timestamp;
 		this.service = service;
 		this.consentStatus = ConsentStatus.ACTIVE;
-	}
-
-	public Signature getUserSignature() {
-		return userSignature;
 	}
 
 	public Date getTimestampGiven() {
 		return timestampGiven;
 	}
 
-	// CAMBIARE con identificazione servizi
 	// generare equals che tiene conto di questa cosa
 	public Date getTimestampWithdrawn() {
 		if (this.timestampWithdrawn != null)
@@ -42,7 +36,7 @@ public class ServiceConsent implements IConsent {
 		this.timestampWithdrawn = timestampWithdrawn;
 	}
 
-	public String getService() {
+	public IService getService() {
 		return service;
 	}
 
@@ -61,12 +55,47 @@ public class ServiceConsent implements IConsent {
 	 * this function should check that only valid changes are made: for example,
 	 * that no withdrawn Consent becomes Active again.
 	 * 
-	 * @param newStatus the new status of the consent
+	 * @param newStatus
+	 *            the new status of the consent
 	 */
 	protected void ChangeConsentStatus(ConsentStatus newStatus) {
 		if (newStatus == ConsentStatus.WITHDRAWN)
 			this.setTimestampWithdrawn(new Date());
 		this.setConsentStatus(newStatus);
 
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((consentStatus == null) ? 0 : consentStatus.hashCode());
+		result = prime * result + ((service == null) ? 0 : service.hashCode());
+		result = prime * result + ((timestampWithdrawn == null) ? 0 : timestampWithdrawn.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		ServiceConsent other = (ServiceConsent) obj;
+		if (consentStatus != other.consentStatus)
+			return false;
+		if (service == null) {
+			if (other.service != null)
+				return false;
+		} else if (!service.equals(other.service))
+			return false;
+		if (timestampWithdrawn == null) {
+			if (other.timestampWithdrawn != null)
+				return false;
+		} else if (!timestampWithdrawn.equals(other.timestampWithdrawn))
+			return false;
+		return true;
 	}
 }

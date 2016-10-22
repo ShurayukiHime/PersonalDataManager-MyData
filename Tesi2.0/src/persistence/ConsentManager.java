@@ -1,81 +1,60 @@
 package persistence;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
-import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-class ConsentManager {
+import persistence.users.MyDataUser;
 
-	private MyDataUser user;
-	private Map<ServiceConsent, List<DataConsent>> dataConsents;
-	private KeyPair keyPair;
-	
-	private final String keyAlgorithm = "DSA";
-	private final String randomAlgorithm = "SHA1PRNG";
-	//da spostare nel nuovo security manager
-	
-	protected ConsentManager(MyDataUser user) {
-		this.user = user;
-		this.dataConsents = new HashMap<ServiceConsent, List<DataConsent>>();
-		try {
-			this.keyPair = generateKeys(keyAlgorithm, randomAlgorithm);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-	
-	private KeyPair generateKeys(String keyAlgorithm, String randomAlgorithm) throws NoSuchAlgorithmException {
-		KeyPairGenerator keyPairGen = KeyPairGenerator.getInstance(keyAlgorithm);
-		SecureRandom random = SecureRandom.getInstance(randomAlgorithm);
-		//1024 e gli altri dati vanno bene?
-		keyPairGen.initialize(1024, random);
-		return keyPairGen.generateKeyPair();
+public class ConsentManager {
+
+	public ConsentManager() {
 	}
 
-	public Set<ServiceConsent> getAllServiceConsents() {
-		return this.dataConsents.keySet();
+	public ServiceConsent giveServiceConsent(MyDataUser user, IService service) {
+		//verficare legittimità user
+			// il service possiede la chiave pubblica di user
+			// il service riceve un token firmato con la chiave privata di user e ne verifica l'autenticità
+		//verificare legittimità service
+		//creare il consent
+		//restituire il consent
+		
+		byte[] tokenFromUser = null, tokenSignedUser;
+		tokenSignedUser = user.getSecurityManager().sign(tokenFromUser);
+		if (!(service.getSecurityManager().verify(user.getSecurityManager().getPublicKey(), tokenFromUser, tokenSignedUser))) {
+			// illegal call
+			// throw exception
+		} // else
+		
+		byte[] tokenFromService = null, tokenSignedService;
+		tokenSignedService = service.getSecurityManager().sign(tokenFromService);
+		if (!( user.getSecurityManager().verify(service.getSecurityManager().getPublicKey(), tokenFromService, tokenSignedService))) {
+			// illegal call
+			// throw exception
+		} // else
+		return new ServiceConsent(tokenSignedService, tokenSignedUser, new Date(), service); 
 	}
 
-	// da FARE quando capisco come identificare i servizi
-	// è giusto dare per scontato che ritorna quello attivo in questo momento?
-	// e se non ce ne sono di attivi in questo momento?
-	public ServiceConsent getServiceConsentForServiceID(String service) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	public void addServiceConsent(ServiceConsent serviceConsent) {
-		if (serviceConsent != null)
-			this.dataConsents.put(serviceConsent, new ArrayList<DataConsent>());
-		//invocata alla fine del protocollo, ora ipotesi x vedere mydata & service user
-	}
-	
-	// da RIFARE quando avrò l'identificatore dei servizi
-	//siccome può esserci un solo consent attivo alla volta, si cambia lo status di quello attivo
-	public void changeServiceConsentStatusForService (String service, ConsentStatus newStatus) {
-		ServiceConsent consent = null;
-		for (ServiceConsent sc : this.dataConsents.keySet()) {
-			if (sc.getService().equals(service) && (sc.getTimestampWithdrawn() == null))
-				consent = sc;
-		}
-		if (consent == null) {
-			//non ci sono consent attualmente attivi o disabilitati
+	// siccome può esserci un solo consent attivo alla volta, si cambia lo
+	// status di quello attivo
+	public void changeServiceConsentStatusForService(IService service, IConsent serviceConsent, ConsentStatus newStatus) {
+		if (serviceConsent == null) {
+			// non ci sono consent attualmente attivi o disabilitati
 			System.out.println("Cannot change the status of a Withdrawn Service Consent!");
 			throw new IllegalArgumentException();
 			// eventualmente creare eccezione più specifica
 		}
 		// else, il consent è attivo o disabilitato
-		consent.ChangeConsentStatus(newStatus);
+		((ServiceConsent) serviceConsent).ChangeConsentStatus(newStatus);
+		// devo aggiornare anche la signature in qualche modo? (metodo update)
+		// questo però ricomincerebbe il protocollo di firma, cosa forse poco
+		// efficiente se fatta ripetutamente
 	}
-	
+
 	public void addDataConsent(DataConsent dataConsent) {
-		//TODO
+		// TODO
 	}
+
 }

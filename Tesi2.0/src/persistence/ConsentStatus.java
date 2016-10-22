@@ -1,6 +1,6 @@
 package persistence;
 
-enum ConsentStatus {
+public enum ConsentStatus {
 	ACTIVE,
 	WITHDRAWN,
 	DISABLED,
