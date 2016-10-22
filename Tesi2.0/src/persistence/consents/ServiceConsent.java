@@ -1,6 +1,8 @@
-package persistence;
+package persistence.consents;
 
 import java.util.Date;
+
+import persistence.IService;
 
 public class ServiceConsent implements IConsent {
 	private byte[] signedByService, signedByUser;

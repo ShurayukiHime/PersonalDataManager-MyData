@@ -4,10 +4,10 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import persistence.ConsentManager;
-import persistence.IConsent;
 import persistence.ISecurityManager;
 import persistence.IService;
+import persistence.consents.ConsentManager;
+import persistence.consents.IConsent;
 
 public class MyDataUser implements IUser {
 
@@ -15,7 +15,6 @@ public class MyDataUser implements IUser {
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	private ConsentManager consentManager;
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 
@@ -25,7 +24,6 @@ public class MyDataUser implements IUser {
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
-		this.consentManager = new ConsentManager();
 
 		// ma cosa??
 		this.securityManager = (ISecurityManager) new SecurityManager();
@@ -73,14 +71,12 @@ public class MyDataUser implements IUser {
 		this.emailAddress = emailAddress;
 	}
 
-	public ConsentManager getConsentManager() {
-		return consentManager;
-	}
-
+	@Override
 	public ISecurityManager getSecurityManager() {
 		return securityManager;
 	}
 
+	@Override
 	// returns null if account doesn't exist
 	public IAccount getAccountForService(IService service) {
 		for (IAccount a : this.accounts) {
@@ -121,13 +117,7 @@ public class MyDataUser implements IUser {
 			// throw exception? this is an illegal action
 			System.out.println("An account already exists at service " + service.toString());
 		}
-		this.accounts.add(new Account(service, this.consentManager.giveServiceConsent(this, service)));
+		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
 	}
 	
-	@Override
-	public Set<IConsent> getAllConsentsForService(IService service) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 }

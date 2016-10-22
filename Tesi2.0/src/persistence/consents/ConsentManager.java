@@ -1,4 +1,4 @@
-package persistence;
+package persistence.consents;
 
 import java.util.Date;
 import java.util.HashMap;
@@ -6,14 +6,16 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import persistence.IService;
+import persistence.users.IUser;
 import persistence.users.MyDataUser;
 
 public class ConsentManager {
-
-	public ConsentManager() {
+	
+	private ConsentManager() {
 	}
 
-	public ServiceConsent giveServiceConsent(MyDataUser user, IService service) {
+	public static ServiceConsent giveServiceConsent(IUser user, IService service) {
 		//verficare legittimità user
 			// il service possiede la chiave pubblica di user
 			// il service riceve un token firmato con la chiave privata di user e ne verifica l'autenticità
@@ -39,7 +41,7 @@ public class ConsentManager {
 
 	// siccome può esserci un solo consent attivo alla volta, si cambia lo
 	// status di quello attivo
-	public void changeServiceConsentStatusForService(IService service, IConsent serviceConsent, ConsentStatus newStatus) {
+	public static void changeServiceConsentStatusForService(IService service, IConsent serviceConsent, ConsentStatus newStatus) {
 		if (serviceConsent == null) {
 			// non ci sono consent attualmente attivi o disabilitati
 			System.out.println("Cannot change the status of a Withdrawn Service Consent!");
@@ -53,7 +55,7 @@ public class ConsentManager {
 		// efficiente se fatta ripetutamente
 	}
 
-	public void addDataConsent(DataConsent dataConsent) {
+	public static void addDataConsent(DataConsent dataConsent) {
 		// TODO
 	}
 

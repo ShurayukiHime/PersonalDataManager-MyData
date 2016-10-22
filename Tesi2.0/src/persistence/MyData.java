@@ -1,9 +1,7 @@
 package persistence;
 
 import java.util.Date;
-import java.util.HashMap;
 import java.util.HashSet;
-import java.util.Map;
 import java.util.Set;
 
 import persistence.users.IUser;
@@ -13,10 +11,8 @@ public class MyData implements IMyData {
 
 	private static MyData instance;
 	private Set<IUser> myDataUsers;
-	private Map<ServiceUser, IPersonalDataVault> serviceUsers;
 
 	private MyData() {
-		this.serviceUsers = new HashMap<ServiceUser, IPersonalDataVault>();
 		this.myDataUsers = new HashSet<IUser>();
 	}
 
@@ -27,8 +23,17 @@ public class MyData implements IMyData {
 	}
 
 	@Override
-	public IPersonalDataVault getDataVault(IUser user) {
-		return serviceUsers.get(user);
+	public IPersonalDataVault getDataVault(IUser user, IService service) {
+		if (user.getAccountForService(service) == null) {
+			// throw exception ?
+			System.out.println("This user isn't registered to service " + service.toString());
+		} // else
+		for (IUser u : this.myDataUsers) {
+			if (u.equals(user))
+				return u.getAccountForService(service).getPersonalDataVault();
+		}
+		// questo non ha senso :( perchè se si passa il primo if un account esiste sicuramente
+		return null;
 	}
 
 	// è sbagliato creare users che poi non vengono aggiunti?
@@ -43,17 +48,7 @@ public class MyData implements IMyData {
 	}
 
 	// stessa domanda della funzione sopra per creazione accounts
-	public void createServiceAccount(IUser user, String username, String password, IService service) {
-		ServiceUser newServiceUser = new ServiceUser(user.getFirstName(), user.getLastName(), user.getDateOfBirth(),
-				user.getEmailAddress(), username, password, service);
-		if (!(this.serviceUsers.keySet().add(newServiceUser))) {
-			System.out.println("Cannot create a duplicate account for user " + username);
-			throw new IllegalArgumentException();
-		}
-
-		// TODO
-		// protocollo di scambio delle signatures fra mydatauser e service
-
-		// infine, aggiunta alla mappa di serviceUsers della classe
+	public void createServiceAccount(IUser user, IService service) {
+		user.newAccountAtService(service);
 	}
 }
