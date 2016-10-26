@@ -12,6 +12,6 @@ public class TheMostLikelyNextTrip {
 		MyDataProfile loginFrame = new MyDataProfile(new MyController ());
 		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginFrame.setVisible(true);
-		loginFrame.setSize(400, 400);
+		loginFrame.pack();
 	}
 }

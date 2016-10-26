@@ -1,15 +1,10 @@
 package persistence.consents;
 
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import persistence.IService;
 import persistence.users.IAccount;
 import persistence.users.IUser;
-import persistence.users.MyDataUser;
 
 public class ConsentManager {
 	

@@ -7,7 +7,6 @@ import java.util.Set;
 import persistence.ISecurityManager;
 import persistence.IService;
 import persistence.consents.ConsentManager;
-import persistence.consents.IConsent;
 
 public class MyDataUser implements IUser {
 
@@ -26,7 +25,7 @@ public class MyDataUser implements IUser {
 		this.emailAddress = emailAddress;
 
 		// ma cosa??
-		this.securityManager = (ISecurityManager) new SecurityManager();
+		this.securityManager = (ISecurityManager) new persistence.SecurityManager();
 
 		this.accounts = new HashSet<IAccount>();
 	}
