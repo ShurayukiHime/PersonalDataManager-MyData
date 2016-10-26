@@ -8,6 +8,7 @@ import java.util.Map;
 import persistence.IPersonalDataVault;
 import persistence.IService;
 import persistence.PersonalDataVault;
+import persistence.consents.ConsentStatus;
 import persistence.consents.DataConsent;
 import persistence.consents.IConsent;
 import persistence.consents.ServiceConsent;
@@ -17,9 +18,6 @@ class Account implements IAccount {
 	private IService service;
 	private IPersonalDataVault personalDataVault;
 	private Map<ServiceConsent, List<DataConsent>> dataConsents = new HashMap<ServiceConsent, List<DataConsent>>();
-	// generica è meglio (?), ma si capisce dopo quello che rappresenta? i. e.
-	// tutti i data consent associati ad un service consent? Questo generico mi
-	// porta dentro dei cast...
 
 	public Account(IService service, ServiceConsent firstConsent) {
 		super();
@@ -62,14 +60,22 @@ class Account implements IAccount {
 			return false;
 		return true;
 	}
+	
+	@Override
+	public String toString() {
+		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus();
+	}
 
-	public IConsent findActiveDisabledSConsent() {
-		IConsent consent = null;
-		for (IConsent sc : this.dataConsents.keySet()) {
-			if (((ServiceConsent) sc).getTimestampWithdrawn() == null)
-				consent = sc;
+	//ci può essere un solo consent attivo alla volta, e quindi (?) anche uno solo disattivo
+	//returns null if no active consent has been issued
+	@Override
+	public ServiceConsent getActiveDisabledSC() {
+		for (ServiceConsent sc : this.dataConsents.keySet()) {
+			if (sc.getConsentStatus() != ConsentStatus.WITHDRAWN) {
+				return sc;
+			}
 		}
-		return consent;
+		return null;
 	}
 
 }

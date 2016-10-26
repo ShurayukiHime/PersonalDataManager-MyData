@@ -1,6 +1,7 @@
 package persistence.users;
 
 import java.util.Date;
+import java.util.Set;
 
 import persistence.ISecurityManager;
 import persistence.IService;
@@ -34,7 +35,7 @@ public interface IUser {
 
 	public void newAccountAtService(IService service);
 
-	public IAccount getAccountForService(IService service);
+	public Set<IAccount> getAllAccounts();
 
 
 

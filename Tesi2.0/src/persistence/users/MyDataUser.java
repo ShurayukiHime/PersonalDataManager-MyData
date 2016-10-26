@@ -78,12 +78,8 @@ public class MyDataUser implements IUser {
 
 	@Override
 	// returns null if account doesn't exist
-	public IAccount getAccountForService(IService service) {
-		for (IAccount a : this.accounts) {
-			if (a.getService().equals(service))
-				return a;
-		}
-		return null;
+	public Set<IAccount> getAllAccounts() {
+		return this.accounts;
 	}
 
 	@Override
@@ -113,10 +109,11 @@ public class MyDataUser implements IUser {
 
 	@Override
 	public void newAccountAtService(IService service) {
-		if (this.getAccountForService(service) != null) {
-			// throw exception? this is an illegal action
-			System.out.println("An account already exists at service " + service.toString());
-		}
+		for (IAccount a : this.accounts) {
+			if (a.getService().equals(service))
+				// throw exception? this is an illegal action
+				System.out.println("An account already exists at service " + service.toString());
+		} // else
 		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
 	}
 	

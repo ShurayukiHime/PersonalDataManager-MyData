@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private JButton go;
 
-	private Controller controller;
+	private MyController controller;
 	
 	private List<JCheckBox> checksGeneral = new ArrayList<>();
 	private List<JCheckBox> checksAmenity = new ArrayList<>();
@@ -108,7 +108,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 	
 
-	public MainFrame(Controller controller) {
+	public MainFrame(MyController controller) {
 		checksAmenity = new ArrayList<JCheckBox>();
 		checksLeisure = new ArrayList<JCheckBox>();
 		checksShop = new ArrayList<JCheckBox>();
