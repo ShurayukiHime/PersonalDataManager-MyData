@@ -6,7 +6,6 @@ import java.awt.event.ActionListener;
 import java.util.Date;
 import java.util.List;
 
-import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -25,7 +24,7 @@ import javax.swing.border.TitledBorder;
 
 import persistence.IService;
 
-public class MyDataProfile extends JFrame implements ActionListener {
+public class MyDataProfile extends JFrame {
 
 	/**
 	 * 
@@ -46,8 +45,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JPanel profilePanel;
 	private JComboBox<IService> servicesComboBox;
 
-	private JButton toggleDisabledStatus;
-	private JButton setWithdrawnStatus;
+	private JButton toggleDisabledStatusButton;
+	private JButton setWithdrawnStatusButton;
 	private JButton viewPastSConsentsButton;
 	private JButton addServiceButton;
 	private JButton requestServiceButton;
@@ -80,7 +79,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 				emailAddressTField.setEditable(true);
 
 				signUpButton = new JButton("Conferma");
-				signUpButton.addActionListener(this);
+				signUpButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						signUpButtonClicked();
+					}
+				});
 
 				registrationPanel.add(nomeTField);
 				registrationPanel.add(cognomeTField);
@@ -100,7 +104,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 				emailAddressTField.setEditable(true);
 				pswPField = new JPasswordField(15);
 				signInButton = new JButton("Log in");
-				signInButton.addActionListener(this);
+				signInButton.addActionListener(new ActionListener() {
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						signInButtonClicked();
+					}
+				});
 
 				loginPanel.add(emailAddressTField);
 				loginPanel.add(pswPField);
@@ -110,6 +119,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			welcomePanel.add(loginPanel);
 			welcomePanel.setVisible(true);
 			this.add(welcomePanel);
+			this.pack();
 		}
 
 	}
@@ -119,64 +129,102 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		profilePanel = new JPanel();
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.PAGE_AXIS));
 		{
-			JLabel profileLabel = new JLabel("Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
+			JLabel profileLabel = new JLabel(
+					"Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
 			servicesComboBox = new JComboBox<IService>();
-			//servicesComboBox.addActionListener(l);
-			
+			// servicesComboBox.addActionListener(l);
+
 			profilePanel.add(profileLabel);
 			profilePanel.add(servicesComboBox);
-			
-			JPanel statusPanel = new JPanel(); 
+
+			JPanel statusPanel = new JPanel();
 			statusPanel.setLayout(new GridLayout(2, 2));
 			{
 				JLabel statusLabel = new JLabel("Status:");
 				JTextField statusTField = new JTextField();
-				toggleDisabledStatus = new JButton("Toggle Disabled Status");
-				setWithdrawnStatus = new JButton("Set Withdrawn Status");
-				
-				//toggleDisabledStatus.addActionListener(l);
-				//setWithdrawnStatus.addActionListener(l);
-				
+				statusTField.setEditable(false);
+				toggleDisabledStatusButton = new JButton("Toggle Disabled Status");
+				setWithdrawnStatusButton = new JButton("Set Withdrawn Status");
+
+				toggleDisabledStatusButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						toggleDisabledStatusButtonClicked();
+
+					}
+				});
+				setWithdrawnStatusButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						setWithdrawnStatusButtonClicked();
+
+					}
+				});
+
 				statusPanel.add(statusLabel);
 				statusPanel.add(statusTField);
-				statusPanel.add(toggleDisabledStatus);
-				statusPanel.add(setWithdrawnStatus);
+				statusPanel.add(toggleDisabledStatusButton);
+				statusPanel.add(setWithdrawnStatusButton);
 				statusPanel.setVisible(true);
 			}
 			profilePanel.add(statusPanel);
-			
-			JPanel centralButtonsPanel = new JPanel(); 
-			centralButtonsPanel.setLayout(new GridLayout(3,1));
+
+			JPanel centralButtonsPanel = new JPanel();
+			centralButtonsPanel.setLayout(new GridLayout(3, 1));
 			{
 				requestServiceButton = new JButton("Richiedi Servizio");
-				//requestServiceButton.addActionListener(l);
+				requestServiceButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						requestServiceButtonClicked();
+
+					}
+				});
 				addServiceButton = new JButton("Aggiungi un nuovo servizio");
-				//addServiceButton.addActionListener(l);
+				addServiceButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						callServiceRegistry();
+
+					}
+				});
 				viewPastSConsentsButton = new JButton("Visualizza tutti i permessi ritirati");
-				//viewPastSConsents.addActionListener(l);
-				
+				viewPastSConsentsButton.addActionListener(new ActionListener() {
+
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						viewPastSConsentsButton();
+
+					}
+				});
+
 				centralButtonsPanel.add(requestServiceButton);
 				centralButtonsPanel.add(addServiceButton);
 				centralButtonsPanel.add(viewPastSConsentsButton);
 			}
 			profilePanel.add(centralButtonsPanel, BoxLayout.PAGE_AXIS);
 			centralButtonsPanel.setVisible(true);
-			
-			JPanel bottomPanel = new JPanel (); 
-			bottomPanel.setLayout(new GridLayout (1, 1));
+
+			JPanel bottomPanel = new JPanel();
+			bottomPanel.setLayout(new GridLayout(1, 1));
 			{
-				JTextArea pastServicesConsent = new JTextArea (30, 30);
+				JTextArea pastServicesConsent = new JTextArea(10, 30);
 				pastServicesConsent.setEditable(false);
 				pastServicesConsent.setLineWrap(true);
 				JScrollPane scrollPane = new JScrollPane(pastServicesConsent);
-				
+
 				bottomPanel.add(scrollPane);
 			}
 			profilePanel.add(bottomPanel, BoxLayout.PAGE_AXIS);
 			bottomPanel.setVisible(true);
 		}
-			profilePanel.setVisible(true);
-			this.add(profilePanel);
+		profilePanel.setVisible(true);
+		this.add(profilePanel);
+		this.pack();
 	}
 
 	public void setModel(List<IService> serviziPerAccountUtente) {
@@ -188,27 +236,54 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	// da sistemare per intero, eventualmente prevedendo eventlistener per
 	// diversi tipi di oggetti e / o incapsulamento logica nel controller
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == signUpButton) {
-			try {
-				this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
-						(Date) datePicker.getValue(), emailAddressTField.getText());
-				// if creation of new user is safe, then
-				showProfile();
-				// updates list of services for new panel
-			} catch (IllegalStateException e1) {
-				e1.printStackTrace();
-				JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
-				// reset values
-				nomeTField.setText("Nome");
-				cognomeTField.setText("Cognome");
-				emailAddressTField.setText("email@gmail.com");
-			}
-		} else if (e.getSource() == signInButton) {
-			// check credentials
+	private void signUpButtonClicked() {
+		try {
+			this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
+					(Date) datePicker.getValue(), emailAddressTField.getText());
+			// if creation of new user is safe, then
+			showProfile();
 			// updates list of services for new panel
+		} catch (IllegalStateException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+			// reset values
+			nomeTField.setText("Nome");
+			cognomeTField.setText("Cognome");
+			emailAddressTField.setText("email@gmail.com");
 		}
 	}
 
+	private void signInButtonClicked() {
+		// check credentials
+		// updates list of services for new panel
+	}
+
+	private void toggleDisabledStatusButtonClicked() {
+		// retrieve il servizio selezionato
+		// chiede al controller di fare il toggle per il servizio, utente
+		// invoca un aggiornamento della combo box
+	}
+
+	private void setWithdrawnStatusButtonClicked() {
+		// retrieve il servizio selezionato
+		// chiede al controller di fare withdraw dello stato per il servizio,
+		// utente
+		// invoca aggiornamento combo box
+	}
+
+	private void requestServiceButtonClicked() {
+		// mostra la schermata del servizio di nicola
+		// dove?
+	}
+
+	private void callServiceRegistry() {
+		JOptionPane.showMessageDialog(null, "Sto invocando il Service Registry...", "Info:",
+				JOptionPane.INFORMATION_MESSAGE);
+	}
+
+	private void viewPastSConsentsButton() {
+		// retrieve service selected
+		// ask controller for sconsents
+		// show content in text area
+	}
 }
