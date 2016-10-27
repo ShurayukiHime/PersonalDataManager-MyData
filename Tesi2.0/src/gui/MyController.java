@@ -16,41 +16,47 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
 import model.*;
 import persistence.*;
+import persistence.consents.ConsentManager;
+import persistence.consents.ConsentStatus;
+import persistence.consents.ServiceConsent;
+import persistence.users.IAccount;
+import persistence.users.IUser;
 
 public class MyController implements Controller {
-	
+
 	private List<IPreference> preferences;
 	private Position actualPosition;
 	private LocalDateTime date;
 	private IMyData myDataInstance;
-	
+	private IUser authenticatedUser;
+
 	public MyController() {
 		preferences = new ArrayList<>();
 		this.myDataInstance = MyData.getInstance();
 	}
-	
+
 	public List<IPreference> getPreferences() {
 		return this.preferences;
 	}
-	
+
 	public void setActualPosition(double latitude, double longitude) {
 		if (latitude > 90 || latitude < -90)
 			throw new IllegalArgumentException("latitude must be between -90 and 90");
 		if (longitude > 180 || longitude < -180)
 			throw new IllegalArgumentException("longitude must be between -180 and 180");
-		Position position = new Position(latitude,longitude);
+		Position position = new Position(latitude, longitude);
 		actualPosition = position;
 	}
-	
+
 	public Position getActualPosition() {
 		return this.actualPosition;
 	}
-	
+
 	public void addPreference(String category, String name) {
 		preferences.add(new Preference(category, name));
 	}
-	
-	public void setPanelDate (JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min) {
+
+	public void setPanelDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min) {
 		LocalDateTime ldt = LocalDateTime.now();
 		day.setText(ldt.getDayOfMonth() + "");
 		month.setText(ldt.getMonthValue() + "");
@@ -58,8 +64,8 @@ public class MyController implements Controller {
 		hour.setText(ldt.getHour() + "");
 		min.setText(ldt.getMinute() + "");
 	}
-	
-	public void setDate (JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min) {
+
+	public void setDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min) {
 		int y = Integer.parseInt(year.getText());
 		int d = Integer.parseInt(day.getText());
 		int m = Integer.parseInt(month.getText());
@@ -67,15 +73,15 @@ public class MyController implements Controller {
 		int mm = Integer.parseInt(min.getText());
 		this.date = LocalDateTime.of(y, m, d, h, mm);
 	}
-	
+
 	public LocalDateTime getDate() {
 		return this.date;
 	}
-	
+
 	public void resetPreferences() {
 		preferences.clear();
 	}
-	
+
 	public void fillPreferencesByCategory(String category, List<JCheckBox> checks) {
 		if (category == null || category.length() == 0)
 			throw new IllegalArgumentException("category must be true");
@@ -86,7 +92,7 @@ public class MyController implements Controller {
 				preferences.add(new Preference(category, cb.getText()));
 		}
 	}
-	
+
 	private void updateMap(JMapViewer map, List<ISuggestion> suggestions) {
 		boolean first = true;
 		map.getMapMarkerList().clear();
@@ -102,24 +108,24 @@ public class MyController implements Controller {
 		}
 		map.setDisplayToFitMapMarkers();
 	}
-	
-	public void getSuggest (MainFrame panel) throws FileNotFoundException, IOException {
+
+	public void getSuggest(MainFrame panel) throws FileNotFoundException, IOException {
 		if (panel == null)
 			throw new IllegalArgumentException("panel must be initialized");
-		
-		//TODO
-		
-		//da rifattorizzare tutto in qualche modo, prevedendo in ordine
-		
-		//creazione di account MyData
-		//creazione di account presso il servizio   
-		//firma di un service consent per il servizio di previsione di viaggio
-		//firma di uno+ data consent per l'utilizzo effettivo del servizio
-		
-		
+
+		// TODO
+
+		// da rifattorizzare tutto in qualche modo, prevedendo in ordine
+
+		// creazione di account MyData
+		// creazione di account presso il servizio
+		// firma di un service consent per il servizio di previsione di viaggio
+		// firma di uno+ data consent per l'utilizzo effettivo del servizio
+
 		MyData.getInstance().getDataVault(username).getPreferences().clear();
 		MyData.getInstance().getDataVault(username).getPreferences().addAll(preferences);
-		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition, MyData.getInstance().getDataVault(username));
+		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition,
+				MyData.getInstance().getDataVault(username));
 
 		StringBuilder suggestionsBuilder = new StringBuilder();
 		StringBuilder infoBuilder = new StringBuilder();
@@ -143,9 +149,60 @@ public class MyController implements Controller {
 	}
 
 	@Override
-	public void createMyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress) {
-		myDataInstance.createMyDataAccount(firstName, lastName, dateOfBirth, emailAddress);
+	public void createMyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress,
+			String password) {
+		myDataInstance.createMyDataAccount(firstName, lastName, dateOfBirth, emailAddress, password);
 	}
 
-	
+	@Override
+	public void logInUser(String email, String password) {
+		authenticatedUser = myDataInstance.loginUser(email, password);
+	}
+
+	@Override
+	public void toggleStatus(IService selectedService, boolean status) {
+		// get current status for service
+		// invoke method to switch status
+
+		// poichè questa funzione viene chiamata solo da profile panel, quando
+		// l'user è già autenticato, in teoria non dovrei fare controlli su
+		// authusr == null
+		ServiceConsent consent = null;
+		for (IAccount a : authenticatedUser.getAllAccounts()) {
+			if (a.getService().equals(selectedService))
+				consent = a.getActiveDisabledSC();
+		}
+
+		if (status) {
+			ConsentManager.changeServiceConsentStatusForService(authenticatedUser, selectedService,
+					ConsentStatus.ACTIVE);
+		} else {
+			ConsentManager.changeServiceConsentStatusForService(authenticatedUser, selectedService,
+					ConsentStatus.DISABLED);
+		}
+	}
+
+	@Override
+	public String getAllPastSConsents(IService selectedService) {
+		//retrieve account for service (user SHOULD have it)
+		// get all consents
+		// for each sconsent, toString();
+		
+		StringBuilder sb = new StringBuilder();
+		IAccount accountAtService = null;
+		for (IAccount a : authenticatedUser.getAllAccounts()) {
+			if (a.getService().equals(selectedService))
+				accountAtService = a;
+		}
+		for (ServiceConsent sc : accountAtService.getAllPastServiceConsents()) 
+			sb.append(sc.toString() + System.getProperty("line.separator"));
+		return sb.toString();
+	}
+
+	@Override
+	public void addService() {
+		// TODO Auto-generated method stub
+		//should add MLNT
+	}
+
 }

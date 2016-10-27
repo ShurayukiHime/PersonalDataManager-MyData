@@ -2,8 +2,10 @@ package persistence.users;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import persistence.IPersonalDataVault;
 import persistence.IService;
@@ -23,6 +25,7 @@ class Account implements IAccount {
 		super();
 		this.service = service;
 		this.personalDataVault = new PersonalDataVault();
+		// devo controllare che il primo consent sia attivo?
 		this.dataConsents.put(firstConsent, new ArrayList<DataConsent>());
 	}
 
@@ -76,6 +79,15 @@ class Account implements IAccount {
 			}
 		}
 		return null;
+	}
+
+	@Override
+	public Set<ServiceConsent> getAllPastServiceConsents() {
+		Set<ServiceConsent> result = new HashSet<ServiceConsent>();
+		for (ServiceConsent sc : this.dataConsents.keySet())
+			if (sc.getConsentStatus() == ConsentStatus.WITHDRAWN)
+				result.add(sc);
+		return result;
 	}
 
 }

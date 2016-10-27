@@ -36,8 +36,8 @@ public class MyData implements IMyData {
 	// è sbagliato creare users che poi non vengono aggiunti?
 	// è peggio quello oppure fare un confronto fra tutti gli email address del set in un ciclo for?
 	@Override
-	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress) {
-		IUser newUser = new MyDataUser(firstName, lastName, dateOfBirth, emailAddress);
+	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password) {
+		IUser newUser = new MyDataUser(firstName, lastName, dateOfBirth, emailAddress, password);
 		if (!(this.myDataUsers.add(newUser))) {
 			//System.out.println("Cannot register two users with the same email address!");
 			throw new IllegalStateException("Cannot register two users with the same email address!");
@@ -49,13 +49,14 @@ public class MyData implements IMyData {
 	// returs null if user not found
 	// dovrebbe esserci una password...
 	@Override
-	public IUser loginUser (String email)
+	public IUser loginUser (String email, String password)
 	{
 		for (IUser user : this.myDataUsers) {
-			if (user.getEmailAddress().equals(email))
+			if (user.getEmailAddress().equals(email) && user.checkIfPasswordEqual(password))
 				return user;
 		}
-		return null;
+		//se arriva qui, user o password incorretti!
+		throw new IllegalArgumentException("Wrong credentials.");
 	}
 	// stessa domanda della funzione sopra per creazione accounts
 	public void createServiceAccount(IUser user, IService service) {

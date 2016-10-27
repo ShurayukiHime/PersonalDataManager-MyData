@@ -32,17 +32,20 @@ public class ConsentManager {
 			// illegal call
 			// throw exception
 		} // else
-		return new ServiceConsent(tokenSignedService, tokenSignedUser, new Date(), service); 
+		return new ServiceConsent(tokenSignedService, tokenSignedUser, new Date(), service, user); 
 	}
 
 	public static void changeServiceConsentStatusForService(IUser user, IService service, ConsentStatus newStatus) {
 		for (IAccount a : user.getAllAccounts()) 
 			if (a.getService().equals(service)) {
 				ServiceConsent sc = a.getActiveDisabledSC();
-				if ( sc == null){
+				if (sc == null){
 					// non ci sono consent attualmente attivi o disabilitati
+					if (newStatus == ConsentStatus.WITHDRAWN) {
+						throw new IllegalArgumentException("The consent has already been withdrawn.");
+					} //else
 					System.out.println("Cannot change the status of a Withdrawn Service Consent!");
-					throw new IllegalArgumentException();
+					throw new IllegalStateException();
 					// eventualmente creare eccezione più specifica
 				}
 				// else, il consent è attivo o disabilitato

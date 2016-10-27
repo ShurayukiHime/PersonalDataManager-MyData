@@ -25,6 +25,8 @@ public interface IUser {
 	public void setEmailAddress(String emailAddress);
 
 	public ISecurityManager getSecurityManager();
+	
+	public int hashCode();
 
 	public boolean equals(Object other);
 	// ogni mdu deve avere un consent manager, magari anche espresso tramite
@@ -36,6 +38,8 @@ public interface IUser {
 	public void newAccountAtService(IService service);
 
 	public Set<IAccount> getAllAccounts();
+
+	boolean checkIfPasswordEqual(String givenPsw);
 
 
 

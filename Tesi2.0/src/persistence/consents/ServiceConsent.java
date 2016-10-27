@@ -3,20 +3,23 @@ package persistence.consents;
 import java.util.Date;
 
 import persistence.IService;
+import persistence.users.IUser;
 
 public class ServiceConsent implements IConsent {
 	private byte[] signedByService, signedByUser;
 	private Date timestampGiven;
 	private Date timestampWithdrawn;
 	private IService service;
+	private IUser user;
 	private ConsentStatus consentStatus;
 
-	public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service) {
+	public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service, IUser user) {
 		super();
 		this.signedByService = signedByService;
 		this.signedByUser = signedByUser;
 		this.timestampGiven = timestamp;
 		this.service = service;
+		this.user = user;
 		this.consentStatus = ConsentStatus.ACTIVE;
 	}
 
@@ -24,7 +27,6 @@ public class ServiceConsent implements IConsent {
 		return timestampGiven;
 	}
 
-	// generare equals che tiene conto di questa cosa
 	public Date getTimestampWithdrawn() {
 		if (this.timestampWithdrawn != null)
 			return timestampWithdrawn;
@@ -39,11 +41,11 @@ public class ServiceConsent implements IConsent {
 	}
 
 	public IService getService() {
-		return service;
+		return this.service;
 	}
 
 	public ConsentStatus getConsentStatus() {
-		return consentStatus;
+		return this.consentStatus;
 	}
 
 	private void setConsentStatus(ConsentStatus consentStatus) {
@@ -74,6 +76,7 @@ public class ServiceConsent implements IConsent {
 		result = prime * result + ((consentStatus == null) ? 0 : consentStatus.hashCode());
 		result = prime * result + ((service == null) ? 0 : service.hashCode());
 		result = prime * result + ((timestampWithdrawn == null) ? 0 : timestampWithdrawn.hashCode());
+		result = prime * result + ((user == null) ? 0 : user.hashCode());
 		return result;
 	}
 
@@ -98,6 +101,18 @@ public class ServiceConsent implements IConsent {
 				return false;
 		} else if (!timestampWithdrawn.equals(other.timestampWithdrawn))
 			return false;
+		if (user == null) {
+			if (other.user != null)
+				return false;
+		} else if (!user.equals(other.user))
+			return false;
 		return true;
+	}
+
+	public String toString() {
+		String result = "Service Consent issued at " + this.timestampGiven + " for user " + this.user.toString()
+				+ " at service " + this.service.toString() + ". Current status: " + this.consentStatus;
+		return this.consentStatus == ConsentStatus.WITHDRAWN ? result + " withdrawn at " + this.timestampWithdrawn + "."
+				: result;
 	}
 }

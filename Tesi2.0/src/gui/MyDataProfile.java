@@ -3,11 +3,14 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 import java.util.Date;
 import java.util.List;
 
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,6 +21,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
+import javax.swing.JToggleButton;
 import javax.swing.SpinnerDateModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
@@ -44,8 +48,9 @@ public class MyDataProfile extends JFrame {
 
 	private JPanel profilePanel;
 	private JComboBox<IService> servicesComboBox;
+	private JTextArea pastServicesConsent;
 
-	private JButton toggleDisabledStatusButton;
+	private JCheckBox toggleDisabledStatusButton;
 	private JButton setWithdrawnStatusButton;
 	private JButton viewPastSConsentsButton;
 	private JButton addServiceButton;
@@ -77,6 +82,7 @@ public class MyDataProfile extends JFrame {
 				emailAddressTField = new JTextField(15);
 				emailAddressTField.setText("email@gmail.com");
 				emailAddressTField.setEditable(true);
+				pswPField = new JPasswordField(15);
 
 				signUpButton = new JButton("Conferma");
 				signUpButton.addActionListener(new ActionListener() {
@@ -90,6 +96,7 @@ public class MyDataProfile extends JFrame {
 				registrationPanel.add(cognomeTField);
 				registrationPanel.add(datePicker);
 				registrationPanel.add(emailAddressTField);
+				registrationPanel.add(pswPField);
 				registrationPanel.add(signUpButton);
 				registrationPanel.setVisible(true);
 			}
@@ -132,6 +139,7 @@ public class MyDataProfile extends JFrame {
 			JLabel profileLabel = new JLabel(
 					"Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
 			servicesComboBox = new JComboBox<IService>();
+			servicesComboBox.setEditable(false);
 			// servicesComboBox.addActionListener(l);
 
 			profilePanel.add(profileLabel);
@@ -143,15 +151,17 @@ public class MyDataProfile extends JFrame {
 				JLabel statusLabel = new JLabel("Status:");
 				JTextField statusTField = new JTextField();
 				statusTField.setEditable(false);
-				toggleDisabledStatusButton = new JButton("Toggle Disabled Status");
+				toggleDisabledStatusButton = new JCheckBox("Toggle Disabled Status");
 				setWithdrawnStatusButton = new JButton("Set Withdrawn Status");
 
 				toggleDisabledStatusButton.addActionListener(new ActionListener() {
-
+					
+					// per convenzione, if cb is selected -> active
+					// else -> disabled
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						toggleDisabledStatusButtonClicked();
-
+						
 					}
 				});
 				setWithdrawnStatusButton.addActionListener(new ActionListener() {
@@ -212,7 +222,7 @@ public class MyDataProfile extends JFrame {
 			JPanel bottomPanel = new JPanel();
 			bottomPanel.setLayout(new GridLayout(1, 1));
 			{
-				JTextArea pastServicesConsent = new JTextArea(10, 30);
+				pastServicesConsent = new JTextArea(10, 30);
 				pastServicesConsent.setEditable(false);
 				pastServicesConsent.setLineWrap(true);
 				JScrollPane scrollPane = new JScrollPane(pastServicesConsent);
@@ -239,11 +249,11 @@ public class MyDataProfile extends JFrame {
 	private void signUpButtonClicked() {
 		try {
 			this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
-					(Date) datePicker.getValue(), emailAddressTField.getText());
+					(Date) datePicker.getValue(), emailAddressTField.getText(), pswPField.getPassword().toString());
 			// if creation of new user is safe, then
 			showProfile();
 			// updates list of services for new panel
-		} catch (IllegalStateException e1) {
+		} catch (IllegalStateException | IllegalArgumentException e1) {
 			e1.printStackTrace();
 			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
 			// reset values
@@ -256,19 +266,46 @@ public class MyDataProfile extends JFrame {
 	private void signInButtonClicked() {
 		// check credentials
 		// updates list of services for new panel
+
+		try {
+			this.controller.logInUser(emailAddressTField.getText(), pswPField.getPassword().toString());
+			// if user authenticated,
+			showProfile();
+		} catch (IllegalArgumentException e1) {
+			e1.printStackTrace();
+			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+			emailAddressTField.setText("email@gmail.com");
+		}
 	}
 
 	private void toggleDisabledStatusButtonClicked() {
 		// retrieve il servizio selezionato
 		// chiede al controller di fare il toggle per il servizio, utente
 		// invoca un aggiornamento della combo box
+
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
+		// se l'utente è autenticato
+		try {
+			this.controller.toggleStatus(selectedService, this.toggleDisabledStatusButton.isSelected());
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+			JOptionPane.showMessageDialog(null, e.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+		}
+
 	}
 
 	private void setWithdrawnStatusButtonClicked() {
-		// retrieve il servizio selezionato
+		// retrieve il servizio selezionato (che non potrà mai essere withdrawn)
 		// chiede al controller di fare withdraw dello stato per il servizio,
 		// utente
 		// invoca aggiornamento combo box
+		
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
+		// se l'utente è autenticato
+		this.controller.toggleStatus(selectedService);
+		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare tutto bene
 	}
 
 	private void requestServiceButtonClicked() {
@@ -277,13 +314,21 @@ public class MyDataProfile extends JFrame {
 	}
 
 	private void callServiceRegistry() {
-		JOptionPane.showMessageDialog(null, "Sto invocando il Service Registry...", "Info:",
+		JOptionPane.showMessageDialog(null, "Sto invocando il Service Registry... (forse)", "Info:",
 				JOptionPane.INFORMATION_MESSAGE);
+		//barbatrucco per aggiungere MLNT la prima volta
+		if (this.servicesComboBox.getItemCount() == 0) {
+			this.controller.addService();
+		}
 	}
 
 	private void viewPastSConsentsButton() {
 		// retrieve service selected
 		// ask controller for sconsents
 		// show content in text area
+		
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		String pastSConsents = this.controller.getAllPastSConsents(selectedService);
+		this.pastServicesConsent.setText(pastSConsents);
 	}
 }

@@ -9,8 +9,8 @@ public interface IMyData {
 	
 	IPersonalDataVault getDataVault(IUser user, IService service);
 
-	IUser loginUser(String email);
+	IUser loginUser(String email, String password);
 
-	IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress);
+	IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password);
 	
 }

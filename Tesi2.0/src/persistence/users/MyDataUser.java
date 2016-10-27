@@ -14,15 +14,19 @@ public class MyDataUser implements IUser {
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
+	private String password; // modo triste per salvare le password
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 
-	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress) {
+	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password) {
 		super();
+		if (firstName == null || firstName.trim().isEmpty() || lastName == null || lastName.trim().isEmpty() || dateOfBirth == null || emailAddress == null || emailAddress.trim().isEmpty() || password == null || password.trim().isEmpty())
+			throw new IllegalArgumentException("Parameters must not be null or empty.");
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
+		this.password = password;
 
 		// ma cosa??
 		this.securityManager = (ISecurityManager) new persistence.SecurityManager();
@@ -76,7 +80,6 @@ public class MyDataUser implements IUser {
 	}
 
 	@Override
-	// returns null if account doesn't exist
 	public Set<IAccount> getAllAccounts() {
 		return this.accounts;
 	}
@@ -116,4 +119,12 @@ public class MyDataUser implements IUser {
 		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
 	}
 	
+	@Override
+	public boolean checkIfPasswordEqual (String givenPsw) {
+		return givenPsw.equals(this.password);
+	}
+
+	public String toString() {
+		return this.emailAddress;
+	}
 }
