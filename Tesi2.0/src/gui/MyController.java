@@ -29,10 +29,17 @@ public class MyController implements Controller {
 	private LocalDateTime date;
 	private IMyData myDataInstance;
 	private IUser authenticatedUser;
+	private UserInteractor userInteractor;
 
-	public MyController() {
+	public MyController(UserInteractor userInteractor) {
 		preferences = new ArrayList<>();
 		this.myDataInstance = MyData.getInstance();
+		this.userInteractor = userInteractor;
+	}
+
+	@Override
+	public UserInteractor getUserInteractor() {
+		return userInteractor;
 	}
 
 	public List<IPreference> getPreferences() {
@@ -161,17 +168,9 @@ public class MyController implements Controller {
 
 	@Override
 	public void toggleStatus(IService selectedService, boolean status) {
-		// get current status for service
-		// invoke method to switch status
-
-		// poichè questa funzione viene chiamata solo da profile panel, quando
 		// l'user è già autenticato, in teoria non dovrei fare controlli su
-		// authusr == null
-		ServiceConsent consent = null;
-		for (IAccount a : authenticatedUser.getAllAccounts()) {
-			if (a.getService().equals(selectedService))
-				consent = a.getActiveDisabledSC();
-		}
+		// authusr == null. poichè invocato da profile panel,l'account presso il
+		// servizio dovrebbe sempre esistere
 
 		if (status) {
 			ConsentManager.changeServiceConsentStatusForService(authenticatedUser, selectedService,
@@ -184,25 +183,52 @@ public class MyController implements Controller {
 
 	@Override
 	public String getAllPastSConsents(IService selectedService) {
-		//retrieve account for service (user SHOULD have it)
+		// retrieve account for service (user SHOULD have it)
 		// get all consents
 		// for each sconsent, toString();
-		
+
 		StringBuilder sb = new StringBuilder();
 		IAccount accountAtService = null;
 		for (IAccount a : authenticatedUser.getAllAccounts()) {
 			if (a.getService().equals(selectedService))
 				accountAtService = a;
 		}
-		for (ServiceConsent sc : accountAtService.getAllPastServiceConsents()) 
+		for (ServiceConsent sc : accountAtService.getAllPastServiceConsents())
 			sb.append(sc.toString() + System.getProperty("line.separator"));
 		return sb.toString();
 	}
 
 	@Override
-	public void addService() {
-		// TODO Auto-generated method stub
-		//should add MLNT
+	public void addService(IService service) {
+		// Service Linking should be here
+		
+		//barbatrucco per mancanza service linking...
+		if (service != null)
+			ConsentManager.giveServiceConsent(authenticatedUser, service);
+		else
+	}
+
+	@Override
+	public void withdrawConsentForService(IService selectedService) {
+		ConsentManager.changeServiceConsentStatusForService(authenticatedUser, selectedService,
+				ConsentStatus.WITHDRAWN);
+	}
+
+	@Override
+	public List<IService> getAllActiveServicesForUser() {
+		List<IService> activeServices = new ArrayList<IService>();
+		for (IAccount a : authenticatedUser.getAllAccounts()) 
+			if (a.getActiveDisabledSC() != null)
+				activeServices.add(a.getService());
+		return activeServices;
+	}
+
+	@Override
+	public boolean getADStatusForService(IService selectedService) {
+		for (IAccount a : authenticatedUser.getAllAccounts())
+			if (a.getService().equals(selectedService))
+				return a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE ? true : false;
+		throw new IllegalArgumentException("Current user does not have an account to the selected service.");
 	}
 
 }

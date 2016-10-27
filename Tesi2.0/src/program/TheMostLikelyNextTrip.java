@@ -9,7 +9,8 @@ public class TheMostLikelyNextTrip {
 		//MainFrame frame = new MainFrame(new Controller("prova"));
 		//frame.setVisible(true);
 		
-		MyDataProfile loginFrame = new MyDataProfile(new MyController ());
+		UserInteractor userInteractor = new SwingUserInteractor();
+		MyDataProfile loginFrame = new MyDataProfile(new MyController (userInteractor));
 		loginFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		loginFrame.setVisible(true);
 	}

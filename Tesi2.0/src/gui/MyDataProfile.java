@@ -3,8 +3,6 @@ package gui;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ItemEvent;
-import java.awt.event.ItemListener;
 import java.util.Date;
 import java.util.List;
 
@@ -21,14 +19,14 @@ import javax.swing.JScrollPane;
 import javax.swing.JSpinner;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JToggleButton;
 import javax.swing.SpinnerDateModel;
 import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
+import javax.swing.text.JTextComponent;
 
 import persistence.IService;
 
-public class MyDataProfile extends JFrame {
+public class MyDataProfile extends JFrame implements ActionListener {
 
 	/**
 	 * 
@@ -50,9 +48,9 @@ public class MyDataProfile extends JFrame {
 	private JComboBox<IService> servicesComboBox;
 	private JTextArea pastServicesConsent;
 
-	private JCheckBox toggleDisabledStatusButton;
+	private JTextComponent statusTField;
+	private JCheckBox toggleDisabledStatusCheckBox;
 	private JButton setWithdrawnStatusButton;
-	private JButton viewPastSConsentsButton;
 	private JButton addServiceButton;
 	private JButton requestServiceButton;
 
@@ -140,7 +138,7 @@ public class MyDataProfile extends JFrame {
 					"Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
 			servicesComboBox = new JComboBox<IService>();
 			servicesComboBox.setEditable(false);
-			// servicesComboBox.addActionListener(l);
+			servicesComboBox.addActionListener(this);
 
 			profilePanel.add(profileLabel);
 			profilePanel.add(servicesComboBox);
@@ -149,19 +147,18 @@ public class MyDataProfile extends JFrame {
 			statusPanel.setLayout(new GridLayout(2, 2));
 			{
 				JLabel statusLabel = new JLabel("Status:");
-				JTextField statusTField = new JTextField();
+				statusTField = new JTextField();
 				statusTField.setEditable(false);
-				toggleDisabledStatusButton = new JCheckBox("Toggle Disabled Status");
+				toggleDisabledStatusCheckBox = new JCheckBox("Toggle Disabled Status");
 				setWithdrawnStatusButton = new JButton("Set Withdrawn Status");
 
-				toggleDisabledStatusButton.addActionListener(new ActionListener() {
-					
+				toggleDisabledStatusCheckBox.addActionListener(new ActionListener() {
+
 					// per convenzione, if cb is selected -> active
 					// else -> disabled
 					@Override
 					public void actionPerformed(ActionEvent e) {
-						toggleDisabledStatusButtonClicked();
-						
+						toggleDisabledStatusCheckBoxClicked();
 					}
 				});
 				setWithdrawnStatusButton.addActionListener(new ActionListener() {
@@ -169,20 +166,19 @@ public class MyDataProfile extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						setWithdrawnStatusButtonClicked();
-
 					}
 				});
 
 				statusPanel.add(statusLabel);
 				statusPanel.add(statusTField);
-				statusPanel.add(toggleDisabledStatusButton);
+				statusPanel.add(toggleDisabledStatusCheckBox);
 				statusPanel.add(setWithdrawnStatusButton);
 				statusPanel.setVisible(true);
 			}
 			profilePanel.add(statusPanel);
 
 			JPanel centralButtonsPanel = new JPanel();
-			centralButtonsPanel.setLayout(new GridLayout(3, 1));
+			centralButtonsPanel.setLayout(new GridLayout(2, 1));
 			{
 				requestServiceButton = new JButton("Richiedi Servizio");
 				requestServiceButton.addActionListener(new ActionListener() {
@@ -190,7 +186,6 @@ public class MyDataProfile extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						requestServiceButtonClicked();
-
 					}
 				});
 				addServiceButton = new JButton("Aggiungi un nuovo servizio");
@@ -199,22 +194,11 @@ public class MyDataProfile extends JFrame {
 					@Override
 					public void actionPerformed(ActionEvent e) {
 						callServiceRegistry();
-
-					}
-				});
-				viewPastSConsentsButton = new JButton("Visualizza tutti i permessi ritirati");
-				viewPastSConsentsButton.addActionListener(new ActionListener() {
-
-					@Override
-					public void actionPerformed(ActionEvent e) {
-						viewPastSConsentsButton();
-
 					}
 				});
 
 				centralButtonsPanel.add(requestServiceButton);
 				centralButtonsPanel.add(addServiceButton);
-				centralButtonsPanel.add(viewPastSConsentsButton);
 			}
 			profilePanel.add(centralButtonsPanel, BoxLayout.PAGE_AXIS);
 			centralButtonsPanel.setVisible(true);
@@ -233,19 +217,19 @@ public class MyDataProfile extends JFrame {
 			bottomPanel.setVisible(true);
 		}
 		profilePanel.setVisible(true);
+		this.popolaServicesComboBox();
 		this.add(profilePanel);
 		this.pack();
 	}
 
-	public void setModel(List<IService> serviziPerAccountUtente) {
-		// servicesComboBox.removeActionListener(l);
-		for (IService s : serviziPerAccountUtente)
+	private void popolaServicesComboBox() {
+		List<IService> activeServices = this.controller.getAllActiveServicesForUser();
+		servicesComboBox.removeActionListener(this);
+		for (IService s : activeServices)
 			servicesComboBox.addItem(s);
-		// servicesComboBox.addActionListener(l);
+		servicesComboBox.addActionListener(this);
 	}
 
-	// da sistemare per intero, eventualmente prevedendo eventlistener per
-	// diversi tipi di oggetti e / o incapsulamento logica nel controller
 	private void signUpButtonClicked() {
 		try {
 			this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
@@ -253,9 +237,9 @@ public class MyDataProfile extends JFrame {
 			// if creation of new user is safe, then
 			showProfile();
 			// updates list of services for new panel
-		} catch (IllegalStateException | IllegalArgumentException e1) {
+		} catch (IllegalStateException | IllegalArgumentException | SecurityException e1) {
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
 			// reset values
 			nomeTField.setText("Nome");
 			cognomeTField.setText("Cognome");
@@ -273,12 +257,12 @@ public class MyDataProfile extends JFrame {
 			showProfile();
 		} catch (IllegalArgumentException e1) {
 			e1.printStackTrace();
-			JOptionPane.showMessageDialog(null, e1.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
 			emailAddressTField.setText("email@gmail.com");
 		}
 	}
 
-	private void toggleDisabledStatusButtonClicked() {
+	private void toggleDisabledStatusCheckBoxClicked() {
 		// retrieve il servizio selezionato
 		// chiede al controller di fare il toggle per il servizio, utente
 		// invoca un aggiornamento della combo box
@@ -287,10 +271,11 @@ public class MyDataProfile extends JFrame {
 		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
 		// se l'utente è autenticato
 		try {
-			this.controller.toggleStatus(selectedService, this.toggleDisabledStatusButton.isSelected());
+			this.controller.toggleStatus(selectedService, this.toggleDisabledStatusCheckBox.isSelected());
+			this.updateStatusTextField(this.toggleDisabledStatusCheckBox.isSelected());
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
-			JOptionPane.showMessageDialog(null, e.getMessage(), "Error:", JOptionPane.ERROR_MESSAGE);
+			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
 		}
 
 	}
@@ -300,35 +285,69 @@ public class MyDataProfile extends JFrame {
 		// chiede al controller di fare withdraw dello stato per il servizio,
 		// utente
 		// invoca aggiornamento combo box
-		
+
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
 		// se l'utente è autenticato
-		this.controller.toggleStatus(selectedService);
-		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare tutto bene
+		this.controller.withdrawConsentForService(selectedService);
+		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare
+		// tutto bene
+		this.popolaServicesComboBox();
+		this.viewPastSConsents();
 	}
 
 	private void requestServiceButtonClicked() {
 		// mostra la schermata del servizio di nicola
 		// dove?
-	}
-
-	private void callServiceRegistry() {
-		JOptionPane.showMessageDialog(null, "Sto invocando il Service Registry... (forse)", "Info:",
-				JOptionPane.INFORMATION_MESSAGE);
-		//barbatrucco per aggiungere MLNT la prima volta
-		if (this.servicesComboBox.getItemCount() == 0) {
-			this.controller.addService();
+		
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		try {
+			this.controller.addService(selectedService);
+		} catch (SecurityException e) {
+			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
 		}
 	}
 
-	private void viewPastSConsentsButton() {
+	private void callServiceRegistry() {
+		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
+		// barbatrucco per aggiungere MLNT la prima volta
+		if (this.servicesComboBox.getItemCount() == 0) {
+			this.controller.addService(null);
+		}
+	}
+
+	private void viewPastSConsents() {
 		// retrieve service selected
 		// ask controller for sconsents
 		// show content in text area
-		
+
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		String pastSConsents = this.controller.getAllPastSConsents(selectedService);
 		this.pastServicesConsent.setText(pastSConsents);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		// segue la convenzione true -> active, false -> disabled;
+		boolean status;
+		try {
+			status = this.controller.getADStatusForService(selectedService);
+			toggleDisabledStatusCheckBox.setSelected(status);
+			this.updateStatusTextField(status);
+			this.viewPastSConsents();
+		} catch (IllegalArgumentException e1) {
+			e1.printStackTrace();
+			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
+			this.popolaServicesComboBox();
+		}
+
+	}
+
+	private void updateStatusTextField(boolean status) {
+		if (status)
+			this.statusTField.setText("Active");
+		else
+			this.statusTField.setText("Disabled");
 	}
 }

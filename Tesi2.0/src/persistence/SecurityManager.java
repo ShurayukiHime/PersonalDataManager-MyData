@@ -41,8 +41,8 @@ public class SecurityManager implements ISecurityManager {
 		try {
 			random = SecureRandom.getInstance(randomAlgorithm, provider);
 		} catch (NoSuchProviderException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
+			throw new SecurityException("Unexpected error during keys generation.");
 		}
 		// 1024 e gli altri dati vanno bene?
 		keyPairGen.initialize(1024, random);
@@ -56,27 +56,18 @@ public class SecurityManager implements ISecurityManager {
 		// l'update dei bytes non ha molto senso fatto così
 
 		Signature dsa = null;
-		try {
-			dsa = Signature.getInstance(signatureAlgorithm);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		PrivateKey privKey = keyPair.getPrivate();
-		try {
-			dsa.initSign(privKey);
-		} catch (InvalidKeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		byte realSig[] = null;
-		try {
-			dsa.update(toSign);
-			realSig = dsa.sign();
-		} catch (SignatureException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			byte realSig[] = null;
+			try {
+				dsa = Signature.getInstance(signatureAlgorithm);
+				PrivateKey privKey = keyPair.getPrivate();
+				dsa.initSign(privKey);
+				realSig = null;
+				dsa.update(toSign);
+				realSig = dsa.sign();
+			} catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException e) {
+				e.printStackTrace();
+				throw new SecurityException("Error encountered during sign operation.");
+			}
 		return realSig;
 	}
 

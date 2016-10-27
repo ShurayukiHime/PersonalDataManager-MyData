@@ -1,6 +1,7 @@
 package gui;
 
 import java.util.Date;
+import java.util.List;
 
 import persistence.IService;
 
@@ -14,6 +15,14 @@ public interface Controller {
 
 	public String getAllPastSConsents(IService selectedService);
 
-	public void addService();
+	public void addService(IService selectedService);
+
+	public void withdrawConsentForService(IService selectedService);
+
+	public List<IService> getAllActiveServicesForUser();
+
+	public boolean getADStatusForService(IService selectedService);
+
+	UserInteractor getUserInteractor();
 	
 }
