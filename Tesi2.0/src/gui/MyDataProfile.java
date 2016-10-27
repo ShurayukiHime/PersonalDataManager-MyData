@@ -228,7 +228,19 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		for (IService s : activeServices)
 			servicesComboBox.addItem(s);
 		servicesComboBox.addActionListener(this);
+		boolean buttonsEnabled = false;
+		if (!(activeServices.isEmpty())) {
+			buttonsEnabled = true;
+		}
+		this.toggleDisabledStatusCheckBox.setEnabled(buttonsEnabled);
+		this.setWithdrawnStatusButton.setEnabled(buttonsEnabled);
+		this.requestServiceButton.setEnabled(buttonsEnabled);
 	}
+
+	// NOTA BENE
+	// avrei voluto che il programma esplodesse se uno dei campi fosse vuoto, ad
+	// esempio anche il campo password. per qualche motivo però, java lo riempie
+	// lo stesso anche se non ci scrivi niente
 
 	private void signUpButtonClicked() {
 		try {
@@ -299,7 +311,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private void requestServiceButtonClicked() {
 		// mostra la schermata del servizio di nicola
 		// dove?
-		
+
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		try {
 			this.controller.addService(selectedService);
@@ -311,9 +323,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private void callServiceRegistry() {
 		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
 		// barbatrucco per aggiungere MLNT la prima volta
-		if (this.servicesComboBox.getItemCount() == 0) {
+		if (this.servicesComboBox.getItemCount() == 0) 
 			this.controller.addService(null);
-		}
+		else 
+			this.popolaServicesComboBox();
 	}
 
 	private void viewPastSConsents() {

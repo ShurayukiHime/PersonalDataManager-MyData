@@ -20,7 +20,8 @@ public class MyDataUser implements IUser {
 
 	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password) {
 		super();
-		if (firstName == null || firstName.trim().isEmpty() || lastName == null || lastName.trim().isEmpty() || dateOfBirth == null || emailAddress == null || emailAddress.trim().isEmpty() || password == null || password.trim().isEmpty())
+		if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || dateOfBirth == null
+				|| emailAddress == null || emailAddress.isEmpty() || password == null || password.isEmpty())
 			throw new IllegalArgumentException("Parameters must not be null or empty.");
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -118,9 +119,9 @@ public class MyDataUser implements IUser {
 		} // else
 		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
 	}
-	
+
 	@Override
-	public boolean checkIfPasswordEqual (String givenPsw) {
+	public boolean checkIfPasswordEqual(String givenPsw) {
 		return givenPsw.equals(this.password);
 	}
 

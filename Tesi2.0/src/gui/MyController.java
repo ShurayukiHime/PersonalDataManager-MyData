@@ -158,7 +158,7 @@ public class MyController implements Controller {
 	@Override
 	public void createMyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress,
 			String password) {
-		myDataInstance.createMyDataAccount(firstName, lastName, dateOfBirth, emailAddress, password);
+		authenticatedUser = myDataInstance.createMyDataAccount(firstName, lastName, dateOfBirth, emailAddress, password);
 	}
 
 	@Override
