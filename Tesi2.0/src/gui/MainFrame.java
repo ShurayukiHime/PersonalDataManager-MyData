@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private JButton go;
 
-	private Controller controller;
+	private MyController controller;
 	
 	private List<JCheckBox> checksGeneral = new ArrayList<>();
 	private List<JCheckBox> checksAmenity = new ArrayList<>();
@@ -108,7 +108,7 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 	
 
-	public MainFrame(Controller controller) {
+	public MainFrame(MyController controller) {
 		checksAmenity = new ArrayList<JCheckBox>();
 		checksLeisure = new ArrayList<JCheckBox>();
 		checksShop = new ArrayList<JCheckBox>();
@@ -510,10 +510,10 @@ public class MainFrame extends JFrame implements ActionListener {
 				controller.fillPreferencesByCategory("tourism", checksTourism);
 		
 				if (sport.isSelected())
-					controller.addPreference("sport", null);
+					controller.addUIPreference("sport", null);
 		
 				if (historic.isSelected())
-					controller.addPreference("historic", null);
+					controller.addUIPreference("historic", null);
 
 				// parsing dei dati di input
 				controller.setDate(day, month, year, hour, min);				

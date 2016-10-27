@@ -46,5 +46,6 @@
 	<classpathentry kind="lib" path="libs/xercesImpl-2.9.1.jar"/>
 	<classpathentry kind="lib" path="libs/BasicOSMParser.jar"/>
 	<classpathentry kind="lib" path="libs/JMapViewer.jar"/>
+	<classpathentry kind="lib" path="libs/gson-2.7.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

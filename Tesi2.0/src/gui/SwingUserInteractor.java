@@ -17,4 +17,15 @@ public class SwingUserInteractor implements UserInteractor {
 		System.exit(1);
 	}
 
+	@Override
+	public void showErrorMessage(String message) {
+		JOptionPane.showMessageDialog(null, message, "Error:", JOptionPane.ERROR_MESSAGE);
+	}
+
+	@Override
+	public void showInfoMessage(String message) {
+		JOptionPane.showMessageDialog(null, message, "Info:",
+				JOptionPane.INFORMATION_MESSAGE);
+	}
+
 }
