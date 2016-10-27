@@ -1,0 +1,7 @@
+/* AUTOMATICALLY GENERATED ON Thu Oct 27 22:43:15 CEST 2016*/
+/* DO NOT EDIT */
+
+grant signedBy "user",  codeBase "file:/D:/Giada/Documents/GitHub/tesi/Tesi2.0/src" {
+  permission java.io.FilePermission "D:\\Giada\\Documents\\GitHub\\tesi\\Tesi2.0\\src\\persistence\\users", "read";
+};
+

@@ -72,31 +72,21 @@ public class SecurityManager implements ISecurityManager {
 	}
 
 	public boolean verify(PublicKey pubKey, byte[] toUpdate, byte[] toVerify) {
-
 		// questo algoritmo è solo uno scheletro
 		// manca la lettura da file
 		// l'update dei bytes non ha molto senso fatto così
 
 		Signature dsa = null;
+		boolean result;
 		try {
 			dsa = Signature.getInstance(signatureAlgorithm);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		boolean result = false;
-		try {
+			result = false;
 			dsa.initVerify(pubKey);
-		} catch (InvalidKeyException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try {
 			dsa.update(toUpdate);
 			result = dsa.verify(toVerify);
-		} catch (SignatureException e) {
-			// TODO Auto-generated catch block
+		} catch (InvalidKeyException | NoSuchAlgorithmException | SignatureException e) {
 			e.printStackTrace();
+			throw new SecurityException("Error encountered during verify operation.");
 		}
 		return result;
 	}

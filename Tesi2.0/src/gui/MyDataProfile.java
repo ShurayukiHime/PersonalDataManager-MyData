@@ -45,6 +45,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton signUpButton;
 
 	private JPanel profilePanel;
+	private JPanel outerPanel;
 	private JComboBox<IService> servicesComboBox;
 	private JTextArea pastServicesConsent;
 
@@ -131,8 +132,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void showProfile() {
 		welcomePanel.setVisible(false);
+		outerPanel = new JPanel();
+		outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.LINE_AXIS));
+		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Request Service"));
 		profilePanel = new JPanel();
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.PAGE_AXIS));
+		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Your Profile"));
 		{
 			JLabel profileLabel = new JLabel(
 					"Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
@@ -218,7 +223,9 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		}
 		profilePanel.setVisible(true);
 		this.popolaServicesComboBox();
-		this.add(profilePanel);
+		outerPanel.add(profilePanel);
+		// outerPanel.add(MLNT)
+		this.add(outerPanel);
 		this.pack();
 	}
 
@@ -309,10 +316,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void requestServiceButtonClicked() {
-		// mostra la schermata del servizio di nicola
-		// dove?
-
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		this.addServicePanel();
 		try {
 			this.controller.addService(selectedService);
 		} catch (SecurityException e) {
@@ -320,13 +325,18 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		}
 	}
 
+	private void addServicePanel() {
+		// TODO Auto-generated method stub
+		// ma nella vita reale come dovrebbe fare il mio programma a sapere
+		// quale pannello aggiungere?
+	}
+
 	private void callServiceRegistry() {
 		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
 		// barbatrucco per aggiungere MLNT la prima volta
-		if (this.servicesComboBox.getItemCount() == 0) 
+		if (this.servicesComboBox.getItemCount() == 0)
 			this.controller.addService(null);
-		else 
-			this.popolaServicesComboBox();
+		this.popolaServicesComboBox();
 	}
 
 	private void viewPastSConsents() {

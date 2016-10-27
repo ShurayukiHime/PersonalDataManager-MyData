@@ -42,7 +42,7 @@ public class MyController implements Controller {
 		return userInteractor;
 	}
 
-	public List<IPreference> getPreferences() {
+	public List<IPreference> getUIPreferences() {
 		return this.preferences;
 	}
 
@@ -59,7 +59,7 @@ public class MyController implements Controller {
 		return this.actualPosition;
 	}
 
-	public void addPreference(String category, String name) {
+	public void addUIPreference(String category, String name) {
 		preferences.add(new Preference(category, name));
 	}
 
@@ -85,15 +85,15 @@ public class MyController implements Controller {
 		return this.date;
 	}
 
-	public void resetPreferences() {
+	public void resetUIPreferences() {
 		preferences.clear();
 	}
 
 	public void fillPreferencesByCategory(String category, List<JCheckBox> checks) {
 		if (category == null || category.length() == 0)
-			throw new IllegalArgumentException("category must be true");
+			throw new IllegalArgumentException("The field Category must not be null or empty.");
 		if (checks == null)
-			throw new IllegalArgumentException("checks must be initialized");
+			throw new IllegalArgumentException("Checks must be initialized.");
 		for (JCheckBox cb : checks) {
 			if (cb.isSelected())
 				preferences.add(new Preference(category, cb.getText()));
@@ -118,7 +118,7 @@ public class MyController implements Controller {
 
 	public void getSuggest(MainFrame panel) throws FileNotFoundException, IOException {
 		if (panel == null)
-			throw new IllegalArgumentException("panel must be initialized");
+			throw new IllegalArgumentException("Panel must be initialized.");
 
 		// TODO
 
@@ -129,8 +129,8 @@ public class MyController implements Controller {
 		// firma di un service consent per il servizio di previsione di viaggio
 		// firma di uno+ data consent per l'utilizzo effettivo del servizio
 
-		MyData.getInstance().getDataVault(username).getPreferences().clear();
-		MyData.getInstance().getDataVault(username).getPreferences().addAll(preferences);
+		MyData.getInstance().getDataVault(username).getUIPreferences().clear();
+		MyData.getInstance().getDataVault(username).getUIPreferences().addAll(preferences);
 		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition,
 				MyData.getInstance().getDataVault(username));
 
@@ -203,9 +203,11 @@ public class MyController implements Controller {
 		// Service Linking should be here
 		
 		//barbatrucco per mancanza service linking...
-		if (service != null)
-			ConsentManager.giveServiceConsent(authenticatedUser, service);
-		else
+		if (service != null) {
+			authenticatedUser.newAccountAtService(service);
+		} else {
+			//authenticatedUser.newAccountAtService(MLNT);
+		}
 	}
 
 	@Override

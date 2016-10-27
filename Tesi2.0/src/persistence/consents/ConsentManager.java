@@ -19,18 +19,26 @@ public class ConsentManager {
 		//creare il consent
 		//restituire il consent
 		
-		byte[] tokenFromUser = null, tokenSignedUser;
-		tokenSignedUser = user.getSecurityManager().sign(tokenFromUser);
+		byte[] tokenFromUser = null, tokenSignedUser = null;
+		try {
+			tokenSignedUser = user.getSecurityManager().sign(tokenFromUser);
+		} catch (SecurityException e) {
+			e.printStackTrace();
+			throw new SecurityException("Encountered error during sign process - user side.");
+		}
 		if (!(service.getSecurityManager().verify(user.getSecurityManager().getPublicKey(), tokenFromUser, tokenSignedUser))) {
-			// illegal call
-			// throw exception
+			throw new SecurityException("Encountered error during verify process - Service side.");
 		} // else
 		
-		byte[] tokenFromService = null, tokenSignedService;
-		tokenSignedService = service.getSecurityManager().sign(tokenFromService);
+		byte[] tokenFromService = null, tokenSignedService = null;
+		try {
+			tokenSignedService = service.getSecurityManager().sign(tokenFromService);
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new SecurityException("Encountered error during sign process - Service side.");
+		}
 		if (!( user.getSecurityManager().verify(service.getSecurityManager().getPublicKey(), tokenFromService, tokenSignedService))) {
-			// illegal call
-			// throw exception
+			throw new SecurityException("Encountered error during verify process - user side.");
 		} // else
 		return new ServiceConsent(tokenSignedService, tokenSignedUser, new Date(), service, user); 
 	}
@@ -44,9 +52,7 @@ public class ConsentManager {
 					if (newStatus == ConsentStatus.WITHDRAWN) {
 						throw new IllegalArgumentException("The consent has already been withdrawn.");
 					} //else
-					System.out.println("Cannot change the status of a Withdrawn Service Consent!");
-					throw new IllegalStateException();
-					// eventualmente creare eccezione più specifica
+					throw new IllegalStateException("Cannot change the status of a Withdrawn Service Consent!");
 				}
 				// else, il consent è attivo o disabilitato
 				sc.ChangeConsentStatus(newStatus);

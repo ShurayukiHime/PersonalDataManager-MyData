@@ -114,8 +114,7 @@ public class MyDataUser implements IUser {
 	public void newAccountAtService(IService service) {
 		for (IAccount a : this.accounts) {
 			if (a.getService().equals(service))
-				// throw exception? this is an illegal action
-				System.out.println("An account already exists at service " + service.toString());
+				throw new IllegalArgumentException("An account already exists at service " + service.toString());
 		} // else
 		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
 	}

@@ -510,10 +510,10 @@ public class MainFrame extends JFrame implements ActionListener {
 				controller.fillPreferencesByCategory("tourism", checksTourism);
 		
 				if (sport.isSelected())
-					controller.addPreference("sport", null);
+					controller.addUIPreference("sport", null);
 		
 				if (historic.isSelected())
-					controller.addPreference("historic", null);
+					controller.addUIPreference("historic", null);
 
 				// parsing dei dati di input
 				controller.setDate(day, month, year, hour, min);				
