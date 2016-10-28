@@ -129,15 +129,6 @@ public class MyController implements Controller {
 		if (panel == null)
 			throw new IllegalArgumentException("Panel must be initialized.");
 
-		// TODO
-
-		// da rifattorizzare tutto in qualche modo, prevedendo in ordine
-
-		// creazione di account MyData
-		// creazione di account presso il servizio
-		// firma di un service consent per il servizio di previsione di viaggio
-		// firma di uno+ data consent per l'utilizzo effettivo del servizio
-
 		MyData.getInstance().getDataVault(username).getUIPreferences().clear();
 		MyData.getInstance().getDataVault(username).getUIPreferences().addAll(preferences);
 		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition,
@@ -215,7 +206,7 @@ public class MyController implements Controller {
 		if (service != null) {
 			authenticatedUser.newAccountAtService(service);
 		} else {
-			//authenticatedUser.newAccountAtService(MLNT);
+			authenticatedUser.newAccountAtService(SuggesterManager.getInstance());
 		}
 	}
 

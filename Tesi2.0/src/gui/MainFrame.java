@@ -73,7 +73,7 @@ public class MainFrame extends JFrame implements ActionListener {
 
 	private JButton go;
 
-	private MyController controller;
+	private Controller controller;
 	
 	private List<JCheckBox> checksGeneral = new ArrayList<>();
 	private List<JCheckBox> checksAmenity = new ArrayList<>();
@@ -108,7 +108,8 @@ public class MainFrame extends JFrame implements ActionListener {
 	}
 	
 
-	public MainFrame(MyController controller) {
+	public MainFrame(Controller controller) {
+		super("Calculate your Most Likely Next Trip!");
 		checksAmenity = new ArrayList<JCheckBox>();
 		checksLeisure = new ArrayList<JCheckBox>();
 		checksShop = new ArrayList<JCheckBox>();
@@ -487,7 +488,8 @@ public class MainFrame extends JFrame implements ActionListener {
 		bottomPanel.add(infoPanel);
 
 		getContentPane().add(mainPanel, BorderLayout.PAGE_START);
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.setVisible(true);
 	}
 	
 	private void selectByCategory(List<JCheckBox> checks, boolean value) {

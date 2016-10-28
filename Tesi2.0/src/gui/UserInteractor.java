@@ -8,4 +8,6 @@ public interface UserInteractor {
 	void showErrorMessage(String message);
 	
 	void showInfoMessage (String message);
+
+	void showPlainMessage(String message);
 }

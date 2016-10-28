@@ -12,15 +12,10 @@ public class ConsentManager {
 	}
 
 	public static ServiceConsent giveServiceConsent(IUser user, IService service) {
-		// verficare legittimità user
-		// il service possiede la chiave pubblica di user
-		// il service riceve un token firmato con la chiave privata di user e ne
-		// verifica l'autenticità
-		// verificare legittimità service
-		// creare il consent
-		// restituire il consent
 
-		byte[] tokenFromUser = null, tokenSignedUser = null;
+		//inizializzazione casuale in attesa di approfondimento
+		
+		byte[] tokenFromUser = "Example Token From User".getBytes(), tokenSignedUser = null;
 		try {
 			tokenSignedUser = user.getSecurityManager().sign(tokenFromUser);
 		} catch (SecurityException e) {
@@ -32,7 +27,7 @@ public class ConsentManager {
 			throw new SecurityException("Encountered error during verify process - Service side.");
 		} // else
 
-		byte[] tokenFromService = null, tokenSignedService = null;
+		byte[] tokenFromService = "Example Token From Service".getBytes(), tokenSignedService = null;
 		try {
 			tokenSignedService = service.getSecurityManager().sign(tokenFromService);
 		} catch (Exception e) {

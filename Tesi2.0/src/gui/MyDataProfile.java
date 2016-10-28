@@ -45,7 +45,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton signUpButton;
 
 	private JPanel profilePanel;
-	private JPanel outerPanel;
 	private JComboBox<IService> servicesComboBox;
 	private JTextArea pastServicesConsent;
 
@@ -132,15 +131,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void showProfile() {
 		welcomePanel.setVisible(false);
-		outerPanel = new JPanel();
-		outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.LINE_AXIS));
-		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Request Service"));
 		profilePanel = new JPanel();
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.PAGE_AXIS));
 		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Your Profile"));
 		{
 			JLabel profileLabel = new JLabel(
-					"Servizi registrati da " + nomeTField.getText() + " " + cognomeTField.getText());
+					"Services registered by " + nomeTField.getText() + " " + cognomeTField.getText());
 			servicesComboBox = new JComboBox<IService>();
 			servicesComboBox.setEditable(false);
 			servicesComboBox.addActionListener(this);
@@ -221,12 +217,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			profilePanel.add(bottomPanel, BoxLayout.PAGE_AXIS);
 			bottomPanel.setVisible(true);
 		}
-		profilePanel.setVisible(true);
 		this.popolaServicesComboBox();
-		outerPanel.add(profilePanel);
-		// outerPanel.add(MLNT)
-		this.add(outerPanel);
+		this.add(profilePanel);
 		this.pack();
+		profilePanel.setVisible(true);
 	}
 
 	private void popolaServicesComboBox() {
@@ -242,6 +236,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		this.toggleDisabledStatusCheckBox.setEnabled(buttonsEnabled);
 		this.setWithdrawnStatusButton.setEnabled(buttonsEnabled);
 		this.requestServiceButton.setEnabled(buttonsEnabled);
+		
 	}
 
 	// NOTA BENE
@@ -291,7 +286,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		// se l'utente è autenticato
 		try {
 			this.controller.toggleStatus(selectedService, this.toggleDisabledStatusCheckBox.isSelected());
-			this.updateStatusTextField(this.toggleDisabledStatusCheckBox.isSelected());
+			boolean status = this.toggleDisabledStatusCheckBox.isSelected();
+			this.updateStatusTextField(status);
+			this.requestServiceButton.setEnabled(status);
+			String message = "Consent Status updated to ";
+			message = status ? message + "Active." : message + "Disabled.";
+			this.controller.getUserInteractor().showPlainMessage(message);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
@@ -312,31 +312,36 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare
 		// tutto bene
 		this.popolaServicesComboBox();
+		this.statusTField.setText("Withdrawn");
 		this.viewPastSConsents();
 	}
 
 	private void requestServiceButtonClicked() {
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		this.addServicePanel();
-		try {
-			this.controller.addService(selectedService);
-		} catch (SecurityException e) {
-			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
-		}
 	}
 
 	private void addServicePanel() {
 		// TODO Auto-generated method stub
 		// ma nella vita reale come dovrebbe fare il mio programma a sapere
 		// quale pannello aggiungere?
+		
+		MainFrame MLNTFrame = new MainFrame(this.controller);
+		this.pack();
 	}
 
 	private void callServiceRegistry() {
 		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
 		// barbatrucco per aggiungere MLNT la prima volta
 		if (this.servicesComboBox.getItemCount() == 0)
-			this.controller.addService(null);
+			try {
+				this.controller.addService(null);
+			} catch (SecurityException e) {
+				e.printStackTrace();
+				this.controller.getUserInteractor().showErrorMessage(e.getMessage());
+			}
 		this.popolaServicesComboBox();
+		this.actionPerformed(null);
 	}
 
 	private void viewPastSConsents() {

@@ -3,6 +3,8 @@ package gui;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JTextField;
+
 import model.services.IService;
 
 public interface Controller {
@@ -24,5 +26,9 @@ public interface Controller {
 	public boolean getADStatusForService(IService selectedService);
 
 	UserInteractor getUserInteractor();
+
+	public void setActualPosition(double lat, double lon);
+
+	public void setPanelDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min);
 	
 }

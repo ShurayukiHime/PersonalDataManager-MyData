@@ -65,7 +65,7 @@ class Account implements IAccount {
 	
 	@Override
 	public String toString() {
-		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus();
+		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus().name();
 	}
 
 	//ci può essere un solo consent attivo alla volta, e quindi (?) anche uno solo disattivo

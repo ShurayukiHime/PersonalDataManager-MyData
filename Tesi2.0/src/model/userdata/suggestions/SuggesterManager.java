@@ -18,24 +18,27 @@ import info.pavie.basicosmparser.model.Relation;
 import info.pavie.basicosmparser.model.Way;
 import model.Utils;
 import model.MyData.IPersonalDataVault;
+import model.consents.IDataSet;
 import model.mapfeatures.AbstractFeature;
 import model.mapfeatures.Feature;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
+import model.services.AbstractService;
 import model.userdata.AbstractCommitment;
 import model.userdata.HistoryDestination;
 import model.userdata.ICalendar;
 import model.userdata.IDestination;
 import model.userdata.IPreference;
 import model.userdata.TripDetails;
-import persistence.*;
 
-public class SuggesterManager {
+public class SuggesterManager extends AbstractService {
 
-	private IPersonalDataVault dataVault;
+	private IDataSet dataSet;
+	private final String name = "Most Likely Next Trip";
 	private static SuggesterManager instance;
 		
 	private SuggesterManager() {
+		super();
 	}
 	
 	public static SuggesterManager getInstance() {
@@ -234,7 +237,7 @@ public class SuggesterManager {
 		@Override
 		public List<ISuggestion> getSuggestions() throws FileNotFoundException, IOException {
 			List<ISuggestion> result = new ArrayList<>();
-			ICalendar calendar = dataVault.getCalendar();
+			ICalendar calendar = dataSet.getCalendar();
 			List<AbstractCommitment> commitments = calendar.getCommitmentByDate(date);
 			if (!commitments.isEmpty()) {
 				result.add(new CalendarSuggestion(commitments));
@@ -411,20 +414,19 @@ public class SuggesterManager {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, IPersonalDataVault pdt) throws FileNotFoundException, IOException {
-		if (date == null || actualPosition == null || pdt == null)
-			throw new IllegalArgumentException("date, actualPosition and pdt must be initialized");
-		this.dataVault = pdt;
+	private List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, List<IPreference> allPreferences, List<ITrip> allTrips) throws FileNotFoundException, IOException {
+		if (date == null || actualPosition == null || allPreferences == null || allTrips == null)
+			throw new IllegalArgumentException("All arguments in DataSet must be initialized.");
 		
 		List<ISuggestion> result = new ArrayList<>();
 		List<Position> positions = new ArrayList<>();
-		List<IPreference> preferences = dataVault.getPreferences();
+		List<IPreference> preferences = allPreferences;
 
 		CalendarSuggester cs = new CalendarSuggester(date);
 		result.addAll(cs.getSuggestions());
 
 		if (result.isEmpty()) {
-			HistorySuggester hs = new HistorySuggester(date, actualPosition, dataVault.getAllTrip());
+			HistorySuggester hs = new HistorySuggester(date, actualPosition, allTrips);
 			result.addAll(hs.getSuggestions());
 		}
 		
@@ -437,4 +439,47 @@ public class SuggesterManager {
 		return result; // restituisco il risultato piu probabile
 	}
 
+	@Override
+	protected Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException {
+		this.dataSet = dataSet;
+		return this.getSuggestions(dataSet.getTodaysDate(), dataSet.getActualPosition(), dataSet.getAllPreferences(), dataSet.getAllTrips());
+	}
+
+	
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		return result;
+	}
+	
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		SuggesterManager other = (SuggesterManager) obj;
+		if (name == null) {
+			if (other.name != null)
+				return false;
+		} else if (!name.equals(other.name))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return this.name;
+	}
+
+	/*public void setName(String name) {
+		if (this.name == null)
+			this.name = name;
+	}*/
+	
 }

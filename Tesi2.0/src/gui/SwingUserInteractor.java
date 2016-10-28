@@ -27,5 +27,11 @@ public class SwingUserInteractor implements UserInteractor {
 		JOptionPane.showMessageDialog(null, message, "Info:",
 				JOptionPane.INFORMATION_MESSAGE);
 	}
+	
+	@Override
+	public void showPlainMessage (String message) {
+		JOptionPane.showMessageDialog(null, message, "Info:",
+				JOptionPane.PLAIN_MESSAGE);
+	}
 
 }

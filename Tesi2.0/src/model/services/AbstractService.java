@@ -1,5 +1,8 @@
 package model.services;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 import model.MyData.IMyData;
 import model.MyData.MyData;
 import model.consents.ConsentManager;
@@ -19,7 +22,7 @@ public abstract class AbstractService implements IService {
 	}
 
 	@Override
-	public Object provideService(IUser user) {
+	public Object provideService(IUser user) throws FileNotFoundException, IOException {
 		DataConsent dataConsent = ConsentManager.askDataConsent(user, this);
 		IDataSet dataSet = myDataInstance.getDataSetForDataConsent(dataConsent);
 		return this.concreteService(dataSet);
@@ -30,5 +33,11 @@ public abstract class AbstractService implements IService {
 		return this.securityManager;
 	}
 
-	protected abstract Object concreteService(IDataSet dataSet);
+	protected abstract Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException;
+	
+	@Override
+	public abstract int hashCode();
+	
+	@Override
+	public abstract boolean equals(Object obj);
 }
