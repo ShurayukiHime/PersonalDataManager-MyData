@@ -1,6 +1,7 @@
 package program;
 
 import model.*;
+import model.mapfeatures.Position;
 
 public class DistanceTest {
 	

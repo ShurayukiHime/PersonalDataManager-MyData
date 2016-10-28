@@ -24,7 +24,7 @@ import javax.swing.border.EtchedBorder;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.JTextComponent;
 
-import persistence.IService;
+import model.IService;
 
 public class MyDataProfile extends JFrame implements ActionListener {
 

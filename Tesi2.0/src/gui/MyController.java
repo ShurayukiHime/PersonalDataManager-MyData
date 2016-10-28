@@ -15,6 +15,14 @@ import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
 import model.*;
+import model.MyData.IMyData;
+import model.MyData.MyData;
+import model.mapfeatures.Position;
+import model.userdata.IDestination;
+import model.userdata.IPreference;
+import model.userdata.Preference;
+import model.userdata.suggestions.ISuggestion;
+import model.userdata.suggestions.SuggesterManager;
 import persistence.*;
 import persistence.consents.ConsentManager;
 import persistence.consents.ConsentStatus;

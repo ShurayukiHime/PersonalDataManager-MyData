@@ -3,7 +3,8 @@ package program;
 import java.time.LocalDateTime;
 
 import model.*;
-import persistence.MyData;
+import model.MyData.MyData;
+import model.userdata.ICalendar;
 
 public class CalendarTest {
 	
