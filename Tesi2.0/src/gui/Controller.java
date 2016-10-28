@@ -3,7 +3,7 @@ package gui;
 import java.util.Date;
 import java.util.List;
 
-import model.IService;
+import model.services.IService;
 
 public interface Controller {
 

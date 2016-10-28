@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.IService;
 import model.MyData.IPersonalDataVault;
 import model.MyData.PersonalDataVault;
 import model.consents.ConsentStatus;
 import model.consents.DataConsent;
 import model.consents.ServiceConsent;
+import model.services.IService;
 
 class Account implements IAccount {
 

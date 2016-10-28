@@ -2,9 +2,9 @@ package model.users;
 
 import java.util.Set;
 
-import model.IService;
 import model.MyData.IPersonalDataVault;
 import model.consents.ServiceConsent;
+import model.services.IService;
 
 public interface IAccount {
 

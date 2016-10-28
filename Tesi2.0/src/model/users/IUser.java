@@ -3,8 +3,8 @@ package model.users;
 import java.util.Date;
 import java.util.Set;
 
-import model.IService;
 import model.security.ISecurityManager;
+import model.services.IService;
 
 public interface IUser {
 

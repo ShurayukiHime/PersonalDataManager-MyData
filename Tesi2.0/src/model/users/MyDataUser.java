@@ -4,9 +4,9 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import model.IService;
 import model.consents.ConsentManager;
 import model.security.ISecurityManager;
+import model.services.IService;
 
 public class MyDataUser implements IUser {
 
@@ -28,10 +28,7 @@ public class MyDataUser implements IUser {
 		this.dateOfBirth = dateOfBirth;
 		this.emailAddress = emailAddress;
 		this.password = password;
-
-		// ma cosa??
-		this.securityManager = (ISecurityManager) new model.security.SecurityManager();
-
+		this.securityManager = new model.security.SecurityManager();
 		this.accounts = new HashSet<IAccount>();
 	}
 

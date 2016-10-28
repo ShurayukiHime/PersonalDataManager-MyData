@@ -2,7 +2,7 @@ package model.consents;
 
 import java.util.Date;
 
-import model.IService;
+import model.services.IService;
 import model.users.IUser;
 
 public class ServiceConsent implements IConsent {

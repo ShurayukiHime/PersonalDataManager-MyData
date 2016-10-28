@@ -502,7 +502,7 @@ public class MainFrame extends JFrame implements ActionListener {
 			try {
 				info.setText("");
 				
-				controller.resetPreferences();
+				controller.resetUIPreferences();
 
 				controller.fillPreferencesByCategory("amenity", checksAmenity);
 				controller.fillPreferencesByCategory("leisure", checksLeisure);

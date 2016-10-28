@@ -2,7 +2,7 @@ package model.consents;
 
 import java.util.Date;
 
-import model.IService;
+import model.services.IService;
 import model.users.IAccount;
 import model.users.IUser;
 
@@ -65,7 +65,8 @@ public class ConsentManager {
 		// efficiente se fatta ripetutamente
 	}
 
-	public static void addDataConsent(DataConsent dataConsent) {
+	public static DataConsent askDataConsent(IUser user, IService service) {
+		return null;
 		// TODO
 	}
 

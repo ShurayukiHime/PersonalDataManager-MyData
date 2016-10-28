@@ -17,18 +17,19 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import model.*;
 import model.MyData.IMyData;
 import model.MyData.MyData;
+import model.consents.ConsentManager;
+import model.consents.ConsentStatus;
+import model.consents.ServiceConsent;
 import model.mapfeatures.Position;
+import model.services.IService;
 import model.userdata.IDestination;
 import model.userdata.IPreference;
 import model.userdata.Preference;
 import model.userdata.suggestions.ISuggestion;
 import model.userdata.suggestions.SuggesterManager;
+import model.users.IAccount;
+import model.users.IUser;
 import persistence.*;
-import persistence.consents.ConsentManager;
-import persistence.consents.ConsentStatus;
-import persistence.consents.ServiceConsent;
-import persistence.users.IAccount;
-import persistence.users.IUser;
 
 public class MyController implements Controller {
 
