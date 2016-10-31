@@ -24,7 +24,7 @@ class Account implements IAccount {
 		super();
 		this.service = service;
 		this.personalDataVault = new PersonalDataVault();
-		// devo controllare che il primo consent sia attivo?
+		// il consent ricevuto è sicuramente attivo
 		this.dataConsents.put(firstConsent, new ArrayList<DataConsent>());
 	}
 
@@ -65,7 +65,7 @@ class Account implements IAccount {
 	
 	@Override
 	public String toString() {
-		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus().name();
+		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus().toString();
 	}
 
 	//ci può essere un solo consent attivo alla volta, e quindi (?) anche uno solo disattivo

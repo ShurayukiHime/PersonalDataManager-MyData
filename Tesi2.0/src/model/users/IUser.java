@@ -26,7 +26,7 @@ public interface IUser {
 	public void setEmailAddress(String emailAddress);
 
 	public ISecurityManager getSecurityManager();
-	
+
 	public int hashCode();
 
 	public boolean equals(Object other);
@@ -35,12 +35,10 @@ public interface IUser {
 
 	public Set<IAccount> getAllAccounts();
 
-	boolean checkIfPasswordEqual(String givenPsw);
+	public boolean checkIfPasswordEqual(String givenPsw);
 
-	boolean hasAccountAtService(IService service);
+	public boolean hasAccountAtService(IService service);
 
-	ServiceConsent getActiveSCForService(IService service);
-
-
+	public ServiceConsent getActiveSCForService(IService service);
 
 }

@@ -10,13 +10,28 @@ import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
 import model.services.IService;
 
+/**
+ * This class describes a MyData user. Its fields follow a generic guideline
+ * specified in the "MyData Stack" specification. Other than personal data
+ * fields (as first name, last name, etc.), every user must have a
+ * SecurityManager in order to manage his KeyPair and perform sign and verify
+ * operations.
+ * 
+ * Each MyData user may have one account for each Service. Accounts can't be
+ * accessed outside this class.
+ * 
+ * @author Giada
+ *
+ */
+
 public class MyDataUser implements IUser {
 
 	private String firstName;
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	private String password; // modo triste per salvare le password
+	private String password; // modo triste per salvare le password, ci
+								// vorrebbero char[]?
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 
@@ -92,6 +107,12 @@ public class MyDataUser implements IUser {
 		return result;
 	}
 
+	/**
+	 * This function compares two users on their emailAddress. As a design
+	 * choice, the emailAddress field must be unique.
+	 * 
+	 * @return true if the email is the same, false otherwise.
+	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,6 +130,17 @@ public class MyDataUser implements IUser {
 		return true;
 	}
 
+	/**
+	 * This function creates a new Account for the service specified only if the
+	 * user does not already have one. In order to do this, it asks the Consent
+	 * Manager to issue a new Service Consent, which is necessary to create a
+	 * new account.
+	 * 
+	 * @param service
+	 *            The service the user wants to register at.
+	 * @throws IllegalArgumentException
+	 *             if the account already exists.
+	 */
 	@Override
 	public void newAccountAtService(IService service) {
 		if (this.hasAccountAtService(service))
@@ -132,12 +164,19 @@ public class MyDataUser implements IUser {
 				return true;
 		return false;
 	}
-	
-	//returns null if there is no Active SC
+
+	/**
+	 * @throws IllegalArgumentException
+	 *             if this user does not have an account at the specified
+	 *             service
+	 * @return the corresponding ServiceConsent if there is one with Active
+	 *         status, null otherwise.
+	 */
 	@Override
 	public ServiceConsent getActiveSCForService(IService service) {
 		if (!this.hasAccountAtService(service))
-			throw new IllegalArgumentException("User " + this.toString()+ " does not have an account at " + service.toString() + ".");
+			throw new IllegalArgumentException(
+					"User " + this.toString() + " does not have an account at " + service.toString() + ".");
 		for (IAccount a : this.accounts)
 			if (a.getService().equals(service) && a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE)
 				return a.getActiveDisabledSC();
