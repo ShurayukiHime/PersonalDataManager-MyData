@@ -17,13 +17,11 @@ import info.pavie.basicosmparser.model.Node;
 import info.pavie.basicosmparser.model.Relation;
 import info.pavie.basicosmparser.model.Way;
 import model.Utils;
-import model.MyData.IPersonalDataVault;
 import model.consents.IDataSet;
 import model.mapfeatures.AbstractFeature;
 import model.mapfeatures.Feature;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
-import model.services.AbstractService;
 import model.userdata.AbstractCommitment;
 import model.userdata.HistoryDestination;
 import model.userdata.ICalendar;
@@ -31,10 +29,7 @@ import model.userdata.IDestination;
 import model.userdata.IPreference;
 import model.userdata.TripDetails;
 
-public class SuggesterManager extends AbstractService {
-
-	private IDataSet dataSet;
-	private final String name = "Most Likely Next Trip";
+public class SuggesterManager {
 	private static SuggesterManager instance;
 		
 	private SuggesterManager() {
@@ -414,7 +409,7 @@ public class SuggesterManager extends AbstractService {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	private List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, List<IPreference> allPreferences, List<ITrip> allTrips) throws FileNotFoundException, IOException {
+	public  List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, List<IPreference> allPreferences, List<ITrip> allTrips) throws FileNotFoundException, IOException {
 		if (date == null || actualPosition == null || allPreferences == null || allTrips == null)
 			throw new IllegalArgumentException("All arguments in DataSet must be initialized.");
 		
@@ -439,47 +434,4 @@ public class SuggesterManager extends AbstractService {
 		return result; // restituisco il risultato piu probabile
 	}
 
-	@Override
-	protected Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException {
-		this.dataSet = dataSet;
-		return this.getSuggestions(dataSet.getTodaysDate(), dataSet.getActualPosition(), dataSet.getAllPreferences(), dataSet.getAllTrips());
-	}
-
-	
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		return result;
-	}
-	
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		SuggesterManager other = (SuggesterManager) obj;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		return true;
-	}
-
-	@Override
-	public String toString() {
-		return this.name;
-	}
-
-	/*public void setName(String name) {
-		if (this.name == null)
-			this.name = name;
-	}*/
-	
 }

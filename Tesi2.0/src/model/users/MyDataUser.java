@@ -5,6 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import model.consents.ConsentManager;
+import model.consents.ConsentStatus;
+import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
 import model.services.IService;
 
@@ -109,11 +111,9 @@ public class MyDataUser implements IUser {
 
 	@Override
 	public void newAccountAtService(IService service) {
-		for (IAccount a : this.accounts) {
-			if (a.getService().equals(service))
-				throw new IllegalArgumentException("An account already exists at service " + service.toString());
-		} // else
-		this.accounts.add(new Account(service, ConsentManager.giveServiceConsent(this, service)));
+		if (this.hasAccountAtService(service))
+			throw new IllegalArgumentException("An account already exists at service " + service.toString());
+		this.accounts.add(new Account(service, ConsentManager.askServiceConsent(this, service)));
 	}
 
 	@Override
@@ -123,5 +123,24 @@ public class MyDataUser implements IUser {
 
 	public String toString() {
 		return this.emailAddress;
+	}
+
+	@Override
+	public boolean hasAccountAtService(IService service) {
+		for (IAccount a : this.accounts)
+			if (a.getService().equals(service))
+				return true;
+		return false;
+	}
+	
+	//returns null if there is no Active SC
+	@Override
+	public ServiceConsent getActiveSCForService(IService service) {
+		if (!this.hasAccountAtService(service))
+			throw new IllegalArgumentException("User " + this.toString()+ " does not have an account at " + service.toString() + ".");
+		for (IAccount a : this.accounts)
+			if (a.getService().equals(service) && a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE)
+				return a.getActiveDisabledSC();
+		return null;
 	}
 }

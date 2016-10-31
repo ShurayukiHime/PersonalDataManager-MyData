@@ -19,6 +19,7 @@ public abstract class AbstractService implements IService {
 	protected AbstractService () {
 		this.myDataInstance = MyData.getInstance();
 		this.securityManager = new model.security.SecurityManager();
+		this.registerService();
 	}
 
 	@Override
@@ -35,8 +36,10 @@ public abstract class AbstractService implements IService {
 
 	protected abstract Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException;
 	
+	protected abstract void registerService();
+	
 	@Override
-	public abstract int hashCode();
+ 	public abstract int hashCode();
 	
 	@Override
 	public abstract boolean equals(Object obj);

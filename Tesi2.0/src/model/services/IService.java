@@ -12,4 +12,6 @@ public interface IService {
 	public boolean equals(Object obj);
 
 	public Object provideService(IUser user) throws FileNotFoundException, IOException;
+
+	public String toString();
 }

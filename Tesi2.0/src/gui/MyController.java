@@ -128,8 +128,11 @@ public class MyController implements Controller {
 	public void getSuggest(MainFrame panel) throws FileNotFoundException, IOException {
 		if (panel == null)
 			throw new IllegalArgumentException("Panel must be initialized.");
+		
+		//prendere preferenze ui
+		//in generale quando si aggiungono checks aggiungerli al pdv
+		//
 
-		MyData.getInstance().getDataVault(username).getUIPreferences().clear();
 		MyData.getInstance().getDataVault(username).getUIPreferences().addAll(preferences);
 		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition,
 				MyData.getInstance().getDataVault(username));
@@ -230,7 +233,7 @@ public class MyController implements Controller {
 		for (IAccount a : authenticatedUser.getAllAccounts())
 			if (a.getService().equals(selectedService))
 				return a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE ? true : false;
-		throw new IllegalArgumentException("Current user does not have an account to the selected service.");
+		throw new IllegalArgumentException("Current user does not have an Active or Disabled account to the selected service.");
 	}
 
 }

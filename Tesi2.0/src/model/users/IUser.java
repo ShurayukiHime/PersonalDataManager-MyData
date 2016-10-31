@@ -3,6 +3,7 @@ package model.users;
 import java.util.Date;
 import java.util.Set;
 
+import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
 import model.services.IService;
 
@@ -29,17 +30,16 @@ public interface IUser {
 	public int hashCode();
 
 	public boolean equals(Object other);
-	// ogni mdu deve avere un consent manager, magari anche espresso tramite
-	// interfaccia così non dipende dalla singola implementazione, però forse è
-	// meglio non mettere gli accessor perchè non deve essere visibile
-	// all'esterno?
-
 
 	public void newAccountAtService(IService service);
 
 	public Set<IAccount> getAllAccounts();
 
 	boolean checkIfPasswordEqual(String givenPsw);
+
+	boolean hasAccountAtService(IService service);
+
+	ServiceConsent getActiveSCForService(IService service);
 
 
 
