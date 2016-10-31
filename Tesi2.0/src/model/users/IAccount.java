@@ -12,6 +12,13 @@ public interface IAccount {
 
 	public IPersonalDataVault getPersonalDataVault();
 
+	/**
+	 * There can be only one ServiceConsent Active or Disabled at a time for a
+	 * service. If there is no such consent, this method returns null
+	 * 
+	 * @return The only Active or Disabled ServiceConsent for
+	 *         this service, null otherwise.
+	 */
 	public ServiceConsent getActiveDisabledSC();
 
 	public Set<ServiceConsent> getAllPastServiceConsents();

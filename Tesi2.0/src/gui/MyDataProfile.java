@@ -28,9 +28,6 @@ import model.services.IService;
 
 public class MyDataProfile extends JFrame implements ActionListener {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
 
@@ -317,6 +314,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void requestServiceButtonClicked() {
+		//TODO
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		this.addServicePanel();
 	}

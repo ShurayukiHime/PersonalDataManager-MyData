@@ -62,14 +62,12 @@ class Account implements IAccount {
 			return false;
 		return true;
 	}
-	
+
 	@Override
 	public String toString() {
 		return this.service.toString() + " con stato " + this.getActiveDisabledSC().getConsentStatus().toString();
 	}
 
-	//ci può essere un solo consent attivo alla volta, e quindi (?) anche uno solo disattivo
-	//returns null if no active consent has been issued
 	@Override
 	public ServiceConsent getActiveDisabledSC() {
 		for (ServiceConsent sc : this.dataConsents.keySet()) {
@@ -89,4 +87,30 @@ class Account implements IAccount {
 		return result;
 	}
 
+	/**
+	 * This method simply adds the DataConsent to the private map of the Account
+	 * class. It does not check if the DataConsent is valid because this method
+	 * is protected, so it is invoked only by MyDataUser, which is actually in
+	 * charge of this matter. Moreover, the ConsentManager takes responsibility
+	 * for checking consents' validity before releasing any new permission.
+	 * 
+	 * @param dataConsent
+	 *            a valid DataConsent for this service
+	 * @throws IllegalStateException
+	 *             if, by any chance, the corresponding ServiceConsent is not
+	 *             valid anymore
+	 */
+	protected void addDataConsent(DataConsent dataConsent) {
+		ServiceConsent key = this.getActiveDisabledSC();
+		if (key == null || key.getConsentStatus() == ConsentStatus.DISABLED)
+			throw new IllegalStateException("Data Consent " + dataConsent.getIdentifier().toString()
+					+ " refers to a Disabled or Withdrawn Service Consent!");
+		List<DataConsent> dConsents = null;
+		if (this.dataConsents.get(key) == null)
+			dConsents = new ArrayList<DataConsent>();
+		else
+			dConsents = this.dataConsents.get(key);
+		dConsents.add(dataConsent);
+		this.dataConsents.put(key, dConsents);
+	}
 }

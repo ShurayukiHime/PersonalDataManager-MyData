@@ -6,6 +6,7 @@ import java.util.Set;
 
 import model.consents.ConsentManager;
 import model.consents.ConsentStatus;
+import model.consents.DataConsent;
 import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
 import model.services.IService;
@@ -107,12 +108,6 @@ public class MyDataUser implements IUser {
 		return result;
 	}
 
-	/**
-	 * This function compares two users on their emailAddress. As a design
-	 * choice, the emailAddress field must be unique.
-	 * 
-	 * @return true if the email is the same, false otherwise.
-	 */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -130,17 +125,6 @@ public class MyDataUser implements IUser {
 		return true;
 	}
 
-	/**
-	 * This function creates a new Account for the service specified only if the
-	 * user does not already have one. In order to do this, it asks the Consent
-	 * Manager to issue a new Service Consent, which is necessary to create a
-	 * new account.
-	 * 
-	 * @param service
-	 *            The service the user wants to register at.
-	 * @throws IllegalArgumentException
-	 *             if the account already exists.
-	 */
 	@Override
 	public void newAccountAtService(IService service) {
 		if (this.hasAccountAtService(service))
@@ -165,13 +149,6 @@ public class MyDataUser implements IUser {
 		return false;
 	}
 
-	/**
-	 * @throws IllegalArgumentException
-	 *             if this user does not have an account at the specified
-	 *             service
-	 * @return the corresponding ServiceConsent if there is one with Active
-	 *         status, null otherwise.
-	 */
 	@Override
 	public ServiceConsent getActiveSCForService(IService service) {
 		if (!this.hasAccountAtService(service))
@@ -181,5 +158,13 @@ public class MyDataUser implements IUser {
 			if (a.getService().equals(service) && a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE)
 				return a.getActiveDisabledSC();
 		return null;
+	}
+
+	
+	@Override
+	public void addDataConsent(DataConsent dataConsent, IService service) {
+		for (IAccount a : this.accounts)
+			if (a.getService().equals(service))
+				a.a
 	}
 }

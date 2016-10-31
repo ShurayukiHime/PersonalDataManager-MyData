@@ -22,6 +22,7 @@ import model.consents.ConsentStatus;
 import model.consents.ServiceConsent;
 import model.mapfeatures.Position;
 import model.services.IService;
+import model.services.MostLikelyNextTrip;
 import model.userdata.IDestination;
 import model.userdata.IPreference;
 import model.userdata.Preference;
@@ -209,7 +210,7 @@ public class MyController implements Controller {
 		if (service != null) {
 			authenticatedUser.newAccountAtService(service);
 		} else {
-			authenticatedUser.newAccountAtService(SuggesterManager.getInstance());
+			authenticatedUser.newAccountAtService(new MostLikelyNextTrip());
 		}
 	}
 

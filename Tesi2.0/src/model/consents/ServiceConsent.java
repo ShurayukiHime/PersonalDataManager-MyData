@@ -5,6 +5,23 @@ import java.util.Date;
 import model.services.IService;
 import model.users.IUser;
 
+/**
+ * This class represent the consent given by the user upon registering the
+ * service. It ensures that both parties are reliable by storing a signed token
+ * from both of them, along with the timestamp of its creation. The Status of
+ * this consent can take one of the following values at a time: Active,
+ * Disabled, Withdrawn. If the ConsentStatus is Active, it is possible for the
+ * user to ask to be provided with the service registered, while it is not
+ * possible to do that if the status is Withdrawn or Disabled. The difference
+ * between a Disabled and a Withdrawn ConsentStatus relies in the fact that a
+ * Disabled ConsentStatus can be switched back to Active, while it is not
+ * possible to re-activate a Withdrawn ServiceConsent. In the latter case, a new
+ * ServiceConsent has to be issued.
+ * 
+ * @author Giada
+ *
+ */
+
 public class ServiceConsent implements IConsent {
 	private byte[] signedByService, signedByUser;
 	private Date timestampGiven;
