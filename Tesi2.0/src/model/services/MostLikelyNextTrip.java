@@ -2,20 +2,27 @@ package model.services;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.time.LocalDateTime;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import model.consents.IDataSet;
-import model.registry.IMetadatum;
+import model.mapfeatures.ITrip;
+import model.mapfeatures.Position;
+import model.registry.IMetadata;
+import model.registry.Metadata;
+import model.userdata.ICalendar;
+import model.userdata.IPreference;
 import model.userdata.suggestions.SuggesterManager;
 
 public class MostLikelyNextTrip extends AbstractService {
 	 private final String name = "Most Likely Next Trip";
-	 private final Set<IMetadatum> identifiers = new HashSet<IMetadatum>();
+	 private final Set<IMetadata> identifiers = new HashSet<IMetadata>();
 	 private IDataSet dataSet;
 	 private SuggesterManager suggesterManager;
 	 
-	 public public MostLikelyNextTrip() {
+	public MostLikelyNextTrip() {
 		super();
 		this.suggesterManager = SuggesterManager.getInstance();
 	}
@@ -23,8 +30,10 @@ public class MostLikelyNextTrip extends AbstractService {
 	@Override
 	protected Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException {
 		this.dataSet = dataSet;
-		return this.suggesterManager.getSuggestions(dataSet.getTodaysDate(), dataSet.getActualPosition(), dataSet.getAllPreferences(), dataSet.getAllTrips());
-
+		return this.suggesterManager.getSuggestions((LocalDateTime) dataSet.get(Metadata.DATE_CONST),
+				(Position) dataSet.get(Metadata.POSITION_CONST),
+				(List<IPreference>) dataSet.get(Metadata.PREFERENCE_CONST),
+				(List<ITrip>) dataSet.get(Metadata.TRIP_CONST), (ICalendar) dataSet.get(Metadata.CALENDAR_CONST));
 	}
 
 	@Override

@@ -11,12 +11,17 @@ import java.time.LocalTime;
 import java.time.Month;
 import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.StringTokenizer;
 
+import model.consents.DataSet;
+import model.consents.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.mapfeatures.Trip;
+import model.registry.Metadata;
 import model.userdata.AbstractCommitment;
 import model.userdata.Calendar;
 import model.userdata.Commitment;
@@ -151,5 +156,36 @@ public class PersonalDataVault implements IPersonalDataVault {
 			}
 		}
 		return result;
+	}
+
+	@Override
+	public IDataSet getData(Set<String> typesConst) {
+		IDataSet dataSet = new DataSet();
+		for (String typeConst : typesConst) {
+			switch (typeConst) {
+			case Metadata.CALENDAR_CONST:
+				dataSet.put(typeConst, this.getCalendar());
+				break;
+			case Metadata.DATE_CONST:
+				dataSet.put(typeConst, this.getDate());
+				break;
+			case Metadata.POSITION_CONST:
+				dataSet.put(typeConst, this.getActualPosition());
+				break;
+			case Metadata.PREFERENCE_CONST:
+				dataSet.put(typeConst, this.getPreferences());
+				break;
+			case Metadata.TRIP_CONST:
+				dataSet.put(typeConst, this.getAllTrip());
+				break;
+			default:
+				throw new IllegalArgumentException("The parameter " + typeConst + " is not known as a type constant.");
+			}
+		}
+		return dataSet;
+	}
+
+	private Object getDate() {
+		return new Date();
 	}
 }

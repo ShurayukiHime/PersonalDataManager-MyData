@@ -4,8 +4,12 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.consents.ConsentStatus;
 import model.consents.DataConsent;
+import model.consents.DataSet;
 import model.consents.IDataSet;
+import model.registry.IMetadata;
+import model.registry.Metadata;
 import model.services.IService;
 import model.users.IAccount;
 import model.users.IUser;
@@ -26,15 +30,6 @@ public class MyData implements IMyData {
 		return instance;
 	}
 
-	@Override
-	public IPersonalDataVault getDataVault(IUser user, IService service) {
-		for (IAccount a : user.getAllAccounts()) {
-			if (a.getService().equals(service))
-				return a.getPersonalDataVault();
-		} // else
-			// throw exception or return null?
-		System.out.println("This user isn't registered to service " + service.toString());
-	}
 
 	// è sbagliato creare users che poi non vengono aggiunti?
 	// è peggio quello oppure fare un confronto fra tutti gli email address del
@@ -68,8 +63,23 @@ public class MyData implements IMyData {
 
 	@Override
 	public IDataSet getDataSetForDataConsent(DataConsent dataConsent) {
-		return null;
-		//TODO
+		//bisogna controllare che il service consent a cui fa riferimento sia valido al momento presente
+		//si crea un idataset vuoto
+		//per ogni tipo nel set 
+		//si interroga il pdv e si chiede quel dato
+		// si aggiunge nel dataset la coppia tag, dato
+		
+		if (dataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
+			throw new IllegalStateException("Cannot get DataSet if DataConsent is not valid. ServiceConsent is not Active.");
+		IUser user = dataConsent.getServiceConsent().getUser();
+		IService service = dataConsent.getServiceConsent().getService();
+		IAccount account = null;
+		for (IAccount a : user.getAllAccounts()) {
+			if (a.getService().equals(service))
+				account = a;
+		}
+		IPersonalDataVault pdv = account.getPersonalDataVault();
+		return pdv.getData(dataConsent.getTypesConst());
 	}
 
 }

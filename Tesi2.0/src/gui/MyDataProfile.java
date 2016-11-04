@@ -41,6 +41,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton signInButton;
 	private JButton signUpButton;
 
+	private JPanel outerPanel;
 	private JPanel profilePanel;
 	private JComboBox<IService> servicesComboBox;
 	private JTextArea pastServicesConsent;
@@ -128,6 +129,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void showProfile() {
 		welcomePanel.setVisible(false);
+		outerPanel = new JPanel();
+		outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.LINE_AXIS));
 		profilePanel = new JPanel();
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.PAGE_AXIS));
 		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Your Profile"));
@@ -214,10 +217,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			profilePanel.add(bottomPanel, BoxLayout.PAGE_AXIS);
 			bottomPanel.setVisible(true);
 		}
-		this.popolaServicesComboBox();
-		this.add(profilePanel);
-		this.pack();
 		profilePanel.setVisible(true);
+		outerPanel.add(profilePanel);
+		this.popolaServicesComboBox();
+		this.add(outerPanel);
+		this.pack();
+		this.outerPanel.setVisible(true);
 	}
 
 	private void popolaServicesComboBox() {
@@ -288,7 +293,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			this.requestServiceButton.setEnabled(status);
 			String message = "Consent Status updated to ";
 			message = status ? message + "Active." : message + "Disabled.";
-			this.controller.getUserInteractor().showPlainMessage(message);
+			this.pastServicesConsent.setText(this.pastServicesConsent.getText() + System.getProperty("line.separator") +  message);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
@@ -314,18 +319,14 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void requestServiceButtonClicked() {
-		//TODO
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
-		this.addServicePanel();
+		this.addServicePanel(this.controller.getServicePanel(selectedService));
 	}
 
-	private void addServicePanel() {
-		// TODO Auto-generated method stub
-		// ma nella vita reale come dovrebbe fare il mio programma a sapere
-		// quale pannello aggiungere?
-		
-		MainFrame MLNTFrame = new MainFrame(this.controller);
-		this.pack();
+	private void addServicePanel(JPanel customPanel) {
+		this.outerPanel.add(customPanel);
+		customPanel.setBorder(new TitledBorder(new EtchedBorder(), "Requested Service"));
+		customPanel.setVisible(true);
 	}
 
 	private void callServiceRegistry() {

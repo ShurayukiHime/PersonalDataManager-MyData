@@ -6,9 +6,12 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JCheckBox;
+import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
@@ -32,18 +35,20 @@ import model.users.IAccount;
 import model.users.IUser;
 import persistence.*;
 
-public class MyController implements Controller {
+public abstract class MyController implements Controller {
 
 	private List<IPreference> preferences;
 	private Position actualPosition;
 	private LocalDateTime date;
 	private IMyData myDataInstance;
+	private Map<IService, JPanel> mappingServicePanel;
 	private IUser authenticatedUser;
 	private UserInteractor userInteractor;
 
 	public MyController(UserInteractor userInteractor) {
 		preferences = new ArrayList<>();
 		this.myDataInstance = MyData.getInstance();
+		this.mappingServicePanel = new HashMap<IService, JPanel>();
 		this.userInteractor = userInteractor;
 	}
 
@@ -154,9 +159,9 @@ public class MyController implements Controller {
 			infoBuilder.append('\n');
 		}
 
-		panel.getSuggestions().setText(suggestionsBuilder.toString());
-		panel.getProbability().setText(infoBuilder.toString());
-		updateMap(panel.getMap(), suggestions);
+		panel.setSuggestions(suggestionsBuilder.toString());
+		panel.setProbability(infoBuilder.toString());
+		this.updateMap(panel.getMap(), suggestions);
 	}
 
 	@Override
@@ -209,8 +214,11 @@ public class MyController implements Controller {
 		//barbatrucco per mancanza service linking...
 		if (service != null) {
 			authenticatedUser.newAccountAtService(service);
+			//in qualche modo qui si dovrebbe aggiornare la mappa con il jpanel giusto x il servizio aggiunto
 		} else {
-			authenticatedUser.newAccountAtService(new MostLikelyNextTrip());
+			IService mlnt = new MostLikelyNextTrip();
+			authenticatedUser.newAccountAtService(mlnt);
+			this.mappingServicePanel.put(mlnt, new MainFrame(this));
 		}
 	}
 
@@ -235,6 +243,14 @@ public class MyController implements Controller {
 			if (a.getService().equals(selectedService))
 				return a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE ? true : false;
 		throw new IllegalArgumentException("Current user does not have an Active or Disabled account to the selected service.");
+	}
+
+	@Override
+	public JPanel getServicePanel(IService selectedService) {
+		// selected service è preso dalla gui quindi dovrebbe essere x forza non nullo
+		if (!this.mappingServicePanel.containsValue(selectedService))
+			throw new IllegalArgumentException("The service " + selectedService.toString() + " should have registered a UI!");
+		return this.mappingServicePanel.get(selectedService);
 	}
 
 }

@@ -100,7 +100,8 @@ class Account implements IAccount {
 	 *             if, by any chance, the corresponding ServiceConsent is not
 	 *             valid anymore
 	 */
-	protected void addDataConsent(DataConsent dataConsent) {
+	@Override
+	public void addDataConsent(DataConsent dataConsent) {
 		ServiceConsent key = this.getActiveDisabledSC();
 		if (key == null || key.getConsentStatus() == ConsentStatus.DISABLED)
 			throw new IllegalStateException("Data Consent " + dataConsent.getIdentifier().toString()

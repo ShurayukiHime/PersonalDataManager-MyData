@@ -17,7 +17,6 @@ import info.pavie.basicosmparser.model.Node;
 import info.pavie.basicosmparser.model.Relation;
 import info.pavie.basicosmparser.model.Way;
 import model.Utils;
-import model.consents.IDataSet;
 import model.mapfeatures.AbstractFeature;
 import model.mapfeatures.Feature;
 import model.mapfeatures.ITrip;
@@ -222,17 +221,18 @@ public class SuggesterManager {
 	private class CalendarSuggester implements ISuggester {
 		
 		private LocalDateTime date;
+		private ICalendar calendar;
 		
-		public CalendarSuggester(LocalDateTime date) {
-			if (date == null)
-				throw new IllegalArgumentException("date must be initialized");
+		public CalendarSuggester(ICalendar calendar, LocalDateTime date) {
+			if (date == null || calendar == null)
+				throw new IllegalArgumentException("date, calendar must be initialized");
 			this.date = date;
+			this.calendar = calendar;
 		}
 
 		@Override
 		public List<ISuggestion> getSuggestions() throws FileNotFoundException, IOException {
 			List<ISuggestion> result = new ArrayList<>();
-			ICalendar calendar = dataSet.getCalendar();
 			List<AbstractCommitment> commitments = calendar.getCommitmentByDate(date);
 			if (!commitments.isEmpty()) {
 				result.add(new CalendarSuggestion(commitments));
@@ -409,7 +409,7 @@ public class SuggesterManager {
 	 * @throws FileNotFoundException
 	 * @throws IOException
 	 */
-	public  List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, List<IPreference> allPreferences, List<ITrip> allTrips) throws FileNotFoundException, IOException {
+	public  List<ISuggestion> getSuggestions(LocalDateTime date, Position actualPosition, List<IPreference> allPreferences, List<ITrip> allTrips, ICalendar calendar) throws FileNotFoundException, IOException {
 		if (date == null || actualPosition == null || allPreferences == null || allTrips == null)
 			throw new IllegalArgumentException("All arguments in DataSet must be initialized.");
 		
@@ -417,7 +417,7 @@ public class SuggesterManager {
 		List<Position> positions = new ArrayList<>();
 		List<IPreference> preferences = allPreferences;
 
-		CalendarSuggester cs = new CalendarSuggester(date);
+		CalendarSuggester cs = new CalendarSuggester(calendar, date);
 		result.addAll(cs.getSuggestions());
 
 		if (result.isEmpty()) {

@@ -2,9 +2,10 @@ package model.MyData;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
+import java.util.Set;
 
 import model.*;
+import model.consents.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.userdata.ICalendar;
@@ -26,5 +27,6 @@ public interface IPersonalDataVault {
 	public void setPreferences(List<IPreference> preferences);
 	//settate nel controller da quelle prese in input
 	public Position getPositionByDate(LocalDateTime date);
+	public IDataSet getData(Set<String> typesConst);
 
 }

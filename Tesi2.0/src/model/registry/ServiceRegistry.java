@@ -8,20 +8,19 @@ import model.services.IService;
 
 public class ServiceRegistry {
 	
-	private static Map<IService, Set<IMetadatum>> mappings;
+	private static Map<IService, Set<String>> mappings = new HashMap<IService, Set<String>>();
 	
 	private ServiceRegistry () {
-		this.mappings = new HashMap<IService, Set<IMetadatum>>();
 	}
 	
-	public static void registerService (IService service, Set<IMetadatum> metadata) {
+	public static void registerService (IService service, Set<String> types) {
 		//forse dovrei verificare che il servizio sia affidabile, ma vabbè
-		if (service == null || metadata == null)
+		if (service == null || types == null)
 			throw new IllegalArgumentException("Service and corresponding metadata must not be null.");
-		mappings.put(service, metadata);
+		mappings.put(service, types);
 	}
 	
-	public static Set<IMetadatum> getMetadataForService (IService service) {
+	public static Set<String> getMetadataForService (IService service) {
 		if (service == null)
 			throw new IllegalArgumentException("Cannot retrieve metadata for null Service.");
 		if (!mappings.containsKey(service))

@@ -65,6 +65,10 @@ public class ServiceConsent implements IConsent {
 		return this.consentStatus;
 	}
 
+	public IUser getUser() {
+		return user;
+	}
+
 	private void setConsentStatus(ConsentStatus consentStatus) {
 		this.consentStatus = consentStatus;
 	}

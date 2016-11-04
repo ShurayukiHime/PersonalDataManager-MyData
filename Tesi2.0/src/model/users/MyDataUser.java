@@ -31,8 +31,7 @@ public class MyDataUser implements IUser {
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	private String password; // modo triste per salvare le password, ci
-								// vorrebbero char[]?
+	private String password; // modo triste per salvare le password, vorrebbero char[]?
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 
@@ -160,11 +159,10 @@ public class MyDataUser implements IUser {
 		return null;
 	}
 
-	
 	@Override
 	public void addDataConsent(DataConsent dataConsent, IService service) {
 		for (IAccount a : this.accounts)
 			if (a.getService().equals(service))
-				a.a
+				a.addDataConsent(dataConsent);
 	}
 }

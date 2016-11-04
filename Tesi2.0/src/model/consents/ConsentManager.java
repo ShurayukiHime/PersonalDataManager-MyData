@@ -3,7 +3,7 @@ package model.consents;
 import java.util.Date;
 import java.util.Set;
 
-import model.registry.IMetadatum;
+import model.registry.IMetadata;
 import model.registry.ServiceRegistry;
 import model.services.IService;
 import model.users.IAccount;
@@ -117,7 +117,7 @@ public class ConsentManager {
 		if (consent == null)
 			throw new IllegalStateException("Cannot issue Data Consent for service " + service.toString()
 					+ " if Service Consent is not Active.");
-		Set<IMetadatum> metadata = ServiceRegistry.getMetadataForService(service);
+		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
 		DataConsent dataConsent = new DataConsent(metadata, consent);
 		user.addDataConsent(dataConsent, service);
 		return dataConsent;

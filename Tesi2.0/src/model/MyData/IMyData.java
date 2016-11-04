@@ -8,13 +8,12 @@ import model.services.IService;
 import model.users.IUser;
 
 public interface IMyData {
-	
-	IPersonalDataVault getDataVault(IUser user, IService service);
 
-	IUser loginUser(String email, String password);
+	public IUser loginUser(String email, String password);
 
-	IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password);
+	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress,
+			String password);
 
-	IDataSet getDataSetForDataConsent(DataConsent dataConsent);
-	
+	public IDataSet getDataSetForDataConsent(DataConsent dataConsent);
+
 }

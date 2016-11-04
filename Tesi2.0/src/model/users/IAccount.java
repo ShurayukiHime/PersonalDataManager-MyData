@@ -3,6 +3,7 @@ package model.users;
 import java.util.Set;
 
 import model.MyData.IPersonalDataVault;
+import model.consents.DataConsent;
 import model.consents.ServiceConsent;
 import model.services.IService;
 
@@ -22,4 +23,6 @@ public interface IAccount {
 	public ServiceConsent getActiveDisabledSC();
 
 	public Set<ServiceConsent> getAllPastServiceConsents();
+
+	void addDataConsent(DataConsent dataConsent);
 }

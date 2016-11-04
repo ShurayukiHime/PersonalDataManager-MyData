@@ -4,29 +4,37 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-import model.registry.IMetadatum;
+import model.registry.IMetadata;
 
 /**
  * This class represents the permission given to a service in order to obtain a
  * specific set of data at a specific time. For this purpose, it contains a Set
- * <IMetadatum>, a ServiceConsent, a timestamp and an UUID.
+ * <String>, a ServiceConsent, a timestamp and an UUID.
  * 
  * @author Giada
  *
  */
 
 public class DataConsent implements IConsent {
-	private Set<IMetadatum> metadata;
+	private Set<String> typesConst;
 	private ServiceConsent serviceConsent;
 	private Date timestamp;
 	private UUID identifier;
 
-	public DataConsent(Set<IMetadatum> metadata, ServiceConsent serviceConsent) {
+	public DataConsent(Set<String> typesConst, ServiceConsent serviceConsent) {
 		super();
-		this.metadata = metadata;
+		this.typesConst = typesConst;
 		this.serviceConsent = serviceConsent;
 		this.timestamp = new Date();
 		this.identifier = UUID.randomUUID();
+	}
+
+	public Set<String> getTypesConst() {
+		return typesConst;
+	}
+
+	public ServiceConsent getServiceConsent() {
+		return serviceConsent;
 	}
 
 	public UUID getIdentifier() {

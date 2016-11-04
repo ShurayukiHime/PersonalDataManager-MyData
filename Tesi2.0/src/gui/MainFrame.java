@@ -32,7 +32,7 @@ import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
 
 
-public class MainFrame extends JFrame implements ActionListener {
+public class MainFrame extends JPanel {
 
 	private static final long serialVersionUID = 1L;
 
@@ -109,14 +109,13 @@ public class MainFrame extends JFrame implements ActionListener {
 	
 
 	public MainFrame(Controller controller) {
-		super("Calculate your Most Likely Next Trip!");
+		super();
 		checksAmenity = new ArrayList<JCheckBox>();
 		checksLeisure = new ArrayList<JCheckBox>();
 		checksShop = new ArrayList<JCheckBox>();
 		checksTourism = new ArrayList<JCheckBox>();
 		this.controller = controller;
 		initGui();
-		pack();
 	}
 	
 
@@ -124,16 +123,16 @@ public class MainFrame extends JFrame implements ActionListener {
 		return this.info;
 	}
 
-	public void setProbability(JTextArea probability) {
-		this.info = probability;
+	public void setProbability(String probability) {
+		this.info.setText(probability);
 	}
 
 	public JTextArea getSuggestions() {
 		return this.suggestions;
 	}
 
-	public void setSuggestions(JTextArea suggestions) {
-		this.suggestions = suggestions;
+	public void setSuggestions(String suggestions) {
+		this.suggestions.setText(suggestions);
 	}
 
 	public JMapViewer getMap() {
@@ -225,7 +224,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		destinationPanel.add(dScroll, BorderLayout.CENTER);
 		
 		selectAll = new JCheckBox("select all", false);
-		selectAll.addActionListener(this);
+		selectAll.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				selectAllChecked();
+				
+			}
+		});
 
 		sport = new JCheckBox("sport", false);
 		historic = new JCheckBox("historic", false);
@@ -389,7 +395,14 @@ public class MainFrame extends JFrame implements ActionListener {
 		checksTourism.add(camp_site);
 
 		go = new JButton("go");
-		go.addActionListener(this);
+		go.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				goButtonClicked();
+				
+			}
+		});
 
 		tbPanel.add(selectAll);
 		tbPanel.add(new JLabel("                 day:"));
@@ -487,8 +500,7 @@ public class MainFrame extends JFrame implements ActionListener {
 		bottomPanel.add(destinationPanel);
 		bottomPanel.add(infoPanel);
 
-		getContentPane().add(mainPanel, BorderLayout.PAGE_START);
-		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		//getContentPane().add(mainPanel, BorderLayout.PAGE_START);
 		this.setVisible(true);
 	}
 	
@@ -497,40 +509,54 @@ public class MainFrame extends JFrame implements ActionListener {
 			cb.setSelected(value);
 	}
 
+	
+	private void selectAllChecked() {
+		selectByCategory(checksAmenity, selectAll.isSelected());
+		selectByCategory(checksGeneral, selectAll.isSelected());
+		selectByCategory(checksLeisure, selectAll.isSelected());
+		selectByCategory(checksShop, 	selectAll.isSelected());
+		selectByCategory(checksTourism, selectAll.isSelected());
+	}
 
-	@Override
+	
+	private void goButtonClicked() {
+		this.updateWithGUIPreferences();
+		this.controller.provideConcreteService(this);
+	}
+
+
+	private void updateWithGUIPreferences() {
+		try {
+			info.setText("");
+			
+			controller.resetUIPreferences();
+			
+			controller.fillPreferencesByCategory("amenity", checksAmenity);
+			controller.fillPreferencesByCategory("leisure", checksLeisure);
+			controller.fillPreferencesByCategory("shop", checksShop);
+			controller.fillPreferencesByCategory("tourism", checksTourism);
+			
+			if (sport.isSelected())
+				controller.addUIPreference("sport", null);
+			
+			if (historic.isSelected())
+				controller.addUIPreference("historic", null);
+		
+		} catch (Exception exc) {
+			JOptionPane.showMessageDialog(null, exc.getMessage());
+			exc.printStackTrace();
+		}
+	}
+	
+	
+	/*@Override
 	public void actionPerformed(ActionEvent e) {
 		if (e.getSource() == go) {
-			try {
-				info.setText("");
-				
-				controller.resetUIPreferences();
-
-				controller.fillPreferencesByCategory("amenity", checksAmenity);
-				controller.fillPreferencesByCategory("leisure", checksLeisure);
-				controller.fillPreferencesByCategory("shop", checksShop);
-				controller.fillPreferencesByCategory("tourism", checksTourism);
-		
-				if (sport.isSelected())
-					controller.addUIPreference("sport", null);
-		
-				if (historic.isSelected())
-					controller.addUIPreference("historic", null);
 
 				// parsing dei dati di input
 				controller.setDate(day, month, year, hour, min);				
 				controller.getSuggest(this);
 
-			} catch (Exception exc) {
-				JOptionPane.showMessageDialog(null, exc.getMessage());
-				exc.printStackTrace();
-			}
-		} else if (e.getSource() == selectAll) {
-			selectByCategory(checksAmenity, selectAll.isSelected());
-			selectByCategory(checksGeneral, selectAll.isSelected());
-			selectByCategory(checksLeisure, selectAll.isSelected());
-			selectByCategory(checksShop, 	selectAll.isSelected());
-			selectByCategory(checksTourism, selectAll.isSelected());
-		}
-	}
+		}*/
+	
 }
