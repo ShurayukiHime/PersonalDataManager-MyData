@@ -1,4 +1,4 @@
-package model.consents;
+package model.MyData;
 
 import java.util.HashMap;
 import java.util.Map;

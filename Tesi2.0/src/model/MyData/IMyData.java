@@ -3,7 +3,6 @@ package model.MyData;
 import java.util.Date;
 
 import model.consents.DataConsent;
-import model.consents.IDataSet;
 import model.services.IService;
 import model.users.IUser;
 

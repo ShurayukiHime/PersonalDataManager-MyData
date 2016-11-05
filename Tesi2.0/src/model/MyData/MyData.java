@@ -6,8 +6,6 @@ import java.util.Set;
 
 import model.consents.ConsentStatus;
 import model.consents.DataConsent;
-import model.consents.DataSet;
-import model.consents.IDataSet;
 import model.registry.IMetadata;
 import model.registry.Metadata;
 import model.services.IService;

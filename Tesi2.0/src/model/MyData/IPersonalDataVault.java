@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Set;
 
 import model.*;
-import model.consents.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.userdata.ICalendar;

@@ -1,5 +1,7 @@
 package gui;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
@@ -33,5 +35,9 @@ public interface Controller {
 	public void setPanelDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min);
 
 	public JPanel getServicePanel(IService selectedService);
+
+	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException;
+
+	public void resetUIPreferences();
 	
 }

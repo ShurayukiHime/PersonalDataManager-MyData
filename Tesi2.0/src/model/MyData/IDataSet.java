@@ -1,4 +1,4 @@
-package model.consents;
+package model.MyData;
 
 public interface IDataSet {
 

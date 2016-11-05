@@ -16,8 +16,6 @@ import java.util.List;
 import java.util.Set;
 import java.util.StringTokenizer;
 
-import model.consents.DataSet;
-import model.consents.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.mapfeatures.Trip;

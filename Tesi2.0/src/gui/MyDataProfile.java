@@ -1,4 +1,4 @@
-package gui;
+ package gui;
 
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -12,7 +12,6 @@ import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JScrollPane;
@@ -53,7 +52,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton requestServiceButton;
 
 	public MyDataProfile(Controller controller) {
-		super("Benvenuto in MyData");
+		super("Welcome to MyData");
 		this.controller = controller;
 		initGUI();
 	}
@@ -181,7 +180,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			JPanel centralButtonsPanel = new JPanel();
 			centralButtonsPanel.setLayout(new GridLayout(2, 1));
 			{
-				requestServiceButton = new JButton("Richiedi Servizio");
+				requestServiceButton = new JButton("Request Service");
 				requestServiceButton.addActionListener(new ActionListener() {
 
 					@Override
@@ -189,7 +188,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 						requestServiceButtonClicked();
 					}
 				});
-				addServiceButton = new JButton("Aggiungi un nuovo servizio");
+				addServiceButton = new JButton("Add a new Service");
 				addServiceButton.addActionListener(new ActionListener() {
 
 					@Override
@@ -344,10 +343,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void viewPastSConsents() {
-		// retrieve service selected
-		// ask controller for sconsents
-		// show content in text area
-
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		String pastSConsents = this.controller.getAllPastSConsents(selectedService);
 		this.pastServicesConsent.setText(pastSConsents);

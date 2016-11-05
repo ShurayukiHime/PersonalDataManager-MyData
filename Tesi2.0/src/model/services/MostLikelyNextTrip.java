@@ -7,7 +7,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-import model.consents.IDataSet;
+import model.MyData.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.registry.IMetadata;

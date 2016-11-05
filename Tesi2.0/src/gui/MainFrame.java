@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -521,7 +522,12 @@ public class MainFrame extends JPanel {
 	
 	private void goButtonClicked() {
 		this.updateWithGUIPreferences();
-		this.controller.provideConcreteService(this);
+		try {
+			this.controller.provideConcreteService(this);
+		} catch (IOException e) {
+			e.printStackTrace();
+			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
+		}
 	}
 
 
@@ -529,7 +535,7 @@ public class MainFrame extends JPanel {
 		try {
 			info.setText("");
 			
-			controller.resetUIPreferences();
+			this.controller.resetUIPreferences();
 			
 			controller.fillPreferencesByCategory("amenity", checksAmenity);
 			controller.fillPreferencesByCategory("leisure", checksLeisure);

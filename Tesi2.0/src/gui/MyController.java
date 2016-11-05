@@ -35,7 +35,7 @@ import model.users.IAccount;
 import model.users.IUser;
 import persistence.*;
 
-public abstract class MyController implements Controller {
+public class MyController implements Controller {
 
 	private List<IPreference> preferences;
 	private Position actualPosition;
@@ -248,9 +248,18 @@ public abstract class MyController implements Controller {
 	@Override
 	public JPanel getServicePanel(IService selectedService) {
 		// selected service è preso dalla gui quindi dovrebbe essere x forza non nullo
-		if (!this.mappingServicePanel.containsValue(selectedService))
-			throw new IllegalArgumentException("The service " + selectedService.toString() + " should have registered a UI!");
+		if (!this.mappingServicePanel.containsKey(selectedService))
+			throw new IllegalArgumentException("The service " + selectedService.toString() + " should have registered a User Interface!");
 		return this.mappingServicePanel.get(selectedService);
+	}
+
+	@Override
+	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException {
+		for (IService s : this.mappingServicePanel.keySet()) {
+			if (this.mappingServicePanel.get(s).equals(mainFrame))
+				s.provideService(authenticatedUser);
+		}
+		
 	}
 
 }
