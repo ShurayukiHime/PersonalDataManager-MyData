@@ -4,8 +4,6 @@ import java.util.Date;
 import java.util.Set;
 import java.util.UUID;
 
-import model.registry.IMetadata;
-
 /**
  * This class represents the permission given to a service in order to obtain a
  * specific set of data at a specific time. For this purpose, it contains a Set
@@ -64,6 +62,11 @@ public class DataConsent implements IConsent {
 		} else if (!identifier.equals(other.identifier))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "DataConsent " + this.identifier + " issued at " + this.timestamp;
 	}
 
 }

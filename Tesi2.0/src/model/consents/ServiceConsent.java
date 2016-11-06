@@ -12,7 +12,7 @@ import model.users.IUser;
  * this consent can take one of the following values at a time: Active,
  * Disabled, Withdrawn. If the ConsentStatus is Active, it is possible for the
  * user to ask to be provided with the service registered, while it is not
- * possible to do that if the status is Withdrawn or Disabled. The difference
+ * possible to do so if the status is Withdrawn or Disabled. The difference
  * between a Disabled and a Withdrawn ConsentStatus relies in the fact that a
  * Disabled ConsentStatus can be switched back to Active, while it is not
  * possible to re-activate a Withdrawn ServiceConsent. In the latter case, a new

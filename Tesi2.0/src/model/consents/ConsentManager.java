@@ -3,7 +3,7 @@ package model.consents;
 import java.util.Date;
 import java.util.Set;
 
-import model.registry.IMetadata;
+import model.MyData.IDataSet;
 import model.registry.ServiceRegistry;
 import model.services.IService;
 import model.users.IAccount;
@@ -100,27 +100,41 @@ public class ConsentManager {
 	}
 
 	/**
-	 * This method issues a new Data Consent if there is an Active
-	 * ServiceConsent for the user and service specified. It also adds the newly
-	 * created DataConsent to the corresponding IAccount.
+	 * This method issues a new Data Consent (for data flowing out of the PDV) if
+	 * there is an Active ServiceConsent for the user and service specified. It
+	 * also adds the newly created DataConsent to the corresponding IAccount.
 	 * 
 	 * @param user
 	 * @param service
 	 * @throws IllegalStateException
 	 *             If there is no Active ServiceConsent for the pair user,
 	 *             service
-	 * @return A valid DataConsent containing the specific Set of IMetadatum for that service.
+	 * @return A valid DataConsent containing the specific Set of IMetadatum for
+	 *         that service.
 	 */
 
-	public static DataConsent askDataConsent(IUser user, IService service) {
+	public static OutputDataConsent askOutputDataConsent(IUser user, IService service) {
 		ServiceConsent consent = user.getActiveSCForService(service);
 		if (consent == null)
-			throw new IllegalStateException("Cannot issue Data Consent for service " + service.toString()
+			throw new IllegalStateException("Cannot issue Output Data Consent for service " + service.toString()
 					+ " if Service Consent is not Active.");
 		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
-		DataConsent dataConsent = new DataConsent(metadata, consent);
-		user.addDataConsent(dataConsent, service);
-		return dataConsent;
+		OutputDataConsent outDataConsent = new OutputDataConsent(metadata, consent);
+		user.addDataConsent(outDataConsent, service);
+		return outDataConsent;
+	}
+
+	public static InputDataConsent askInputDataConsent(IUser user, IService service, IDataSet dataSet) {
+		ServiceConsent consent = user.getActiveSCForService(service);
+		if (consent == null)
+			throw new IllegalStateException("Cannot issue Input Data Consent for service " + service.toString()
+					+ " if Service Consent is not Active.");
+		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
+		if (!metadata.containsAll(dataSet.keySet()))
+			throw new IllegalArgumentException("The service " + service.toString() + " does not have permission to access some, or all, data types specified in the given DataSet.");
+		InputDataConsent inDataConsent = new InputDataConsent(dataSet.keySet(), consent);
+		user.addDataConsent(inDataConsent, service);
+		return inDataConsent;
 	}
 
 }

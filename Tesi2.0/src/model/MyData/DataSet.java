@@ -2,6 +2,7 @@ package model.MyData;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class DataSet implements IDataSet {
 
@@ -22,5 +23,10 @@ public class DataSet implements IDataSet {
 		if (typeConst != null && this.dataSet.containsKey(typeConst))
 			return this.dataSet.get(typeConst);
 		throw new IllegalArgumentException("The string " + typeConst + " does not match with any of the declared type constants.");
+	}
+
+	@Override
+	public Set<String> keySet() {
+		return this.keySet();
 	}
 }

@@ -2,8 +2,8 @@ package model.MyData;
 
 import java.util.Date;
 
-import model.consents.DataConsent;
-import model.services.IService;
+import model.consents.InputDataConsent;
+import model.consents.OutputDataConsent;
 import model.users.IUser;
 
 public interface IMyData {
@@ -13,6 +13,8 @@ public interface IMyData {
 	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress,
 			String password);
 
-	public IDataSet getDataSetForDataConsent(DataConsent dataConsent);
+	public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent);
+
+	public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent);
 
 }

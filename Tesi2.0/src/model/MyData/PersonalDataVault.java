@@ -29,12 +29,20 @@ import model.userdata.IPreference;
 public class PersonalDataVault implements IPersonalDataVault {
 	
 	private List<IPreference> preferences;
+	private ICalendar calendar;
+	private List<ITrip> trips;
+	private Position actualPosition;
+	private Date today;
 
-	public PersonalDataVault() {
+ 	public PersonalDataVault() {
 		this.preferences = new ArrayList<>();
+		this.trips = new ArrayList<>();
+		
+		this.calendar = readCalendar();
+		this.trips = readAllTrips();
 	}
 
-	public List<ITrip> getAllTrip() {
+	private List<ITrip> readAllTrips() {
 		String fileName = "MyTrips.txt";
 		List<ITrip> result = new ArrayList<ITrip>();
 		try {
@@ -80,7 +88,6 @@ public class PersonalDataVault implements IPersonalDataVault {
 		
 		return result;
 	}
-	
 
 	public void addTrip(ITrip trip)  {
 		if (trip == null)
@@ -97,7 +104,7 @@ public class PersonalDataVault implements IPersonalDataVault {
 		}
 	}
 
-	public ICalendar getCalendar() {
+	private ICalendar readCalendar() {
 		String fileName = "Calendar.txt";
 
 		List<AbstractCommitment> commitments = new ArrayList<>();
@@ -137,9 +144,25 @@ public class PersonalDataVault implements IPersonalDataVault {
 	
 	public void setPreferences(List<IPreference> preferences) {
 		if (preferences == null)
-			throw new IllegalArgumentException("preferences must be initialized");
+			throw new IllegalArgumentException("Preferences must be initialized.");
 		this.preferences = preferences;
 	}
+
+	@Override
+	public List<ITrip> getAllTrip() {
+		return this.trips;
+	}
+	
+
+	@Override
+	public ICalendar getCalendar() {
+		return this.calendar;
+	}
+	
+	private void setCalendar (ICalendar calendar) {
+		this.calendar = calendar;
+	}
+	
 
 	@Override
 	public Position getPositionByDate(LocalDateTime date) {
@@ -154,6 +177,18 @@ public class PersonalDataVault implements IPersonalDataVault {
 			}
 		}
 		return result;
+	}
+	
+	private Position getActualPosition() {
+		return actualPosition;
+	}
+
+	private void setActualPosition (Position actualPosition) {
+		this.actualPosition = actualPosition;
+	}
+
+	private void setDate(Date today) {
+		this.today = today;
 	}
 
 	@Override
@@ -182,8 +217,33 @@ public class PersonalDataVault implements IPersonalDataVault {
 		}
 		return dataSet;
 	}
+	
+	@Override
+	public void saveData(IDataSet dataSet) {
+		for (String typeConst : dataSet.keySet()) {
+			switch (typeConst) {
+			case Metadata.CALENDAR_CONST:
+				this.setCalendar((ICalendar) dataSet.get(typeConst));
+				break;
+			case Metadata.DATE_CONST:
+				this.setDate((Date) dataSet.get(typeConst));
+				break;
+			case Metadata.POSITION_CONST:
+				this.setActualPosition((Position) dataSet.get(typeConst));;
+				break;
+			case Metadata.PREFERENCE_CONST:
+				this.setPreferences((List<IPreference>) dataSet.get(typeConst));
+				break;
+			case Metadata.TRIP_CONST:
+				this.addTrip((ITrip) dataSet.get(typeConst));
+				break;
+			default:
+				throw new IllegalArgumentException("The parameter " + typeConst + " is not known as a type constant.");
+			}
+		}
+	}
 
-	private Object getDate() {
+ 	private Object getDate() {
 		return new Date();
 	}
 }

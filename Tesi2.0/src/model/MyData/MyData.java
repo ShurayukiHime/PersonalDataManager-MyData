@@ -5,9 +5,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 import model.consents.ConsentStatus;
-import model.consents.DataConsent;
-import model.registry.IMetadata;
-import model.registry.Metadata;
+import model.consents.InputDataConsent;
+import model.consents.OutputDataConsent;
 import model.services.IService;
 import model.users.IAccount;
 import model.users.IUser;
@@ -60,24 +59,32 @@ public class MyData implements IMyData {
 	}
 
 	@Override
-	public IDataSet getDataSetForDataConsent(DataConsent dataConsent) {
-		//bisogna controllare che il service consent a cui fa riferimento sia valido al momento presente
-		//si crea un idataset vuoto
-		//per ogni tipo nel set 
-		//si interroga il pdv e si chiede quel dato
-		// si aggiunge nel dataset la coppia tag, dato
-		
-		if (dataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
+	public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent) {
+		if (outputDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
 			throw new IllegalStateException("Cannot get DataSet if DataConsent is not valid. ServiceConsent is not Active.");
-		IUser user = dataConsent.getServiceConsent().getUser();
-		IService service = dataConsent.getServiceConsent().getService();
+		IUser user = outputDataConsent.getServiceConsent().getUser();
+		IService service = outputDataConsent.getServiceConsent().getService();
 		IAccount account = null;
 		for (IAccount a : user.getAllAccounts()) {
 			if (a.getService().equals(service))
 				account = a;
 		}
 		IPersonalDataVault pdv = account.getPersonalDataVault();
-		return pdv.getData(dataConsent.getTypesConst());
+		return pdv.getData(outputDataConsent.getTypesConst());
 	}
 
+	@Override
+	public void saveDataSet (IDataSet dataSet, InputDataConsent inDataConsent) {
+		if (inDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
+			throw new IllegalStateException("Cannot save DataSet if DataConsent is not valid. ServiceConsent is not Active.");
+		IUser user = inDataConsent.getServiceConsent().getUser();
+		IService service = inDataConsent.getServiceConsent().getService();
+		IAccount account = null;
+		for (IAccount a : user.getAllAccounts()) {
+			if (a.getService().equals(service))
+				account = a;
+		}
+		IPersonalDataVault pdv = account.getPersonalDataVault();
+		pdv.saveData(dataSet);
+	}
 }
