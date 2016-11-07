@@ -32,14 +32,12 @@ import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 import org.openstreetmap.gui.jmapviewer.interfaces.ICoordinate;
 
-
-public class MainFrame extends JPanel {
-
+public class MainFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-//	private JTextField coordinates;
+	// private JTextField coordinates;
 	private JMapViewer map;
-	
+
 	private JTextField day;
 	private JTextField month;
 	private JTextField year;
@@ -69,13 +67,13 @@ public class MainFrame extends JPanel {
 
 	// <generals>
 	private JCheckBox historic, sport;
-	
+
 	private JCheckBox selectAll;
 
 	private JButton go;
 
 	private Controller controller;
-	
+
 	private List<JCheckBox> checksGeneral = new ArrayList<>();
 	private List<JCheckBox> checksAmenity = new ArrayList<>();
 	private List<JCheckBox> checksLeisure = new ArrayList<>();
@@ -98,7 +96,7 @@ public class MainFrame extends JPanel {
 				ICoordinate coordinate = map.getPosition(e.getPoint());
 				controller.setActualPosition(coordinate.getLat(), coordinate.getLon());
 				System.out.println(coordinate);
-				
+
 				MapMarkerDot mmd = new MapMarkerDot(new Coordinate(coordinate.getLat(), coordinate.getLon()));
 				map.addMapMarker(mmd);
 			} else if (e.getClickCount() == 2 && e.getButton() == MouseEvent.BUTTON1) {
@@ -107,7 +105,6 @@ public class MainFrame extends JPanel {
 		}
 
 	}
-	
 
 	public MainFrame(Controller controller) {
 		super();
@@ -118,7 +115,6 @@ public class MainFrame extends JPanel {
 		this.controller = controller;
 		initGui();
 	}
-	
 
 	public JTextArea getProbability() {
 		return this.info;
@@ -180,8 +176,7 @@ public class MainFrame extends JPanel {
 		this.min = min;
 	}
 
-	private void initGui() { // inizializzazione di tutti i componenti e setting
-								// dei vari layout
+	private void initGui() { // inizializzazione di tutti i componenti e setting dei vari layout
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
@@ -226,11 +221,9 @@ public class MainFrame extends JPanel {
 		
 		selectAll = new JCheckBox("select all", false);
 		selectAll.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				selectAllChecked();
-				
 			}
 		});
 
@@ -397,11 +390,9 @@ public class MainFrame extends JPanel {
 
 		go = new JButton("go");
 		go.addActionListener(new ActionListener() {
-			
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				goButtonClicked();
-				
 			}
 		});
 
@@ -422,7 +413,6 @@ public class MainFrame extends JPanel {
 		centerPanel.setLayout(new FlowLayout());
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
 		
-		
 		// shop
 		JPanel shopPanel = new JPanel();
 		shopPanel.setLayout(new GridLayout(20, 3));
@@ -436,7 +426,6 @@ public class MainFrame extends JPanel {
 		for (JCheckBox cb : checksShop) {
 			shopPanel.add(cb);
 		}
-
 
 		// amenity
 		JPanel amenityPanel = new JPanel();
@@ -501,8 +490,8 @@ public class MainFrame extends JPanel {
 		bottomPanel.add(destinationPanel);
 		bottomPanel.add(infoPanel);
 
-		//getContentPane().add(mainPanel, BorderLayout.PAGE_START);
-		this.setVisible(true);
+		getContentPane().add(mainPanel, BorderLayout.PAGE_START);
+		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 	}
 	
 	private void selectByCategory(List<JCheckBox> checks, boolean value) {
@@ -534,26 +523,25 @@ public class MainFrame extends JPanel {
 	private void updateWithGUIPreferences() {
 		try {
 			info.setText("");
-			
+
 			this.controller.resetUIPreferences();
-			
-			controller.fillPreferencesByCategory("amenity", checksAmenity);
-			controller.fillPreferencesByCategory("leisure", checksLeisure);
-			controller.fillPreferencesByCategory("shop", checksShop);
-			controller.fillPreferencesByCategory("tourism", checksTourism);
-			
+
+			this.controller.fillPreferencesByCategory("amenity", checksAmenity);
+			this.controller.fillPreferencesByCategory("leisure", checksLeisure);
+			this.controller.fillPreferencesByCategory("shop", checksShop);
+			this.controller.fillPreferencesByCategory("tourism", checksTourism);
+
 			if (sport.isSelected())
 				controller.addUIPreference("sport", null);
-			
+
 			if (historic.isSelected())
 				controller.addUIPreference("historic", null);
-		
+			this.controller.updateModel(this);
 		} catch (Exception exc) {
 			JOptionPane.showMessageDialog(null, exc.getMessage());
 			exc.printStackTrace();
 		}
 	}
-	
 	
 	/*@Override
 	public void actionPerformed(ActionEvent e) {
@@ -564,5 +552,4 @@ public class MainFrame extends JPanel {
 				controller.getSuggest(this);
 
 		}*/
-	
 }

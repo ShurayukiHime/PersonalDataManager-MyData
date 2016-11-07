@@ -73,4 +73,6 @@ public interface IUser {
 
 	public void addDataConsent(DataConsent dataConsent, IService service);
 
+	public void addServiceConsent(IService selectedService);
+
 }

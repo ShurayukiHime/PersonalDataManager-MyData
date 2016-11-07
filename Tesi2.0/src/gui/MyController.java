@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -18,12 +19,15 @@ import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
 import model.*;
+import model.MyData.DataSet;
+import model.MyData.IDataSet;
 import model.MyData.IMyData;
 import model.MyData.MyData;
 import model.consents.ConsentManager;
 import model.consents.ConsentStatus;
 import model.consents.ServiceConsent;
 import model.mapfeatures.Position;
+import model.registry.Metadata;
 import model.services.IService;
 import model.services.MostLikelyNextTrip;
 import model.userdata.IDestination;
@@ -41,14 +45,14 @@ public class MyController implements Controller {
 	private Position actualPosition;
 	private LocalDateTime date;
 	private IMyData myDataInstance;
-	private Map<IService, JPanel> mappingServicePanel;
+	private Map<IService, JFrame> mappingServicePanel;
 	private IUser authenticatedUser;
 	private UserInteractor userInteractor;
 
 	public MyController(UserInteractor userInteractor) {
 		preferences = new ArrayList<>();
 		this.myDataInstance = MyData.getInstance();
-		this.mappingServicePanel = new HashMap<IService, JPanel>();
+		this.mappingServicePanel = new HashMap<IService, JFrame>();
 		this.userInteractor = userInteractor;
 	}
 
@@ -131,17 +135,9 @@ public class MyController implements Controller {
 		map.setDisplayToFitMapMarkers();
 	}
 
-	public void getSuggest(MainFrame panel) throws FileNotFoundException, IOException {
-		if (panel == null)
-			throw new IllegalArgumentException("Panel must be initialized.");
-		
-		//prendere preferenze ui
-		//in generale quando si aggiungono checks aggiungerli al pdv
-		//
-
-		MyData.getInstance().getDataVault(username).getUIPreferences().addAll(preferences);
-		List<ISuggestion> suggestions = SuggesterManager.getInstance().getSuggestions(date, actualPosition,
-				MyData.getInstance().getDataVault(username));
+	private void printSuggestions(MainFrame panel, Object result) throws FileNotFoundException, IOException {
+		//IMPLEMENTARE TIPO DI RITORNO IN SERVICE REGISTRY + DATACONSENT
+		List<ISuggestion> suggestions = (List<ISuggestion>) result;
 
 		StringBuilder suggestionsBuilder = new StringBuilder();
 		StringBuilder infoBuilder = new StringBuilder();
@@ -213,11 +209,11 @@ public class MyController implements Controller {
 		
 		//barbatrucco per mancanza service linking...
 		if (service != null) {
-			authenticatedUser.newAccountAtService(service);
+			this.myDataInstance.createServiceAccount(authenticatedUser, service);
 			//in qualche modo qui si dovrebbe aggiornare la mappa con il jpanel giusto x il servizio aggiunto
 		} else {
 			IService mlnt = new MostLikelyNextTrip();
-			authenticatedUser.newAccountAtService(mlnt);
+			this.myDataInstance.createServiceAccount(authenticatedUser, mlnt);
 			this.mappingServicePanel.put(mlnt, new MainFrame(this));
 		}
 	}
@@ -246,7 +242,7 @@ public class MyController implements Controller {
 	}
 
 	@Override
-	public JPanel getServicePanel(IService selectedService) {
+	public JFrame getServicePanel(IService selectedService) {
 		// selected service è preso dalla gui quindi dovrebbe essere x forza non nullo
 		if (!this.mappingServicePanel.containsKey(selectedService))
 			throw new IllegalArgumentException("The service " + selectedService.toString() + " should have registered a User Interface!");
@@ -255,11 +251,32 @@ public class MyController implements Controller {
 
 	@Override
 	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException {
-		for (IService s : this.mappingServicePanel.keySet()) {
-			if (this.mappingServicePanel.get(s).equals(mainFrame))
-				s.provideService(authenticatedUser);
-		}
-		
+		IService s = this.findService(mainFrame);
+		this.printSuggestions(mainFrame, s.provideService(authenticatedUser));
 	}
 
+	private IService findService(MainFrame frame) {
+		for (IService s : this.mappingServicePanel.keySet()) {
+			if (this.mappingServicePanel.get(s).equals(frame))
+				return s;
+		}
+		throw new IllegalArgumentException("Could not find registered Service for given MainFrame.");
+	}
+	
+	@Override
+	public void updateModel(MainFrame mainFrame) {
+		IDataSet dataSet = new DataSet();
+		
+		dataSet.put(Metadata.PREFERENCE_CONST, this.preferences);
+		dataSet.put(Metadata.DATE_CONST, this.date);
+		dataSet.put(Metadata.POSITION_CONST, this.actualPosition);
+		
+		IService s = this.findService(mainFrame);
+		s.gatherData(authenticatedUser, dataSet);
+	}
+
+	@Override
+	public void addNewServiceConsent(IService selectedService) {
+		this.myDataInstance.issueNewServiceConsent(selectedService, authenticatedUser);
+	}
 }

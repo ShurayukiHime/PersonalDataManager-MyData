@@ -10,36 +10,44 @@ import java.util.Set;
 import model.MyData.IDataSet;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
-import model.registry.IMetadata;
 import model.registry.Metadata;
+import model.registry.ServiceRegistry;
 import model.userdata.ICalendar;
 import model.userdata.IPreference;
 import model.userdata.suggestions.SuggesterManager;
 
 public class MostLikelyNextTrip extends AbstractService {
-	 private final String name = "Most Likely Next Trip";
-	 private final Set<IMetadata> identifiers = new HashSet<IMetadata>();
-	 private IDataSet dataSet;
-	 private SuggesterManager suggesterManager;
-	 
+	private final String name = "Most Likely Next Trip";
+	private final Set<String> identifiers = new HashSet<String>();
+	private SuggesterManager suggesterManager;
+
 	public MostLikelyNextTrip() {
 		super();
 		this.suggesterManager = SuggesterManager.getInstance();
+		this.registerService();
 	}
 
 	@Override
 	protected Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException {
-		this.dataSet = dataSet;
 		return this.suggesterManager.getSuggestions((LocalDateTime) dataSet.get(Metadata.DATE_CONST),
 				(Position) dataSet.get(Metadata.POSITION_CONST),
 				(List<IPreference>) dataSet.get(Metadata.PREFERENCE_CONST),
 				(List<ITrip>) dataSet.get(Metadata.TRIP_CONST), (ICalendar) dataSet.get(Metadata.CALENDAR_CONST));
 	}
 
+	/**
+	 * In this function, each concrete service specifies which of the allowed
+	 * types it is going to use. The Service Registry must be informed at the
+	 * end of this process.
+	 */
 	@Override
 	protected void registerService() {
-		// TODO Auto-generated method stub
-
+		identifiers.add(Metadata.CALENDAR_CONST);
+		identifiers.add(Metadata.DATE_CONST);
+		identifiers.add(Metadata.POSITION_CONST);
+		identifiers.add(Metadata.PREFERENCE_CONST);
+		identifiers.add(Metadata.TRIP_CONST);
+		ServiceRegistry.registerService(this, identifiers);
 	}
 
 	@Override
@@ -70,9 +78,9 @@ public class MostLikelyNextTrip extends AbstractService {
 	public String toString() {
 		return this.name;
 	}
-	
-	/*public void setName(String name) {
-	if (this.name == null)
-		this.name = name;
-	}*/
+
+	/*
+	 * public void setName(String name) { if (this.name == null) this.name =
+	 * name; }
+	 */
 }

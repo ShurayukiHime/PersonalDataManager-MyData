@@ -152,7 +152,6 @@ public class PersonalDataVault implements IPersonalDataVault {
 	public List<ITrip> getAllTrip() {
 		return this.trips;
 	}
-	
 
 	@Override
 	public ICalendar getCalendar() {
@@ -163,7 +162,6 @@ public class PersonalDataVault implements IPersonalDataVault {
 		this.calendar = calendar;
 	}
 	
-
 	@Override
 	public Position getPositionByDate(LocalDateTime date) {
 		List<ITrip> trips = getAllTrip();
@@ -243,7 +241,7 @@ public class PersonalDataVault implements IPersonalDataVault {
 		}
 	}
 
- 	private Object getDate() {
-		return new Date();
+ 	private Date getDate() {
+		return this.today;
 	}
 }

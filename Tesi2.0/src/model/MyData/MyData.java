@@ -27,7 +27,6 @@ public class MyData implements IMyData {
 		return instance;
 	}
 
-
 	// è sbagliato creare users che poi non vengono aggiunti?
 	// è peggio quello oppure fare un confronto fra tutti gli email address del
 	// set in un ciclo for?
@@ -36,7 +35,7 @@ public class MyData implements IMyData {
 			String password) {
 		IUser newUser = new MyDataUser(firstName, lastName, dateOfBirth, emailAddress, password);
 		if (!(this.myDataUsers.add(newUser))) {
-			throw new IllegalStateException("Cannot register two users with the same email address!");
+			throw new IllegalStateException("Cannot register two users with the same email address.");
 		}
 		return newUser;
 	}
@@ -54,14 +53,16 @@ public class MyData implements IMyData {
 	}
 
 	// stessa domanda della funzione sopra per creazione accounts
+	@Override
 	public void createServiceAccount(IUser user, IService service) {
 		user.newAccountAtService(service);
 	}
 
 	@Override
 	public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent) {
-		if (outputDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
-			throw new IllegalStateException("Cannot get DataSet if DataConsent is not valid. ServiceConsent is not Active.");
+		if (outputDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE)
+			throw new IllegalStateException(
+					"Cannot get DataSet if DataConsent is not valid. ServiceConsent is not Active.");
 		IUser user = outputDataConsent.getServiceConsent().getUser();
 		IService service = outputDataConsent.getServiceConsent().getService();
 		IAccount account = null;
@@ -74,9 +75,10 @@ public class MyData implements IMyData {
 	}
 
 	@Override
-	public void saveDataSet (IDataSet dataSet, InputDataConsent inDataConsent) {
-		if (inDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE) 
-			throw new IllegalStateException("Cannot save DataSet if DataConsent is not valid. ServiceConsent is not Active.");
+	public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent) {
+		if (inDataConsent.getServiceConsent().getConsentStatus() != ConsentStatus.ACTIVE)
+			throw new IllegalStateException(
+					"Cannot save DataSet if DataConsent is not valid. ServiceConsent is not Active.");
 		IUser user = inDataConsent.getServiceConsent().getUser();
 		IService service = inDataConsent.getServiceConsent().getService();
 		IAccount account = null;
@@ -86,5 +88,13 @@ public class MyData implements IMyData {
 		}
 		IPersonalDataVault pdv = account.getPersonalDataVault();
 		pdv.saveData(dataSet);
+	}
+
+	@Override
+	public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser) {
+		if (!this.myDataUsers.contains(authenticatedUser))
+			throw new IllegalArgumentException(
+					"User " + authenticatedUser.toString() + " does not have an account at MyData.");
+		authenticatedUser.addServiceConsent(selectedService);
 	}
 }

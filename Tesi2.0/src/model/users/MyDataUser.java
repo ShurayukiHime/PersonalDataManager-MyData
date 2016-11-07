@@ -31,7 +31,8 @@ public class MyDataUser implements IUser {
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	private String password; // modo triste per salvare le password, vorrebbero char[]?
+	private String password; // modo triste per salvare le password, vorrebbero
+								// char[]?
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 
@@ -127,7 +128,8 @@ public class MyDataUser implements IUser {
 	@Override
 	public void newAccountAtService(IService service) {
 		if (this.hasAccountAtService(service))
-			throw new IllegalArgumentException("An account already exists at service " + service.toString());
+			throw new IllegalArgumentException(
+					"User " + this.toString() + " already has an account at service " + service.toString() + ".");
 		this.accounts.add(new Account(service, ConsentManager.askServiceConsent(this, service)));
 	}
 
@@ -164,5 +166,15 @@ public class MyDataUser implements IUser {
 		for (IAccount a : this.accounts)
 			if (a.getService().equals(service))
 				a.addDataConsent(dataConsent);
+	}
+
+	@Override
+	public void addServiceConsent(IService selectedService) {
+		if (!this.hasAccountAtService(selectedService))
+			throw new IllegalArgumentException(
+					"User " + this.toString() + " does not have an account at service " + selectedService.toString());
+		for (IAccount a : this.accounts)
+			if (a.getService().equals(selectedService))
+				a.addServiceConsent(ConsentManager.askServiceConsent(this, selectedService));
 	}
 }

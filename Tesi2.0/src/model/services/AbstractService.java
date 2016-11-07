@@ -22,7 +22,6 @@ public abstract class AbstractService implements IService {
 	protected AbstractService() {
 		this.myDataInstance = MyData.getInstance();
 		this.securityManager = new model.security.SecurityManager();
-		this.registerService();
 	}
 
 	/**

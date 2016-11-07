@@ -29,6 +29,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
+	private StringBuilder sBuilder;
 
 	private JPanel welcomePanel;
 	private JTextField nomeTField;
@@ -40,7 +41,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton signInButton;
 	private JButton signUpButton;
 
-	private JPanel outerPanel;
 	private JPanel profilePanel;
 	private JComboBox<IService> servicesComboBox;
 	private JTextArea pastServicesConsent;
@@ -48,12 +48,15 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JTextComponent statusTField;
 	private JCheckBox toggleDisabledStatusCheckBox;
 	private JButton setWithdrawnStatusButton;
+	private JButton newServiceConsentButton;
+	private JButton viewDataConsentsButton;
 	private JButton addServiceButton;
 	private JButton requestServiceButton;
 
 	public MyDataProfile(Controller controller) {
 		super("Welcome to MyData");
 		this.controller = controller;
+		this.sBuilder = new StringBuilder();
 		initGUI();
 	}
 
@@ -128,8 +131,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void showProfile() {
 		welcomePanel.setVisible(false);
-		outerPanel = new JPanel();
-		outerPanel.setLayout(new BoxLayout(outerPanel, BoxLayout.LINE_AXIS));
 		profilePanel = new JPanel();
 		profilePanel.setLayout(new BoxLayout(profilePanel, BoxLayout.PAGE_AXIS));
 		profilePanel.setBorder(new TitledBorder(new EtchedBorder(), "Your Profile"));
@@ -144,13 +145,16 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			profilePanel.add(servicesComboBox);
 
 			JPanel statusPanel = new JPanel();
-			statusPanel.setLayout(new GridLayout(2, 2));
+			statusPanel.setLayout(new GridLayout(3, 2));
 			{
 				JLabel statusLabel = new JLabel("Status:");
 				statusTField = new JTextField();
 				statusTField.setEditable(false);
 				toggleDisabledStatusCheckBox = new JCheckBox("Toggle Disabled Status");
 				setWithdrawnStatusButton = new JButton("Set Withdrawn Status");
+				newServiceConsentButton = new JButton("Issue new Consent");
+				newServiceConsentButton.setEnabled(false);
+				viewDataConsentsButton = new JButton("View past Data Consents");
 
 				toggleDisabledStatusCheckBox.addActionListener(new ActionListener() {
 
@@ -168,11 +172,28 @@ public class MyDataProfile extends JFrame implements ActionListener {
 						setWithdrawnStatusButtonClicked();
 					}
 				});
+				newServiceConsentButton.addActionListener(new ActionListener() {
 
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						newServiceConsentButtonClicked();
+
+					}
+				});
+				viewDataConsentsButton.addActionListener(new ActionListener() {
+					
+					@Override
+					public void actionPerformed(ActionEvent e) {
+						viewDataConsentsButtonClicked();
+					}
+				});
+				
 				statusPanel.add(statusLabel);
 				statusPanel.add(statusTField);
 				statusPanel.add(toggleDisabledStatusCheckBox);
 				statusPanel.add(setWithdrawnStatusButton);
+				statusPanel.add(newServiceConsentButton);
+				statusPanel.add(viewDataConsentsButton);
 				statusPanel.setVisible(true);
 			}
 			profilePanel.add(statusPanel);
@@ -180,7 +201,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			JPanel centralButtonsPanel = new JPanel();
 			centralButtonsPanel.setLayout(new GridLayout(2, 1));
 			{
+				
 				requestServiceButton = new JButton("Request Service");
+				addServiceButton = new JButton("Add a new Service");
+				
 				requestServiceButton.addActionListener(new ActionListener() {
 
 					@Override
@@ -188,7 +212,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 						requestServiceButtonClicked();
 					}
 				});
-				addServiceButton = new JButton("Add a new Service");
 				addServiceButton.addActionListener(new ActionListener() {
 
 					@Override
@@ -216,12 +239,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			profilePanel.add(bottomPanel, BoxLayout.PAGE_AXIS);
 			bottomPanel.setVisible(true);
 		}
-		profilePanel.setVisible(true);
-		outerPanel.add(profilePanel);
 		this.popolaServicesComboBox();
-		this.add(outerPanel);
+		this.add(profilePanel);
 		this.pack();
-		this.outerPanel.setVisible(true);
+		this.profilePanel.setVisible(true);
 	}
 
 	private void popolaServicesComboBox() {
@@ -315,19 +336,25 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		this.popolaServicesComboBox();
 		this.statusTField.setText("Withdrawn");
 		this.viewPastSConsents();
+		this.newServiceConsentButton.setEnabled(true);
 	}
 
 	private void requestServiceButtonClicked() {
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
-		this.addServicePanel(this.controller.getServicePanel(selectedService));
+		this.controller.getServicePanel(selectedService).setVisible(true);
 	}
 
-	private void addServicePanel(JPanel customPanel) {
-		this.outerPanel.add(customPanel);
-		customPanel.setBorder(new TitledBorder(new EtchedBorder(), "Requested Service"));
-		customPanel.setVisible(true);
+	private void newServiceConsentButtonClicked() {
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		this.controller.addNewServiceConsent(selectedService);
+		this.newServiceConsentButton.setEnabled(false);
+		this.actionPerformed(null);
 	}
 
+	private void viewDataConsentsButtonClicked() {
+		this.controller.getUserInteractor().showInfoMessage("Work in progress!");	
+	}
+	
 	private void callServiceRegistry() {
 		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
 		// barbatrucco per aggiungere MLNT la prima volta
@@ -361,9 +388,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		} catch (IllegalArgumentException e1) {
 			e1.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
-			this.popolaServicesComboBox();
 		}
-
+		this.popolaServicesComboBox();
 	}
 
 	private void updateStatusTextField(boolean status) {

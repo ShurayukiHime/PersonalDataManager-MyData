@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.List;
 
+import javax.swing.JCheckBox;
+import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -34,10 +36,18 @@ public interface Controller {
 
 	public void setPanelDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min);
 
-	public JPanel getServicePanel(IService selectedService);
+	public JFrame getServicePanel(IService selectedService);
 
 	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException;
 
 	public void resetUIPreferences();
+
+	public void fillPreferencesByCategory(String string, List<JCheckBox> checksAmenity);
+
+	public void addUIPreference(String category, String name);
+
+	public void updateModel(MainFrame mainFrame);
+
+	public void addNewServiceConsent(IService selectedService);
 	
 }

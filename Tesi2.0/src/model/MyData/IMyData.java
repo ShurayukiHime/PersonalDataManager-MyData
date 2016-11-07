@@ -4,6 +4,7 @@ import java.util.Date;
 
 import model.consents.InputDataConsent;
 import model.consents.OutputDataConsent;
+import model.services.IService;
 import model.users.IUser;
 
 public interface IMyData {
@@ -16,5 +17,9 @@ public interface IMyData {
 	public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent);
 
 	public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent);
+
+	public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser);
+
+	public void createServiceAccount(IUser user, IService service);
 
 }

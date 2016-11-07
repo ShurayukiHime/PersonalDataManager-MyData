@@ -25,4 +25,6 @@ public interface IAccount {
 	public Set<ServiceConsent> getAllPastServiceConsents();
 
 	void addDataConsent(DataConsent dataConsent);
+
+	public void addServiceConsent(ServiceConsent serviceConsent);
 }
