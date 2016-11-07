@@ -492,6 +492,7 @@ public class MainFrame extends JFrame {
 
 		getContentPane().add(mainPanel, BorderLayout.PAGE_START);
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+		this.pack();
 	}
 	
 	private void selectByCategory(List<JCheckBox> checks, boolean value) {
@@ -536,6 +537,7 @@ public class MainFrame extends JFrame {
 
 			if (historic.isSelected())
 				controller.addUIPreference("historic", null);
+			this.controller.setDate(day, month, year, hour, min);
 			this.controller.updateModel(this);
 		} catch (Exception exc) {
 			JOptionPane.showMessageDialog(null, exc.getMessage());

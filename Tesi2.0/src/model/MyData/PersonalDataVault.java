@@ -218,22 +218,22 @@ public class PersonalDataVault implements IPersonalDataVault {
 	
 	@Override
 	public void saveData(IDataSet dataSet) {
-		for (String typeConst : dataSet.keySet()) {
+		for (String typeConst : dataSet.getKeys()) {
 			switch (typeConst) {
 			case Metadata.CALENDAR_CONST:
-				this.setCalendar((ICalendar) dataSet.get(typeConst));
+				this.setCalendar((ICalendar) dataSet.getObject(typeConst));
 				break;
 			case Metadata.DATE_CONST:
-				this.setDate((Date) dataSet.get(typeConst));
+				this.setDate((Date) dataSet.getObject(typeConst));
 				break;
 			case Metadata.POSITION_CONST:
-				this.setActualPosition((Position) dataSet.get(typeConst));;
+				this.setActualPosition((Position) dataSet.getObject(typeConst));;
 				break;
 			case Metadata.PREFERENCE_CONST:
-				this.setPreferences((List<IPreference>) dataSet.get(typeConst));
+				this.setPreferences((List<IPreference>) dataSet.getObject(typeConst));
 				break;
 			case Metadata.TRIP_CONST:
-				this.addTrip((ITrip) dataSet.get(typeConst));
+				this.addTrip((ITrip) dataSet.getObject(typeConst));
 				break;
 			default:
 				throw new IllegalArgumentException("The parameter " + typeConst + " is not known as a type constant.");

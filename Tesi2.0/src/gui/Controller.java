@@ -49,5 +49,7 @@ public interface Controller {
 	public void updateModel(MainFrame mainFrame);
 
 	public void addNewServiceConsent(IService selectedService);
+
+	public void setDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min);
 	
 }

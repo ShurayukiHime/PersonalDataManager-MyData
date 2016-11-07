@@ -12,13 +12,11 @@ import java.util.Map;
 
 import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import org.openstreetmap.gui.jmapviewer.JMapViewer;
 import org.openstreetmap.gui.jmapviewer.MapMarkerDot;
 
-import model.*;
 import model.MyData.DataSet;
 import model.MyData.IDataSet;
 import model.MyData.IMyData;

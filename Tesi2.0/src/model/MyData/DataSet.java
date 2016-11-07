@@ -19,14 +19,14 @@ public class DataSet implements IDataSet {
 	}
 	
 	@Override
-	public Object get (String typeConst) {
+	public Object getObject(String typeConst) {
 		if (typeConst != null && this.dataSet.containsKey(typeConst))
 			return this.dataSet.get(typeConst);
 		throw new IllegalArgumentException("The string " + typeConst + " does not match with any of the declared type constants.");
 	}
 
 	@Override
-	public Set<String> keySet() {
-		return this.keySet();
+	public Set<String> getKeys() {
+		return this.dataSet.keySet();
 	}
 }

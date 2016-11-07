@@ -130,9 +130,10 @@ public class ConsentManager {
 			throw new IllegalStateException("Cannot issue Input Data Consent for service " + service.toString()
 					+ " if Service Consent is not Active.");
 		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
-		if (!metadata.containsAll(dataSet.keySet()))
+		Set<String> dataSetKeys = dataSet.getKeys();
+		if (!metadata.containsAll(dataSetKeys))
 			throw new IllegalArgumentException("The service " + service.toString() + " does not have permission to access some, or all, data types specified in the given DataSet.");
-		InputDataConsent inDataConsent = new InputDataConsent(dataSet.keySet(), consent);
+		InputDataConsent inDataConsent = new InputDataConsent(dataSet.getKeys(), consent);
 		user.addDataConsent(inDataConsent, service);
 		return inDataConsent;
 	}

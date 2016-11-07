@@ -1,6 +1,7 @@
 package model.consents;
 
 import java.util.Date;
+import java.util.UUID;
 
 import model.services.IService;
 import model.users.IUser;
@@ -29,6 +30,7 @@ public class ServiceConsent implements IConsent {
 	private IService service;
 	private IUser user;
 	private ConsentStatus consentStatus;
+	private UUID identifier;
 
 	public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service, IUser user) {
 		super();
@@ -38,6 +40,7 @@ public class ServiceConsent implements IConsent {
 		this.service = service;
 		this.user = user;
 		this.consentStatus = ConsentStatus.ACTIVE;
+		this.identifier = UUID.randomUUID();
 	}
 
 	public Date getTimestampGiven() {
@@ -94,10 +97,7 @@ public class ServiceConsent implements IConsent {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((consentStatus == null) ? 0 : consentStatus.hashCode());
-		result = prime * result + ((service == null) ? 0 : service.hashCode());
-		result = prime * result + ((timestampWithdrawn == null) ? 0 : timestampWithdrawn.hashCode());
-		result = prime * result + ((user == null) ? 0 : user.hashCode());
+		result = prime * result + ((identifier == null) ? 0 : identifier.hashCode());
 		return result;
 	}
 
@@ -110,30 +110,18 @@ public class ServiceConsent implements IConsent {
 		if (getClass() != obj.getClass())
 			return false;
 		ServiceConsent other = (ServiceConsent) obj;
-		if (consentStatus != other.consentStatus)
-			return false;
-		if (service == null) {
-			if (other.service != null)
+		if (identifier == null) {
+			if (other.identifier != null)
 				return false;
-		} else if (!service.equals(other.service))
-			return false;
-		if (timestampWithdrawn == null) {
-			if (other.timestampWithdrawn != null)
-				return false;
-		} else if (!timestampWithdrawn.equals(other.timestampWithdrawn))
-			return false;
-		if (user == null) {
-			if (other.user != null)
-				return false;
-		} else if (!user.equals(other.user))
+		} else if (!identifier.equals(other.identifier))
 			return false;
 		return true;
 	}
 
 	public String toString() {
-		String result = "Service Consent issued at " + this.timestampGiven + " for user " + this.user.toString()
+		String result = "Service Consent " + this.identifier + " issued at " + this.timestampGiven + " for user " + this.user.toString()
 				+ " at service " + this.service.toString() + ". Current status: " + this.consentStatus;
-		return this.consentStatus == ConsentStatus.WITHDRAWN ? result + " withdrawn at " + this.timestampWithdrawn + "."
+		return this.consentStatus == ConsentStatus.WITHDRAWN ? result + " at " + this.timestampWithdrawn + "."
 				: result;
 	}
 }

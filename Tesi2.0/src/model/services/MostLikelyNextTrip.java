@@ -29,10 +29,10 @@ public class MostLikelyNextTrip extends AbstractService {
 
 	@Override
 	protected Object concreteService(IDataSet dataSet) throws FileNotFoundException, IOException {
-		return this.suggesterManager.getSuggestions((LocalDateTime) dataSet.get(Metadata.DATE_CONST),
-				(Position) dataSet.get(Metadata.POSITION_CONST),
-				(List<IPreference>) dataSet.get(Metadata.PREFERENCE_CONST),
-				(List<ITrip>) dataSet.get(Metadata.TRIP_CONST), (ICalendar) dataSet.get(Metadata.CALENDAR_CONST));
+		return this.suggesterManager.getSuggestions((LocalDateTime) dataSet.getObject(Metadata.DATE_CONST),
+				(Position) dataSet.getObject(Metadata.POSITION_CONST),
+				(List<IPreference>) dataSet.getObject(Metadata.PREFERENCE_CONST),
+				(List<ITrip>) dataSet.getObject(Metadata.TRIP_CONST), (ICalendar) dataSet.getObject(Metadata.CALENDAR_CONST));
 	}
 
 	/**

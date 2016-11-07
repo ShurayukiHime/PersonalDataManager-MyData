@@ -6,7 +6,7 @@ public interface IDataSet {
 
 	public void put(String typeConst, Object obj);
 
-	public Object get(String typeConst);
+	public Object getObject(String typeConst);
 
-	public Set<String> keySet();
+	public Set<String> getKeys();
 }
