@@ -27,17 +27,17 @@ import model.userdata.ICalendar;
 import model.userdata.IPreference;
 
 public class PersonalDataVault implements IPersonalDataVault {
-	
+
 	private List<IPreference> preferences;
 	private ICalendar calendar;
 	private List<ITrip> trips;
 	private Position actualPosition;
-	private Date today;
+	private LocalDateTime today;
 
- 	public PersonalDataVault() {
+	public PersonalDataVault() {
 		this.preferences = new ArrayList<>();
 		this.trips = new ArrayList<>();
-		
+
 		this.calendar = readCalendar();
 		this.trips = readAllTrips();
 	}
@@ -48,28 +48,28 @@ public class PersonalDataVault implements IPersonalDataVault {
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(fileName));
 			String line;
-			
+
 			while ((line = br.readLine()) != null) {
 				ITrip trip = parseTrip(line);
 				result.add(trip);
 			}
-		br.close();
+			br.close();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		return result;
 	}
-	
-	private ITrip parseTrip (String line) {
+
+	private ITrip parseTrip(String line) {
 		if (line == null || line.length() == 0)
 			throw new IllegalArgumentException("line must be initialized");
 		ITrip result = null;
-		
+
 		String[] data = line.split(",");
-		
+
 		if (data.length != 9)
 			throw new IllegalArgumentException("data must be correct, line is uncorrect");
-		
+
 		double x_from = Double.parseDouble(data[0].trim());
 		double y_from = Double.parseDouble(data[1].trim());
 		double x_to = Double.parseDouble(data[2].trim());
@@ -85,11 +85,11 @@ public class PersonalDataVault implements IPersonalDataVault {
 		LocalDateTime date = LocalDateTime.of(LocalDate.of(year, month, day), LocalTime.of(hour, min));
 
 		result = new Trip(from, to, date);
-		
+
 		return result;
 	}
 
-	public void addTrip(ITrip trip)  {
+	public void addTrip(ITrip trip) {
 		if (trip == null)
 			throw new IllegalArgumentException("trip must be initialized");
 		String fileName = "MyTrips.txt";
@@ -108,40 +108,40 @@ public class PersonalDataVault implements IPersonalDataVault {
 		String fileName = "Calendar.txt";
 
 		List<AbstractCommitment> commitments = new ArrayList<>();
-		BufferedReader br  = null;
+		BufferedReader br = null;
 		String line;
 		try {
 			br = new BufferedReader(new FileReader(new File(fileName)));
 			while ((line = br.readLine()) != null) {
 				StringTokenizer st = new StringTokenizer(line, ",");
-				
+
 				double latitude = Double.parseDouble(st.nextToken().trim());
 				double longitude = Double.parseDouble(st.nextToken().trim());
 				Position position = new Position(latitude, longitude);
-				
+
 				int day = Integer.parseInt(st.nextToken().trim());
 				int month = Integer.parseInt(st.nextToken().trim());
 				int year = Integer.parseInt(st.nextToken().trim());
 				int hour = Integer.parseInt(st.nextToken().trim());
 				int min = Integer.parseInt(st.nextToken().trim());
 				LocalDateTime date = LocalDateTime.of(year, month, day, hour, min);
-				
+
 				String description = st.nextToken().trim();
-				
+
 				AbstractCommitment commitment = new Commitment(description, date, position);
 				commitments.add(commitment);
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+
 		return new Calendar(commitments);
 	}
 
 	public List<IPreference> getPreferences() {
 		return this.preferences;
 	}
-	
+
 	public void setPreferences(List<IPreference> preferences) {
 		if (preferences == null)
 			throw new IllegalArgumentException("Preferences must be initialized.");
@@ -157,11 +157,11 @@ public class PersonalDataVault implements IPersonalDataVault {
 	public ICalendar getCalendar() {
 		return this.calendar;
 	}
-	
-	private void setCalendar (ICalendar calendar) {
+
+	private void setCalendar(ICalendar calendar) {
 		this.calendar = calendar;
 	}
-	
+
 	@Override
 	public Position getPositionByDate(LocalDateTime date) {
 		List<ITrip> trips = getAllTrip();
@@ -176,72 +176,54 @@ public class PersonalDataVault implements IPersonalDataVault {
 		}
 		return result;
 	}
-	
+
 	private Position getActualPosition() {
 		return actualPosition;
 	}
 
-	private void setActualPosition (Position actualPosition) {
+	private void setActualPosition(Position actualPosition) {
 		this.actualPosition = actualPosition;
 	}
 
-	private void setDate(Date today) {
-		this.today = today;
+	private void setDate(LocalDateTime localDateTime) {
+		this.today = localDateTime;
 	}
 
 	@Override
 	public IDataSet getData(Set<String> typesConst) {
 		IDataSet dataSet = new DataSet();
 		for (String typeConst : typesConst) {
-			switch (typeConst) {
-			case Metadata.CALENDAR_CONST:
+			if (typeConst.equals(Metadata.CALENDAR_CONST))
 				dataSet.put(typeConst, this.getCalendar());
-				break;
-			case Metadata.DATE_CONST:
+			if (typeConst.equals(Metadata.DATE_CONST))
 				dataSet.put(typeConst, this.getDate());
-				break;
-			case Metadata.POSITION_CONST:
+			if (typeConst.equals(Metadata.POSITION_CONST))
 				dataSet.put(typeConst, this.getActualPosition());
-				break;
-			case Metadata.PREFERENCE_CONST:
+			if (typeConst.equals(Metadata.PREFERENCE_CONST))
 				dataSet.put(typeConst, this.getPreferences());
-				break;
-			case Metadata.TRIP_CONST:
+			if (typeConst.equals(Metadata.TRIP_CONST))
 				dataSet.put(typeConst, this.getAllTrip());
-				break;
-			default:
-				throw new IllegalArgumentException("The parameter " + typeConst + " is not known as a type constant.");
-			}
 		}
 		return dataSet;
 	}
-	
+
 	@Override
 	public void saveData(IDataSet dataSet) {
 		for (String typeConst : dataSet.getKeys()) {
-			switch (typeConst) {
-			case Metadata.CALENDAR_CONST:
+			if (typeConst.equals(Metadata.CALENDAR_CONST))
 				this.setCalendar((ICalendar) dataSet.getObject(typeConst));
-				break;
-			case Metadata.DATE_CONST:
-				this.setDate((Date) dataSet.getObject(typeConst));
-				break;
-			case Metadata.POSITION_CONST:
-				this.setActualPosition((Position) dataSet.getObject(typeConst));;
-				break;
-			case Metadata.PREFERENCE_CONST:
+			if (typeConst.equals(Metadata.DATE_CONST))
+				this.setDate((LocalDateTime) dataSet.getObject(typeConst));
+			if (typeConst.equals(Metadata.POSITION_CONST))
+				this.setActualPosition((Position) dataSet.getObject(typeConst));
+			if (typeConst.equals(Metadata.PREFERENCE_CONST))
 				this.setPreferences((List<IPreference>) dataSet.getObject(typeConst));
-				break;
-			case Metadata.TRIP_CONST:
+			if (typeConst.equals(Metadata.TRIP_CONST))
 				this.addTrip((ITrip) dataSet.getObject(typeConst));
-				break;
-			default:
-				throw new IllegalArgumentException("The parameter " + typeConst + " is not known as a type constant.");
-			}
 		}
 	}
 
- 	private Date getDate() {
+	private LocalDateTime getDate() {
 		return this.today;
 	}
 }

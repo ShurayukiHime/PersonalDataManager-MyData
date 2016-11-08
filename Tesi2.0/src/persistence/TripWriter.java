@@ -9,7 +9,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import model.*;
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
 import model.mapfeatures.Trip;

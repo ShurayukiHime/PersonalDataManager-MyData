@@ -29,7 +29,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
 	private Controller controller;
-	private StringBuilder sBuilder;
 
 	private JPanel welcomePanel;
 	private JTextField nomeTField;
@@ -43,7 +42,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private JPanel profilePanel;
 	private JComboBox<IService> servicesComboBox;
-	private JTextArea pastServicesConsent;
+	private JTextArea logTextArea;
 
 	private JTextComponent statusTField;
 	private JCheckBox toggleDisabledStatusCheckBox;
@@ -56,7 +55,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	public MyDataProfile(Controller controller) {
 		super("Welcome to MyData");
 		this.controller = controller;
-		this.sBuilder = new StringBuilder();
 		initGUI();
 	}
 
@@ -229,10 +227,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			JPanel bottomPanel = new JPanel();
 			bottomPanel.setLayout(new GridLayout(1, 1));
 			{
-				pastServicesConsent = new JTextArea(10, 30);
-				pastServicesConsent.setEditable(false);
-				pastServicesConsent.setLineWrap(true);
-				JScrollPane scrollPane = new JScrollPane(pastServicesConsent);
+				logTextArea = new JTextArea(10, 30);
+				logTextArea.setEditable(false);
+				logTextArea.setLineWrap(true);
+				JScrollPane scrollPane = new JScrollPane(logTextArea);
 
 				bottomPanel.add(scrollPane);
 			}
@@ -272,7 +270,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 					(Date) datePicker.getValue(), emailAddressTField.getText(), pswPField.getPassword().toString());
 			// if creation of new user is safe, then
 			showProfile();
-			// updates list of services for new panel
 		} catch (IllegalStateException | IllegalArgumentException | SecurityException e1) {
 			e1.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
@@ -311,9 +308,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			boolean status = this.toggleDisabledStatusCheckBox.isSelected();
 			this.updateStatusTextField(status);
 			this.requestServiceButton.setEnabled(status);
-			String message = "Consent Status updated to ";
-			message = status ? message + "Active." : message + "Disabled.";
-			this.pastServicesConsent.setText(this.pastServicesConsent.getText() + System.getProperty("line.separator") +  message);
+			this.viewPastSConsents();
+//			String message = "Consent Status updated to ";
+//			message = status ? message + "Active." : message + "Disabled.";
+//			this.logTextArea.setText(this.logTextArea.getText() + System.getProperty("line.separator") +  message);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
@@ -352,7 +350,10 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void viewDataConsentsButtonClicked() {
-		this.controller.getUserInteractor().showInfoMessage("Work in progress!");	
+		DataConsentFrame dcFrame = new DataConsentFrame(this.controller);
+		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
+		dcFrame.updateTextArea(this.controller.getAllDConsents(selectedService));
+		dcFrame.setVisible(true);
 	}
 	
 	private void callServiceRegistry() {
@@ -371,8 +372,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void viewPastSConsents() {
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
-		String pastSConsents = this.controller.getAllPastSConsents(selectedService);
-		this.pastServicesConsent.setText(pastSConsents);
+		this.logTextArea.setText(this.controller.getAllSConsents(selectedService));
 	}
 
 	@Override

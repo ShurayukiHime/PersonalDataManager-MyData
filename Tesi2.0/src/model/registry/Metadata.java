@@ -1,6 +1,6 @@
 package model.registry;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import model.mapfeatures.ITrip;
 import model.mapfeatures.Position;
@@ -13,7 +13,7 @@ public final class Metadata implements IMetadata {
 	public static final String TRIP_CONST = ITrip.class.getCanonicalName();
 	public static final String PREFERENCE_CONST = IPreference.class.getCanonicalName();
 	public static final String POSITION_CONST = Position.class.getCanonicalName();
-	public static final String DATE_CONST = Date.class.getCanonicalName();
+	public static final String DATE_CONST = LocalDateTime.class.getCanonicalName();
 
 	private Metadata() {
 	}

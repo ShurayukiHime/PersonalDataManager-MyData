@@ -3,6 +3,8 @@ package model.MyData;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import model.consents.ConsentStatus;
 import model.consents.InputDataConsent;
@@ -16,6 +18,7 @@ public class MyData implements IMyData {
 
 	private static MyData instance;
 	private Set<IUser> myDataUsers;
+	private static Logger logger = Logger.getGlobal();
 
 	private MyData() {
 		this.myDataUsers = new HashSet<IUser>();
@@ -37,6 +40,7 @@ public class MyData implements IMyData {
 		if (!(this.myDataUsers.add(newUser))) {
 			throw new IllegalStateException("Cannot register two users with the same email address.");
 		}
+		logger.log(Level.FINE, "Creation of MyData account for user " + newUser.toString() + " succeeded.");
 		return newUser;
 	}
 
@@ -56,6 +60,7 @@ public class MyData implements IMyData {
 	@Override
 	public void createServiceAccount(IUser user, IService service) {
 		user.newAccountAtService(service);
+		logger.log(Level.FINE, "Created account for user " + user.toString() + " at service " + service.toString());
 	}
 
 	@Override

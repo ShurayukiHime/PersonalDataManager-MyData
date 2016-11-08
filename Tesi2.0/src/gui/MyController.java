@@ -23,6 +23,7 @@ import model.MyData.IMyData;
 import model.MyData.MyData;
 import model.consents.ConsentManager;
 import model.consents.ConsentStatus;
+import model.consents.DataConsent;
 import model.consents.ServiceConsent;
 import model.mapfeatures.Position;
 import model.registry.Metadata;
@@ -32,10 +33,8 @@ import model.userdata.IDestination;
 import model.userdata.IPreference;
 import model.userdata.Preference;
 import model.userdata.suggestions.ISuggestion;
-import model.userdata.suggestions.SuggesterManager;
 import model.users.IAccount;
 import model.users.IUser;
-import persistence.*;
 
 public class MyController implements Controller {
 
@@ -46,13 +45,14 @@ public class MyController implements Controller {
 	private Map<IService, JFrame> mappingServicePanel;
 	private IUser authenticatedUser;
 	private UserInteractor userInteractor;
-
+	
 	public MyController(UserInteractor userInteractor) {
 		preferences = new ArrayList<>();
 		this.myDataInstance = MyData.getInstance();
 		this.mappingServicePanel = new HashMap<IService, JFrame>();
 		this.userInteractor = userInteractor;
 	}
+	
 
 	@Override
 	public UserInteractor getUserInteractor() {
@@ -185,18 +185,14 @@ public class MyController implements Controller {
 	}
 
 	@Override
-	public String getAllPastSConsents(IService selectedService) {
-		// retrieve account for service (user SHOULD have it)
-		// get all consents
-		// for each sconsent, toString();
-
+	public String getAllSConsents(IService selectedService) {
 		StringBuilder sb = new StringBuilder();
 		IAccount accountAtService = null;
 		for (IAccount a : authenticatedUser.getAllAccounts()) {
 			if (a.getService().equals(selectedService))
 				accountAtService = a;
 		}
-		for (ServiceConsent sc : accountAtService.getAllPastServiceConsents())
+		for (ServiceConsent sc : accountAtService.getAllServiceConsents())
 			sb.append(sc.toString() + System.getProperty("line.separator"));
 		return sb.toString();
 	}
@@ -276,5 +272,22 @@ public class MyController implements Controller {
 	@Override
 	public void addNewServiceConsent(IService selectedService) {
 		this.myDataInstance.issueNewServiceConsent(selectedService, authenticatedUser);
+	}
+
+
+	
+	@Override
+	public String getAllDConsents(IService selectedService) {
+		StringBuilder sb = new StringBuilder();
+		IAccount accountAtService = null;
+		for (IAccount a : authenticatedUser.getAllAccounts()) {
+			if (a.getService().equals(selectedService))
+				accountAtService = a;
+		}
+		ServiceConsent sc = accountAtService.getActiveDisabledSC();
+		if (sc != null)
+			for (DataConsent dc : accountAtService.getAllDataConsents(sc))
+				sb.append(dc.toString() + System.getProperty("line.separator"));
+		return sb.toString();
 	}
 }

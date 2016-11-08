@@ -1,5 +1,6 @@
 package model.users;
 
+import java.util.List;
 import java.util.Set;
 
 import model.MyData.IPersonalDataVault;
@@ -22,9 +23,11 @@ public interface IAccount {
 	 */
 	public ServiceConsent getActiveDisabledSC();
 
-	public Set<ServiceConsent> getAllPastServiceConsents();
+	public Set<ServiceConsent> getAllServiceConsents();
 
 	void addDataConsent(DataConsent dataConsent);
 
 	public void addServiceConsent(ServiceConsent serviceConsent);
+
+	public List<DataConsent> getAllDataConsents(ServiceConsent sc);
 }

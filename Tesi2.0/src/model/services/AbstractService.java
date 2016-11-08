@@ -7,7 +7,6 @@ import model.MyData.IDataSet;
 import model.MyData.IMyData;
 import model.MyData.MyData;
 import model.consents.ConsentManager;
-import model.consents.DataConsent;
 import model.consents.InputDataConsent;
 import model.consents.OutputDataConsent;
 import model.consents.ServiceConsent;

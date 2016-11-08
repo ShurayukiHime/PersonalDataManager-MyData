@@ -79,11 +79,10 @@ class Account implements IAccount {
 	}
 
 	@Override
-	public Set<ServiceConsent> getAllPastServiceConsents() {
+	public Set<ServiceConsent> getAllServiceConsents() {
 		Set<ServiceConsent> result = new HashSet<ServiceConsent>();
 		for (ServiceConsent sc : this.dataConsents.keySet())
-			if (sc.getConsentStatus() == ConsentStatus.WITHDRAWN)
-				result.add(sc);
+			result.add(sc);
 		return result;
 	}
 
@@ -121,5 +120,13 @@ class Account implements IAccount {
 			throw new IllegalStateException(
 					"Cannot issue new ServiceConsent if there is already one instance with Active or Disabled Status.");
 		this.dataConsents.put(serviceConsent, new ArrayList<DataConsent>());
+	}
+
+	
+	@Override
+	public List<DataConsent> getAllDataConsents(ServiceConsent sc) {
+		if (!this.dataConsents.containsKey(sc))
+			throw new IllegalArgumentException("The ServiceConsent specified does not refer to the current account.");
+		return this.dataConsents.get(sc);
 	}
 }

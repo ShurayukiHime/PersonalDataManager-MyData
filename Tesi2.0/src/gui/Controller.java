@@ -20,7 +20,7 @@ public interface Controller {
 
 	public void toggleStatus(IService selectedService, boolean status);
 
-	public String getAllPastSConsents(IService selectedService);
+	public String getAllSConsents(IService selectedService);
 
 	public void addService(IService selectedService);
 
@@ -51,5 +51,7 @@ public interface Controller {
 	public void addNewServiceConsent(IService selectedService);
 
 	public void setDate(JTextField day, JTextField month, JTextField year, JTextField hour, JTextField min);
-	
+
+	public String getAllDConsents(IService selectedService);
+
 }
