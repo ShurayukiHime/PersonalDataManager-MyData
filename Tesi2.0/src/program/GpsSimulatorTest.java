@@ -1,6 +1,5 @@
 package program;
 
-import model.*;
 import model.mapfeatures.GpsSimulator;
 import model.userdata.TripDetector;
 
