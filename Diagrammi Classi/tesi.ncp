@@ -15,7 +15,7 @@
       <Entity type="Class">
         <Name>ServiceConsent</Name>
         <Access>Public</Access>
-        <Location left="243" top="295" />
+        <Location left="231" top="266" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -23,7 +23,7 @@
       <Entity type="Class">
         <Name>DataConsent</Name>
         <Access>Public</Access>
-        <Location left="552" top="295" />
+        <Location left="540" top="266" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -31,7 +31,7 @@
       <Entity type="Class">
         <Name>InputDataConsent</Name>
         <Access>Public</Access>
-        <Location left="767" top="387" />
+        <Location left="755" top="358" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -39,7 +39,7 @@
       <Entity type="Class">
         <Name>OutputDataConsent</Name>
         <Access>Public</Access>
-        <Location left="767" top="214" />
+        <Location left="755" top="185" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -57,14 +57,14 @@
       <Entity type="Interface">
         <Name>IConsent</Name>
         <Access>Public</Access>
-        <Location left="396" top="470" />
+        <Location left="384" top="441" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
       </Entity>
       <Entity type="Class">
         <Name>MostLikelyNextTrip</Name>
         <Access>Public</Access>
-        <Location left="1671" top="482" />
+        <Location left="1659" top="453" />
         <Size width="162" height="77" />
         <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
@@ -72,7 +72,7 @@
       <Entity type="Class">
         <Name>AbstractService</Name>
         <Access>Public</Access>
-        <Location left="1671" top="332" />
+        <Location left="1659" top="303" />
         <Size width="162" height="77" />
         <Collapsed>False</Collapsed>
         <Modifier>Abstract</Modifier>
@@ -80,7 +80,7 @@
       <Entity type="Interface">
         <Name>IService</Name>
         <Access>Public</Access>
-        <Location left="1648" top="189" />
+        <Location left="1636" top="160" />
         <Size width="162" height="77" />
         <Collapsed>False</Collapsed>
       </Entity>
@@ -117,7 +117,7 @@
       <Entity type="Class">
         <Name>SuggesterManager</Name>
         <Access>Public</Access>
-        <Location left="1315" top="520" />
+        <Location left="1303" top="491" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -162,7 +162,7 @@
       <Entity type="Class">
         <Name>DataSet</Name>
         <Access>Public</Access>
-        <Location left="870" top="898" />
+        <Location left="858" top="869" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -226,20 +226,20 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>848</X>
-          <Y>362</Y>
+          <X>836</X>
+          <Y>333</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>761</X>
-          <Y>320</Y>
+          <X>749</X>
+          <Y>291</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Generalization" first="4" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>761</X>
-          <Y>320</Y>
+          <X>749</X>
+          <Y>291</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="1" second="6">
@@ -267,16 +267,12 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="12" second="13">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="7" second="14">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -315,23 +311,55 @@
       <Entity type="Class">
         <Name>Account</Name>
         <Access>Public</Access>
-        <Location left="840" top="721" />
-        <Size width="162" height="77" />
+        <Location left="1702" top="740" />
+        <Size width="327" height="281" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private Map&lt;ServiceConsent, List&lt;DataConsent&gt;&gt; dataConsents</Member>
+        <Member type="Field">private IService service</Member>
+        <Member type="Constructor">public Account(IService service, ServiceConsent firstConsent)</Member>
+        <Member type="Method">public void addDataConsent(DataConsent dataConsent)</Member>
+        <Member type="Method">public void addServiceConsent(ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public ServiceConsent getActiveDisabledSC()</Member>
+        <Member type="Method">public List&lt;DataConsent&gt; getAllDataConsents(ServiceConsent sc)</Member>
+        <Member type="Method">public Set&lt;ServiceConsent&gt; getAllServiceConsents()</Member>
+        <Member type="Method">public IService getService()</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>MyDataUser</Name>
         <Access>Public</Access>
-        <Location left="1311" top="721" />
-        <Size width="162" height="77" />
+        <Location left="2168" top="740" />
+        <Size width="553" height="417" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private String firstName</Member>
+        <Member type="Field">private String lastName</Member>
+        <Member type="Field">private Date dateOfBirth</Member>
+        <Member type="Field">private String emailAddress</Member>
+        <Member type="Field">private String password</Member>
+        <Member type="Field">private Set&lt;IAccount&gt; accounts</Member>
+        <Member type="Field">private IPersonalDataVault personalDataVault</Member>
+        <Member type="Field">private ISecurityManager securityManager</Member>
+        <Member type="Constructor">public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
+        <Member type="Method">public void addDataConsent(DataConsent dataConsent, IService service)</Member>
+        <Member type="Method">public void addServiceConsent(IService selectedService)</Member>
+        <Member type="Method">public boolean checkIfPasswordEqual(String givenPsw)</Member>
+        <Member type="Method">public Set&lt;IAccount&gt; getAllAccounts()</Member>
+        <Member type="Method">public IPersonalDataVault getPersonalDataVault()</Member>
+        <Member type="Method">public ISecurityManager getSecurityManager()</Member>
+        <Member type="Method">public boolean hasAccountAtService(IService service)</Member>
+        <Member type="Method">public void newAccountAtService(IService service)</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>IAccount</Name>
         <Access>Public</Access>
-        <Location left="760" top="398" />
+        <Location left="1702" top="417" />
         <Size width="327" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void addDataConsent(DataConsent dataConsent)</Member>
@@ -344,30 +372,44 @@
       <Entity type="Interface">
         <Name>IUser</Name>
         <Access>Public</Access>
-        <Location left="1226" top="398" />
-        <Size width="364" height="213" />
+        <Location left="2168" top="417" />
+        <Size width="364" height="281" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void addDataConsent(DataConsent dataConsent, IService service)</Member>
         <Member type="Method">public void addServiceConsent(IService service)</Member>
+        <Member type="Method">public boolean checkIfPasswordEqual(String givenPsw)</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
         <Member type="Method">public ServiceConsent getActiveSCForService(IService service)</Member>
         <Member type="Method">public Set&lt;IAccount&gt; getAllAccounts()</Member>
         <Member type="Method">public IPersonalDataVault getPersonalDataVault()</Member>
         <Member type="Method">public ISecurityManager getSecurityManager()</Member>
         <Member type="Method">public boolean hasAccountAtService(IService service)</Member>
+        <Member type="Method">public int hashCode()</Member>
         <Member type="Method">public void newAccountAtService(IService service)</Member>
+        <Member type="Method">public String toString()</Member>
       </Entity>
       <Entity type="Class">
         <Name>SecurityManager</Name>
         <Access>Public</Access>
-        <Location left="1278" top="1175" />
-        <Size width="162" height="77" />
+        <Location left="2135" top="1448" />
+        <Size width="375" height="247" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private KeyPair keyPair</Member>
+        <Member type="Field">private final String keyAlgorithm</Member>
+        <Member type="Field">private final String randomAlgorithm</Member>
+        <Member type="Field">private final String provider</Member>
+        <Member type="Field">private final String signatureAlgorithm</Member>
+        <Member type="Constructor">public SecurityManager()</Member>
+        <Member type="Method">private KeyPair generateKeys(String keyAlgorithm, String randomAlgorithm)</Member>
+        <Member type="Method">public byte[] sign(byte[] toSign)</Member>
+        <Member type="Method">public boolean verify(PublicKey pubKey, byte[] toUpdate, byte[] toVerify)</Member>
+        <Member type="Method">public PublicKey getPublicKey()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>ISecurityManager</Name>
         <Access>Public</Access>
-        <Location left="1187" top="934" />
+        <Location left="2151" top="1252" />
         <Size width="371" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public byte[] sign(byte[] toSign)</Member>
@@ -377,11 +419,11 @@
       <Entity type="Class">
         <Name>ConsentManager</Name>
         <Access>Public</Access>
-        <Location left="1832" top="585" />
+        <Location left="310" top="1520" />
         <Size width="532" height="162" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public static ServiceConsent askServiceConsent(IUser user, IService service)</Member>
         <Member type="Constructor">private ConsentManager()</Member>
+        <Member type="Method">public static ServiceConsent askServiceConsent(IUser user, IService service)</Member>
         <Member type="Method">public static void changeServiceConsentStatusForService(IUser user, IService service, ConsentStatus newStatus)</Member>
         <Member type="Method">public static OutputDataConsent askOutputDataConsent(IUser user, IService service)</Member>
         <Member type="Method">public static InputDataConsent askInputDataConsent(IUser user, IService service, IDataSet dataSet)</Member>
@@ -390,7 +432,7 @@
       <Entity type="Enum">
         <Name>ConsentStatus</Name>
         <Access>Public</Access>
-        <Location left="840" top="964" />
+        <Location left="504" top="1270" />
         <Size width="163" height="112" />
         <Collapsed>False</Collapsed>
         <Value>Active</Value>
@@ -400,30 +442,256 @@
       <Entity type="Class">
         <Name>PersonalDataVault</Name>
         <Access>Public</Access>
-        <Location left="1832" top="1106" />
-        <Size width="162" height="77" />
+        <Location left="2809" top="443" />
+        <Size width="181" height="179" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private List&lt;IPreference&gt; preferences</Member>
+        <Member type="Field">private ICalendar calendar</Member>
+        <Member type="Field">private List&lt;ITrip&gt; trips</Member>
+        <Member type="Field">private Position actualPosition</Member>
+        <Member type="Field">private LocalDateTime today</Member>
+        <Member type="Constructor">public PersonalDataVault()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>IPersonalDataVault</Name>
         <Access>Public</Access>
-        <Location left="1832" top="934" />
+        <Location left="2871" top="919" />
         <Size width="249" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public IDataSet getData(Set&lt;String&gt; typesConst)</Member>
         <Member type="Method">public void saveData(IDataSet dataSet)</Member>
       </Entity>
+      <Entity type="Interface">
+        <Name>IConsent</Name>
+        <Access>Public</Access>
+        <Location left="835" top="1256" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>OutputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="1614" top="1583" />
+        <Size width="414" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public OutputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>InputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="1057" top="1561" />
+        <Size width="406" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public InputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataConsent</Name>
+        <Access>Public</Access>
+        <Location left="1320" top="1087" />
+        <Size width="380" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Set&lt;String&gt; typesConst</Member>
+        <Member type="Field">private ServiceConsent serviceConsent</Member>
+        <Member type="Field">private Date timestamp</Member>
+        <Member type="Field">private UUID identifier</Member>
+        <Member type="Constructor">public DataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public Set&lt;String&gt; getTypesConst()</Member>
+        <Member type="Method">public ServiceConsent getServiceConsent()</Member>
+        <Member type="Method">public UUID getIdentifier()</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ServiceConsent</Name>
+        <Access>Public</Access>
+        <Location left="538" top="630" />
+        <Size width="570" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private byte[] signedByService</Member>
+        <Member type="Field">private byte[] signedByUser</Member>
+        <Member type="Field">private Date timestampGiven</Member>
+        <Member type="Field">private Date timestampWithdrawn</Member>
+        <Member type="Field">private IService service</Member>
+        <Member type="Field">private IUser user</Member>
+        <Member type="Field">private ConsentStatus consentStatus</Member>
+        <Member type="Field">private UUID identifier</Member>
+        <Member type="Constructor">public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service, IUser user)</Member>
+        <Member type="Method">public Date getTimestampGiven()</Member>
+        <Member type="Method">public Date getTimestampWithdrawn()</Member>
+        <Member type="Method">private void setTimestampWithdrawn(Date timestampWithdrawn)</Member>
+        <Member type="Method">public IService getService()</Member>
+        <Member type="Method">public ConsentStatus getConsentStatus()</Member>
+        <Member type="Method">public IUser getUser()</Member>
+        <Member type="Method">private void setConsentStatus(ConsentStatus consentStatus)</Member>
+        <Member type="Method">protected void ChangeConsentStatus(ConsentStatus newStatus)</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SuggesterManager</Name>
+        <Access>Public</Access>
+        <Location left="3415" top="1807" />
+        <Size width="807" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static SuggesterManager instance</Member>
+        <Member type="Constructor">private SuggesterManager()</Member>
+        <Member type="Method">public static SuggesterManager getInstance()</Member>
+        <Member type="Method">private void addPositions(List&lt;ISuggestion&gt; suggestions, List&lt;Position&gt; positions)</Member>
+        <Member type="Method">public List&lt;ISuggestion&gt; getSuggestions(LocalDateTime date, Position actualPosition, List&lt;IPreference&gt; allPreferences, List&lt;ITrip&gt; allTrips, ICalendar calendar)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IService</Name>
+        <Access>Public</Access>
+        <Location left="3945" top="930" />
+        <Size width="269" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public ISecurityManager getSecurityManager()</Member>
+        <Member type="Method">public Object provideService(IUser user)</Member>
+        <Member type="Method">public void gatherData(IUser user, IDataSet dataSet)</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>AbstractService</Name>
+        <Access>Public</Access>
+        <Location left="3945" top="1142" />
+        <Size width="269" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private IMyData myDataInstance</Member>
+        <Member type="Field">private ISecurityManager securityManager</Member>
+        <Member type="Constructor">protected AbstractService()</Member>
+        <Member type="Method">protected abstract void registerService()</Member>
+        <Member type="Method">public Object provideService(IUser user)</Member>
+        <Member type="Method">protected abstract Object concreteService(IDataSet dataSet)</Member>
+        <Member type="Method">public void gatherData(IUser user, IDataSet dataSet)</Member>
+        <Member type="Method">public ISecurityManager getSecurityManager()</Member>
+        <Member type="Method">public abstract int hashCode()</Member>
+        <Member type="Method">public abstract boolean equals(Object obj)</Member>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MostLikelyNextTrip</Name>
+        <Access>Public</Access>
+        <Location left="3974" top="1467" />
+        <Size width="242" height="230" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private final String name</Member>
+        <Member type="Field">private final Set&lt;String&gt; identifiers</Member>
+        <Member type="Field">private SuggesterManager suggesterManager</Member>
+        <Member type="Constructor">public MostLikelyNextTrip()</Member>
+        <Member type="Method">protected Object concreteService(IDataSet dataSet)</Member>
+        <Member type="Method">protected void registerService()</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataSet</Name>
+        <Access>Public</Access>
+        <Location left="3558" top="672" />
+        <Size width="162" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Map&lt;String, Object&gt; dataSet</Member>
+        <Member type="Constructor">public DataSet()</Member>
+        <Member type="Method">public void put(String typeConst, Object obj)</Member>
+        <Member type="Method">public Object getObject(String typeConst)</Member>
+        <Member type="Method">public Set&lt;String&gt; getKeys()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDataSet</Name>
+        <Access>Public</Access>
+        <Location left="3349" top="910" />
+        <Size width="229" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void put(String typeConst, Object obj)</Member>
+        <Member type="Method">public Object getObject(String typeConst)</Member>
+        <Member type="Method">public Set&lt;String&gt; getKeys()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ServiceRegistry</Name>
+        <Access>Public</Access>
+        <Location left="3899" top="571" />
+        <Size width="319" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static Map&lt;IService, Set&lt;String&gt;&gt; mappings</Member>
+        <Member type="Constructor">private ServiceRegistry()</Member>
+        <Member type="Method">public static void registerService(IService service, Set&lt;String&gt; types)</Member>
+        <Member type="Method">public static Set&lt;String&gt; getMetadataForService(IService service)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MyData</Name>
+        <Access>Public</Access>
+        <Location left="3015" top="1214" />
+        <Size width="637" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static MyData instance</Member>
+        <Member type="Field">private Set&lt;IUser&gt; myDataUsers</Member>
+        <Member type="Constructor">private MyData()</Member>
+        <Member type="Method">public static IMyData getInstance()</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
+        <Member type="Method">public IUser loginUser(String email, String password)</Member>
+        <Member type="Method">public void createServiceAccount(IUser user, IService service)</Member>
+        <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
+        <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
+        <Member type="Method">public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IMyData</Name>
+        <Access>Public</Access>
+        <Location left="2666" top="1588" />
+        <Size width="637" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public IUser loginUser(String email, String password)</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
+        <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
+        <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
+        <Member type="Method">public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser)</Member>
+        <Member type="Method">public void createServiceAccount(IUser user, IService service)</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IMetadata</Name>
+        <Access>Public</Access>
+        <Location left="3599" top="458" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>Metadata</Name>
+        <Access>Public</Access>
+        <Location left="3194" top="416" />
+        <Size width="169" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">public static final String CALENDAR_CONST</Member>
+        <Member type="Field">public static final String TRIP_CONST</Member>
+        <Member type="Field">public static final String PREFERENCE_CONST</Member>
+        <Member type="Field">public static final String POSITION_CONST</Member>
+        <Member type="Field">public static final String DATE_CONST</Member>
+        <Member type="Constructor">private Metadata()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Metadata</Name>
+        <Access>Public</Access>
+        <Location left="3652" top="1588" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-      </Relationship>
       <Relationship type="Realization" first="0" second="2">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
@@ -432,25 +700,15 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1397</X>
-          <Y>696</Y>
+          <X>2254</X>
+          <Y>715</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Realization" first="4" second="5">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Association" first="1" second="6">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
       <Relationship type="Association" first="1" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -461,18 +719,250 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="1" second="9">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2788</X>
+          <Y>979</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2821</X>
+          <Y>979</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="13" second="10">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1215</X>
+          <Y>1294</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1033</X>
+          <Y>1295</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="14" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>891</X>
+          <Y>1076</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>892</X>
+          <Y>1222</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="11" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1640</X>
+          <Y>1452</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="12" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1385</X>
+          <Y>1536</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1385</X>
+          <Y>1388</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1878</X>
+          <Y>1092</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1778</X>
+          <Y>1218</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="14">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>1654</X>
-          <Y>835</Y>
+          <X>1646</X>
+          <Y>779</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>1780</X>
-          <Y>992</Y>
+          <X>1256</X>
+          <Y>779</Y>
         </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="13" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>1137</X>
+          <Y>954</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="18" second="15">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>4049</X>
+          <Y>1747</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>4049</X>
+          <Y>1776</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="17" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="18" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="19" second="20">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="16" second="20">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="9" second="20">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3153</X>
+          <Y>963</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>3319</X>
+          <Y>963</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="22" second="23">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>3098</X>
+          <Y>1486</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="22" second="1">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>2920</X>
+          <Y>1321</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>2670</X>
+          <Y>1235</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="17" second="22">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3743</X>
+          <Y>1338</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="14" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>596</X>
+          <Y>1106</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="25" second="24">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>3562</X>
+          <Y>476</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="21" second="16">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="8" second="25">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="18" second="26">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>

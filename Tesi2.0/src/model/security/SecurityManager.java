@@ -11,10 +11,6 @@ import java.security.SecureRandom;
 import java.security.Signature;
 import java.security.SignatureException;
 
-//classe random per pulire il consent manager
-
-// tutte le eccezioni sono state catturate perchè boh
-
 // manca in toto il provider
 
 public class SecurityManager implements ISecurityManager {
