@@ -7,8 +7,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import model.MyData.IPersonalDataVault;
-import model.MyData.PersonalDataVault;
 import model.consents.ConsentStatus;
 import model.consents.DataConsent;
 import model.consents.ServiceConsent;
@@ -17,13 +15,11 @@ import model.services.IService;
 class Account implements IAccount {
 
 	private IService service;
-	private IPersonalDataVault personalDataVault;
 	private Map<ServiceConsent, List<DataConsent>> dataConsents = new HashMap<ServiceConsent, List<DataConsent>>();
 
 	public Account(IService service, ServiceConsent firstConsent) {
 		super();
 		this.service = service;
-		this.personalDataVault = new PersonalDataVault();
 		// il consent ricevuto è sicuramente attivo
 		this.dataConsents.put(firstConsent, new ArrayList<DataConsent>());
 	}
@@ -31,11 +27,6 @@ class Account implements IAccount {
 	@Override
 	public IService getService() {
 		return this.service;
-	}
-
-	@Override
-	public IPersonalDataVault getPersonalDataVault() {
-		return personalDataVault;
 	}
 
 	@Override

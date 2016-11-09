@@ -72,7 +72,7 @@ public class MainFrame extends JFrame {
 
 	private JButton go;
 
-	private Controller controller;
+	private IController controller;
 
 	private List<JCheckBox> checksGeneral = new ArrayList<>();
 	private List<JCheckBox> checksAmenity = new ArrayList<>();
@@ -106,7 +106,7 @@ public class MainFrame extends JFrame {
 
 	}
 
-	public MainFrame(Controller controller) {
+	public MainFrame(IController controller) {
 		super();
 		checksAmenity = new ArrayList<JCheckBox>();
 		checksLeisure = new ArrayList<JCheckBox>();

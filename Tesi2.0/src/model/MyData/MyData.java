@@ -10,7 +10,6 @@ import model.consents.ConsentStatus;
 import model.consents.InputDataConsent;
 import model.consents.OutputDataConsent;
 import model.services.IService;
-import model.users.IAccount;
 import model.users.IUser;
 import model.users.MyDataUser;
 
@@ -69,13 +68,7 @@ public class MyData implements IMyData {
 			throw new IllegalStateException(
 					"Cannot get DataSet if DataConsent is not valid. ServiceConsent is not Active.");
 		IUser user = outputDataConsent.getServiceConsent().getUser();
-		IService service = outputDataConsent.getServiceConsent().getService();
-		IAccount account = null;
-		for (IAccount a : user.getAllAccounts()) {
-			if (a.getService().equals(service))
-				account = a;
-		}
-		IPersonalDataVault pdv = account.getPersonalDataVault();
+		IPersonalDataVault pdv = user.getPersonalDataVault();
 		return pdv.getData(outputDataConsent.getTypesConst());
 	}
 
@@ -85,13 +78,7 @@ public class MyData implements IMyData {
 			throw new IllegalStateException(
 					"Cannot save DataSet if DataConsent is not valid. ServiceConsent is not Active.");
 		IUser user = inDataConsent.getServiceConsent().getUser();
-		IService service = inDataConsent.getServiceConsent().getService();
-		IAccount account = null;
-		for (IAccount a : user.getAllAccounts()) {
-			if (a.getService().equals(service))
-				account = a;
-		}
-		IPersonalDataVault pdv = account.getPersonalDataVault();
+		IPersonalDataVault pdv = user.getPersonalDataVault();
 		pdv.saveData(dataSet);
 	}
 

@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 import model.services.IService;
 
-public interface Controller {
+public interface IController {
 
 	public void createMyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password);
 

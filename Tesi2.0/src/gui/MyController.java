@@ -36,7 +36,7 @@ import model.userdata.suggestions.ISuggestion;
 import model.users.IAccount;
 import model.users.IUser;
 
-public class MyController implements Controller {
+public class MyController implements IController {
 
 	private List<IPreference> preferences;
 	private Position actualPosition;

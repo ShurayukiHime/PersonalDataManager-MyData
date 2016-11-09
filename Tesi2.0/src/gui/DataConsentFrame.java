@@ -15,9 +15,9 @@ public class DataConsentFrame extends JFrame {
 	private static final long serialVersionUID = 1L;
 	private JPanel mainPanel;
 	private JTextArea mainTextArea;
-	private Controller controller;
+	private IController controller;
 	
-	public DataConsentFrame (Controller controller) {
+	public DataConsentFrame (IController controller) {
 		super("Data Consents issued:");
 		this.controller = controller;
 		this.initGUI();

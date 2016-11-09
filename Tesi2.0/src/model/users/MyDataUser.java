@@ -4,6 +4,8 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import model.MyData.IPersonalDataVault;
+import model.MyData.PersonalDataVault;
 import model.consents.ConsentManager;
 import model.consents.ConsentStatus;
 import model.consents.DataConsent;
@@ -35,6 +37,7 @@ public class MyDataUser implements IUser {
 								// char[]?
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
+	private IPersonalDataVault personalDataVault;
 
 	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password) {
 		super();
@@ -48,6 +51,7 @@ public class MyDataUser implements IUser {
 		this.password = password;
 		this.securityManager = new model.security.SecurityManager();
 		this.accounts = new HashSet<IAccount>();
+		this.personalDataVault = new PersonalDataVault();
 	}
 
 	@Override
@@ -93,6 +97,11 @@ public class MyDataUser implements IUser {
 	@Override
 	public ISecurityManager getSecurityManager() {
 		return securityManager;
+	}
+
+	@Override
+	public IPersonalDataVault getPersonalDataVault() {
+		return personalDataVault;
 	}
 
 	@Override

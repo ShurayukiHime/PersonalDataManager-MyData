@@ -28,7 +28,7 @@ import model.services.IService;
 public class MyDataProfile extends JFrame implements ActionListener {
 
 	private static final long serialVersionUID = 1L;
-	private Controller controller;
+	private IController controller;
 
 	private JPanel welcomePanel;
 	private JTextField nomeTField;
@@ -52,7 +52,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JButton addServiceButton;
 	private JButton requestServiceButton;
 
-	public MyDataProfile(Controller controller) {
+	public MyDataProfile(IController controller) {
 		super("Welcome to MyData");
 		this.controller = controller;
 		initGUI();

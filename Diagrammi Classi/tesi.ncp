@@ -1,0 +1,481 @@
+<Project>
+  <Name>tesi</Name>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Untitled</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>ConsentManager</Name>
+        <Access>Public</Access>
+        <Location left="408" top="123" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ServiceConsent</Name>
+        <Access>Public</Access>
+        <Location left="243" top="295" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataConsent</Name>
+        <Access>Public</Access>
+        <Location left="552" top="295" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>InputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="767" top="387" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OutputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="767" top="214" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ConsentStatus</Name>
+        <Access>Public</Access>
+        <Location left="64" top="78" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Active</Value>
+        <Value>Disabled</Value>
+        <Value>Withdrawn</Value>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IConsent</Name>
+        <Access>Public</Access>
+        <Location left="396" top="470" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>MostLikelyNextTrip</Name>
+        <Access>Public</Access>
+        <Location left="1671" top="482" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>AbstractService</Name>
+        <Access>Public</Access>
+        <Location left="1671" top="332" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>Abstract</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IService</Name>
+        <Access>Public</Access>
+        <Location left="1648" top="189" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUser</Name>
+        <Access>Public</Access>
+        <Location left="1663" top="879" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IAccount</Name>
+        <Access>Public</Access>
+        <Location left="1229" top="971" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>MyDataUser</Name>
+        <Access>Public</Access>
+        <Location left="1687" top="1013" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Public</Access>
+        <Location left="1229" top="1107" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>SuggesterManager</Name>
+        <Access>Public</Access>
+        <Location left="1315" top="520" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MyData</Name>
+        <Access>Public</Access>
+        <Location left="93" top="950" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IMyData</Name>
+        <Access>Public</Access>
+        <Location left="93" top="678" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPersonalDataVault</Name>
+        <Access>Public</Access>
+        <Location left="396" top="678" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IDataSet</Name>
+        <Access>Public</Access>
+        <Location left="831" top="700" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>PersonalDataVault</Name>
+        <Access>Public</Access>
+        <Location left="421" top="911" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataSet</Name>
+        <Access>Public</Access>
+        <Location left="870" top="898" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IMetadata</Name>
+        <Access>Public</Access>
+        <Location left="230" top="1257" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>Metadata</Name>
+        <Access>Public</Access>
+        <Location left="261" top="1508" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>ServiceRegistry</Name>
+        <Access>Public</Access>
+        <Location left="702" top="1272" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISecurityManager</Name>
+        <Access>Public</Access>
+        <Location left="1174" top="1293" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>SecurityManager</Name>
+        <Access>Public</Access>
+        <Location left="1156" top="1517" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IController</Name>
+        <Access>Public</Access>
+        <Location left="2044" top="1116" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>MyController</Name>
+        <Access>Public</Access>
+        <Location left="2072" top="1286" />
+        <Size width="162" height="216" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Generalization" first="3" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>848</X>
+          <Y>362</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>761</X>
+          <Y>320</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Generalization" first="4" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>761</X>
+          <Y>320</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="2" second="6">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="7" second="8">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="12" second="10">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="13" second="11">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="12" second="13">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="7" second="14">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="15" second="16">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="19" second="17">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="20" second="18">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="22" second="21">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="25" second="24">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="27" second="26">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+  <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
+    <Name>Untitled</Name>
+    <Language>Java</Language>
+    <Entities>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Public</Access>
+        <Location left="840" top="721" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>MyDataUser</Name>
+        <Access>Public</Access>
+        <Location left="1311" top="721" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IAccount</Name>
+        <Access>Public</Access>
+        <Location left="760" top="398" />
+        <Size width="327" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void addDataConsent(DataConsent dataConsent)</Member>
+        <Member type="Method">public void addServiceConsent(ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public ServiceConsent getActiveDisabledSC()</Member>
+        <Member type="Method">public List&lt;DataConsent&gt; getAllDataConsents(ServiceConsent sc)</Member>
+        <Member type="Method">public Set&lt;ServiceConsent&gt; getAllServiceConsents()</Member>
+        <Member type="Method">public IService getService()</Member>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUser</Name>
+        <Access>Public</Access>
+        <Location left="1226" top="398" />
+        <Size width="364" height="213" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public void addDataConsent(DataConsent dataConsent, IService service)</Member>
+        <Member type="Method">public void addServiceConsent(IService service)</Member>
+        <Member type="Method">public ServiceConsent getActiveSCForService(IService service)</Member>
+        <Member type="Method">public Set&lt;IAccount&gt; getAllAccounts()</Member>
+        <Member type="Method">public IPersonalDataVault getPersonalDataVault()</Member>
+        <Member type="Method">public ISecurityManager getSecurityManager()</Member>
+        <Member type="Method">public boolean hasAccountAtService(IService service)</Member>
+        <Member type="Method">public void newAccountAtService(IService service)</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>SecurityManager</Name>
+        <Access>Public</Access>
+        <Location left="1278" top="1175" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>ISecurityManager</Name>
+        <Access>Public</Access>
+        <Location left="1187" top="934" />
+        <Size width="371" height="128" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public byte[] sign(byte[] toSign)</Member>
+        <Member type="Method">public boolean verify(PublicKey pubKey, byte[] toUpdate, byte[] toVerify)</Member>
+        <Member type="Method">public PublicKey getPublicKey()</Member>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConsentManager</Name>
+        <Access>Public</Access>
+        <Location left="1832" top="585" />
+        <Size width="532" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public static ServiceConsent askServiceConsent(IUser user, IService service)</Member>
+        <Member type="Constructor">private ConsentManager()</Member>
+        <Member type="Method">public static void changeServiceConsentStatusForService(IUser user, IService service, ConsentStatus newStatus)</Member>
+        <Member type="Method">public static OutputDataConsent askOutputDataConsent(IUser user, IService service)</Member>
+        <Member type="Method">public static InputDataConsent askInputDataConsent(IUser user, IService service, IDataSet dataSet)</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ConsentStatus</Name>
+        <Access>Public</Access>
+        <Location left="840" top="964" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Active</Value>
+        <Value>Disabled</Value>
+        <Value>Withdrawn</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>PersonalDataVault</Name>
+        <Access>Public</Access>
+        <Location left="1832" top="1106" />
+        <Size width="162" height="77" />
+        <Collapsed>False</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IPersonalDataVault</Name>
+        <Access>Public</Access>
+        <Location left="1832" top="934" />
+        <Size width="249" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public IDataSet getData(Set&lt;String&gt; typesConst)</Member>
+        <Member type="Method">public void saveData(IDataSet dataSet)</Member>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="0" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="3">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1397</X>
+          <Y>696</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="4" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="1" second="6">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Realization" first="8" second="9">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="1" second="9">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1654</X>
+          <Y>835</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1780</X>
+          <Y>992</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+    </Relationships>
+  </ProjectItem>
+</Project>

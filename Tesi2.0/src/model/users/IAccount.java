@@ -3,7 +3,6 @@ package model.users;
 import java.util.List;
 import java.util.Set;
 
-import model.MyData.IPersonalDataVault;
 import model.consents.DataConsent;
 import model.consents.ServiceConsent;
 import model.services.IService;
@@ -11,8 +10,6 @@ import model.services.IService;
 public interface IAccount {
 
 	public IService getService();
-
-	public IPersonalDataVault getPersonalDataVault();
 
 	/**
 	 * There can be only one ServiceConsent Active or Disabled at a time for a
@@ -25,7 +22,7 @@ public interface IAccount {
 
 	public Set<ServiceConsent> getAllServiceConsents();
 
-	void addDataConsent(DataConsent dataConsent);
+	public void addDataConsent(DataConsent dataConsent);
 
 	public void addServiceConsent(ServiceConsent serviceConsent);
 

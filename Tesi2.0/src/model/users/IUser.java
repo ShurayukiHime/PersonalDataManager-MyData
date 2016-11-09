@@ -3,6 +3,7 @@ package model.users;
 import java.util.Date;
 import java.util.Set;
 
+import model.MyData.IPersonalDataVault;
 import model.consents.DataConsent;
 import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
@@ -74,5 +75,7 @@ public interface IUser {
 	public void addDataConsent(DataConsent dataConsent, IService service);
 
 	public void addServiceConsent(IService selectedService);
+
+	public IPersonalDataVault getPersonalDataVault();
 
 }
