@@ -88,7 +88,7 @@ public class PersonalDataVault implements IPersonalDataVault {
 		return result;
 	}
 
-	public void addTrip(ITrip trip) {
+	private void addTrip(ITrip trip) {
 		if (trip == null)
 			throw new IllegalArgumentException("trip must be initialized");
 		String fileName = "MyTrips.txt";
@@ -137,21 +137,21 @@ public class PersonalDataVault implements IPersonalDataVault {
 		return new Calendar(commitments);
 	}
 
-	public List<IPreference> getPreferences() {
+	private List<IPreference> getPreferences() {
 		return this.preferences;
 	}
 
-	public void setPreferences(List<IPreference> preferences) {
+	private void setPreferences(List<IPreference> preferences) {
 		if (preferences == null)
 			throw new IllegalArgumentException("Preferences must be initialized.");
 		this.preferences = preferences;
 	}
 
-	public List<ITrip> getAllTrip() {
+	private List<ITrip> getAllTrip() {
 		return this.trips;
 	}
 
-	public ICalendar getCalendar() {
+	private ICalendar getCalendar() {
 		return this.calendar;
 	}
 
@@ -159,7 +159,9 @@ public class PersonalDataVault implements IPersonalDataVault {
 		this.calendar = calendar;
 	}
 
-	public Position getPositionByDate(LocalDateTime date) {
+	// questa funzione non viene mai usata, ma non veniva mai chiamata nemmeno
+	// nella tesi di Nicola...?
+	private Position getPositionByDate(LocalDateTime date) {
 		List<ITrip> trips = getAllTrip();
 		long record = -1;
 		Position result = null;
