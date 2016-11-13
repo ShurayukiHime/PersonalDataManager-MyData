@@ -267,12 +267,16 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="12" second="13">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="7" second="14">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -419,7 +423,7 @@
       <Entity type="Class">
         <Name>ConsentManager</Name>
         <Access>Public</Access>
-        <Location left="310" top="1520" />
+        <Location left="320" top="1534" />
         <Size width="532" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">private ConsentManager()</Member>
@@ -442,7 +446,7 @@
       <Entity type="Class">
         <Name>PersonalDataVault</Name>
         <Access>Public</Access>
-        <Location left="2809" top="443" />
+        <Location left="2871" top="443" />
         <Size width="181" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private List&lt;IPreference&gt; preferences</Member>
@@ -456,7 +460,7 @@
       <Entity type="Interface">
         <Name>IPersonalDataVault</Name>
         <Access>Public</Access>
-        <Location left="2871" top="919" />
+        <Location left="2887" top="800" />
         <Size width="249" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public IDataSet getData(Set&lt;String&gt; typesConst)</Member>
@@ -482,7 +486,7 @@
       <Entity type="Class">
         <Name>InputDataConsent</Name>
         <Access>Public</Access>
-        <Location left="1057" top="1561" />
+        <Location left="1057" top="1583" />
         <Size width="406" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Constructor">public InputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
@@ -538,7 +542,7 @@
       <Entity type="Class">
         <Name>SuggesterManager</Name>
         <Access>Public</Access>
-        <Location left="3415" top="1807" />
+        <Location left="3401" top="1636" />
         <Size width="807" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static SuggesterManager instance</Member>
@@ -551,7 +555,7 @@
       <Entity type="Interface">
         <Name>IService</Name>
         <Access>Public</Access>
-        <Location left="3945" top="930" />
+        <Location left="3961" top="733" />
         <Size width="269" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public ISecurityManager getSecurityManager()</Member>
@@ -563,7 +567,7 @@
       <Entity type="Class">
         <Name>AbstractService</Name>
         <Access>Public</Access>
-        <Location left="3945" top="1142" />
+        <Location left="3945" top="982" />
         <Size width="269" height="247" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private IMyData myDataInstance</Member>
@@ -581,7 +585,7 @@
       <Entity type="Class">
         <Name>MostLikelyNextTrip</Name>
         <Access>Public</Access>
-        <Location left="3974" top="1467" />
+        <Location left="3961" top="1309" />
         <Size width="242" height="230" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private final String name</Member>
@@ -598,7 +602,7 @@
       <Entity type="Class">
         <Name>DataSet</Name>
         <Access>Public</Access>
-        <Location left="3558" top="672" />
+        <Location left="3574" top="553" />
         <Size width="162" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Map&lt;String, Object&gt; dataSet</Member>
@@ -611,7 +615,7 @@
       <Entity type="Interface">
         <Name>IDataSet</Name>
         <Access>Public</Access>
-        <Location left="3349" top="910" />
+        <Location left="3365" top="791" />
         <Size width="229" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public void put(String typeConst, Object obj)</Member>
@@ -621,7 +625,7 @@
       <Entity type="Class">
         <Name>ServiceRegistry</Name>
         <Access>Public</Access>
-        <Location left="3899" top="571" />
+        <Location left="3915" top="452" />
         <Size width="319" height="145" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static Map&lt;IService, Set&lt;String&gt;&gt; mappings</Member>
@@ -633,7 +637,7 @@
       <Entity type="Class">
         <Name>MyData</Name>
         <Access>Public</Access>
-        <Location left="3015" top="1214" />
+        <Location left="2876" top="1131" />
         <Size width="637" height="247" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static MyData instance</Member>
@@ -651,7 +655,7 @@
       <Entity type="Interface">
         <Name>IMyData</Name>
         <Access>Public</Access>
-        <Location left="2666" top="1588" />
+        <Location left="2656" top="1509" />
         <Size width="637" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Method">public IUser loginUser(String email, String password)</Member>
@@ -685,7 +689,7 @@
       <Entity type="Class">
         <Name>Metadata</Name>
         <Access>Public</Access>
-        <Location left="3652" top="1588" />
+        <Location left="3689" top="1449" />
         <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
@@ -709,6 +713,8 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -719,22 +725,22 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="1" second="9">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>2788</X>
-          <Y>979</Y>
+          <X>2752</X>
+          <Y>860</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>2821</X>
-          <Y>979</Y>
+          <X>2837</X>
+          <Y>860</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="7">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -777,7 +783,7 @@
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
           <X>1385</X>
-          <Y>1536</Y>
+          <Y>1558</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
           <X>1385</X>
@@ -785,16 +791,12 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="13">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -809,8 +811,6 @@
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="14">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -825,8 +825,6 @@
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="13" second="14">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -837,15 +835,17 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="18" second="15">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>4049</X>
-          <Y>1747</Y>
+          <X>4036</X>
+          <Y>1589</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>4049</X>
-          <Y>1776</Y>
+          <X>4035</X>
+          <Y>1605</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -863,25 +863,21 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="16" second="20">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="20">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>3153</X>
-          <Y>963</Y>
+          <X>3169</X>
+          <Y>844</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>3319</X>
-          <Y>963</Y>
+          <X>3335</X>
+          <Y>844</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
@@ -890,41 +886,35 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>3098</X>
-          <Y>1486</Y>
+          <X>2959</X>
+          <Y>1403</Y>
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="22" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
-          <X>2920</X>
-          <Y>1321</Y>
+          <X>2781</X>
+          <Y>1224</Y>
         </BendPoint>
         <BendPoint relativeToStartShape="False">
-          <X>2670</X>
-          <Y>1235</Y>
+          <X>2672</X>
+          <Y>1202</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="17" second="22">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>3743</X>
-          <Y>1338</Y>
+          <X>3619</X>
+          <Y>1169</Y>
         </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="14" second="7">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -943,24 +933,18 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="21" second="16">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="8" second="25">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="18" second="26">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
