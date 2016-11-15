@@ -1,0 +1,57 @@
+\chapter{Architettura MyData}
+\label{capitolo3}
+\thispagestyle{empty}
+
+\noindent Al fine di comprendere appieno le scelte effettuate all’interno del progetto, si evidenziano brevemente le componenti e la struttura del modello \textit{MyData}. https://github.com/HIIT/mydata-stack
+https://docs.google.com/document/d/1iUVRssJ6TmxzNZbw8XuMJ1A5oXetgthcHFGHYfCpPhw/edit (broken?)
+
+\section{Entit\`a Fondamentali}
+L’architettura di \textit{MyData} si costruisce su quattro componenti base: l’utente finale, detto anche Account Owner, l’operatore \textit{MyData}, o Operator, e due generiche entit\`a che, da una parte, “producono” dati, e, dall’altra, li “consumano”. Esse sono definite rispettivamente Source e Sink. Mentre i ruoli di Account Owner e di Operator sono generalmente statici, quelli di Source e Sink sono fortemente variabili nel tempo e si possono applicare anche ad entit\`a molto diverse fra loro, poich\'e definiti con un alto livello di astrazione. Convenzionalmente, si pu\`o identificare un servizio come “consumatore” di dati, mentre l’account dell’utente pu\`o essere un “produttore” di dati personali. In \textit{MyData}, \`e possibile altres\`i che un servizio occupi entrambi i ruoli, o anche che l’Operator stesso rientri in questa classificazione quando si trova a compiere operazioni sui dati.
+
+Il ruolo di Operator comprende operazioni di vario genere fra i quali vi sono la gestione degli utenti, dei servizi e delle interazioni che avvengono fra le due parti. Esso si occupa anche di gestire l’Audit Log di tutte le operazioni che coinvolgono tali interazioni.
+
+\section{Service Registry, Service Linking}
+Con Service Registry viene indicata quella parte dell’Operator che contiene un database di tutti i servizi registrati presso quell’operatore. Esso contiene anche la funzionalit\`a di Service Discovery, utilizzata dagli utenti per trovare nuovi servizi da utilizzare. In particolare, gli utenti possono venire a conoscenza di un nuovo servizio tramite un suggerimento, calcolato in base a corrispondenze fra caratteristiche dell’utente e del servizio, oppure tramite ricerca diretta.
+
+Ogni nuovo servizio che vuole essere utilizzabile all’interno dell’architettura \textit{MyData} deve quindi sottoporsi ad una procedura di registrazione al termine della quale, in caso di successo, viene inserito all’interno del Registry.
+
+Durante questa procedura, il servizio deve fornire almeno una descrizione del suo comportamento in formato machine-readable e human-readable: la prima permette a procedure automatiche una elaborazione corretta di suggerimenti, la seconda \`e rivolta direttamente all’utente finale.
+
+L’iscrizione di un utente presso un servizio avviene tramite un processo chiamato Service Linking, in cui l’Operatore \textit{MyData} si occupa di realizzare una identificazione mutua delle parti. Tutti i token e le firme digitali scambiate durante il procedimento sono espresse in notazione JSON.
+
+Al termine del Service Linking viene prodotto un Service Link Record, necessario per ogni futura interazione fra l’utente ed il servizio.
+
+\subsection{OAuth 2.0}
+//Da completare
+https://oauth.net/2/
+http://tutorials.jenkov.com/oauth2/authorization-code-request-response.html
+
+\section{Autorizzazioni e Consent}
+Come specificato dal GDPR, ogni operazione svolta sui dati personali di un utente deve essere stata autorizzata dallo stesso tramite un permesso che acquista in questo contesto una valenza legale.
+
+La funzione di un permesso, o Consent, \`e particolarmente rilevante: definisce quali dati possono essere utilizzati e in che modalit\`a, e identifica le entit\`a Source e Sink fra le quali avviene lo scambio. Il processo di Service Linking deve essere stato completato con successo affinch\'e sia possibile fare richiesta di autorizzazione, e ci\`o viene verificato tramite ispezione del Service Link Record.
+
+Il ruolo dell’Operator in questa situazione \`e quello di recuperare le informazioni corrispondenti al servizio presso il Service Registry: queste vengono presentate all’utente che decide se acconsentire o meno al processamento di un determinato insieme di dati da parte di un servizio specificato. È possibile per l’utente chiedere una ridefinizione delle richieste del servizio, ma non al di sotto del limite previsto per un corretto svolgimento del servizio stesso.
+
+Nel caso la procedura di autorizzazione si concluda con successo, viene prodotto un Consent Record che contiene tutte le specifiche negoziate fra le parti insieme agli identificatori dell’utente e del servizio. Esso viene memorizzato all’interno dell’account, ma \`e possibile che il servizio o l’Operatore ne facciano richiesta successivamente. 
+
+Per dare la possibilit\`a all’utente di ritirare il permesso accordato, un Consent ha tre stati possibili: Active, Disabled e Withdrawn. Il primo \`e lo stato standard di funzionamento, in cui l’accesso ai dati \`e consentito; si hanno poi gli stati “disabilitato” e “ritirato”, in cui l’accesso \`e impedito. Nel caso in cui il permesso sia stato ritirato \`e necessario provvedere all’emissione di una nuova autorizzazione, mentre in caso di stato disabilitato, \`e possibile attuare un cambiamento di stato, riportandolo al valore attivo.
+
+Questo protocollo di autorizzazione all’utilizzo dei dati rispetta quindi quanto affermato dal GDPR, poich\'e il permesso viene dato volontariamente e in modo chiaro. Non \`e ambiguo, \`e informato, grazie alla specifica delle risorse necessarie, ed \`e possibile ritirarlo in ogni momento.
+
+\subsection{Kantara Consent \& Information Sharing Work Group}
+//Da completare
+
+http://kantarainitiative.org/confluence/display/infosharing/Consent+Receipt+Specification
+
+\subsection{User Managed Access}
+https://kantarainitiative.org/confluence/display/uma/Home
+
+\section{Personal Data Storage}
+Nonostante non venga dato un peso rilevante a questa componente all’interno dei documenti di \textit{MyData}, non \`e possibile prescindere dall’esistenza di un database che mantenga tutti i dati relativi ad un Account Owner. Non si tratta infatti solo di dati personali, ma di ogni dato utilizzato da un generico servizio o ad esempio inserito volontariamente dall’utente.
+
+Non \`e specificato se il Personal Data Storage (spesso chiamato anche Personal Data Vault) faccia parte dell’ecosistema dell’operatore: ci\`o \`e possibile, ma non sono da escludere implementazioni alternative che prevedono il salvataggio delle informazioni presso il dispositivo dell’utente.
+
+L’accesso ai dati contenuti all’interno del Personal Data Storage \`e possibile solo in presenza di un adeguato Consent Record, ma le modalit\`a di accesso non vengono regolamentate in maniera dettagliata. Si parla infatti genericamente di “Data API”, con le quali un Sink ottiene (in caso di richiesta legittima) un determinato Resource Set da un Source.
+
+

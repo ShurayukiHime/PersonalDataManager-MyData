@@ -1,0 +1,56 @@
+\chapter{Introduzione}
+\label{Introduzione}
+\thispagestyle{empty}
+
+\noindent Negli ultimi anni, con la diffusione degli smartphone e l’aumento dell’accesso a Internet, la tecnologia \`e diventata sempre pi\`u legata all’utente dietro lo schermo, con esempi che possono spaziare dai social network ai dispositivi di monitoraggio della salute e dell’attivit\`a fisica. La quantit\`a di informazioni raccolte tramite questi servizi non si limita a ciò che l’utente sceglie di condividere (foto, email, transazioni online), ma comprende anche dati osservati (abitudini di navigazione, dati di geolocalizzazione) e deduzioni (\textit{targeted advertising}, previsioni sul flusso del traffico). (Source: Information Accountability Foundation, World Economic Forum, Marc E. Davis)
+
+L’importanza dei dati personali \`e diventata tale da richiedere l’esistenza di leggi che ne regolamentassero l’utilizzo, come il regolamento generale sulla protezione dei dati (GDPR, \textit{General Data Protection Regulation- Regolamento UE 2016/679}). http://static.ow.ly/docs/Regulation\_consolidated\_text\_EN\_47uW.pdf 
+
+In questo contesto si sviluppa il modello \textit{MyData}, fondato sull’idea secondo cui ogni utente ha il controllo sui propri dati personali, ed \`e a conoscenza dell’utilizzo che ne viene fatto, in modo trasparente. D’altra parte, l’architettura \textit{MyData} vuole offrire al mercato e alle imprese un contesto di sviluppo di applicazioni software in cui vengono rispettate le leggi in materia di protezione dei dati sensibili, favorendo l’interoperabilit\`a fra di esse.
+
+L’approccio \textit{MyData}, seppur innovativo, non \`e senza precedenti. Molti dei suoi concetti fondamentali sono anche alla base dei \textit{personal cloud}, come ad esempio la possibilit\`a di contenere in modo sicuro i dati personali dell’utente e offrire interoperabilit\`a fra diversi servizi, utilizzando concretamente i dati memorizzati.
+
+Questa tesi si propone di studiare i concetti fondamentali alla base del modello \textit{MyData}, e implementare un prototipo di gestore di dati personali che ne rispetti le specifiche.
+A titolo di esempio, si \`e scelto di utilizzare come servizio “consumatore” di dati personali un sistema di previsione del viaggio pi\`u probabile.
+
+L’obiettivo \`e quello di realizzare un sistema che permetta all’utente di monitorare l’utilizzo dei suoi dati personali in tempo reale ed in modo trasparente, attraverso l’implementazione di una politica di controllo degli accessi. Inoltre, il gestore opera in un contesto in cui il rispetto delle politiche di sicurezza \`e fondamentale: anche se la realizzazione di un sistema sicuro non rientra negli obiettivi del lavoro di tesi, sono presenti alcuni accorgimenti che puntano in questa direzione.
+
+\section{MyData, Big Data}
+Il progetto \textit{MyData} nasce in Finlandia, all’universit\`a di Aalto, partendo dall’idea di rafforzare i diritti digitali dell’individuo. All’interno del contesto vi \`e anche la stringente legislazione europea sulla protezione dei dati personali, e la volont\`a di offrire alle aziende un nuovo modo di approcciarsi al cliente, basato non su incomprensibili “Termini e Condizioni” ma sulla reciproca fiducia.
+
+Attualmente, grandi quantit\`a di dati vengono continuamente raccolti senza utilizzarne pienamente la ricchezza dell’informazione. Il loro percorso e le operazioni di processamento a cui vengono sottoposti sono sempre pi\`u numerose e cresce la difficolt\`a nel conservarne le tracce. Inoltre, l’utilizzo di software proprietari limita la possibilit\`a di analisi dei dati a causa della scarsa interoperabilit\`a fra le soluzioni adottate. Infine, va anche considerato l’impatto che tale modus operandi ha sugli utilizzatori finali: secondo un sondaggio riportato dal World Economic Forum, “Fully 78\% of consumers think it is hard to trust companies when it comes to use of their personal data” (Orange, The Future of Digital Trust, 2014). www3.weforum.org/docs/WEF\_RethinkingPersonalData\_ANewLens\_Report\_2014.pdf
+
+\textit{MyData} cerca di trovare una risposta a questi temi attraverso un cambio di paradigma che ponga l’utente al centro, attribuendogli la capacit\`a di gestire i propri dati personali e di comprendere l’uso che ne viene fatto. Allo stesso tempo, la qualit\`a dei suggerimenti ricevuti in base ai dati raccolti aumenterebbe grazie alla maggiore disponibilit\`a degli stessi. L’elaborazione dei dati potrebbe favorire anche conoscenze pi\`u approfondite del proprio comportamento da utenti (self tracking), anche attraverso la ricezione di un compenso per il processamento dei propri dati (data monetization). https://www.lvm.fi/documents/20181/859937/MyData-nordic-model/2e9b4eb0-68d7-463b-9460-821493449a63?version=1.0
+
+L’approccio a livello infrastrutturale permetterebbe l’indipendenza da specifici settori (sanit\`a e salute, finanza, ecc.), favorendo una completa portabilit\`a dei dati. Il rispetto e l’aderenza alle leggi verrebbe realizzato dall’infrastruttura stessa, consentendo alle aziende di sviluppare i software in maniera meno vincolata, acquisendo al contempo la fiducia del cliente grazie alla trasparenza e all’affidabilit\`a garantite da \textit{MyData}.
+Nel complesso, il paradigma \textit{MyData} si contrappone all’attuale standard, Big Data, proponendo nuove soluzioni che non trascurino la realt\`a del mercato in cui il software viene usato.
+
+
+\section{Breve descrizione del lavoro}
+La seconda parte deve essere una esplosione della prima e deve quindi mostrare in maniera pi\`u esplicita l'area dove si svolge il lavoro, le fonti bibliografiche pi\`u importanti su cui si fonda il lavoro in maniera sintetica (una pagina) evidenziando i lavori in letteratura che presentano attinenza con il lavoro affrontato in modo da mostrare da dove e perch\'e \`e sorta la tematica di studio. Poi si mostrano esplicitamente le realizzazioni, le direttive future di ricerca, quali sono i problemi aperti e quali quelli affrontati e si ripete lo scopo della tesi. Questa parte deve essere piena (ma non grondante come la sezione due) di citazioni bibliografiche e deve essere lunga circa 4 facciate.
+
+\section{Struttura della tesi}
+La terza parte contiene la descrizione della struttura della tesi ed \`e organizzata nel modo seguente.
+``La tesi \`e strutturata nel modo seguente.
+
+Nella sezione due si mostra \dots
+
+Nella sez. tre si illustra \dots
+
+Nella sez. quattro si descrive \dots
+
+Nelle conclusioni si riassumono gli scopi, le valutazioni di questi e le prospettive future \dots
+
+Nell'appendice A si riporta \dots (Dopo ogni sezione o appendice ci vuole un punto).''
+
+I titoli delle sezioni da 2 a M-1 sono indicativi, ma bisogna cercare di mantenere un significato equipollente nel caso si vogliano cambiare. Queste sezioni possono contenere eventuali sottosezioni.
+
+%``Terence: "Mi fai un gelato anche a me? Lo vorrei di pistacchio" \\
+%Bud: "Non ce l'ho il pistacchio. C'ho la vaniglia, cioccolato, fragola, limone e caff�"\\
+%Terence: "Ah bene. Allora fammi un cono di vaniglia e di pistacchio"\\
+%Bud: "No, non ce l'ho il pistacchio. C'ho la vaniglia, cioccolato, fragola, limone e caff�"\\
+%Terence: "Ah, va bene. Allora vediamo un po', fammelo al cioccolato, tutto coperto di pistacchio"\\
+%Bud: "Ehi, macch� sei sordo? Ti ho detto che il pistacchio non ce l'ho!"\\
+%Terence: "Ok ok, non c'� bisogno che t'arrabbi, no? Insomma, di che ce l'hai?"\\
+%Bud: "Ce l'ho di vaniglia, cioccolato, fragola, limone e caff�!"\\
+%Terence: "Ah, ho capito. Allora fammene uno misto: mettici la fragola, il cioccolato, la vaniglia, il limone e il caff�. Charlie, mi raccomando il pistacchio, eh"''}
