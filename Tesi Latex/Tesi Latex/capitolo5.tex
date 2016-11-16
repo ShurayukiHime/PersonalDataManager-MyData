@@ -4,7 +4,7 @@
 
 \noindent Nei paragrafi successivi verranno illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le eventuali differenze che si creano rispetto a quanto detto in Analisi.
 
-Per la realizzazione del gestore \`e stato utilizzato il linguaggio Java. https://docs.oracle.com/javase/specs/jls/se8/html/index.html http://docs.oracle.com/javase/8/docs/api/
+Per la realizzazione del gestore \`e stato utilizzato il linguaggio Java\cite{javalanguagespecs} \cite{java8api}.
 
 Fra i principi generali seguiti in Progettazione troviamo l’inversione delle dipendenze, la separazione delle responsabilit\`a, il principio di sostituibilit\`a di Liskov e il gi\`a citato rasoio di Occam. Secondo il principio di inversione delle dipendenze, \`e necessario che le dipendenze presenti all’interno del codice non siano fra classi ma fra interfacce, in modo da evitare che la struttura possa risentire di cambiamenti che avvengono a basso livello. Il principio di separazione delle responsabilit\`a stabilisce che ogni classe deve avere un solo compito, da svolgere interamente, ma mai pi\`u di uno: lo sviluppo di classi con pi\`u di una responsabilit\`a genera dipendenze non volute fra le classi, rendendo il codice fragile. Infine, il principio di sostituibilit\`a di Liskov si applica ai casi di ereditariet\`a fra classi, e ne regola il rapporto: ogni sottoclasse deve poter essere utilizzata al posto della classe base senza che ci si accorga della differenza.
 
@@ -51,8 +51,7 @@ Ad ogni istanza di \texttt{ServiceConsent} corrisponde quindi una \texttt{Collec
 	\caption{caption}
 	\label{fig:Accounting-SecurityManager}
 \end{figure}
-https://docs.oracle.com/javase/tutorial/security/TOC.html
-http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html
+\cite{javasecurity} \cite{javacrypto}
 
 \section{IMyData, MyData}
 \begin{figure} [h]

@@ -1,14 +1,122 @@
-\begin{thebibliography}{1}
+\begin{thebibliography}{10}
 
-\bibitem{einstein}
-Albert Einstein.
-\newblock {Zur Elektrodynamik bewegter K{\"o}rper}. ({German}) [{On} the
-  electrodynamics of moving bodies].
-\newblock {\em Annalen der Physik}, 322(10):891--921, 1905.
+\bibitem{w3cdatacatalog}
+Data catalog vocabulary (dcat).
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/vocab-dcat/}.
 
-\bibitem{latexcompanion}
-Michel Goossens, Frank Mittelbach, and Alexander Samarin.
-\newblock {\em The \LaTeX\ Companion}.
-\newblock Addison-Wesley, Reading, Massachusetts, 1993.
+\bibitem{googlecalendarapi}
+Google calendar api at google developers.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://developers.google.com/google-apps/calendar/overview}.
+
+\bibitem{javacrypto}
+{\em Java Cryptography Architecture (JCA) Reference Guide}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}.
+
+\bibitem{javalanguagespecs}
+{\em The Java Language Specification}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://docs.oracle.com/javase/specs/jls/se8/html/index.html}.
+
+\bibitem{java8api}
+{\em Java Platform, Standard Edition 8 API Specification}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://docs.oracle.com/javase/8/docs/api/}.
+
+\bibitem{githubjourneyplanner}
+{\em Journey Planner repository on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/mobility-profile/Mobility-Profile-API}.
+
+\bibitem{kantaraconsent}
+Kantara consent \& information sharing work group.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://kantarainitiative.org/confluence/display/infosharing/Consent+Receipt+Specification}.
+
+\bibitem{maasglobal}
+Maas global website.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://maas.global/}.
+
+\bibitem{githubmobilityprofile}
+{\em Mobility Profile repository on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/mobility-profile/Mobility-Profile}.
+
+\bibitem{mydatawebsite}
+Mydata 2016. advancing human centric personal data.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://mydata2016.org/}.
+
+\bibitem{githubmydataaccount}
+{\em MyData Account implementation on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/HIIT/mydata-sdk/tree/master/Account}.
+
+\bibitem{githubmydataoperator}
+{\em MyData Operator implementation on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://github.com/HIIT/mydata-sdk/tree/master/Operator_Components}.
+
+\bibitem{githubmydataserviceregistry}
+{\em MyData Service Registry implementation on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://github.com/digitalhealthrevolution/serviceregistry}.
+
+\bibitem{githubmydatastack}
+{\em MyData specification on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/HIIT/mydata-stack}.
+
+\bibitem{oauth}
+Oauth 2.0 website.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://oauth.net/2/}.
+
+\bibitem{w3crdf}
+Rdf 1.1 concepts and abstract syntax.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/rdf11-concepts/}.
+
+\bibitem{w3cdatacube}
+The rdf data cube vocabulary.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/vocab-data-cube/}.
+
+\bibitem{javasecurity}
+{\em Security Features in Java SE}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://docs.oracle.com/javase/tutorial/security/TOC.html}.
+
+\bibitem{githubsmall}
+{\em SMAll documentation on Github}.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/small-dev/SMAll.Wiki}.
+
+\bibitem{uma}
+User managed access.
+\newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://kantarainitiative.org/confluence/display/uma/Home}.
+
+\bibitem{MLNT}
+Nicola Ferroni.
+\newblock Un sistema di previsione degli itinerari per applicazioni di smart
+  mobility.
+\newblock 2016.
+
+\bibitem{mastersonjaheikkil}
+Sonja Heikkil{\"a}.
+\newblock Mobility as a service – a proposal for action for the public
+  administration - case helsinki, 2014.
+\newblock URL:
+  \url{https://aaltodoc.aalto.fi/bitstream/handle/123456789/13133/master_Heikkil%C3%A4_Sonja_2014.pdf?sequence=1}.
 
 \end{thebibliography}

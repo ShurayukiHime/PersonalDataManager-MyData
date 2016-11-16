@@ -7,5 +7,29 @@ A level-1 auxiliary file: capitolo2.aux
 A level-1 auxiliary file: capitolo3.aux
 A level-1 auxiliary file: capitolo4.aux
 A level-1 auxiliary file: capitolo5.aux
-The style file: plain.bst
+The style file: plainurl.bst
 Database file #1: bibl_tesi.bib
+Warning--entry type for "mastersonjaheikkil" isn't style-file defined
+--line 14 of file bibl_tesi.bib
+Warning--to sort, need author or key in mydatawebsite
+Warning--to sort, need author or key in maasglobal
+Warning--to sort, need author, organization, or key in githubmobilityprofile
+Warning--to sort, need author, organization, or key in githubjourneyplanner
+Warning--to sort, need author, organization, or key in githubsmall
+Warning--to sort, need author, organization, or key in githubmydatastack
+Warning--to sort, need author or key in oauth
+Warning--to sort, need author or key in kantaraconsent
+Warning--to sort, need author or key in uma
+Warning--to sort, need author, organization, or key in githubmydataaccount
+Warning--to sort, need author, organization, or key in githubmydataoperator
+Warning--to sort, need author, organization, or key in githubmydataserviceregistry
+Warning--to sort, need author or key in googlecalendarapi
+Warning--to sort, need author or key in w3crdf
+Warning--to sort, need author or key in w3cdatacatalog
+Warning--to sort, need author or key in w3cdatacube
+Warning--to sort, need author, organization, or key in javalanguagespecs
+Warning--to sort, need author, organization, or key in java8api
+Warning--to sort, need author, organization, or key in javasecurity
+Warning--to sort, need author, organization, or key in javacrypto
+Warning--empty note in MLNT
+(There were 22 warnings)
