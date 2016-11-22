@@ -109,7 +109,7 @@ class Account implements IAccount {
 	public void addServiceConsent(ServiceConsent serviceConsent) {
 		if (this.getActiveDisabledSC() != null)
 			throw new IllegalStateException(
-					"Cannot issue new ServiceConsent if there is already one instance with Active or Disabled Status.");
+					"Cannot issue a new ServiceConsent if there is already an instance with Active or Disabled Status.");
 		this.dataConsents.put(serviceConsent, new ArrayList<DataConsent>());
 	}
 

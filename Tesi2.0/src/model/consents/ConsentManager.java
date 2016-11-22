@@ -2,8 +2,6 @@ package model.consents;
 
 import java.util.Date;
 import java.util.Set;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 import model.MyData.IDataSet;
 import model.registry.ServiceRegistry;
@@ -19,7 +17,6 @@ import model.users.IUser;
  */
 
 public class ConsentManager {
-	private static Logger logger = Logger.getGlobal();
 
 	private ConsentManager() {
 	}
@@ -63,7 +60,6 @@ public class ConsentManager {
 			throw new SecurityException("Encountered error during verify process - user side.");
 		} // else
 		ServiceConsent sc = new ServiceConsent(tokenSignedService, tokenSignedUser, new Date(), service, user);
-		logger.log(Level.FINER, sc.toString());
 		return sc;
 	}
 
@@ -93,12 +89,10 @@ public class ConsentManager {
 						// già stato ritirato -> non ha senso
 						throw new IllegalArgumentException("The consent has already been withdrawn.");
 					} // si vuole mettere attivo o disabilitato ad un consent
-						// ritirato
+						// già ritirato
 					throw new IllegalStateException("Cannot change the status of a Withdrawn Service Consent.");
-				}
-				// else, il consent è attivo o disabilitato
+				} // else, il consent è attivo o disabilitato
 				sc.ChangeConsentStatus(newStatus);
-				logger.log(Level.FINER, sc.toString());
 			}
 		// devo aggiornare anche la signature in qualche modo? (metodo update)
 		// questo però ricomincerebbe il protocollo di firma, cosa forse poco
@@ -106,15 +100,17 @@ public class ConsentManager {
 	}
 
 	/**
-	 * This method issues a new Data Consent (for data flowing out of the PDV) if
-	 * there is an Active ServiceConsent for the user and service specified. It
-	 * also adds the newly created DataConsent to the corresponding IAccount.
+	 * This method issues a new Data Consent (for data flowing out of the PDV)
+	 * if there is an Active ServiceConsent for the user and service specified.
+	 * It also adds the newly created DataConsent to the corresponding IAccount.
+	 * Data types allowed are retrieved from Service Registry, in order to
+	 * prevent illegal requests from the service.
 	 * 
 	 * @param user
 	 * @param service
 	 * @throws IllegalStateException
 	 *             If there is no Active ServiceConsent for the pair user,
-	 *             service
+	 *             service.
 	 * @return A valid DataConsent containing the specific Set of IMetadatum for
 	 *         that service.
 	 */
@@ -127,10 +123,31 @@ public class ConsentManager {
 		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
 		OutputDataConsent outDataConsent = new OutputDataConsent(metadata, consent);
 		user.addDataConsent(outDataConsent, service);
-		logger.log(Level.FINER, outDataConsent.toString());
 		return outDataConsent;
 	}
 
+	/**
+	 * This method issues a new Data Consent (for data flowing into the PDV) if
+	 * there is an Active ServiceConsent for the user and service specified. It
+	 * also adds the newly created DataConsent to the corresponding IAccount.
+	 * Data types allowed are retrieved from Service Registry, in order to
+	 * prevent illegal requests from the service: if the dataSet specified as an
+	 * input parameter does not match, nor is contained in the Set specified
+	 * during the registration procedure, an exception is thrown.
+	 * 
+	 * @param user
+	 * @param service
+	 * @param dataSet
+	 *            the String constants corresponding to the data types the
+	 *            service is going to save in the PDV.
+	 * @throws IllegalStateException
+	 *             if there is no Active ServiceConsent for the specified
+	 *             service.
+	 * @throws IllegalArgumentException
+	 *             if the data types specified in input are not registered in
+	 *             the Service Registry for this service.
+	 * @return
+	 */
 	public static InputDataConsent askInputDataConsent(IUser user, IService service, IDataSet dataSet) {
 		ServiceConsent consent = user.getActiveSCForService(service);
 		if (consent == null)
@@ -139,10 +156,10 @@ public class ConsentManager {
 		Set<String> metadata = ServiceRegistry.getMetadataForService(service);
 		Set<String> dataSetKeys = dataSet.getKeys();
 		if (!metadata.containsAll(dataSetKeys))
-			throw new IllegalArgumentException("The service " + service.toString() + " does not have permission to access some, or all, data types specified in the given DataSet.");
+			throw new IllegalArgumentException("The service " + service.toString()
+					+ " does not have permission to access some or all of the data types specified in the given DataSet.");
 		InputDataConsent inDataConsent = new InputDataConsent(dataSet.getKeys(), consent);
 		user.addDataConsent(inDataConsent, service);
-		logger.log(Level.FINER, inDataConsent.toString());
 		return inDataConsent;
 	}
 
