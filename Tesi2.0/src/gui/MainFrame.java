@@ -513,7 +513,7 @@ public class MainFrame extends JFrame {
 	private void goButtonClicked() {
 		this.updateWithGUIPreferences();
 		try {
-			this.controller.provideConcreteService(this);
+			this.controller.provideMlntService(this);
 		} catch (IOException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());

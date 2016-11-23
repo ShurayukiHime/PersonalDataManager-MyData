@@ -37,7 +37,7 @@ public interface IController {
 
 	public JFrame getServicePanel(IService selectedService);
 
-	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException;
+	public void provideMlntService(MainFrame mainFrame) throws FileNotFoundException, IOException;
 
 	public void resetUIPreferences();
 

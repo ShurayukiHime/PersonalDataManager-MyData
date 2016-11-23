@@ -785,18 +785,6 @@
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Association" first="0" second="13">
-        <Label>
-        </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>2016</X>
-          <Y>984</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
       <Relationship type="Association" first="0" second="14">
         <Label>
         </Label>
@@ -985,13 +973,182 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
+      <Relationship type="Association" first="0" second="13">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
     </Relationships>
   </ProjectItem>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>Nei paragrafi successivi verranno illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le eventuali differenze che si creano rispetto a quanto detto in Analisi.</Name>
     <Language>Java</Language>
-    <Entities />
-    <Relationships />
+    <Entities>
+      <Entity type="Class">
+        <Name>ServiceConsent</Name>
+        <Access>Public</Access>
+        <Location left="307" top="601" />
+        <Size width="570" height="417" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private byte[] signedByService</Member>
+        <Member type="Field">private byte[] signedByUser</Member>
+        <Member type="Field">private Date timestampGiven</Member>
+        <Member type="Field">private Date timestampWithdrawn</Member>
+        <Member type="Field">private IService service</Member>
+        <Member type="Field">private IUser user</Member>
+        <Member type="Field">private ConsentStatus consentStatus</Member>
+        <Member type="Field">private UUID identifier</Member>
+        <Member type="Constructor">public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service, IUser user)</Member>
+        <Member type="Method">public Date getTimestampGiven()</Member>
+        <Member type="Method">public Date getTimestampWithdrawn()</Member>
+        <Member type="Method">private void setTimestampWithdrawn(Date timestampWithdrawn)</Member>
+        <Member type="Method">public IService getService()</Member>
+        <Member type="Method">public ConsentStatus getConsentStatus()</Member>
+        <Member type="Method">public IUser getUser()</Member>
+        <Member type="Method">private void setConsentStatus(ConsentStatus consentStatus)</Member>
+        <Member type="Method">protected void ChangeConsentStatus(ConsentStatus newStatus)</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public boolean equals(Object obj)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>DataConsent</Name>
+        <Access>Public</Access>
+        <Location left="1211" top="641" />
+        <Size width="380" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private Set&lt;String&gt; typesConst</Member>
+        <Member type="Field">private ServiceConsent serviceConsent</Member>
+        <Member type="Field">private Date timestamp</Member>
+        <Member type="Field">private UUID identifier</Member>
+        <Member type="Constructor">public DataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public Set&lt;String&gt; getTypesConst()</Member>
+        <Member type="Method">public ServiceConsent getServiceConsent()</Member>
+        <Member type="Method">public UUID getIdentifier()</Member>
+        <Member type="Method">public int hashCode()</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>InputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="920" top="1088" />
+        <Size width="406" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public InputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OutputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="1385" top="1088" />
+        <Size width="414" height="111" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">public OutputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Method">public String toString()</Member>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IConsent</Name>
+        <Access>Public</Access>
+        <Location left="964" top="423" />
+        <Size width="162" height="77" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ConsentStatus</Name>
+        <Access>Public</Access>
+        <Location left="405" top="1090" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Active</Value>
+        <Value>Disabled</Value>
+        <Value>Withdrawn</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>Account</Name>
+        <Access>Default</Access>
+        <Location left="964" top="813" />
+        <Size width="163" height="77" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+    </Entities>
+    <Relationships>
+      <Relationship type="Association" first="6" second="1">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="1" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1186</X>
+          <Y>698</Y>
+        </BendPoint>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Composition</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="2" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Generalization" first="3" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1588</X>
+          <Y>1034</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1401</X>
+          <Y>944</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="0" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>809</X>
+          <Y>560</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Realization" first="1" second="4">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>1268</X>
+          <Y>533</Y>
+        </BendPoint>
+        <BendPoint relativeToStartShape="False">
+          <X>1045</X>
+          <Y>518</Y>
+        </BendPoint>
+      </Relationship>
+    </Relationships>
   </ProjectItem>
   <ProjectItem type="NClass.DiagramEditor.ClassDiagram.Diagram" assembly="NClass.DiagramEditor, Version=2.4.1823.0, Culture=neutral, PublicKeyToken=null">
     <Name>s</Name>

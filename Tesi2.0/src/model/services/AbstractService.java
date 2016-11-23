@@ -24,9 +24,9 @@ public abstract class AbstractService implements IService {
 	}
 
 	/**
-	 * This method implements that part of the business logic which is
-	 * common to each service: it asks the ConsentManager for a OutputDataConsent and
-	 * it receives the DataSet associated with that consent. After that, an
+	 * This method implements that part of the business logic which is common to
+	 * each service: it asks the ConsentManager for a OutputDataConsent and it
+	 * receives the DataSet associated with that consent. After that, an
 	 * abstract method is called, which will contain the specific implementation
 	 * of the service considered.
 	 */
@@ -40,10 +40,12 @@ public abstract class AbstractService implements IService {
 	@Override
 	public void gatherData(IUser user, IDataSet dataSet) {
 		if (!user.hasAccountAtService(this))
-			throw new IllegalArgumentException("User " + user.toString() + " doesn't have an account to this service " + this.toString() + ".");
+			throw new IllegalArgumentException(
+					"User " + user.toString() + " doesn't have an account to this service " + this.toString() + ".");
 		ServiceConsent sConsent = user.getActiveSCForService(this);
 		if (sConsent == null)
-			throw new IllegalStateException("The Service Consent associated with " + this.toString() + " is not Active.");
+			throw new IllegalStateException(
+					"The Service Consent associated with " + this.toString() + " is not Active.");
 		InputDataConsent inDataConsent = ConsentManager.askInputDataConsent(user, this, dataSet);
 		this.myDataInstance.saveDataSet(dataSet, inDataConsent);
 	}
@@ -57,8 +59,10 @@ public abstract class AbstractService implements IService {
 
 	/**
 	 * This method is called at the instantiation of the implementing object,
-	 * which will be the concrete service. It should register the service to the
-	 * Service Registry, as specified in the MyData Architecture Specifications.
+	 * which will be the concrete service. Its function is to register the
+	 * service to the Service Registry, as specified in the MyData Architecture
+	 * Specifications. In particular, the concrete service has to declare which
+	 * data types it needs to work.
 	 */
 	protected abstract void registerService();
 
@@ -67,4 +71,7 @@ public abstract class AbstractService implements IService {
 
 	@Override
 	public abstract boolean equals(Object obj);
+	
+	@Override
+	public abstract String toString();
 }

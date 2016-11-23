@@ -244,7 +244,7 @@ public class MyController implements IController {
 	}
 
 	@Override
-	public void provideConcreteService(MainFrame mainFrame) throws FileNotFoundException, IOException {
+	public void provideMlntService(MainFrame mainFrame) throws FileNotFoundException, IOException {
 		IService s = this.findService(mainFrame);
 		this.printSuggestions(mainFrame, s.provideService(authenticatedUser));
 	}
