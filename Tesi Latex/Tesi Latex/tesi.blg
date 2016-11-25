@@ -41,12 +41,20 @@ Warning--to sort, need author or key in w3cdatacube
 Warning--to sort, need author or key in javalanguagespecs
 Warning--to sort, need author or key in java8api
 Warning--to sort, need author or key in javacrypto
+Warning--to sort, need author or key in javajsonobject
+Warning--to sort, need author or key in googlegson
 Warning--empty author in w3cdatacatalog
 Warning--empty institution in w3cdatacatalog
 Warning--empty year in w3cdatacatalog
 Warning--empty author in googlecalendarapi
 Warning--empty institution in googlecalendarapi
 Warning--empty year in googlecalendarapi
+Warning--empty author in googlegson
+Warning--empty institution in googlegson
+Warning--empty year in googlegson
+Warning--empty author in javajsonobject
+Warning--empty institution in javajsonobject
+Warning--empty year in javajsonobject
 Warning--empty author in javacrypto
 Warning--empty institution in javacrypto
 Warning--empty year in javacrypto
@@ -88,4 +96,4 @@ Warning--empty institution in mydatawhitepaper
 Warning--empty year in mydatawhitepaper
 Warning--empty institution in wefreport
 Warning--empty year in wefreport
-(There were 72 warnings)
+(There were 80 warnings)

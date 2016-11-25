@@ -19,7 +19,7 @@ public class DataConsent implements IConsent {
 	private Date timestamp;
 	private UUID identifier;
 
-	public DataConsent(Set<String> typesConst, ServiceConsent serviceConsent) {
+	protected DataConsent(Set<String> typesConst, ServiceConsent serviceConsent) {
 		super();
 		this.typesConst = typesConst;
 		this.serviceConsent = serviceConsent;

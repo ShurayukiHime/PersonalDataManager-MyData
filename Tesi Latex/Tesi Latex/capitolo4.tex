@@ -66,6 +66,7 @@ Alternativamente, \`e possibile astrarre ad un livello ancora maggiore l’imple
 In ultima analisi, anche a causa di una implementazione gi\`a presente all’interno del progetto \textit{Most Likely Next Trip} si \`e scelto di adottare una persistenza che faccia uso di file di testo. Tuttavia, attraverso l’uso di interfacce ho cercato di non propagare le dipendenze dall’implementazione scelta all’esterno della classe, in modo da permettere un pi\`u semplice refactoring in caso di sviluppi futuri.
 
 \section{Rappresentazione di dati non noti a priori}
+\label{sec:A-datinonnotiapriori}
 Una delle maggiori difficolt\`a incontrate durante lo studio di \textit{Service Registry} e Personal Data Storage riguardava la necessit\`a di descrivere tipi di dato non noti a priori, e di possedere strumenti per il loro processamento. Questa problematica interessa il \textit{Service Registry} al momento dell’iscrizione del servizio presso \textit{MyData} e il Personal Data Storage quando questo prende parte ad uno scambio di dati con il servizio.
 
 Le specifiche del modello \textit{MyData} consentono di ottenere l’indipendenza da tipi di dato specifici tramite l’utilizzo linguaggi che descrivono la tassonomia e le strutture dati necessarie al funzionamento del servizio. In particolare, viene fatto uso di RDF (Resource Description Framework), che permette la rappresentazione di informazioni all’interno del web \cite{w3crdf}.

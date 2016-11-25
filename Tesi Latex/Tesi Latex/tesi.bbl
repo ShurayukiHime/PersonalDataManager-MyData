@@ -15,6 +15,16 @@ Google calendar api at google developers.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 
+\bibitem{googlegson}
+Google gson library on github.
+\newblock Technical report.
+\newblock Ultima visita Nov. 2016.
+
+\bibitem{javajsonobject}
+Java api specification - jsonobject.
+\newblock Technical report.
+\newblock Ultima visita Nov. 2016.
+
 \bibitem{javacrypto}
 Java cryptography architecture (jca) reference guide.
 \newblock Technical report.

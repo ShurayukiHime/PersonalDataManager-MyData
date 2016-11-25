@@ -81,7 +81,8 @@ public class ServiceConsent implements IConsent {
 	 * Disabled or Withdrawn. In case of withdrawal of consent, it is necessary
 	 * to update the corresponding timestampWithdrawn. The method which invokes
 	 * this function should check that only valid changes are made: for example,
-	 * that no withdrawn Consent becomes Active again.
+	 * that no withdrawn Consent becomes Active again, or that the Consent isn't
+	 * already Withdrawn. This is why no other checks are made.
 	 * 
 	 * @param newStatus
 	 *            the new status of the consent
@@ -119,9 +120,9 @@ public class ServiceConsent implements IConsent {
 	}
 
 	public String toString() {
-		String result = "Service Consent " + this.identifier + " issued at " + this.timestampGiven + " for user " + this.user.toString()
-				+ " at service " + this.service.toString() + ". Current status: " + this.consentStatus;
-		return this.consentStatus == ConsentStatus.WITHDRAWN ? result + " at " + this.timestampWithdrawn + "."
-				: result;
+		String result = "Service Consent " + this.identifier + " issued at " + this.timestampGiven + " for user "
+				+ this.user.toString() + " at service " + this.service.toString() + ". Current status: "
+				+ this.consentStatus;
+		return this.consentStatus == ConsentStatus.WITHDRAWN ? result + " at " + this.timestampWithdrawn + "." : result;
 	}
 }

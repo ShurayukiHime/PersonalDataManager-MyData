@@ -30,9 +30,10 @@ Questa classe modella un generico utente dell’architettura \textit{MyData}. I 
 
 Si evidenzia inoltre la presenza di un \texttt{Set<IAccount> accounts} che realizza l’associazione fra un utente e gli account presso i servizi a cui si \`e registrato. La scelta di un \texttt{Set} permette di implementare il vincolo secondo cui ogni utente pu\`o avere un solo account presso un certo servizio ed \`e efficace anche perch\'e \`e superfluo mantenere un insieme ordinato di account.
 
-Questa classe, inoltre, ha la funzione di interfacciare gli altri componenti del gestore, compresa la GUI, con gli account utente. A tal fine presenta i metodi \texttt{addServiceConsent} \texttt{(IService} \texttt{service)}, \texttt{addDataConsent} \texttt{(DataConsent} \texttt{dataConsent} \texttt{IService} \texttt{service)}, \texttt{hasAccountAtService} (\texttt{IService} \texttt{service)}.  La classe \texttt{Account}, infatti, \`e stata modellata con visibilit\`a package protected per impedire l’accesso a classi esterne al package \texttt{users}: di conseguenza, anche la creazione di nuovi account avviene attraverso questa classe, in particolare nella funzione \texttt{newAccountAtService} \texttt{(IService} \texttt{service)}. All’interno del metodo troviamo l’istanziazione di un nuovo account insieme ad una chiamata alla classe \texttt{ConsentManager} che realizza quanto anticipato al paragrafo \ref{sec:A-Consent} a pagina \pageref{sec:A-Consent}. In questo modo si ottiene un esempio di \textit{Service Linking} e l’esito di questa operazione viene concretizzato in un oggetto \texttt{ServiceConsent}. Si rimandano per\`o ulteriori dettagli a quanto evidenziato nella sezione \ref{sec:P-AutorizzazioniEConsent} a pagina \pageref{sec:P-AutorizzazioniEConsent}.
+Questa classe, inoltre, ha la funzione di interfacciare gli altri componenti del gestore, compresa la GUI, con gli account utente. A tal fine presenta i metodi \texttt{addServiceConsent (IService service)}, \texttt{addDataConsent (DataConsent dataConsent, IService service)}, \texttt{hasAccountAtService (IService service)}.  La classe \texttt{Account}, infatti, \`e stata modellata con visibilit\`a package protected per impedire l’accesso a classi esterne al package \texttt{users}: di conseguenza, anche la creazione di nuovi account avviene attraverso questa classe, in particolare nella funzione \texttt{newAccountAtService (IService service)}. All’interno del metodo troviamo l’istanziazione di un nuovo account insieme ad una chiamata alla classe \texttt{ConsentManager} che realizza quanto anticipato al paragrafo \ref{sec:A-Consent} a pagina \pageref{sec:A-Consent}. In questo modo si ottiene un esempio di \textit{Service Linking} e l’esito di questa operazione viene concretizzato in un oggetto \texttt{ServiceConsent}. Si rimandano per\`o ulteriori dettagli a quanto evidenziato nella sezione \ref{sec:P-AutorizzazioniEConsent} a pagina \pageref{sec:P-AutorizzazioniEConsent}.
 
 \subsection{IAccount, Account}
+\label{subsec:P-Account}
 \begin{figure} [h]
 	\includegraphics[width=\linewidth]{pictures/Accounting-Account.png}
 	\caption{caption}
@@ -42,7 +43,7 @@ La classe \texttt{Account} \`e abbastanza semplice, poich\'e si occupa semplicem
 
 Fra queste vi sono i controlli sullo stato dei Consent memorizzati, la gestione dello storico di tutti i Consent emessi per quel servizio service, o ancora il matching fra i due tipi di Consent (\texttt{ServiceConsent}, \texttt{DataConsent}, dettagliati al paragrafo \ref{subsec:P-ServiceConsentDataConsent} a pagina \pageref{subsec:P-ServiceConsentDataConsent}).
 
-La memorizzazione dei Consent all’interno della classe \`e stata ottenuta mediante l’utilizzo combinato delle strutture dati \texttt{Map<ServiceConsent,} \texttt{List<DataConsent>>}. Questa modalit\`a permette di esprimere diversi concetti a livello semantico. Come prima cosa, per i Consent sul flusso di dati si \`e scelto di utilizzare la classe base \texttt{DataConsent} invece che le sue due implementazioni, in modo da poterli memorizzare indiscriminatamente. Ci\`o verifica l’utilizzo del principio di sostituibilit\`a di Liskov. Inoltre, la scelta di una \texttt{List} come value all’interno di una mappa permette di descrivere un flusso di dati (all’interno dello stesso \texttt{ServiceConsent}) per il quale si sono rivelate necessare una molteplicit\`a di interazioni fra \textit{Source} e \textit{Sink}, ognuna delle quali modellata da un \texttt{DataConsent}.
+La memorizzazione dei Consent all’interno della classe \`e stata ottenuta mediante l’utilizzo combinato delle strutture dati \texttt{Map<ServiceConsent, \-List\-<Data\-Consent>>}. Questa modalit\`a permette di esprimere diversi concetti a livello semantico. Come prima cosa, per i Consent sul flusso di dati si \`e scelto di utilizzare la classe base \texttt{DataConsent} invece che le sue due implementazioni, in modo da poterli memorizzare indiscriminatamente. Ci\`o verifica l’utilizzo del principio di sostituibilit\`a di Liskov. Inoltre, la scelta di una \texttt{List} come value all’interno di una mappa permette di descrivere un flusso di dati (all’interno dello stesso \texttt{ServiceConsent}) per il quale si sono rivelate necessare una molteplicit\`a di interazioni fra \textit{Source} e \textit{Sink}, ognuna delle quali modellata da un \texttt{DataConsent}.
 
 Ad ogni istanza di \texttt{ServiceConsent} corrisponde quindi una \texttt{Collection} dei \texttt{DataConsent} emessi durante il periodo di validit\`a dello stesso, ed \`e possibile avere un unico \texttt{ServiceConsent} attivo in un determinato istante di tempo.
 
@@ -70,7 +71,7 @@ La classe \texttt{MyData} svolge all’interno del gestore di dati personali un 
 
 Si occupa quindi come prima cosa di registrare e autenticare gli utenti (metodi \texttt{createMyDataAccount} e \texttt{loginUser}) in modo da impedire la creazione di duplicati. I controlli in questo senso vengono effettuati su un \texttt{HashSet<IUser>} contenuto all’interno della classe (si sfrutta la propriet\`a della struttura dati \texttt{Set} di non ammettere duplicati). La creazione di un nuovo account presso un determinato servizio viene gestita da questa classe, tramite invocazione dell’opportuno metodo esposto dall’interfaccia \texttt{IUser}, insieme alla richiesta di nuovi \texttt{ServiceConsent} in caso di utente gi\`a registrato.
 
-In secondo luogo, ogni servizio che ha richiesto e ottenuto il permesso di accedere a uno specifico insieme di dati personali di un utente fa riferimento alla classe \texttt{MyData}, che si occupa di intercedere presso il Personal Data Vault per ottenere quanto richiesto. L’operazione si svolge sia per i dati in ingresso che per i dati in uscita dal Vault mediante i metodi \texttt{getDataSetForOutputDataConsent} \texttt{(OutputDataConsent} \texttt{outputDataConsent)} e \texttt{saveDataSet} \texttt{(IDataSet} \texttt{dataSet,} \texttt{InputDataConsent} \texttt{inDataConsent)}. In entrambi i casi, viene controllata la validit\`a del Consent emesso prima di effettuare la richiesta di dati personali.
+In secondo luogo, ogni servizio che ha richiesto e ottenuto il permesso di accedere a uno specifico insieme di dati personali di un utente fa riferimento alla classe \texttt{MyData}, che si occupa di intercedere presso il Personal Data Vault per ottenere quanto richiesto. L’operazione si svolge sia per i dati in ingresso che per i dati in uscita dal Vault mediante i metodi \texttt{getDataSetForOutputDataConsent (OutputDataConsent outputDataConsent)} e \texttt{saveDataSet (IDataSet dataSet, InputDataConsent inDataConsent)}. In entrambi i casi, viene controllata la validit\`a del Consent emesso prima di effettuare la richiesta di dati personali.
 
 Infine, si evidenzia la realizzazione della classe \texttt{MyData} come Singleton mediante l’utilizzo di un costruttore privato e di un campo \texttt{instance} di tipo \texttt{MyData}. Ci\`o assicura la presenza di un unico Operatore di questo tipo all’interno del programma.
 
@@ -94,11 +95,11 @@ All'interno dell'architettura realizzata per la gestione delle autorizzazioni e 
 \end{figure}
 La classe \texttt{ConsentManager} si occupa dell’erogazione, in caso di richiesta legittima, di vari tipi di permessi ai servizi che ne fanno richiesta. Poich\'e il suo scopo \`e quello di garantire il rispetto di un determinato protocollo di assegnazione dei permessi, essa \`e prima di tutto una classe implementativa e per questo motivo non \`e previsto alcun tipo di astrazione (ad esempio tramite interfaccia).
 
-Si potrebbe considerare di rendere la classe \texttt{final}, per impedire estensioni o ridefinizioni del comportamento. Le motivazioni a supporto di questa scelta risiedono nella garanzia di una maggiore sicurezza. Tuttavia, nel complesso ci\`o avrebbe portato ad una eccessiva rigidit\`a del codice, impedendo aggiornamenti del protocollo anche in casi di legittima necessit\`a.
+Si potrebbe considerare di rendere la classe \texttt{final}, per impedire estensioni o ridefinizioni del comportamento. Le motivazioni a supporto di questa scelta risiedono nella garanzia di una maggiore sicurezza. Tuttavia, nel complesso ci\`o porterebbe ad una eccessiva rigidit\`a del codice, impedendo aggiornamenti del protocollo anche in casi di legittima necessit\`a.
 
 Per la sua implementazione, ho cercato di fare in modo che essa realizzasse un servizio il pi\`u possibile indipendente dal resto dell’architettura circostante. Pertanto, la classe \texttt{ConsentManager} non mantiene alcuno stato interno, presenta costruttore privato e non ha dipendenze rilevanti. Inoltre, poich\'e la procedura di verifica dei requisiti \`e costante e indipendente dai parametri di ingresso, ogni metodo \`e stato realizzato come \texttt{static}. 
 
-I tipi di Consent erogati dalla classe \texttt{ConsentManager} sono \texttt{ServiceConsent} e le classi “figlie” \texttt{InputDataConsent}, \texttt{OutputDataConsent}, ognuno con un metodo dedicato. \`E presente anche la procedura \texttt{changeServiceConsentStatusForService} \texttt{(IUser} \texttt{user,} \texttt{IService} \texttt{service,} \texttt{ConsentStatus} \texttt{newStatus)}, che permette all’utente di cambiare lo stato del \texttt{ServiceConsent} correntemente attivo o disabilitato, secondo quanto previsto dalle specifiche di \textit{MyData} e successivamente in fase di Analisi (sezione \ref{sec:A-Consent}).
+I tipi di Consent erogati dalla classe \texttt{ConsentManager} sono \texttt{ServiceConsent}, \texttt{InputDataConsent} e \texttt{OutputDataConsent}, ognuno con un metodo dedicato. \`E presente anche la procedura \texttt{changeServiceConsentStatusForService (IUser user, IService service, ConsentStatus newStatus)}, che permette all’utente di cambiare lo stato del \texttt{ServiceConsent} correntemente attivo o disabilitato, secondo quanto previsto dalle specifiche di \textit{MyData} e successivamente in fase di Analisi (sezione \ref{sec:A-Consent}).
 
 
 \subsection{ServiceConsent, DataConsent}
@@ -108,18 +109,48 @@ I tipi di Consent erogati dalla classe \texttt{ConsentManager} sono \texttt{Serv
 	\caption{caption}
 	\label{fig:Auth-Consents}
 \end{figure}
-https://docs.oracle.com/javase/8/docs/api/java/security/Permission.html
+I permessi utilizzati all’interno del gestore di dati personali ed erogati dalla classe \texttt{ConsentManager} sono istanze delle classi \texttt{ServiceConsent}, \texttt{InputDataConsent} e \texttt{OutputDataConsent}. Come \`e possibile osservare dal diagramma UML in figura \ref{fig:Auth-Consents}, \texttt{InputDataConsent} e \texttt{OutputDataConsent} estendono la classe \texttt{DataConsent}: la loro funzione \`e principalmente semantica, in quanto non aggiungono logica al programma ma descrivono il verso del flusso di dati che si crea con il Personal Data Vault. Pertanto, descriver\`o principalmente le caratteristiche delle classi \texttt{ServiceConsent} e \texttt{DataConsent}, che costituiscono il punto focale della realizzazione dei permessi descritti in \textit{MyData}.
+
+Nonostante la differenza di realizzazione e di utilizzo, entrambe le classi \texttt{ServiceConsent} e \texttt{DataConsent} implementano una interfaccia comune \texttt{IConsent}. Questa \`e una interfaccia \textit{marker} necessaria per esprimere una somiglianza a livello semantico, in quanto entrambe le classi descrivono un tipo di autorizzazione.
+
+Dal diagramma UML \`e possibile dedurre il ruolo della classe \texttt{Account} rispetto ai due tipi di Consent. Come accennato infatti in \ref{subsec:P-Account}, essa mantiene al suo interno una mappa di corrispondenze fra \texttt{ServiceConsent} e liste di \texttt{DataConsent}.
+
+Nel primo caso, la relazione \`e rappresentata mediante il simbolo “rombo nero”, che qualifica la classe \texttt{Account} come “contenitore” di istanze della classe \texttt{ServiceConsent}. In particolare, il rombo nero descrive un tipo di relazione molto stretta fra le due parti, e la scelta \`e dovuta alle specifiche di \textit{MyData}, secondo cui non \`e possibile registrarsi presso un servizio senza ottenere un Consent. Ci\`o \`e stato implementato mediante l’emissione di un \texttt{ServiceConsent} prima della creazione effettiva dell’account, e il legame fra i due avviene tramite il passaggio di questo permesso al costruttore della classe \texttt{Account}.
+
+La classe \texttt{ServiceConsent} realizza il primo – e il pi\`u rilevante – dei due tipi di permessi previsti per il gestore di dati personali. Al suo interno troviamo i \textit{token} firmati da utente e servizio per la mutua autenticazione, insieme ai rispettivi riferimenti; vi sono inoltre anche alcuni campi per l’identificazione del Consent stesso e la sua collocazione temporale.
+
+Per quanto riguarda invece i \texttt{DataConsent}, essi si comportano come \textit{access token} per il Personal Data Vault validi una sola volta e conservati come storico dell’accesso ai dati personali. A tal fine, un \texttt{DataConsent} contiene al suo interno il \texttt{Set<String>} con l’elenco dei tipi di dato a cui il servizio beneficiario pu\`o accedere. Per impedire accessi illegittimi, viene sempre controllata la corrispondenza fra i tipi di dato dichiarati in fase di registrazione e quelli richiesti alla creazione del \texttt{DataConsent}. Poich\'e il servizio non pu\`o interrogare direttamente il Personal Data Vault, gli scambi avvengono in base a quanto dichiarato all’interno del \texttt{Set<String>}.
+
+Infine, si evidenzia dal diagramma UML che ogni \texttt{DataConsent} mantiene un riferimento al \texttt{ServiceConsent} attivo al momento della sua emissione, al fine di avere una migliore tracciabilit\`a delle transazioni di dati, e che il costruttore della stessa classe ha visibilit\`a package - protected in modo da obbligare l’uso delle sottoclassi alle classi esterne.
+
 
 \section{PersonalDataVault}
 \begin{figure} [h]
-	\includegraphics[width=\linewidth]{pictures/PersonalDataVault.png}
+	\centering
+	\includegraphics[width=0.8\linewidth]{pictures/PersonalDataVault.png}
 	\caption{caption}
 	\label{fig:PersonalDataVault}
 \end{figure}
+In questa sezione si presenta la realizzazione del Personal Data Vault, in cui vengono mantenuti i dati personali dell’utente. L’interfaccia \texttt{IPersonalDataVault} espone i metodi \texttt{getData (Set<String> typesConst)} (che restituisce un \texttt{IDataSet}) e \texttt{saveData (IDataSet dataSet)} che permettono l’accesso ai dati.
+
+La signature dei metodi garantisce l’indipendenza dai tipi di dato in ingresso o in uscita dal Vault grazie all’uso di oggetti di tipo \texttt{DataSet}, incapsulati in opportune interfacce \texttt{IDataSet}, il cui funzionamento \`e spiegato in dettaglio nella sezione \ref{sec:P-Service}. Inizialmente, in fase di Analisi, avevo preso in considerazione la possibilit\`a di realizzare gli scambi di dati da e per il Personal Data Vault utilizzando il linguaggio JSON (come anticipato nella sezione \ref{sec:A-datinonnotiapriori}). Questa scelta, dovuta alla volont\`a di realizzare un sistema interoperabile e aderente agli standard contemporanei, si \`e rivelata difficilmente realizzabile in fase di Progettazione.
+
+In questo senso, come prima cosa ho studiato i componenti Java disponibili nell’architettura per realizzare la conversione in stringhe JSON: \texttt{JsonArray}, \texttt{JsonObject} e altre sotto-interfacce di \texttt{JsonValue} \cite{javajsonobject}. Il motivo per cui ho scelto di non utilizzarli \`e che questi non offrono alcun metodo di utilit\`a per la conversione da oggetto a stringa, e la trasposizione di ogni field va realizzata manualmente sia in serializzazione che in deserializzazione. Una scelta di questo tipo implicherebbe un precedente accordo fra le parti per stabilire come interpretare le stringhe inviate, e una forte dipendenza dalla particolare implementazione delle classi.
+ 
+Come seconda opzione ho considerato di utilizzare la libreria Google Gson \cite{googlegson}, in quanto essa risolve i problemi incontrati nel corso del primo tentativo grazie ai metodi \texttt{gson.toJson(obj)} per la serializzazione e \texttt{gson.fromJson(json, obj.class)} per la deserializzazione. Questo approccio funziona perfettamente in caso di oggetti che contengono tipi primitivi, ma mostra qualche limitazione quando si introducono oggetti di tipo generico e Collection di oggetti, siano esse di oggetti di un unico tipo o di tipi diversi. Il motivo risiede nell’implementazione della Java Virtual Machine, e in particolare nella sua caratteristica di \textit{Type Erasure} per la quale ogni oggetto a basso livello “perde” il suo tipo particolare per diventare un \texttt{Object}. Questo non crea problemi in serializzazione ma in deserializzazione, quando risulta impossibile recuperare il tipo originario dell’oggetto da deserializzare. Poich\'e l’utilizzo della libreria Gson nel contesto del \texttt{PersonalDataVault} si sarebbe collocato all’interno dei casi non completamente supportati, ho scelto di scartare anche questa seconda possibilit\`a.
+
+La soluzione da me proposta a questo problema consiste nell’utilizzo di una struttura dati \texttt{DataSet} che permetta lo scambio di dati di qualunque tipo all’interno del sistema, purch\'e il loro tipo sia stato preventivamente dichiarato in fase di registrazione (sezione \ref{sec:P-serviceregistry}). La classe \texttt{DataSet} \`e descritta in dettaglio nella sezione \ref{sec:P-metadataDataset}.
+
+All’interno della classe \texttt{PersonalDataVault} troviamo alcuni metodi privati necessari per la gestione dei dati memorizzati (ad esempio la lettura e la scrittura su file, con opportune funzioni di utility necessarie per il parsing). Le scelte effettuate in questo senso derivano da una precedente implementazione e sono state adattate solo in minima parte per motivi di compatibilit\`a.
+
+Per quanto riguarda invece i metodi \texttt{getData (Set<String> typesConst)} e \texttt{saveData (IDataSet dataSet)}, essi si occupano di prelevare dati, o salvarli, in base a quanto specificato dal \texttt{Set<String>} contenente l’insieme dei tipi di dato.
+
 
 \section{Metadata, DataSet}
+\label{sec:P-metadataDataset}
 \begin{figure} [h]
-	\includegraphics[width=\linewidth]{pictures/Metadata.png}
+	\centering
+	\includegraphics[width=0.7\linewidth]{pictures/Metadata.png}
 	\caption{caption}
 	\label{fig:Metadata}
 \end{figure}
@@ -131,6 +162,7 @@ https://docs.oracle.com/javase/8/docs/api/java/security/Permission.html
 \end{figure}
 
 \section{IService, AbstractService, MostLikelyNextTrip}
+\label{sec:P-Service}
 \begin{figure} [h]
 	\includegraphics[width=\linewidth]{pictures/Services-closed.png}
 	\caption{caption}
@@ -144,6 +176,7 @@ https://docs.oracle.com/javase/8/docs/api/java/security/Permission.html
 \end{figure}
 
 \section{ServiceRegistry}
+\label{sec:P-serviceregistry}
 \begin{figure} [h]
 	\includegraphics[width=\linewidth]{pictures/ServiceRegistry.png}
 	\caption{caption}

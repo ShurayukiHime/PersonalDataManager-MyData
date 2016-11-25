@@ -515,7 +515,7 @@
         <Member type="Field">private ServiceConsent serviceConsent</Member>
         <Member type="Field">private Date timestamp</Member>
         <Member type="Field">private UUID identifier</Member>
-        <Member type="Constructor">public DataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
+        <Member type="Constructor">protected DataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
         <Member type="Method">public Set&lt;String&gt; getTypesConst()</Member>
         <Member type="Method">public ServiceConsent getServiceConsent()</Member>
         <Member type="Method">public UUID getIdentifier()</Member>
@@ -614,8 +614,8 @@
       <Entity type="Class">
         <Name>DataSet</Name>
         <Access>Public</Access>
-        <Location left="3914" top="513" />
-        <Size width="162" height="162" />
+        <Location left="3889" top="521" />
+        <Size width="229" height="162" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Map&lt;String, Object&gt; dataSet</Member>
         <Member type="Constructor">public DataSet()</Member>
@@ -687,7 +687,7 @@
       <Entity type="Class">
         <Name>Metadata</Name>
         <Access>Public</Access>
-        <Location left="3610" top="267" />
+        <Location left="3610" top="266" />
         <Size width="169" height="179" />
         <Collapsed>False</Collapsed>
         <Member type="Field">public static final String CALENDAR_CONST</Member>
@@ -986,167 +986,47 @@
     <Language>Java</Language>
     <Entities>
       <Entity type="Class">
-        <Name>ServiceConsent</Name>
+        <Name>Metadata</Name>
         <Access>Public</Access>
-        <Location left="307" top="601" />
-        <Size width="570" height="417" />
+        <Location left="333" top="151" />
+        <Size width="169" height="179" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private byte[] signedByService</Member>
-        <Member type="Field">private byte[] signedByUser</Member>
-        <Member type="Field">private Date timestampGiven</Member>
-        <Member type="Field">private Date timestampWithdrawn</Member>
-        <Member type="Field">private IService service</Member>
-        <Member type="Field">private IUser user</Member>
-        <Member type="Field">private ConsentStatus consentStatus</Member>
-        <Member type="Field">private UUID identifier</Member>
-        <Member type="Constructor">public ServiceConsent(byte[] signedByService, byte[] signedByUser, Date timestamp, IService service, IUser user)</Member>
-        <Member type="Method">public Date getTimestampGiven()</Member>
-        <Member type="Method">public Date getTimestampWithdrawn()</Member>
-        <Member type="Method">private void setTimestampWithdrawn(Date timestampWithdrawn)</Member>
-        <Member type="Method">public IService getService()</Member>
-        <Member type="Method">public ConsentStatus getConsentStatus()</Member>
-        <Member type="Method">public IUser getUser()</Member>
-        <Member type="Method">private void setConsentStatus(ConsentStatus consentStatus)</Member>
-        <Member type="Method">protected void ChangeConsentStatus(ConsentStatus newStatus)</Member>
-        <Member type="Method">public int hashCode()</Member>
-        <Member type="Method">public boolean equals(Object obj)</Member>
-        <Member type="Method">public String toString()</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>DataConsent</Name>
-        <Access>Public</Access>
-        <Location left="1211" top="641" />
-        <Size width="380" height="247" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">private Set&lt;String&gt; typesConst</Member>
-        <Member type="Field">private ServiceConsent serviceConsent</Member>
-        <Member type="Field">private Date timestamp</Member>
-        <Member type="Field">private UUID identifier</Member>
-        <Member type="Constructor">public DataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
-        <Member type="Method">public Set&lt;String&gt; getTypesConst()</Member>
-        <Member type="Method">public ServiceConsent getServiceConsent()</Member>
-        <Member type="Method">public UUID getIdentifier()</Member>
-        <Member type="Method">public int hashCode()</Member>
-        <Member type="Method">public String toString()</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>InputDataConsent</Name>
-        <Access>Public</Access>
-        <Location left="920" top="1088" />
-        <Size width="406" height="111" />
-        <Collapsed>False</Collapsed>
-        <Member type="Constructor">public InputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
-        <Member type="Method">public String toString()</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>OutputDataConsent</Name>
-        <Access>Public</Access>
-        <Location left="1385" top="1088" />
-        <Size width="414" height="111" />
-        <Collapsed>False</Collapsed>
-        <Member type="Constructor">public OutputDataConsent(Set&lt;String&gt; typesConst, ServiceConsent serviceConsent)</Member>
-        <Member type="Method">public String toString()</Member>
+        <Member type="Field">public static final String CALENDAR_CONST</Member>
+        <Member type="Field">public static final String TRIP_CONST</Member>
+        <Member type="Field">public static final String PREFERENCE_CONST</Member>
+        <Member type="Field">public static final String POSITION_CONST</Member>
+        <Member type="Field">public static final String DATE_CONST</Member>
+        <Member type="Constructor">private Metadata()</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
-        <Name>IConsent</Name>
+        <Name>IMetadata</Name>
         <Access>Public</Access>
-        <Location left="964" top="423" />
+        <Location left="617" top="151" />
         <Size width="162" height="77" />
         <Collapsed>True</Collapsed>
       </Entity>
-      <Entity type="Enum">
-        <Name>ConsentStatus</Name>
-        <Access>Public</Access>
-        <Location left="405" top="1090" />
-        <Size width="163" height="112" />
-        <Collapsed>False</Collapsed>
-        <Value>Active</Value>
-        <Value>Disabled</Value>
-        <Value>Withdrawn</Value>
-      </Entity>
       <Entity type="Class">
-        <Name>Account</Name>
-        <Access>Default</Access>
-        <Location left="964" top="813" />
-        <Size width="163" height="77" />
+        <Name>PersonalDataVault</Name>
+        <Access>Public</Access>
+        <Location left="617" top="268" />
+        <Size width="162" height="216" />
         <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="6" second="1">
+      <Relationship type="Realization" first="0" second="1">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="0" second="5">
-        <Label>
-        </Label>
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="1" second="0">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1186</X>
-          <Y>698</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="6" second="0">
+      <Relationship type="Association" first="2" second="0">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-      </Relationship>
-      <Relationship type="Generalization" first="2" second="1">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Generalization" first="3" second="1">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1588</X>
-          <Y>1034</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1401</X>
-          <Y>944</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Realization" first="0" second="4">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>809</X>
-          <Y>560</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Realization" first="1" second="4">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>1268</X>
-          <Y>533</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1045</X>
-          <Y>518</Y>
-        </BendPoint>
+        <AssociationType>Association</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>
@@ -1155,31 +1035,121 @@
     <Language>Java</Language>
     <Entities>
       <Entity type="Class">
-        <Name>ServiceRegistry</Name>
+        <Name>ServiceConsent</Name>
         <Access>Public</Access>
-        <Location left="522" top="296" />
-        <Size width="319" height="145" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">private static Map&lt;IService, Set&lt;String&gt;&gt; mappings</Member>
-        <Member type="Constructor">private ServiceRegistry()</Member>
-        <Member type="Method">public static void registerService(IService service, Set&lt;String&gt; types)</Member>
-        <Member type="Method">public static Set&lt;String&gt; getMetadataForService(IService service)</Member>
+        <Location left="725" top="263" />
+        <Size width="163" height="77" />
+        <Collapsed>True</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>IService</Name>
         <Access>Public</Access>
-        <Location left="598" top="544" />
-        <Size width="162" height="216" />
+        <Location left="662" top="692" />
+        <Size width="163" height="77" />
         <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Interface">
+        <Name>IUser</Name>
+        <Access>Public</Access>
+        <Location left="347" top="692" />
+        <Size width="163" height="77" />
+        <Collapsed>True</Collapsed>
+      </Entity>
+      <Entity type="Class">
+        <Name>InputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="970" top="465" />
+        <Size width="163" height="77" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Class">
+        <Name>OutputDataConsent</Name>
+        <Access>Public</Access>
+        <Location left="970" top="547" />
+        <Size width="163" height="77" />
+        <Collapsed>True</Collapsed>
+        <Modifier>None</Modifier>
+      </Entity>
+      <Entity type="Enum">
+        <Name>ConsentStatus</Name>
+        <Access>Public</Access>
+        <Location left="382" top="249" />
+        <Size width="163" height="112" />
+        <Collapsed>False</Collapsed>
+        <Value>Active</Value>
+        <Value>Disabled</Value>
+        <Value>Withdrawn</Value>
+      </Entity>
+      <Entity type="Class">
+        <Name>ConsentManager</Name>
+        <Access>Public</Access>
+        <Location left="323" top="443" />
+        <Size width="532" height="162" />
+        <Collapsed>False</Collapsed>
+        <Member type="Constructor">private ConsentManager()</Member>
+        <Member type="Method">public static ServiceConsent askServiceConsent(IUser user, IService service)</Member>
+        <Member type="Method">public static void changeServiceConsentStatusForService(IUser user, IService service, ConsentStatus newStatus)</Member>
+        <Member type="Method">public static OutputDataConsent askOutputDataConsent(IUser user, IService service)</Member>
+        <Member type="Method">public static InputDataConsent askInputDataConsent(IUser user, IService service, IDataSet dataSet)</Member>
+        <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="0" second="1">
+      <Relationship type="Association" first="6" second="0">
         <Label>
         </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="3">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="1">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="2">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Association</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="6" second="5">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="True">
+          <X>454</X>
+          <Y>418</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
