@@ -32,7 +32,8 @@ public class MostLikelyNextTrip extends AbstractService {
 		return this.suggesterManager.getSuggestions((LocalDateTime) dataSet.getObject(Metadata.DATE_CONST),
 				(Position) dataSet.getObject(Metadata.POSITION_CONST),
 				(List<IPreference>) dataSet.getObject(Metadata.PREFERENCE_CONST),
-				(List<ITrip>) dataSet.getObject(Metadata.TRIP_CONST), (ICalendar) dataSet.getObject(Metadata.CALENDAR_CONST));
+				(List<ITrip>) dataSet.getObject(Metadata.TRIP_CONST),
+				(ICalendar) dataSet.getObject(Metadata.CALENDAR_CONST));
 	}
 
 	/**

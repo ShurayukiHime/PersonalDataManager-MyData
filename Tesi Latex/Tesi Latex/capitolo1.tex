@@ -2,11 +2,11 @@
 \label{Introduzione}
 \thispagestyle{empty}
 
-\noindent Negli ultimi anni, con la diffusione degli smartphone e l’aumento dell’accesso a Internet, la tecnologia \`e diventata sempre pi\`u legata all’utente dietro lo schermo, con esempi che possono spaziare dai social network ai dispositivi di monitoraggio della salute e dell’attivit\`a fisica. La quantit\`a di informazioni raccolte tramite questi servizi non si limita a ci\`o che l’utente sceglie di condividere (foto, email, transazioni online), ma comprende anche dati osservati (abitudini di navigazione, dati di geolocalizzazione) e deduzioni (\textit{targeted advertising}, previsioni sul flusso del traffico). (Source: Information Accountability Foundation, World Economic Forum, Marc E. Davis) \cite{wefreport}
+\noindent Negli ultimi anni, con la diffusione degli smartphone e l’aumento dell’accesso a Internet, la tecnologia \`e diventata sempre pi\`u legata all’utente davanti allo schermo con esempi che possono spaziare dai social network ai dispositivi di monitoraggio della salute e dell’attivit\`a fisica. La quantit\`a di informazioni raccolte tramite questi servizi non si limita a ci\`o che l’utente sceglie di condividere (foto, email, transazioni online), ma comprende anche dati osservati (abitudini di navigazione, dati di geolocalizzazione) e deduzioni (\textit{targeted advertising}, previsioni sul flusso del traffico). (Source: Information Accountability Foundation, World Economic Forum, Marc E. Davis) \cite{wefreport}.
 
-L’importanza dei dati personali \`e diventata tale da richiedere l’esistenza di leggi che ne regolamentassero l’utilizzo, come il regolamento generale sulla protezione dei dati (GDPR, \textit{General Data Protection Regulation- Regolamento UE 2016/679}). http://static.ow.ly/docs/Regulation\_consolidated\_text\_EN\_47uW.pdf 
+L’importanza dei dati personali \`e diventata tale da richiedere l’esistenza di leggi che ne disciplinino l’utilizzo, come il regolamento generale sulla protezione dei dati (GDPR, \textit{General Data Protection Regulation- Regolamento UE 2016/679}) \cite{gdpr}.
 
-In questo contesto si sviluppa il modello \textit{MyData}, fondato sull’idea secondo cui ogni utente ha il controllo sui propri dati personali, ed \`e a conoscenza dell’utilizzo che ne viene fatto, in modo trasparente. D’altra parte, l’architettura \textit{MyData} vuole offrire al mercato e alle imprese un contesto di sviluppo di applicazioni software in cui vengono rispettate le leggi in materia di protezione dei dati sensibili, favorendo l’interoperabilit\`a fra di esse.
+In questo contesto si sviluppa il modello \textit{MyData}, fondato sull’idea secondo cui ogni utente, in modo trasparente, ha il controllo sui propri dati personali ed \`e a conoscenza dell’utilizzo che ne viene fatto. D’altra parte, l’architettura \textit{MyData} vuole offrire al mercato e alle imprese un contesto di sviluppo di applicazioni software in cui vengono rispettate le leggi in materia di protezione dei dati sensibili, favorendo l’interoperabilit\`a fra di esse.
 
 L’approccio \textit{MyData}, seppur innovativo, non \`e senza precedenti. Molti dei suoi concetti fondamentali sono anche alla base dei \textit{personal cloud}, come ad esempio la possibilit\`a di contenere in modo sicuro i dati personali dell’utente e offrire interoperabilit\`a fra diversi servizi, utilizzando concretamente i dati memorizzati.
 
@@ -16,26 +16,26 @@ A titolo di esempio, si \`e scelto di utilizzare come servizio “consumatore”
 L’obiettivo \`e quello di realizzare un sistema che permetta all’utente di monitorare l’utilizzo dei suoi dati personali in tempo reale ed in modo trasparente, attraverso l’implementazione di una politica di controllo degli accessi. Inoltre, il gestore opera in un contesto in cui il rispetto delle politiche di sicurezza \`e fondamentale: anche se la realizzazione di un sistema sicuro non rientra negli obiettivi del lavoro di tesi, sono presenti alcuni accorgimenti che puntano in questa direzione.
 
 \section{MyData, Big Data}
-Il progetto \textit{MyData} nasce in Finlandia, all’universit\`a di Aalto, partendo dall’idea di rafforzare i diritti digitali dell’individuo. All’interno del contesto vi \`e anche la stringente legislazione europea sulla protezione dei dati personali, e la volont\`a di offrire alle aziende un nuovo modo di approcciarsi al cliente, basato non su incomprensibili “Termini e Condizioni” ma sulla reciproca fiducia.
+Il progetto \textit{MyData} nasce in Finlandia, all’universit\`a di Aalto, partendo dall’idea di rafforzare i diritti digitali dell’individuo. All’interno del contesto vi \`e anche la stringente legislazione europea sulla protezione dei dati personali e la volont\`a di offrire alle aziende un nuovo modo di approcciarsi al cliente, basato sulla reciproca fiducia e non su incomprensibili “Termini e Condizioni”.
 
 Attualmente, grandi quantit\`a di dati vengono continuamente raccolti senza utilizzarne pienamente la ricchezza dell’informazione. Il loro percorso e le operazioni di processamento a cui vengono sottoposti sono sempre pi\`u numerose e cresce la difficolt\`a nel conservarne le tracce. Inoltre, l’utilizzo di software proprietari limita la possibilit\`a di analisi dei dati a causa della scarsa interoperabilit\`a fra le soluzioni adottate. Infine, va anche considerato l’impatto che tale modus operandi ha sugli utilizzatori finali: secondo un sondaggio riportato dal World Economic Forum, “Fully 78\% of consumers think it is hard to trust companies when it comes to use of their personal data” (Orange, The Future of Digital Trust, 2014) \cite{wefreport}.
 
 \textit{MyData} cerca di trovare una risposta a questi temi attraverso un cambio di paradigma che ponga l’utente al centro, attribuendogli la capacit\`a di gestire i propri dati personali e di comprendere l’uso che ne viene fatto. Allo stesso tempo, la qualit\`a dei suggerimenti ricevuti in base ai dati raccolti aumenterebbe grazie alla maggiore disponibilit\`a degli stessi. L’elaborazione dei dati potrebbe favorire anche conoscenze pi\`u approfondite del proprio comportamento da utenti (self tracking), anche attraverso la ricezione di un compenso per il processamento dei propri dati (data monetization)\cite{mydatawhitepaper}.
 
-L’approccio a livello infrastrutturale permetterebbe l’indipendenza da specifici settori (sanit\`a e salute, finanza, ecc.), favorendo una completa portabilit\`a dei dati. Il rispetto e l’aderenza alle leggi verrebbe realizzato dall’infrastruttura stessa, consentendo alle aziende di sviluppare i software in maniera meno vincolata, acquisendo al contempo la fiducia del cliente grazie alla trasparenza e all’affidabilit\`a garantite da \textit{MyData}.
+L’approccio a livello infrastrutturale permetterebbe l’indipendenza da specifici settori (sanit\`a e salute, finanza, ecc.) favorendo una completa portabilit\`a dei dati. Il rispetto e l’aderenza alle leggi verrebbe realizzato dall’infrastruttura stessa, consentendo alle aziende di sviluppare i software in maniera meno vincolata, acquisendo al contempo la fiducia del cliente grazie alla trasparenza e all’affidabilit\`a garantite da \textit{MyData}.
 Nel complesso, il paradigma \textit{MyData} si contrappone all’attuale standard, Big Data, proponendo nuove soluzioni che non trascurino la realt\`a del mercato in cui il software viene usato.
 
 \section{Struttura della tesi}
 
-In questa sezione si illustra brevemente la struttura della tesi.
+In questa sezione vengono sinteticamente illustrati i criteri utilizzati nello svolgimento del lavoro.
 
-Nel capitolo \ref{capitolo2} si presenta il contesto in cui si sviluppa l'idea e la necessit\`a di un gestore di dati personali. Viene descritto un esempio di implementazione dei principi di MyData nell'ambito Smart Mobility.
+Nel capitolo \ref{capitolo2} contiene il contesto nel quale si sviluppa il modello e la necessit\`a di un gestore di dati personali. Viene descritto un esempio di implementazione dei principi di \textit{MyData} nell'ambito Smart Mobility.
 
-Nel capitolo \ref{capitolo3} si presenta l'archiettura di \textit{MyData} ed i principi che ne sono alla base. Questi sono il punto di partenza considerati per lo studio di fattibilit\`a e l'implementazione del progetto. All'interno delle diverse sezioni si considerano ad alto livello le soluzioni implementative proposte dal team di sviluppo MyData.
+Il capitolo \ref{capitolo3} contiene l'archiettura di \textit{MyData} ed i principi che sono posti alla base e costituiscono il punto di partenza considerato per lo studio di fattibilit\`a e l'implementazione del progetto. All'interno delle diverse sezioni si considerano ad alto livello le soluzioni implementative proposte dal team di sviluppo MyData.
 
-Il capitolo \ref{capitolo4} \`e dedicato all'analisi del problema. Si individuano le problematiche poste dalla realizzazione del gestore di dati personali e le soluzioni pi\`u adatte, mettendo in evidenza le entit\`a in gioco e le relazioni fra di esse.
+Il capitolo \ref{capitolo4} \`e dedicato all'analisi del problema. Sono individuate le problematiche poste dalla realizzazione del gestore di dati personali e le soluzioni pi\`u adatte, mettendo in evidenza le entit\`a in gioco e le relazioni fra di esse.
 
-La fase di realizzazione viene trattata nel capitolo \ref{capitolo5}. Qui verranno mostrate concretamente le scelte implementative derivate dalle considerazioni fatte nei capitoli precedenti.
+La fase di realizzazione viene trattata nel capitolo \ref{capitolo5}. Qui vengono mostrate concretamente le scelte implementative derivate dalle considerazioni svolte nei capitoli precedenti.
 
-Infine, nel capitolo \ref{capitolo6} si mostreranno le conclusioni e gli sviluppi futuri del lavoro di tesi.
+Infine, nel capitolo \ref{capitolo6} si presentano le conclusioni e i possibili futuri sviluppi del lavoro di tesi.
 

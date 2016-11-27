@@ -20,11 +20,6 @@ Google gson library on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 
-\bibitem{javajsonobject}
-Java api specification - jsonobject.
-\newblock Technical report.
-\newblock Ultima visita Nov. 2016.
-
 \bibitem{javacrypto}
 Java cryptography architecture (jca) reference guide.
 \newblock Technical report.
@@ -51,6 +46,11 @@ Maas global website.
 
 \bibitem{githubmobilityprofile}
 Mobility profile repository on github.
+\newblock Technical report.
+\newblock Ultima visita Nov. 2016.
+
+\bibitem{githubmobilityprofilespecification}
+Mobility profile specification.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 
@@ -111,6 +111,11 @@ Nicola Ferroni.
 Sonja Heikkil{\"a}.
 \newblock Mobility as a service – a proposal for action for the public
   administration - case helsinki, 2014.
+
+\bibitem{gdpr}
+European Parliament and Council of~the European~Union.
+\newblock General data protection regulation.
+\newblock Ultima visita Nov. 2016.
 
 \bibitem{mydatawhitepaper}
 Antti Poikola, Kai Kuikkaniemi, and Harri Honko.

@@ -21,23 +21,30 @@
 \contentsline {section}{\numberline {4.1}Accounting e servizi}{21}
 \contentsline {section}{\numberline {4.2}Operatore MyData}{22}
 \contentsline {section}{\numberline {4.3}Service Registry, Service Linking}{23}
-\contentsline {section}{\numberline {4.4}Consent}{23}
+\contentsline {section}{\numberline {4.4}Autorizzazioni e Consent}{23}
+\contentsline {subsection}{\numberline {4.4.1}Tipi di Consent}{23}
+\contentsline {subsection}{\numberline {4.4.2}Granularit\`a di un Consent}{24}
 \contentsline {section}{\numberline {4.5}Personal Data Storage}{24}
-\contentsline {section}{\numberline {4.6}Rappresentazione di dati non noti a priori}{24}
+\contentsline {section}{\numberline {4.6}Rappresentazione di dati non noti a priori}{25}
 \contentsline {chapter}{\numberline {5}Progettazione}{27}
 \contentsline {section}{\numberline {5.1}Flusso del programma}{27}
 \contentsline {section}{\numberline {5.2}Accounting}{27}
 \contentsline {subsection}{\numberline {5.2.1}IUser, MyDataUser}{28}
 \contentsline {subsection}{\numberline {5.2.2}IAccount, Account}{29}
-\contentsline {section}{\numberline {5.3}SecurityManager}{30}
-\contentsline {section}{\numberline {5.4}IMyData, MyData}{31}
-\contentsline {section}{\numberline {5.5}Autorizzazioni e Consent}{32}
-\contentsline {subsection}{\numberline {5.5.1}ConsentManager, ConsentStatus}{32}
-\contentsline {subsection}{\numberline {5.5.2}ServiceConsent, DataConsent}{33}
-\contentsline {section}{\numberline {5.6}PersonalDataVault}{35}
-\contentsline {section}{\numberline {5.7}Metadata, DataSet}{37}
-\contentsline {section}{\numberline {5.8}IService, AbstractService, MostLikelyNextTrip}{38}
-\contentsline {section}{\numberline {5.9}ServiceRegistry}{38}
-\contentsline {section}{\numberline {5.10}Uso delle eccezioni}{38}
-\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{41}
-\contentsline {chapter}{Bibliografia}{43}
+\contentsline {section}{\numberline {5.3}Servizi}{30}
+\contentsline {subsection}{\numberline {5.3.1}IService, AbstractService, MostLikelyNextTrip}{30}
+\contentsline {section}{\numberline {5.4}Operatore MyData}{31}
+\contentsline {subsection}{\numberline {5.4.1}IMyData, MyData}{32}
+\contentsline {subsection}{\numberline {5.4.2}SecurityManager}{33}
+\contentsline {subsection}{\numberline {5.4.3}ServiceRegistry}{34}
+\contentsline {section}{\numberline {5.5}Autorizzazioni e Consent}{35}
+\contentsline {subsection}{\numberline {5.5.1}ConsentManager, ConsentStatus}{35}
+\contentsline {subsection}{\numberline {5.5.2}ServiceConsent, DataConsent}{36}
+\contentsline {section}{\numberline {5.6}Rappresentazione e gestione dei dati personali}{38}
+\contentsline {subsection}{\numberline {5.6.1}Memorizzazione: PersonalDataVault}{39}
+\contentsline {subsection}{\numberline {5.6.2}Rappresentazione: Metadata}{40}
+\contentsline {subsection}{\numberline {5.6.3}Trasferimento: IDataSet}{41}
+\contentsline {section}{\numberline {5.7}Uso delle eccezioni}{42}
+\contentsline {section}{\numberline {5.8}Graphical User Interface}{43}
+\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{45}
+\contentsline {chapter}{Bibliografia}{47}

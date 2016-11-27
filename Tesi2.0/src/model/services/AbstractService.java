@@ -61,7 +61,7 @@ public abstract class AbstractService implements IService {
 	 * This method is called at the instantiation of the implementing object,
 	 * which will be the concrete service. Its function is to register the
 	 * service to the Service Registry, as specified in the MyData Architecture
-	 * Specifications. In particular, the concrete service has to declare which
+	 * Specification. In particular, the concrete service has to declare which
 	 * data types it needs to work.
 	 */
 	protected abstract void registerService();

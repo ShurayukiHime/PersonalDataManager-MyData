@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  25 NOV 2016 10:16
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  27 NOV 2016 19:50
 entering extended mode
 **./tesi.tex
 (tesi.tex
@@ -842,14 +842,8 @@ Capitolo 2.
 
 ]
 Capitolo 3.
-
-Overfull \hbox (111.26865pt too wide) in paragraph at lines 5--7
-\T1/cmr/m/n/10.95 https://docs.google.com/document/d/1iUVRssJ6TmxzNZbw8XuMJ1A5o
-XetgthcHFGHYfCpPhw/edit
- []
-
 [17]
-Overfull \hbox (24.66689pt too wide) in paragraph at lines 25--28
+Overfull \hbox (24.66689pt too wide) in paragraph at lines 24--27
 \T1/cmr/m/n/10.95 //Da com-ple-ta-re [[]] http://tutorials.jenkov.com/oauth2/au
 thorization-code-request-
  []
@@ -870,14 +864,10 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
 
 
 
-] [22] [23] [24]) [25]
+] [22] [23] [24]) [25] [26]
 \openout2 = `capitolo5.aux'.
 
- (capitolo5.tex [26
-
-
-
-]
+ (capitolo5.tex
 Capitolo 5.
 <pictures/Accounting-closed.png, id=96, 1028.34187pt x 263.48438pt>
 File: pictures/Accounting-closed.png Graphic file (type png)
@@ -893,7 +883,11 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[27] <pictures/Accounting-MyDataUsr.png, id=100, 847.66687pt x 347.79938pt>
+[27
+
+
+
+] <pictures/Accounting-MyDataUsr.png, id=100, 847.66687pt x 347.79938pt>
 File: pictures/Accounting-MyDataUsr.png Graphic file (type png)
 
 <use pictures/Accounting-MyDataUsr.png>
@@ -905,139 +899,139 @@ Package pdftex.def Info: pictures/Accounting-MyDataUsr.png used on input line 2
 File: pictures/Accounting-Account.png Graphic file (type png)
 
 <use pictures/Accounting-Account.png>
-Package pdftex.def Info: pictures/Accounting-Account.png used on input line 38.
+Package pdftex.def Info: pictures/Accounting-Account.png used on input line 39.
 
-(pdftex.def)             Requested size: 380.0pt x 155.632pt.
+(pdftex.def)             Requested size: 360.99884pt x 147.8504pt.
 
-Overfull \hbox (6.39403pt too wide) in paragraph at lines 46--47
+Overfull \hbox (6.39403pt too wide) in paragraph at lines 47--48
 \T1/cmr/m/n/10.95 dian-te l'u-ti-liz-zo com-bi-na-to del-le strut-tu-re da-ti \
 T1/cmtt/l/n/10.95 Map<ServiceConsent, -List-<Data-
  []
 
 [29 <./pictures/Accounting-Account.png>]
-<pictures/Accounting-SecurityManager.png, id=109, 660.96938pt x 220.57407pt>
-File: pictures/Accounting-SecurityManager.png Graphic file (type png)
-
-<use pictures/Accounting-SecurityManager.png>
-Package pdftex.def Info: pictures/Accounting-SecurityManager.png used on input 
-line 52.
-(pdftex.def)             Requested size: 380.0pt x 126.81563pt.
-
-<pictures/MyData.png, id=110, 674.52pt x 438.8897pt>
-File: pictures/MyData.png Graphic file (type png)
- <use pictures/MyData.png>
-Package pdftex.def Info: pictures/MyData.png used on input line 66.
-(pdftex.def)             Requested size: 380.0pt x 247.25656pt.
-
-Underfull \vbox (badness 1303) has occurred while \output is active []
-
- [30 <./pictures/Accounting-SecurityManager.png>]
-Overfull \hbox (8.79358pt too wide) in paragraph at lines 74--75
-\T1/cmtt/l/n/10.95 put-Da-ta-Con-sent out-put-Da-ta-Con-sent) \T1/cmr/m/n/10.95
- e \T1/cmtt/l/n/10.95 sa-ve-Da-ta-Set (IDa-ta-Set da-ta-Set, In-
- []
-
-[31 <./pictures/MyData.png>]
-<pictures/Auth-closed.png, id=118, 1162.3425pt x 392.96812pt>
-File: pictures/Auth-closed.png Graphic file (type png)
-
-<use pictures/Auth-closed.png>
-Package pdftex.def Info: pictures/Auth-closed.png used on input line 81.
-(pdftex.def)             Requested size: 380.0pt x 128.46864pt.
-
-<pictures/Auth-CM.png, id=119, 643.6547pt x 401.24907pt>
-File: pictures/Auth-CM.png Graphic file (type png)
-
-<use pictures/Auth-CM.png>
-Package pdftex.def Info: pictures/Auth-CM.png used on input line 92.
-(pdftex.def)             Requested size: 380.0pt x 236.89407pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[32 <./pictures/Auth-closed.png>]
-<pictures/Auth-Consents.png, id=123, 1157.07281pt x 620.3175pt>
-File: pictures/Auth-Consents.png Graphic file (type png)
-
-<use pictures/Auth-Consents.png>
-Package pdftex.def Info: pictures/Auth-Consents.png used on input line 108.
-(pdftex.def)             Requested size: 380.0pt x 203.72102pt.
-
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-[33 <./pictures/Auth-CM.png>] [34 <./pictures/Auth-Consents.png>]
-<pictures/PersonalDataVault.png, id=130, 522.45187pt x 373.395pt>
-File: pictures/PersonalDataVault.png Graphic file (type png)
-
-<use pictures/PersonalDataVault.png>
-Package pdftex.def Info: pictures/PersonalDataVault.png used on input line 130.
-
-(pdftex.def)             Requested size: 304.00116pt x 217.27005pt.
- [35 <./pictures/PersonalDataVault.png>]
-[36] <pictures/Metadata.png, id=137, 369.63094pt x 168.63pt>
-File: pictures/Metadata.png Graphic file (type png)
-
-<use pictures/Metadata.png>
-Package pdftex.def Info: pictures/Metadata.png used on input line 153.
-(pdftex.def)             Requested size: 265.99884pt x 121.35175pt.
-
-<pictures/IDataSet.png, id=138, 500.62032pt x 217.5628pt>
-File: pictures/IDataSet.png Graphic file (type png)
-
-<use pictures/IDataSet.png>
-Package pdftex.def Info: pictures/IDataSet.png used on input line 159.
-(pdftex.def)             Requested size: 380.0pt x 165.15025pt.
-
-<pictures/Services-closed.png, id=139, 842.39719pt x 144.54pt>
+<pictures/Services-closed.png, id=109, 842.39719pt x 144.54pt>
 File: pictures/Services-closed.png Graphic file (type png)
 
 <use pictures/Services-closed.png>
-Package pdftex.def Info: pictures/Services-closed.png used on input line 167.
+Package pdftex.def Info: pictures/Services-closed.png used on input line 54.
 (pdftex.def)             Requested size: 380.0pt x 65.20117pt.
 
-
-LaTeX Warning: `h' float specifier changed to `ht'.
-
-<pictures/Services-open.png, id=140, 740.0147pt x 307.1475pt>
+<pictures/Services-open.png, id=110, 740.0147pt x 307.1475pt>
 File: pictures/Services-open.png Graphic file (type png)
 
 <use pictures/Services-open.png>
-Package pdftex.def Info: pictures/Services-open.png used on input line 173.
+Package pdftex.def Info: pictures/Services-open.png used on input line 62.
 (pdftex.def)             Requested size: 380.0pt x 157.72108pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<pictures/ServiceRegistry.png, id=141, 274.02374pt x 254.45062pt>
+[30 <./pictures/Services-closed.png>] [31 <./pictures/Services-open.png>]
+<pictures/MyData.png, id=118, 674.52pt x 438.8897pt>
+File: pictures/MyData.png Graphic file (type png)
+ <use pictures/MyData.png>
+Package pdftex.def Info: pictures/MyData.png used on input line 91.
+(pdftex.def)             Requested size: 304.00116pt x 197.8066pt.
+
+Overfull \hbox (8.79358pt too wide) in paragraph at lines 99--100
+\T1/cmtt/l/n/10.95 put-Da-ta-Con-sent out-put-Da-ta-Con-sent) \T1/cmr/m/n/10.95
+ e \T1/cmtt/l/n/10.95 sa-ve-Da-ta-Set (IDa-ta-Set da-ta-Set, In-
+ []
+
+[32 <./pictures/MyData.png>]
+<pictures/Accounting-SecurityManager.png, id=122, 660.96938pt x 220.57407pt>
+File: pictures/Accounting-SecurityManager.png Graphic file (type png)
+
+<use pictures/Accounting-SecurityManager.png>
+Package pdftex.def Info: pictures/Accounting-SecurityManager.png used on input 
+line 106.
+(pdftex.def)             Requested size: 380.0pt x 126.81563pt.
+ [33 <./pictures/Accounting-SecurityManager.png>]
+<pictures/ServiceRegistry.png, id=126, 274.02374pt x 214.55156pt>
 File: pictures/ServiceRegistry.png Graphic file (type png)
 
 <use pictures/ServiceRegistry.png>
-Package pdftex.def Info: pictures/ServiceRegistry.png used on input line 181.
-(pdftex.def)             Requested size: 380.0pt x 352.88551pt.
+Package pdftex.def Info: pictures/ServiceRegistry.png used on input line 122.
+(pdftex.def)             Requested size: 190.0pt x 148.7675pt.
+
+<pictures/Auth-closed.png, id=127, 1162.3425pt x 392.96812pt>
+File: pictures/Auth-closed.png Graphic file (type png)
+
+<use pictures/Auth-closed.png>
+Package pdftex.def Info: pictures/Auth-closed.png used on input line 135.
+(pdftex.def)             Requested size: 380.0pt x 128.46864pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-)
+
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [37 <./pictures/Metadata.png> <./pictures/IDataSet.png>] [38 <./pictures/Servi
-ces-closed.png> <./pictures/Services-open.png>] [39 <./pictures/ServiceRegistry
-.png>]
+ [34 <./pictures/ServiceRegistry.png>]
+<pictures/Auth-CM.png, id=131, 606.76688pt x 362.10281pt>
+File: pictures/Auth-CM.png Graphic file (type png)
+
+<use pictures/Auth-CM.png>
+Package pdftex.def Info: pictures/Auth-CM.png used on input line 146.
+(pdftex.def)             Requested size: 380.0pt x 226.7778pt.
+ [35 <./pictures/Auth-closed.png> <./pictures/Auth-CM.png>] <pictures/Auth-Cons
+ents.png, id=135, 1157.07281pt x 620.3175pt>
+File: pictures/Auth-Consents.png Graphic file (type png)
+
+<use pictures/Auth-Consents.png>
+Package pdftex.def Info: pictures/Auth-Consents.png used on input line 161.
+(pdftex.def)             Requested size: 380.0pt x 203.72102pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[36] [37 <./pictures/Auth-Consents.png>] [38]
+<pictures/PersonalDataVault.png, id=146, 522.45187pt x 373.395pt>
+File: pictures/PersonalDataVault.png Graphic file (type png)
+
+<use pictures/PersonalDataVault.png>
+Package pdftex.def Info: pictures/PersonalDataVault.png used on input line 202.
+
+(pdftex.def)             Requested size: 304.00116pt x 217.27005pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[39] <pictures/Metadata.png, id=150, 369.63094pt x 168.63pt>
+File: pictures/Metadata.png Graphic file (type png)
+
+<use pictures/Metadata.png>
+Package pdftex.def Info: pictures/Metadata.png used on input line 218.
+(pdftex.def)             Requested size: 265.99884pt x 121.35175pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40 <./pictures/PersonalDataVault.png>]
+<pictures/IDataSet.png, id=154, 500.62032pt x 217.5628pt>
+File: pictures/IDataSet.png Graphic file (type png)
+
+<use pictures/IDataSet.png>
+Package pdftex.def Info: pictures/IDataSet.png used on input line 232.
+(pdftex.def)             Requested size: 380.0pt x 165.15025pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41 <./pictures/Metadata.png>] [42 <./pictures/IDataSet.png>]) [43]
 \openout2 = `capitolo6.aux'.
 
 
-(capitolo6.tex [40
+(capitolo6.tex [44
 
 
 
 ]
 Capitolo 6.
-) [41] [42
+) [45] [46
 
 
-] (tesi.bbl [43
+] (tesi.bbl [47
 
 ])
 
@@ -1046,7 +1040,7 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
  We now make it that large for the rest of the document.
  This may cause the page layout to be inconsistent, however.
 
-[44] (tesi.aux (frontespizio.aux) (dedica.aux) (indice.aux) (capitolo1.aux)
+[48] (tesi.aux (frontespizio.aux) (dedica.aux) (indice.aux) (capitolo1.aux)
 (capitolo2.aux) (capitolo3.aux) (capitolo4.aux) (capitolo5.aux) (capitolo6.aux)
 )
 
@@ -1054,13 +1048,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 5655 strings out of 493622
- 80198 string characters out of 3135139
- 148095 words of memory out of 3000000
- 8838 multiletter control sequences out of 15000+200000
+ 5663 strings out of 493622
+ 80384 string characters out of 3135139
+ 149192 words of memory out of 3000000
+ 8846 multiletter control sequences out of 15000+200000
  22617 words of font info for 53 fonts, out of 3000000 for 9000
  1026 hyphenation exceptions out of 8191
- 38i,11n,43p,1260b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 38i,11n,43p,1266b,334s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
 ecsi1000.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
 ec\dpi600\ectt1095.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
@@ -1076,9 +1070,9 @@ pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
 r\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\font
 s\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk><C:/Users/Giada/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on tesi.pdf (44 pages, 377583 bytes).
+Output written on tesi.pdf (48 pages, 403341 bytes).
 PDF statistics:
- 685 PDF objects out of 1000 (max. 8388607)
+ 723 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  71 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -42,21 +42,33 @@ Una implementazione proposta dal team di sviluppo finlandese pu\`o essere trovat
 
 Inizialmente non era stata prevista alcuna implementazione di \textit{Service Registry}, principalmente a causa della complessit\`a non solo della struttura del componente, ma anche delle operazioni di registrazione di un nuovo servizio e di \textit{Service Discovery}.
 
-Come verr\`a descritto meglio nel capitolo \ref{capitolo5} dedicata alla Progettazione, questo componente si \`e rivelato indispensabile per il funzionamento del sistema, ma la sua complessit\`a \`e stata notevolmente ridotta. Infatti, si \`e scelto di non includere nessuna delle due descrizioni del servizio menzionate nelle specifiche, ma solo una indicazione sui tipi di dato necessari al suo funzionamento.
+Come verr\`a descritto meglio nel capitolo \ref{capitolo5} dedicato alla Progettazione, questo componente si \`e rivelato indispensabile per il funzionamento del sistema, ma la sua complessit\`a \`e stata notevolmente ridotta. Infatti, si \`e scelto di non includere nessuna delle due descrizioni del servizio menzionate nelle specifiche, ma solo una indicazione sui tipi di dato necessari al suo funzionamento.
 
 Questa scelta ha avuto una ripercussione anche sul protocollo di \textit{Service Linking}, che ha perso di significato in mancanza dell’entit\`a \textit{Service Registry}. Tuttavia, vista la sua importanza concettuale, ho scelto di proporne comunque una variante all’interno del meccanismo delle autorizzazioni e del \textit{Consent}.
 
-\section{Consent}
-\label{sec:A-Consent}
+\section{Autorizzazioni e Consent}
+\subsection{Tipi di Consent}
+\label{subsec:A-Consent}
 A questo punto, si presenta la necessit\`a di realizzare due tipi diversi di permessi.
 
 Il primo contiene la semantica associata al procedimento di \textit{Service Linking}: descrive quali sono le entit\`a in gioco, fornendone una mutua autenticazione e contiene uno stato per indicare la validit\`a del permesso considerato. I valori possibili di questo stato ricalcano quelli indicati nel modello \textit{MyData} (sezione \ref{sec:MD-AuthConsent}): \textit{Active}, \textit{Disabled}, \textit{Withdrawn}. Questo \textit{Consent} viene emesso ogni volta che l’utente fa richiesta di utilizzare un servizio, e in base al valore del suo stato permette (o meno) l’effettivo processamento dei dati.
 
-Il secondo tipo di permesso viene utilizzato come token di accesso al Personal Data Storage ogni volta che si instaura un flusso di dati, sia esso in ingresso o in uscita dal PDS. Questo tipo di \textit{Consent} contiene un riferimento ai tipi di dato scambiati durante la transazione, in modo da poter verificare se essi coincidano con quelli dichiarati dal servizio in fase di registrazione. Inoltre, pu\`o essere utilizzato una volta sola ed \`e possibile ottenerlo solo se il permesso che lega l’utente ed il servizio corrente ha stato attivo.
+Il secondo tipo di permesso viene utilizzato come \textit{token} di accesso al Personal Data Storage ogni volta che si instaura un flusso di dati, sia esso in ingresso o in uscita dal PDS. Questo tipo di \textit{Consent} contiene un riferimento ai tipi di dato scambiati durante la transazione (il \textit{Resource Set Identifier} delle specifiche di \textit{MyData}); inoltre, pu\`o essere utilizzato una volta sola ed \`e possibile ottenerlo solo se il permesso che lega l’utente ed il servizio corrente ha stato attivo.
 
 Entrambi i \textit{Consent} vengono memorizzati all’interno dell’account utente corrispondente al servizio che ne ha fatto richiesta.
 
+\subsection{Granularit\`a di un Consent}
+\label{subsec:A-granularitaConsent}
+Un aspetto importante da considerare in Analisi \`e la granularit\`a con cui i \textit{Consent} permettono l’accesso ai dati. 
+
+All’interno delle specifiche di \textit{MyData} non si trovano linee guida precise riguardo questo aspetto, mentre vengono espresse delle considerazioni riguardo la frequenza di accesso ai dati e la quantit\`a di dati prelevati. L’interesse in questo senso \`e motivato dalla volont\`a di proteggere la privacy dell’utente, che potrebbe essere messa a rischio nel caso un servizio effettuasse un gran numero di richieste legittime per ottenere dati personali sempre diversi. All’interno dello sviluppo del gestore di dati personali si \`e scelto di privilegiare l’aspetto del controllo degli accessi, piuttosto che rispondere a quanto puntualizzato in altre implementazioni \cite{githubmobilityprofile}.
+
+In una prima ipotesi, ho preso in considerazione la possibilit\`a di garantire l’accesso ai dati in base a criteri che comprendono la loro tipologia, la quantit\`a di dati richiesta e la loro “et\`a”. L’implementazione di questa scelta avrebbe previsto, a grandi linee, l’utilizzo di un database per la gestione di dati con un gran numero di propriet\`a (come ad esempio la data di acquisizione sopra citata). Poich\'e tale soluzione avrebbe richiesto notevole impegno ed avrebbe sconfinato all’esterno dell’ambito della tesi, questa possibilit\`a \`e stata scartata.
+
+Come seconda opzione, sulla scia del Mobility Profile e della gestione delle autorizzazioni in Android, si \`e optato per il seguente compromesso: la granularit\`a per il controllo degli accessi viene imposta a livello di tipi di dato di alto livello, come ad esempio Calendario, storico delle posizioni GPS, ecc. Per questo motivo, si \`e scelto di sostituire al generico identificatore di un set di risorse sopra menzionato un insieme di specifici tipi di dato, al fine di poter implementare un adeguato controllo degli accessi.
+
 \section{Personal Data Storage}
+\label{sec:A-PDS}
 L’ipotesi iniziale per il Personal Data Storage era quella di realizzare un componente indipendente dalle scelte dell’utente o dalle necessit\`a del servizio, come anche dalle scelte implementative. 
 
 Un esempio di indipendenza dalle scelte dell’utente \`e il seguente. Il servizio \textit{Most Likely Next Trip} utilizza al suo interno i dati di un calendario, secondo l’assunto per cui l’utente deve compiere un viaggio per portarsi nel luogo dell’evento inserito. La soluzione pi\`u immediata \`e quella di salvare all’interno del PDS gli impegni necessari, o la struttura dati del calendario in un file specifico per l’applicazione di Calendario utilizzata dall’utente. Questa scelta per\`o non solo \`e poco efficiente, ma vincola all’utilizzo di un particolare tipo di calendario, impedendo successive modifiche o estensioni. Una soluzione alternativa potrebbe essere quella di utilizzare uno standard di rappresentazione di calendari, attualmente il formato \texttt{.ics}, anche se \`e ancora diffusa la versione precedente, \texttt{.vcs}. Questa scelta, seppure legata ancora ad un tipo di implementazione a file, offre maggiore interoperabilit\`a grazie alla scelta di un formato supportato anche da servizi esterni.

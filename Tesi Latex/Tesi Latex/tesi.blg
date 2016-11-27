@@ -11,17 +11,17 @@ A level-1 auxiliary file: capitolo6.aux
 The style file: plain.bst
 Database file #1: bibl_tesi.bib
 Warning--entry type for "mydatawebsite" isn't style-file defined
---line 20 of file bibl_tesi.bib
+--line 21 of file bibl_tesi.bib
 Warning--entry type for "mastersonjaheikkil" isn't style-file defined
---line 26 of file bibl_tesi.bib
+--line 27 of file bibl_tesi.bib
 Warning--entry type for "maasglobal" isn't style-file defined
---line 34 of file bibl_tesi.bib
+--line 35 of file bibl_tesi.bib
 Warning--entry type for "oauth" isn't style-file defined
---line 66 of file bibl_tesi.bib
+--line 65 of file bibl_tesi.bib
 Warning--entry type for "kantaraconsent" isn't style-file defined
---line 72 of file bibl_tesi.bib
+--line 71 of file bibl_tesi.bib
 Warning--entry type for "uma" isn't style-file defined
---line 78 of file bibl_tesi.bib
+--line 77 of file bibl_tesi.bib
 Warning--to sort, need author or key in mydatawebsite
 Warning--to sort, need author or key in maasglobal
 Warning--to sort, need author or key in githubmobilityprofile
@@ -41,7 +41,7 @@ Warning--to sort, need author or key in w3cdatacube
 Warning--to sort, need author or key in javalanguagespecs
 Warning--to sort, need author or key in java8api
 Warning--to sort, need author or key in javacrypto
-Warning--to sort, need author or key in javajsonobject
+Warning--to sort, need author or key in githubmobilityprofilespecification
 Warning--to sort, need author or key in googlegson
 Warning--empty author in w3cdatacatalog
 Warning--empty institution in w3cdatacatalog
@@ -52,9 +52,6 @@ Warning--empty year in googlecalendarapi
 Warning--empty author in googlegson
 Warning--empty institution in googlegson
 Warning--empty year in googlegson
-Warning--empty author in javajsonobject
-Warning--empty institution in javajsonobject
-Warning--empty year in javajsonobject
 Warning--empty author in javacrypto
 Warning--empty institution in javacrypto
 Warning--empty year in javacrypto
@@ -70,6 +67,9 @@ Warning--empty year in githubjourneyplanner
 Warning--empty author in githubmobilityprofile
 Warning--empty institution in githubmobilityprofile
 Warning--empty year in githubmobilityprofile
+Warning--empty author in githubmobilityprofilespecification
+Warning--empty institution in githubmobilityprofilespecification
+Warning--empty year in githubmobilityprofilespecification
 Warning--empty author in githubmydataaccount
 Warning--empty institution in githubmydataaccount
 Warning--empty year in githubmydataaccount
