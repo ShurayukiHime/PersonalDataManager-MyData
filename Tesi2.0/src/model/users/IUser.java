@@ -55,7 +55,7 @@ public interface IUser {
 
 	public Set<IAccount> getAllAccounts();
 
-	public boolean checkIfPasswordEqual(String givenPsw);
+	public boolean checkIfPasswordEqual(char[] password);
 
 	public boolean hasAccountAtService(IService service);
 

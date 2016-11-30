@@ -160,12 +160,12 @@ public class MyController implements IController {
 
 	@Override
 	public void createMyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress,
-			String password) {
+			char[] password) {
 		authenticatedUser = myDataInstance.createMyDataAccount(firstName, lastName, dateOfBirth, emailAddress, password);
 	}
 
 	@Override
-	public void logInUser(String email, String password) {
+	public void logInUser(String email, char[] password) {
 		authenticatedUser = myDataInstance.loginUser(email, password);
 	}
 
@@ -274,8 +274,6 @@ public class MyController implements IController {
 		this.myDataInstance.issueNewServiceConsent(selectedService, authenticatedUser);
 	}
 
-
-	
 	@Override
 	public String getAllDConsents(IService selectedService) {
 		StringBuilder sb = new StringBuilder();

@@ -1,5 +1,6 @@
 package model.users;
 
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -33,16 +34,15 @@ public class MyDataUser implements IUser {
 	private String lastName;
 	private Date dateOfBirth;
 	private String emailAddress;
-	private String password; // modo triste per salvare le password, vorrebbero
-								// char[]?
+	private char[] password; 
 	private ISecurityManager securityManager;
 	private Set<IAccount> accounts;
 	private IPersonalDataVault personalDataVault;
 
-	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password) {
+	public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password) {
 		super();
 		if (firstName == null || firstName.isEmpty() || lastName == null || lastName.isEmpty() || dateOfBirth == null
-				|| emailAddress == null || emailAddress.isEmpty() || password == null || password.isEmpty())
+				|| emailAddress == null || emailAddress.isEmpty() || password == null || password.length == 0)
 			throw new IllegalArgumentException("Parameters must not be null or empty.");
 		this.firstName = firstName;
 		this.lastName = lastName;
@@ -143,8 +143,8 @@ public class MyDataUser implements IUser {
 	}
 
 	@Override
-	public boolean checkIfPasswordEqual(String givenPsw) {
-		return givenPsw.equals(this.password);
+	public boolean checkIfPasswordEqual(char[] givenPsw) {
+		return Arrays.equals(this.password, givenPsw);
 	}
 
 	public String toString() {

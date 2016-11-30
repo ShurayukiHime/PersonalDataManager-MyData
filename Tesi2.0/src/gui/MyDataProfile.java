@@ -35,7 +35,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private JTextField cognomeTField;
 	private JSpinner datePicker;
 	private JTextField emailAddressTField;
-	private JPasswordField pswPField;
+	private JPasswordField signUpPField;
+	private JPasswordField signInPField;
 
 	private JButton signInButton;
 	private JButton signUpButton;
@@ -68,17 +69,14 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			{
 				nomeTField = new JTextField(15);
 				nomeTField.setText("Nome");
-				nomeTField.setEditable(true);
 				cognomeTField = new JTextField(15);
 				cognomeTField.setText("Cognome");
-				cognomeTField.setEditable(true);
 				datePicker = new JSpinner(new SpinnerDateModel());
 				JSpinner.DateEditor dateDEditor = new JSpinner.DateEditor(datePicker, "dd/MM/yyyy");
 				datePicker.setEditor(dateDEditor);
 				emailAddressTField = new JTextField(15);
 				emailAddressTField.setText("email@gmail.com");
-				emailAddressTField.setEditable(true);
-				pswPField = new JPasswordField(15);
+				signUpPField = new JPasswordField(15);
 
 				signUpButton = new JButton("Conferma");
 				signUpButton.addActionListener(new ActionListener() {
@@ -92,7 +90,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 				registrationPanel.add(cognomeTField);
 				registrationPanel.add(datePicker);
 				registrationPanel.add(emailAddressTField);
-				registrationPanel.add(pswPField);
+				registrationPanel.add(signUpPField);
 				registrationPanel.add(signUpButton);
 				registrationPanel.setVisible(true);
 			}
@@ -105,7 +103,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 				emailAddressTField = new JTextField(15);
 				emailAddressTField.setText("email@gmail.com");
 				emailAddressTField.setEditable(true);
-				pswPField = new JPasswordField(15);
+				signInPField = new JPasswordField(15);
 				signInButton = new JButton("Log in");
 				signInButton.addActionListener(new ActionListener() {
 					@Override
@@ -115,7 +113,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 				});
 
 				loginPanel.add(emailAddressTField);
-				loginPanel.add(pswPField);
+				loginPanel.add(signInPField);
 				loginPanel.add(signInButton);
 				loginPanel.setVisible(true);
 			}
@@ -239,13 +237,14 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		}
 		this.popolaServicesComboBox();
 		this.add(profilePanel);
-		this.pack();
 		this.profilePanel.setVisible(true);
+		this.pack();
 	}
 
 	private void popolaServicesComboBox() {
 		List<IService> activeServices = this.controller.getAllActiveServicesForUser();
 		servicesComboBox.removeActionListener(this);
+		servicesComboBox.removeAllItems();
 		for (IService s : activeServices)
 			servicesComboBox.addItem(s);
 		servicesComboBox.addActionListener(this);
@@ -267,7 +266,7 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private void signUpButtonClicked() {
 		try {
 			this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
-					(Date) datePicker.getValue(), emailAddressTField.getText(), pswPField.getPassword().toString());
+					(Date) datePicker.getValue(), emailAddressTField.getText(), signUpPField.getPassword());
 			// if creation of new user is safe, then
 			showProfile();
 		} catch (IllegalStateException | IllegalArgumentException | SecurityException e1) {
@@ -283,9 +282,8 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private void signInButtonClicked() {
 		// check credentials
 		// updates list of services for new panel
-
 		try {
-			this.controller.logInUser(emailAddressTField.getText(), pswPField.getPassword().toString());
+			this.controller.logInUser(emailAddressTField.getText(), signInPField.getPassword());
 			// if user authenticated,
 			showProfile();
 		} catch (IllegalArgumentException e1) {

@@ -31,7 +31,7 @@ public class MyData implements IMyData {
 	// set in un ciclo for?
 	@Override
 	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress,
-			String password) {
+			char[] password) {
 		IUser newUser = new MyDataUser(firstName, lastName, dateOfBirth, emailAddress, password);
 		if (!(this.myDataUsers.add(newUser))) {
 			throw new IllegalStateException("Cannot register two users with the same email address.");
@@ -41,7 +41,7 @@ public class MyData implements IMyData {
 
 	// returs null if user not found
 	@Override
-	public IUser loginUser(String email, String password) {
+	public IUser loginUser(String email, char[] password) {
 		for (IUser user : this.myDataUsers) {
 			if (user.getEmailAddress().equals(email) && user.checkIfPasswordEqual(password))
 				return user;

@@ -79,8 +79,7 @@ public class MainFrame extends JFrame {
 	private List<JCheckBox> checksLeisure = new ArrayList<>();
 	private List<JCheckBox> checksShop = new ArrayList<>();
 	private List<JCheckBox> checksTourism = new ArrayList<>();
-	
-	
+
 	private class InteractiveMapController extends DefaultMapController {
 
 		public InteractiveMapController(JMapViewer map) {
@@ -176,7 +175,8 @@ public class MainFrame extends JFrame {
 		this.min = min;
 	}
 
-	private void initGui() { // inizializzazione di tutti i componenti e setting dei vari layout
+	private void initGui() { // inizializzazione di tutti i componenti e setting
+								// dei vari layout
 
 		JPanel mainPanel = new JPanel();
 		mainPanel.setLayout(new BorderLayout());
@@ -188,37 +188,36 @@ public class MainFrame extends JFrame {
 		@SuppressWarnings("unused")
 		InteractiveMapController imc = new InteractiveMapController(map);
 		mainPanel.add(mapPanel, BorderLayout.LINE_END);
-		
+
 		JPanel tbPanel = new JPanel();
 		tbPanel.setLayout(new GridLayout());
 		mainPanel.add(tbPanel, BorderLayout.PAGE_START);
 
-//		coordinates = new JTextField();
+		// coordinates = new JTextField();
 		day = new JTextField();
 		month = new JTextField();
 		year = new JTextField();
 		hour = new JTextField();
 		min = new JTextField();
-		
+
 		controller.setPanelDate(day, month, year, hour, min);
-		
+
 		JPanel infoPanel = new JPanel(new BorderLayout());
 		infoPanel.setBorder(new TitledBorder(new EtchedBorder(), "Destinations' info"));
-		info = new JTextArea(10,10);
+		info = new JTextArea(10, 10);
 		info.setEditable(false);
 		JScrollPane pScroll = new JScrollPane(info);
 		pScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		infoPanel.add(pScroll, BorderLayout.CENTER);
-		
 
 		JPanel destinationPanel = new JPanel(new BorderLayout());
 		destinationPanel.setBorder(new TitledBorder(new EtchedBorder(), "Destinations"));
-		suggestions = new JTextArea(10,10);
+		suggestions = new JTextArea(10, 10);
 		suggestions.setEditable(false); // set textArea non-editable
 		JScrollPane dScroll = new JScrollPane(suggestions);
 		dScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		destinationPanel.add(dScroll, BorderLayout.CENTER);
-		
+
 		selectAll = new JCheckBox("select all", false);
 		selectAll.addActionListener(new ActionListener() {
 			@Override
@@ -412,7 +411,7 @@ public class MainFrame extends JFrame {
 		JPanel centerPanel = new JPanel();
 		centerPanel.setLayout(new FlowLayout());
 		mainPanel.add(centerPanel, BorderLayout.CENTER);
-		
+
 		// shop
 		JPanel shopPanel = new JPanel();
 		shopPanel.setLayout(new GridLayout(20, 3));
@@ -494,22 +493,20 @@ public class MainFrame extends JFrame {
 		setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
 		this.pack();
 	}
-	
+
 	private void selectByCategory(List<JCheckBox> checks, boolean value) {
 		for (JCheckBox cb : checks)
 			cb.setSelected(value);
 	}
 
-	
 	private void selectAllChecked() {
 		selectByCategory(checksAmenity, selectAll.isSelected());
 		selectByCategory(checksGeneral, selectAll.isSelected());
 		selectByCategory(checksLeisure, selectAll.isSelected());
-		selectByCategory(checksShop, 	selectAll.isSelected());
+		selectByCategory(checksShop, selectAll.isSelected());
 		selectByCategory(checksTourism, selectAll.isSelected());
 	}
 
-	
 	private void goButtonClicked() {
 		this.updateWithGUIPreferences();
 		try {
@@ -517,9 +514,17 @@ public class MainFrame extends JFrame {
 		} catch (IOException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
+		} catch (IllegalArgumentException e1) {
+			// può succedere in caso l'utente non fornisca tipi di dati
+			// personali sufficienti per l'erogazione del servizio. in teoria
+			// dovrebbe essere evitato a priori, ma poichè la mappa non
+			// seleziona un punto di default, position risulta null se l'utente
+			// non ne inserisce uno
+			e1.printStackTrace();
+			this.controller.getUserInteractor().showErrorMessage(e1.getMessage());
+			this.controller.getUserInteractor().showInfoMessage("You must specify all the required parameters for this service.");
 		}
 	}
-
 
 	private void updateWithGUIPreferences() {
 		try {
@@ -544,14 +549,14 @@ public class MainFrame extends JFrame {
 			exc.printStackTrace();
 		}
 	}
-	
-	/*@Override
-	public void actionPerformed(ActionEvent e) {
-		if (e.getSource() == go) {
 
-				// parsing dei dati di input
-				controller.setDate(day, month, year, hour, min);				
-				controller.getSuggest(this);
-
-		}*/
+	/*
+	 * @Override public void actionPerformed(ActionEvent e) { if (e.getSource()
+	 * == go) {
+	 * 
+	 * // parsing dei dati di input controller.setDate(day, month, year, hour,
+	 * min); controller.getSuggest(this);
+	 * 
+	 * }
+	 */
 }

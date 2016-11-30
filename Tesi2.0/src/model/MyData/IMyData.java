@@ -9,10 +9,10 @@ import model.users.IUser;
 
 public interface IMyData {
 
-	public IUser loginUser(String email, String password);
+	public IUser loginUser(String email, char[] password);
 
 	public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress,
-			String password);
+			char[] password);
 
 	public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent);
 
