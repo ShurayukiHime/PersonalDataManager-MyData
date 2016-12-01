@@ -2,11 +2,11 @@
 \label{capitolo5}
 \thispagestyle{empty}
 
-\noindent Nei paragrafi successivi sono illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le eventuali differenze che si sono verificate rispetto a quanto detto in Analisi.
+\noindent In questo capitolo sono illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le e le differenze riscontrabili secondo quanto definito precedentemente (capitolo \ref{capitolo4}).
 
 Per la realizzazione del gestore \`e stato utilizzato il linguaggio Java\cite{javalanguagespecs} \cite{java8api}.
 
-Fra i principi generali seguiti in Progettazione troviamo l’inversione delle dipendenze, la separazione delle responsabilit\`a, il principio di sostituibilit\`a di Liskov e il gi\`a citato rasoio di Occam. Secondo il principio di inversione delle dipendenze, \`e necessario che le dipendenze presenti all’interno del codice non siano fra classi ma fra interfacce, in modo da evitare che la struttura possa risentire di cambiamenti che avvengono a basso livello. Il principio di separazione delle responsabilit\`a stabilisce che a ogni classe \`e attribuito un solo compito, da svolgere e completare interamente, ma mai pi\`u di uno: lo sviluppo di classi aventi pi\`u responsabilit\`a genera dipendenze non volute fra le classi, rendendo il codice fragile. Il principio di sostituibilit\`a di Liskov, infine, si applica ai casi di ereditariet\`a fra classi e ne regola il rapporto: ogni sottoclasse deve poter essere utilizzata al posto della classe base senza che sia evidenziata la differenza.
+Fra i principi generali seguiti in Progettazione troviamo l’inversione delle dipendenze, la separazione delle responsabilit\`a, il principio di sostituibilit\`a di Liskov. Secondo il principio di inversione delle dipendenze, \`e necessario che le dipendenze presenti all’interno del codice non siano fra classi ma fra interfacce, in modo da evitare che la struttura possa risentire di cambiamenti che avvengono a basso livello. Il principio di separazione delle responsabilit\`a stabilisce che a ogni classe \`e attribuito un solo compito, da svolgere e completare interamente, ma mai pi\`u di uno: lo sviluppo di classi aventi pi\`u responsabilit\`a genera dipendenze non volute fra le classi, rendendo il codice fragile. Il principio di sostituibilit\`a di Liskov, infine, si applica ai casi di ereditariet\`a fra classi e ne regola il rapporto: ogni sottoclasse deve poter essere utilizzata al posto della classe base senza che sia evidenziata la differenza.
 
 \section{Flusso del programma}
 inserire grafico
@@ -30,7 +30,7 @@ Questa classe modella un generico utente dell’architettura \textit{MyData}. I 
 
 Si evidenzia inoltre la presenza di un \texttt{Set<IAccount> accounts} che realizza l’associazione fra un utente e gli account presso i servizi a cui si \`e registrato. La scelta di un \texttt{Set} permette di implementare il vincolo secondo cui ogni utente pu\`o avere un solo account presso un certo servizio ed \`e efficace anche perch\'e \`e superfluo mantenere un insieme ordinato di account.
 
-Questa classe, inoltre, ha la funzione di interfacciare gli altri componenti del gestore, compresa la GUI, con gli account utente. A tal fine presenta i metodi \texttt{addServiceConsent (IService service)}, \texttt{addDataConsent (DataConsent dataConsent, IService service)}, \texttt{hasAccountAtService (IService service)}.  La classe \texttt{Account}, infatti, \`e stata modellata con visibilit\`a package protected per impedire l’accesso a classi esterne al package \texttt{users}: di conseguenza, anche la creazione di nuovi account avviene attraverso questa classe, in particolare nella funzione \texttt{newAccountAtService (IService service)}. All’interno del metodo troviamo l’istanziazione di un nuovo account insieme ad una chiamata alla classe \texttt{ConsentManager} che realizza quanto anticipato al paragrafo \ref{subsec:A-Consent} a pagina \pageref{subsec:A-Consent}. In questo modo si ottiene un esempio di \textit{Service Linking} e l’esito di questa operazione viene concretizzato in un oggetto \texttt{ServiceConsent}. Si rimandano per\`o ulteriori dettagli a quanto evidenziato nella sezione \ref{sec:P-AutorizzazioniEConsent} a pagina \pageref{sec:P-AutorizzazioniEConsent}.
+Questa classe, inoltre, ha la funzione di interfacciare gli altri componenti del gestore, compresa la GUI, con gli account utente. A tal fine presenta i metodi \texttt{addServiceConsent (IService service)}, \texttt{addDataConsent (DataConsent dataConsent, IService service)}, \texttt{hasAccountAtService (IService service)}.  La classe \texttt{Account}, infatti, \`e stata modellata con visibilit\`a package protected per impedire l’accesso a classi esterne al package \texttt{users}: di conseguenza, anche la creazione di nuovi account avviene attraverso questa classe, in particolare nella funzione \texttt{newAccountAtService (IService service)}. All’interno del metodo troviamo l’istanziazione di un nuovo account insieme ad una chiamata alla classe \texttt{ConsentManager} che realizza quanto anticipato al paragrafo \ref{subsec:A-Consent}. In questo modo si ottiene un esempio di \textit{Service Linking} e l’esito di questa operazione viene concretizzato in un oggetto \texttt{ServiceConsent}. Si rimandano per\`o ulteriori dettagli a quanto evidenziato nella sezione \ref{sec:P-AutorizzazioniEConsent} a pagina \pageref{sec:P-AutorizzazioniEConsent}.
 
 \subsection{IAccount, Account}
 \label{subsec:P-Account}
@@ -197,6 +197,7 @@ Necessiterebbe, viceversa, di organizzazione, mezzi e tempistiche - oltre che co
 L'ipotesi che viene proposta, che si pu\`o ritenere pi\`u accettabile, consiste nell’utilizzo di una struttura dati \texttt{DataSet} che permetta lo scambio di dati di qualunque tipo all’interno del sistema, purch\'e il loro tipo sia stato preventivamente dichiarato in fase di registrazione (sottosezione \ref{subsec:P-serviceregistry}). La classe \texttt{DataSet} viene descritta in dettaglio nella sottosezione \ref{subsec:P-metadata}.
 
 \subsection{Memorizzazione: PersonalDataVault}
+\label{subsec:P-PDV}
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.8\linewidth]{pictures/PersonalDataVault.png}
@@ -256,4 +257,43 @@ L’uso di \texttt{IllegalArgumentException} \`e convenzionalmente limitato al c
 Un aspetto importante dell’uso delle eccezioni \`e stata la loro collocazione all’interno dello \textit{stack} delle invocazioni di metodi. Si prenda di nuovo come esempio il caso di richiesta di un nuovo \texttt{DataConsent}: \`e noto a priori che la precondizione per ottenerlo richiede l’esistenza di un \texttt{ServiceConsent} attivo in quel momento. Questa eventualit\`a \`e controllata all’interno della classe \texttt{ConsentManager} mediante l’uso di una \texttt{IllegalStateException}. Tuttavia esiste un sotto-caso che, pur rientrando a pieno titolo nell’insieme di situazioni non corrette (mancanza di un \texttt{ServiceConsent} attivo) merita di essere differenziato per il suo valore semantico. Si tratta infatti del caso in cui l’utente per cui si sta facendo richiesta non sia registrato presso il servizio: il \texttt{ServiceConsent} non ha stato \textit{Active} perch\'e in realt\`a non ne \`e stato emesso alcuno. Al fine di controllare anche questa eventualit\`a \`e opportuno inserire una eccezione nella classe \texttt{MyDataUser} invece che \texttt{ConsentManager}, in quanto essa rientra all’interno del suo ambito di responsabilità.
 
 \section{Graphical User Interface}
-ddfd
+//grafico uml
+
+Per la realizzazione dell’interfaccia grafica del gestore di dati personali ho scelto il design pattern Model View Controller. Questo viene impiegato anche all’interno di \textit{Most Likely Next Trip} \cite{MLNT}, del quale si \`e utilizzata la schermata di funzionamento del servizio omonimo.
+
+Ho ritenuto necessaria, in questo contesto, la realizzazione di due finestre con le seguenti funzioni:
+\begin{itemize}
+	\item Una schermata per login e registrazione, per l’accesso al profilo dell’utente, realizzata in figura \ref{fig:welcomePanel};
+	\item Una schermata per il profilo utente, che mostri i servizi attivi e abiliti, o disabiliti, determinati bottoni a seconda dello stato corrente dell’esecuzione, mostrato in figura \ref{fig:exampleConsentInProj}.
+\end{itemize}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/welcomePanel.png}
+	\caption{Schermata di login con esempio di registrazione al gestore di dati personali}
+	\label{fig:welcomePanel}
+\end{figure}
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/exampleConsentInProj.png}
+	\caption{Profilo utente con esempio di Consent Attivo e Ritirato}
+	\label{fig:exampleConsentInProj}
+\end{figure}
+A ci\`o si deve aggiungere la schermata del servizio, che viene mostrata ad ogni sua invocazione (figura \ref{fig:MLNTPanel}).
+\begin{figure}
+	\centering
+	\includegraphics[width=0.85\linewidth]{pictures/MLNTPanel.png}
+	\caption{Schermata di\textit{ Most Likely Next Trip} con esempio di invocazione}
+	\label{fig:MLNTPanel}
+\end{figure}
+
+Il Controller ha lo scopo di gestire la View e di permettere una comunicazione con il Model: per quest’ultimo aspetto, esso si interfaccia quasi unicamente con la classe \texttt{MyData}, confermando il suo ruolo centrale di gestione.
+
+La View mostra il profilo dell’utente loggato, permettendogli la gestione dei servizi a cui si è registrato. È possibile aggiungere nuovi servizi (funzione implementata tramite mock per mancanza di \textit{Service Linking}), visualizzare le autorizzazioni emesse modificare il loro stato.
+
+Nella figura \ref{fig:exampleConsentInProj} vediamo il profile utente: dal menù a tendina in alto è possibile scegliere un servizio all’interno di quelli registrati; subito sotto sono presenti alcuni comandi per la gestione del suo stato (è possibile impostare i valori \textit{Active}, \textit{Disabled}, \textit{Withdrawn}) e per l’emissione di nuove autorizzazioni in caso di necessità. È presente inoltre una casella di testo in cui sono mostrati tutti i \texttt{ServiceConsent} relativi al servizio selezionato, e tramite la pressione di un bottone si apre una nuova finestra che mostra i \texttt{DataConsent} relativi \ref{}. Infine, si trovano i bottoni per invocare il servizio e il \textit{Service Registry}.
+\begin{figure}
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/DataConsentFrame.png}
+	\caption{Esempio di flusso di permessi \texttt{DataConsent}}
+	\label{fig:DataConsentFrame}
+\end{figure}

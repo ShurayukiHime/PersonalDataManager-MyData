@@ -11,17 +11,17 @@ A level-1 auxiliary file: capitolo6.aux
 The style file: plain.bst
 Database file #1: bibl_tesi.bib
 Warning--entry type for "mydatawebsite" isn't style-file defined
---line 21 of file bibl_tesi.bib
-Warning--entry type for "mastersonjaheikkil" isn't style-file defined
---line 27 of file bibl_tesi.bib
-Warning--entry type for "maasglobal" isn't style-file defined
 --line 35 of file bibl_tesi.bib
+Warning--entry type for "mastersonjaheikkil" isn't style-file defined
+--line 41 of file bibl_tesi.bib
+Warning--entry type for "maasglobal" isn't style-file defined
+--line 49 of file bibl_tesi.bib
 Warning--entry type for "oauth" isn't style-file defined
---line 65 of file bibl_tesi.bib
+--line 79 of file bibl_tesi.bib
 Warning--entry type for "kantaraconsent" isn't style-file defined
---line 71 of file bibl_tesi.bib
+--line 85 of file bibl_tesi.bib
 Warning--entry type for "uma" isn't style-file defined
---line 77 of file bibl_tesi.bib
+--line 91 of file bibl_tesi.bib
 Warning--to sort, need author or key in mydatawebsite
 Warning--to sort, need author or key in maasglobal
 Warning--to sort, need author or key in githubmobilityprofile
@@ -31,6 +31,8 @@ Warning--to sort, need author or key in githubmydatastack
 Warning--to sort, need author or key in oauth
 Warning--to sort, need author or key in kantaraconsent
 Warning--to sort, need author or key in uma
+Warning--to sort, need author or key in githubmobilityprofilespecification
+Warning--to sort, need author or key in ormSugar
 Warning--to sort, need author or key in githubmydataaccount
 Warning--to sort, need author or key in githubmydataoperator
 Warning--to sort, need author or key in githubmydataserviceregistry
@@ -41,7 +43,6 @@ Warning--to sort, need author or key in w3cdatacube
 Warning--to sort, need author or key in javalanguagespecs
 Warning--to sort, need author or key in java8api
 Warning--to sort, need author or key in javacrypto
-Warning--to sort, need author or key in githubmobilityprofilespecification
 Warning--to sort, need author or key in googlegson
 Warning--empty author in w3cdatacatalog
 Warning--empty institution in w3cdatacatalog
@@ -88,6 +89,9 @@ Warning--empty year in w3crdf
 Warning--empty author in w3cdatacube
 Warning--empty institution in w3cdatacube
 Warning--empty year in w3cdatacube
+Warning--empty author in ormSugar
+Warning--empty institution in ormSugar
+Warning--empty year in ormSugar
 Warning--empty author in githubsmall
 Warning--empty institution in githubsmall
 Warning--empty year in githubsmall
@@ -96,4 +100,4 @@ Warning--empty institution in mydatawhitepaper
 Warning--empty year in mydatawhitepaper
 Warning--empty institution in wefreport
 Warning--empty year in wefreport
-(There were 80 warnings)
+(There were 84 warnings)

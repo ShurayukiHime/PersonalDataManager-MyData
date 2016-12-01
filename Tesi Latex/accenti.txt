@@ -36,3 +36,19 @@
     title     = "Knuth: Computers and Typesetting",
     url       = "http://www-cs-faculty.stanford.edu/\~{}uno/abcde.html"
 }
+
+\begin{figure} [h]
+	\centering
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{pictures/welcomePanel.png}
+		\caption{Schermata di login con esempio di registrazione al gestore di dati personali}
+		\label{fig:welcomePanel}
+	\end{subfigure}
+	\begin{subfigure}{0.49\textwidth}
+		\centering
+		\includegraphics[width=0.7\linewidth]{pictures/exampleConsentInProj.png}
+		\caption{Profilo utente con esempio di Consent Attivo e Ritirato}
+		\label{fig:exampleConsentInProj}
+	\end{subfigure}
+\end{figure}

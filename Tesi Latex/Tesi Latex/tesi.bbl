@@ -92,6 +92,11 @@ The rdf data cube vocabulary.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 
+\bibitem{ormSugar}
+Satyan sugar repository on github.
+\newblock Technical report.
+\newblock Ultima visita Nov. 2016.
+
 \bibitem{githubsmall}
 Small documentation on github.
 \newblock Technical report.
@@ -99,6 +104,10 @@ Small documentation on github.
 
 \bibitem{uma}
 User managed access.
+\newblock Ultima visita Nov. 2016.
+
+\bibitem{IAFmDavis}
+Mark~E. Davis.
 \newblock Ultima visita Nov. 2016.
 
 \bibitem{MLNT}
@@ -111,6 +120,11 @@ Nicola Ferroni.
 Sonja Heikkil{\"a}.
 \newblock Mobility as a service – a proposal for action for the public
   administration - case helsinki, 2014.
+
+\bibitem{orangeDigitalTrust}
+Orange.
+\newblock The future of digital trust.
+\newblock Ultima visita Nov. 2016.
 
 \bibitem{gdpr}
 European Parliament and Council of~the European~Union.
