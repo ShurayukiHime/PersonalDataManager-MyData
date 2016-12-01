@@ -1,5 +1,6 @@
  package gui;
 
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -68,17 +69,18 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			registrationPanel.setBorder(new TitledBorder(new EtchedBorder(), "Sign Up"));
 			{
 				nomeTField = new JTextField(15);
-				nomeTField.setText("Nome");
+				nomeTField.setText("John");
 				cognomeTField = new JTextField(15);
-				cognomeTField.setText("Cognome");
+				cognomeTField.setText("Doe");
 				datePicker = new JSpinner(new SpinnerDateModel());
 				JSpinner.DateEditor dateDEditor = new JSpinner.DateEditor(datePicker, "dd/MM/yyyy");
 				datePicker.setEditor(dateDEditor);
 				emailAddressTField = new JTextField(15);
-				emailAddressTField.setText("email@gmail.com");
+				emailAddressTField.setText("john.doe@gmail.com");
 				signUpPField = new JPasswordField(15);
 
-				signUpButton = new JButton("Conferma");
+				signUpButton = new JButton("Sign Up");
+				signUpButton.setAlignmentX(CENTER_ALIGNMENT);
 				signUpButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -97,14 +99,20 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			welcomePanel.add(registrationPanel);
 
 			JPanel loginPanel = new JPanel();
-			loginPanel.setLayout(new BoxLayout(loginPanel, BoxLayout.PAGE_AXIS));
+			loginPanel.setLayout(new GridBagLayout());
 			loginPanel.setBorder(new TitledBorder(new EtchedBorder(), "Log In"));
+			JPanel utilityPanel = new JPanel();
+			utilityPanel.setLayout(new BoxLayout(utilityPanel, BoxLayout.PAGE_AXIS));
 			{
 				emailAddressTField = new JTextField(15);
-				emailAddressTField.setText("email@gmail.com");
+				emailAddressTField.setMaximumSize(emailAddressTField.getPreferredSize());
+				emailAddressTField.setText("john.doe@gmail.com");
 				emailAddressTField.setEditable(true);
 				signInPField = new JPasswordField(15);
+				signInPField.setMaximumSize(signInPField.getPreferredSize());
+				
 				signInButton = new JButton("Log in");
+				signInButton.setAlignmentX(CENTER_ALIGNMENT);
 				signInButton.addActionListener(new ActionListener() {
 					@Override
 					public void actionPerformed(ActionEvent e) {
@@ -112,11 +120,13 @@ public class MyDataProfile extends JFrame implements ActionListener {
 					}
 				});
 
-				loginPanel.add(emailAddressTField);
-				loginPanel.add(signInPField);
-				loginPanel.add(signInButton);
-				loginPanel.setVisible(true);
+				utilityPanel.add(emailAddressTField);
+				utilityPanel.add(signInPField);
+				utilityPanel.add(signInButton);
+				utilityPanel.setVisible(true);
 			}
+			loginPanel.add(utilityPanel);
+			loginPanel.setVisible(true);
 			welcomePanel.add(loginPanel);
 			welcomePanel.setVisible(true);
 			this.add(welcomePanel);
@@ -258,11 +268,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		
 	}
 
-	// NOTA BENE
-	// avrei voluto che il programma esplodesse se uno dei campi fosse vuoto, ad
-	// esempio anche il campo password. per qualche motivo però, java lo riempie
-	// lo stesso anche se non ci scrivi niente
-
 	private void signUpButtonClicked() {
 		try {
 			this.controller.createMyDataUser(nomeTField.getText().trim(), cognomeTField.getText().trim(),
@@ -280,8 +285,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void signInButtonClicked() {
-		// check credentials
-		// updates list of services for new panel
 		try {
 			this.controller.logInUser(emailAddressTField.getText(), signInPField.getPassword());
 			// if user authenticated,
@@ -294,10 +297,6 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	}
 
 	private void toggleDisabledStatusCheckBoxClicked() {
-		// retrieve il servizio selezionato
-		// chiede al controller di fare il toggle per il servizio, utente
-		// invoca un aggiornamento della combo box
-
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
 		// se l'utente è autenticato
@@ -307,29 +306,19 @@ public class MyDataProfile extends JFrame implements ActionListener {
 			this.updateStatusTextField(status);
 			this.requestServiceButton.setEnabled(status);
 			this.viewPastSConsents();
-//			String message = "Consent Status updated to ";
-//			message = status ? message + "Active." : message + "Disabled.";
-//			this.logTextArea.setText(this.logTextArea.getText() + System.getProperty("line.separator") +  message);
 		} catch (IllegalStateException e) {
 			e.printStackTrace();
 			this.controller.getUserInteractor().showErrorMessage(e.getMessage());
 		}
-
 	}
 
 	private void setWithdrawnStatusButtonClicked() {
-		// retrieve il servizio selezionato (che non potrà mai essere withdrawn)
-		// chiede al controller di fare withdraw dello stato per il servizio,
-		// utente
-		// invoca aggiornamento combo box
-
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
 		// se l'utente è autenticato
 		this.controller.withdrawConsentForService(selectedService);
 		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare
 		// tutto bene
-		this.popolaServicesComboBox();
 		this.statusTField.setText("Withdrawn");
 		this.viewPastSConsents();
 		this.newServiceConsentButton.setEnabled(true);

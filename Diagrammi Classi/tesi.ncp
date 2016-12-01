@@ -5,306 +5,56 @@
     <Language>Java</Language>
     <Entities>
       <Entity type="Class">
-        <Name>ConsentManager</Name>
-        <Access>Public</Access>
-        <Location left="408" top="123" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>ServiceConsent</Name>
-        <Access>Public</Access>
-        <Location left="231" top="266" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>DataConsent</Name>
-        <Access>Public</Access>
-        <Location left="540" top="266" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>InputDataConsent</Name>
-        <Access>Public</Access>
-        <Location left="755" top="358" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>OutputDataConsent</Name>
-        <Access>Public</Access>
-        <Location left="755" top="185" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Enum">
-        <Name>ConsentStatus</Name>
-        <Access>Public</Access>
-        <Location left="64" top="78" />
-        <Size width="163" height="112" />
-        <Collapsed>False</Collapsed>
-        <Value>Active</Value>
-        <Value>Disabled</Value>
-        <Value>Withdrawn</Value>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IConsent</Name>
-        <Access>Public</Access>
-        <Location left="384" top="441" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>MostLikelyNextTrip</Name>
-        <Access>Public</Access>
-        <Location left="1659" top="453" />
-        <Size width="162" height="77" />
-        <Collapsed>False</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>AbstractService</Name>
-        <Access>Public</Access>
-        <Location left="1659" top="303" />
-        <Size width="162" height="77" />
-        <Collapsed>False</Collapsed>
-        <Modifier>Abstract</Modifier>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IService</Name>
-        <Access>Public</Access>
-        <Location left="1636" top="160" />
-        <Size width="162" height="77" />
-        <Collapsed>False</Collapsed>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IUser</Name>
-        <Access>Public</Access>
-        <Location left="1663" top="879" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IAccount</Name>
-        <Access>Public</Access>
-        <Location left="1229" top="971" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>MyDataUser</Name>
-        <Access>Public</Access>
-        <Location left="1687" top="1013" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>Account</Name>
-        <Access>Public</Access>
-        <Location left="1229" top="1107" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>SuggesterManager</Name>
-        <Access>Public</Access>
-        <Location left="1303" top="491" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
         <Name>MyData</Name>
         <Access>Public</Access>
-        <Location left="93" top="950" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
+        <Location left="557" top="506" />
+        <Size width="637" height="247" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private static MyData instance</Member>
+        <Member type="Field">private Set&lt;IUser&gt; myDataUsers</Member>
+        <Member type="Constructor">private MyData()</Member>
+        <Member type="Method">public static IMyData getInstance()</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password)</Member>
+        <Member type="Method">public IUser loginUser(String email, char[] password)</Member>
+        <Member type="Method">public void createServiceAccount(IUser user, IService service)</Member>
+        <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
+        <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
+        <Member type="Method">public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser)</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Interface">
         <Name>IMyData</Name>
         <Access>Public</Access>
-        <Location left="93" top="678" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
+        <Location left="557" top="270" />
+        <Size width="637" height="179" />
+        <Collapsed>False</Collapsed>
+        <Member type="Method">public IUser loginUser(String email, char[] password)</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password)</Member>
+        <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
+        <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
+        <Member type="Method">public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser)</Member>
+        <Member type="Method">public void createServiceAccount(IUser user, IService service)</Member>
       </Entity>
       <Entity type="Interface">
-        <Name>IPersonalDataVault</Name>
+        <Name>IUser</Name>
         <Access>Public</Access>
-        <Location left="396" top="678" />
-        <Size width="162" height="216" />
+        <Location left="335" top="525" />
+        <Size width="163" height="77" />
         <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IDataSet</Name>
-        <Access>Public</Access>
-        <Location left="831" top="700" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>PersonalDataVault</Name>
-        <Access>Public</Access>
-        <Location left="421" top="911" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>DataSet</Name>
-        <Access>Public</Access>
-        <Location left="858" top="869" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IMetadata</Name>
-        <Access>Public</Access>
-        <Location left="230" top="1257" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>Metadata</Name>
-        <Access>Public</Access>
-        <Location left="261" top="1508" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>ServiceRegistry</Name>
-        <Access>Public</Access>
-        <Location left="702" top="1272" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Interface">
-        <Name>ISecurityManager</Name>
-        <Access>Public</Access>
-        <Location left="1174" top="1293" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>SecurityManager</Name>
-        <Access>Public</Access>
-        <Location left="1156" top="1517" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Interface">
-        <Name>IController</Name>
-        <Access>Public</Access>
-        <Location left="2044" top="1116" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-      </Entity>
-      <Entity type="Class">
-        <Name>MyController</Name>
-        <Access>Public</Access>
-        <Location left="2072" top="1286" />
-        <Size width="162" height="216" />
-        <Collapsed>True</Collapsed>
-        <Modifier>None</Modifier>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Generalization" first="3" second="2">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>836</X>
-          <Y>333</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>749</X>
-          <Y>291</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Generalization" first="4" second="2">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="False">
-          <X>749</X>
-          <Y>291</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Realization" first="1" second="6">
+      <Relationship type="Realization" first="0" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Realization" first="2" second="6">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Generalization" first="7" second="8">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="8" second="9">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="12" second="10">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="13" second="11">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Association" first="12" second="13">
+      <Relationship type="Association" first="0" second="2">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="7" second="14">
-        <Label>
-        </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Association</AssociationType>
-      </Relationship>
-      <Relationship type="Realization" first="15" second="16">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="19" second="17">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="20" second="18">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="22" second="21">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="25" second="24">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Realization" first="27" second="26">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
+        <AssociationType>Aggregation</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>
@@ -336,20 +86,20 @@
         <Name>MyDataUser</Name>
         <Access>Public</Access>
         <Location left="2337" top="750" />
-        <Size width="553" height="417" />
+        <Size width="554" height="417" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private String firstName</Member>
         <Member type="Field">private String lastName</Member>
         <Member type="Field">private Date dateOfBirth</Member>
         <Member type="Field">private String emailAddress</Member>
-        <Member type="Field">private String password</Member>
+        <Member type="Field">private char[] password</Member>
         <Member type="Field">private Set&lt;IAccount&gt; accounts</Member>
         <Member type="Field">private IPersonalDataVault personalDataVault</Member>
         <Member type="Field">private ISecurityManager securityManager</Member>
-        <Member type="Constructor">public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
+        <Member type="Constructor">public MyDataUser(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password)</Member>
         <Member type="Method">public void addDataConsent(DataConsent dataConsent, IService service)</Member>
         <Member type="Method">public void addServiceConsent(IService selectedService)</Member>
-        <Member type="Method">public boolean checkIfPasswordEqual(String givenPsw)</Member>
+        <Member type="Method">public boolean checkIfPasswordEqual(char[] givenPsw)</Member>
         <Member type="Method">public Set&lt;IAccount&gt; getAllAccounts()</Member>
         <Member type="Method">public IPersonalDataVault getPersonalDataVault()</Member>
         <Member type="Method">public ISecurityManager getSecurityManager()</Member>
@@ -381,7 +131,7 @@
         <Collapsed>False</Collapsed>
         <Member type="Method">public void addDataConsent(DataConsent dataConsent, IService service)</Member>
         <Member type="Method">public void addServiceConsent(IService service)</Member>
-        <Member type="Method">public boolean checkIfPasswordEqual(String givenPsw)</Member>
+        <Member type="Method">public boolean checkIfPasswordEqual(char[] givenPsw)</Member>
         <Member type="Method">public boolean equals(Object obj)</Member>
         <Member type="Method">public ServiceConsent getActiveSCForService(IService service)</Member>
         <Member type="Method">public Set&lt;IAccount&gt; getAllAccounts()</Member>
@@ -660,8 +410,8 @@
         <Member type="Field">private Set&lt;IUser&gt; myDataUsers</Member>
         <Member type="Constructor">private MyData()</Member>
         <Member type="Method">public static IMyData getInstance()</Member>
-        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
-        <Member type="Method">public IUser loginUser(String email, String password)</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password)</Member>
+        <Member type="Method">public IUser loginUser(String email, char[] password)</Member>
         <Member type="Method">public void createServiceAccount(IUser user, IService service)</Member>
         <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
         <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
@@ -674,8 +424,8 @@
         <Location left="3088" top="1254" />
         <Size width="637" height="179" />
         <Collapsed>False</Collapsed>
-        <Member type="Method">public IUser loginUser(String email, String password)</Member>
-        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, String password)</Member>
+        <Member type="Method">public IUser loginUser(String email, char[] password)</Member>
+        <Member type="Method">public IUser createMyDataAccount(String firstName, String lastName, Date dateOfBirth, String emailAddress, char[] password)</Member>
         <Member type="Method">public IDataSet getDataSetForOutputDataConsent(OutputDataConsent outputDataConsent)</Member>
         <Member type="Method">public void saveDataSet(IDataSet dataSet, InputDataConsent inDataConsent)</Member>
         <Member type="Method">public void issueNewServiceConsent(IService selectedService, IUser authenticatedUser)</Member>
@@ -746,8 +496,6 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="1" second="5">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -758,14 +506,14 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="1" second="9">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="7">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -792,12 +540,16 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="0" second="14">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Composition</AssociationType>
       </Relationship>
       <Relationship type="Association" first="13" second="14">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -812,8 +564,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="18" second="15">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -832,12 +582,16 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="16" second="20">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="9" second="20">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -848,6 +602,8 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="14" second="7">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -862,24 +618,32 @@
         </BendPoint>
       </Relationship>
       <Relationship type="Association" first="21" second="16">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="8" second="25">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="18" second="26">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="1" second="2">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -890,8 +654,6 @@
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="22" second="3">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -906,24 +668,18 @@
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
       <Relationship type="Association" first="17" second="27">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="17" second="23">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="28">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -934,20 +690,22 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="29">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="12">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="11">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -958,6 +716,8 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="14">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -968,8 +728,6 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="13">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -1025,16 +783,12 @@
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
       <Relationship type="Association" first="2" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="3" second="0">
-        <Label>
-        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
@@ -1110,26 +864,30 @@
     </Entities>
     <Relationships>
       <Relationship type="Association" first="6" second="0">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="4">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="3">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="1">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -1144,20 +902,22 @@
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="2">
-        <Label>
-        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="0" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Association</AssociationType>
       </Relationship>
       <Relationship type="Association" first="6" second="5">
+        <Label>
+        </Label>
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="True">
