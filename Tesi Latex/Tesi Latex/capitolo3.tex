@@ -5,7 +5,7 @@
 \noindent Al fine di comprendere appieno le scelte effettuate all’interno del progetto, si evidenziano brevemente le componenti e la struttura del modello \textit{MyData} \cite{githubmydatastack}. 
 
 \section{Entit\`a Fondamentali}
-L’architettura di \textit{MyData} si costruisce su quattro componenti base: l’utente finale, detto anche \textit{Account Owner}, l’operatore \textit{MyData}, o \textit{Operator}, e due generiche entit\`a che, da una parte, “producono” dati, e, dall’altra, li “consumano”. Esse sono definite rispettivamente \textit{Source} e \textit{Sink}. Mentre i ruoli di Account Owner e di Operator sono generalmente statici, quelli di Source e Sink sono fortemente variabili nel tempo e si possono applicare anche ad entit\`a molto diverse fra loro, poich\'e definiti con un alto livello di astrazione. Convenzionalmente, si pu\`o identificare un servizio come “consumatore” di dati, mentre l’account dell’utente pu\`o essere un “produttore” di dati personali. In \textit{MyData}, \`e possibile altres\`i che un servizio occupi entrambi i ruoli, o anche che l’\textit{Operator} stesso rientri in questa classificazione quando si trova a compiere operazioni sui dati.
+L’architettura di \textit{MyData} si costruisce su quattro componenti base: l’utente finale, detto anche \textit{Account Owner}, l’operatore \textit{MyData}, o \textit{Operator}, e due generiche entit\`a che, da una parte, “producono” dati, e, dall’altra, li “consumano”. Esse sono definite rispettivamente \textit{Source} e \textit{Sink}. Mentre i ruoli di \textit{Account Owner} e di \textit{Operator} sono generalmente statici, quelli di \textit{Source} e \textit{Sink} sono fortemente variabili nel tempo e si possono applicare anche ad entit\`a molto diverse fra loro, poich\'e definiti con un alto livello di astrazione. Convenzionalmente, si pu\`o identificare un servizio come “consumatore” di dati, mentre l’account dell’utente pu\`o essere un “produttore” di dati personali. In \textit{MyData}, \`e possibile altres\`i che un servizio occupi entrambi i ruoli, o anche che l’\textit{Operator} stesso rientri in questa classificazione quando si trova a compiere operazioni sui dati.
 
 Il ruolo di \textit{Operator} comprende operazioni di vario genere fra i quali vi sono la gestione degli utenti, dei servizi e delle interazioni che avvengono fra le due parti. Esso si occupa anche di gestire l’Audit Log di tutte le operazioni che coinvolgono tali interazioni.
 
@@ -21,13 +21,14 @@ L’iscrizione di un utente presso un servizio avviene tramite un processo chiam
 Al termine del \textit{Service Linking} viene prodotto un \textit{Service Link Record}, necessario per ogni futura interazione fra l’utente ed il servizio.
 
 \subsection{OAuth 2.0}
+\label{subsec:OAuth20}
 \begin{figure} [h]
 	\centering
 	\includegraphics[width=0.6\linewidth]{pictures/OAuthAbstractProtocolFlow.png}
 	\caption{RFC 6749, OAuth 2.0 Abstract Protocol Flow}
 	\label{fig:OAuthAbstractProtocolFlow}
 \end{figure}
-OAuth \`e un protocollo per il controllo dei flussi di autorizzazioni fra mobile applications, desktop applications, dispositivi mobili, ecc. \cite{oauth}. Se ne d\`a un breve accenno in questa sede in quanto esso viene preso come esempio di implementazione di \textit{Service Linking} all’interno delle specifiche di \textit{MyData} \cite{githubmydatastack}.
+OAuth \`e un protocollo per il controllo dei flussi di autorizzazioni fra applicazioni e servizi accessibili tramite richiesta HTTP, usato ad esempio all'interno di  applicazioni desktop e applicazioni e dispositivi mobili. \cite{oauth}. Se ne d\`a un breve accenno in quanto viene preso come esempio di implementazione di \textit{Service Linking} all’interno delle specifiche di \textit{MyData} \cite{githubmydatastack}.
 
 Le entit\`a coinvolte nel protocollo di autorizzazione le seguenti:
 \begin{itemize}
@@ -48,15 +49,15 @@ Vista la forte analogia con \textit{MyData}, in fase di Progettazione (capitolo 
 
 \section{Autorizzazioni e Consent}
 \label{sec:MD-AuthConsent}
-Come specificato dal GDPR, ogni operazione svolta sui dati personali di un utente deve essere stata autorizzata dallo stesso tramite un permesso che acquista in questo contesto una valenza legale.
+Come specificato dal General Data Potection Regulation approvato dall'Unione Europea \cite{gdpr}, ogni operazione svolta sui dati personali di un utente deve essere stata autorizzata dallo stesso tramite un permesso che acquista in questo contesto una valenza legale.
 
-La funzione di un permesso, o Consent, \`e particolarmente rilevante: definisce quali dati possono essere utilizzati e in che modalit\`a, e identifica le entit\`a \textit{Source} e \textit{Sink} fra le quali avviene lo scambio. Il processo di \textit{Service Linking} deve essere stato completato con successo affinch\'e sia possibile fare richiesta di autorizzazione, e ci\`o viene verificato tramite ispezione del \textit{Service Link Record}.
+La funzione di un permesso, o \textit{Consent}, \`e particolarmente rilevante: definisce quali dati possono essere utilizzati e in che modalit\`a, e identifica le entit\`a \textit{Source} e \textit{Sink} fra le quali avviene lo scambio. Il processo di \textit{Service Linking} deve essere stato completato con successo affinch\'e sia possibile fare richiesta di autorizzazione, e ci\`o viene verificato tramite ispezione del \textit{Service Link Record}.
 
 Il ruolo dell’\textit{Operator} in questa situazione \`e quello di recuperare le informazioni corrispondenti al servizio presso il \textit{Service Registry}: queste vengono presentate all’utente che decide se acconsentire o meno al processamento di un determinato insieme di dati da parte di un servizio specificato. \`E possibile per l’utente chiedere una ridefinizione delle richieste del servizio, ma non al di sotto del limite previsto per un corretto svolgimento del servizio stesso. Tale insieme di dati viene identificato mediante un \textit{Resource Set Identifier}, che permette a \textit{Source} e \textit{Sink} di identificare precisamente le risorse da trasmettere.
 
 Nel caso la procedura di autorizzazione si concluda con successo, viene prodotto un \textit{Consent Record} che contiene tutte le specifiche negoziate fra le parti insieme agli identificatori dell’utente e del servizio. Esso viene memorizzato all’interno dell’account, ma \`e possibile che il servizio o l’Operatore ne facciano richiesta successivamente. 
 
-Per dare la possibilit\`a all’utente di ritirare il permesso accordato, un Consent ha tre stati possibili: \textit{Active}, \textit{Disabled} e \textit{Withdrawn}. Il primo \`e lo stato standard di funzionamento, in cui l’accesso ai dati \`e consentito; si hanno poi gli stati “disabilitato” e “ritirato”, in cui l’accesso \`e impedito. Nel caso in cui il permesso sia stato ritirato \`e necessario provvedere all’emissione di una nuova autorizzazione, mentre in caso di stato disabilitato, \`e possibile attuare un cambiamento di stato, riportandolo al valore attivo.
+Per dare la possibilit\`a all’utente di ritirare il permesso accordato, un \textit{Consent} ha tre stati possibili: \textit{Active}, \textit{Disabled} e \textit{Withdrawn}. Il primo \`e lo stato standard di funzionamento, in cui l’accesso ai dati \`e consentito; si hanno poi gli stati “disabilitato” e “ritirato”, in cui l’accesso \`e impedito. Nel caso in cui il permesso sia stato ritirato \`e necessario provvedere all’emissione di una nuova autorizzazione, mentre in caso di stato disabilitato, \`e possibile attuare un cambiamento di stato, riportandolo al valore attivo.
 
 Questo protocollo di autorizzazione all’utilizzo dei dati rispetta quindi quanto affermato dal GDPR, poich\'e il permesso viene dato volontariamente e in modo chiaro. Non \`e ambiguo, \`e informato, grazie alla specifica delle risorse necessarie, ed \`e possibile ritirarlo in ogni momento.
 
@@ -74,7 +75,21 @@ Altri esempi comprendono la definizione di \textit{Personally Identifiable Infor
 Successivamente, viene descritta la struttura dati proposta come standard di \textit{Consent Receipt}, dettagliando ogni campo presente al suo interno. Ho preso spunto da questo documento al momento di realizzare i \textit{Consent} all’interno del gestore di dati personali (sottosezione \ref{subsec:P-ServiceConsentDataConsent}).
 
 \subsection{User Managed Access}
-\cite{uma}
+\begin{figure} [h]
+	\centering
+	\includegraphics[width=0.5\linewidth]{pictures/UMAPhases.png}
+	\caption{Le tre fasi di User Managed Access}
+	\label{fig:UMAPhases}
+\end{figure}
+User Managed Access \cite{uma} \`e un protocollo basato su OAuth (del quale si \`e parlato in \ref{subsec:OAuth20}) il cui scopo \`e definire l’accesso a risorse protette (potenzialmente disponibili su infrastruttura distribuita) da parte di applicazioni client. Le modalit\`a di accesso alle risorse vengono definite dall’utente finale e messe in atto da un’autorit\`a centrale di autorizzazione. Anche il protocollo UMA, come il \textit{Consent Receipt Specification} sopra citato, viene indicato all’interno della documentazione \textit{MyData} come “Key Related Standard”.
+
+Il protocollo UMA si articola in tre momenti principali, dai quali si \`e preso spunto nell’implementazione del flusso del programma all’interno del gestore di dati personali. Per agevolare la descrizione del protocollo, si definiscono i termini \textit{Authorization Server}, per descrivere il server che si occupa di \textit{policy enforcement}, e \textit{Resource Server}, che indica il server presso cui vengono depositate le risorse da proteggere.
+
+Come prima operazione, l’utente finale deposita i suoi dati presso un \textit{Authorization Server}, definendo in modo sicuro le regole per la gestione dell’accesso. Questo \`e regolato per mezzo delle API esposte dall’\textit{Authorization Server}, che fanno uso di OAuth (o sue implementazioni).
+
+In un secondo momento, una applicazione client richiede un set di risorse ad un \textit{Resource Server} protetto mediante protocollo UMA tramite API OAuth. 
+
+Durante il protocollo vi \`e lo scambio e l’emissione di tre tipi di token (\textit{Protection API Token}, \textit{Requesting Party Token}, \textit{Authorization API Token}), utilizzati per provare l’affidabilit\`a, l’identit\`a e l’autorizzazione garantita al servizio per l’accesso alle risorse.
 
 \section{Personal Data Storage}
 Nonostante non venga dato un peso rilevante a questa componente all’interno delle specifiche \textit{MyData} \cite{githubmydatastack}, non \`e possibile prescindere dall’esistenza di un database che mantenga tutti i dati relativi ad un \textit{Account Owner}. Non si tratta infatti solo di dati personali, ma di ogni dato utilizzato da un generico servizio o ad esempio inserito volontariamente dall’utente.
@@ -83,6 +98,6 @@ Non \`e specificato se il Personal Data Storage (spesso chiamato anche Personal 
 
 L’accesso ai dati contenuti all’interno del Personal Data Storage \`e possibile solo in presenza di un adeguato \textit{Consent Record}, ma le modalit\`a di accesso non vengono regolamentate in maniera dettagliata. Si parla infatti genericamente di “Data API”, con le quali un \textit{Sink} ottiene (in caso di richiesta legittima) un determinato \textit{Resource Set} da un \textit{Source}.
 
-Poiché l’applicazione Mobility Profile \`e stata sviluppata in un secondo momento rispetto alla prima pubblicazione delle specifiche tecniche suddette, si \`e provveduto all’interno della relativa documentazione \cite{githubmobilityprofilespecification} ad aggiungere una breve menzione del Personal Data Storage, spiegando il suo ruolo all’interno dell’applicazione.
+Poich\'e l’applicazione Mobility Profile \`e stata sviluppata in un secondo momento rispetto alla prima pubblicazione delle specifiche tecniche suddette, si \`e provveduto all’interno della relativa documentazione \cite{githubmobilityprofilespecification} ad aggiungere una breve menzione del Personal Data Storage, spiegando il suo ruolo all’interno dell’applicazione.
 
 Dall’analisi del codice disponibile sul repository Github \cite{githubmobilityprofile} \`e emerso che i dati personali vengono mantenuti all’interno del dispositivo mobile e gestiti attraverso un database relazionale \cite{ormSugar}. Questa implementazione differisce leggermente da quella proposta inizialmente, in quanto la computazione avviene localmente ai dati invece che presso il servizio. All’interno del progetto del gestore di dati personali ho scelto di restare aderente alle prime specifiche di \textit{MyData} \cite{githubmydatastack}. Questa problematica viene analizzata pi\`u in dettaglio prima in fase di Analisi (sezione \ref{sec:A-PDS}) e successivamente in fase di Progettazione (sottosezione \ref{subsec:P-PDV}).

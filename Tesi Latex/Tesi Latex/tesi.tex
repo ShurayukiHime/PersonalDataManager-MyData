@@ -1,18 +1,18 @@
-\documentclass[11pt,a4paper,twoside,openright]{report}
+\documentclass[11pt,a4paper,twoside,openleft]{memoir}
 
 \usepackage[pdftex]{graphicx}
 \usepackage{url}
-\usepackage{tabularx}
-\usepackage{subcaption}
+\usepackage{subfig}
 \usepackage{afterpage}
-\usepackage{amsmath,amssymb}            
-\usepackage{rotating}  
-\usepackage{fancyhdr}  
+%\usepackage{fancyhdr}  
 %\usepackage[scriptsize]{caption}
 \usepackage[htt]{hyphenat} 
 \hyphenation{a-gen-tiz-za-zio-ne}
 
-
+\newcommand*\cleartorightpage{%
+	\clearpage
+	\ifodd\value{page}\hbox{}\newpage\fi
+}
 
 \setlength{\paperwidth}{16cm}
 \setlength{\paperheight}{24cm}
@@ -34,14 +34,14 @@
 \thispagestyle{empty} \vspace*{.75truecm} \normalfont \cleardoublepage
 \pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
-\fancyhead[LE,RO]{\bfseries\thepage}    
+%\fancyhead[LE,RO]{\bfseries\thepage}    
 
 \include{indice}
 \thispagestyle{empty} \vspace*{.75truecm} \cleardoublepage
                                         
-\fancyhead[RE]{\bfseries\leftmark}    
-\fancyhead[LO]{\bfseries\rightmark}     
-\renewcommand{\headrulewidth}{0.3pt} 
+%\fancyhead[RE]{\bfseries\leftmark}    
+%\fancyhead[LO]{\bfseries\rightmark}     
+%\renewcommand{\headrulewidth}{0.3pt} 
 
 \include{capitolo1}
 \include{capitolo2}
@@ -59,15 +59,15 @@
 
 \appendix
 
-\pagestyle{fancy} 
-\fancyfoot{}                                               
+%\pagestyle{fancy} 
+%\fancyfoot{}                                               
 \renewcommand{\chaptermark}[1]{\markboth{\appendixname\ \thechapter.\ #1}{}} 
 \renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
-\fancyhead[LE,RO]{\bfseries\thepage}    
+%\fancyhead[LE,RO]{\bfseries\thepage}    
                                         
-\fancyhead[RE]{\bfseries\leftmark}    
-\fancyhead[LO]{\bfseries\rightmark}     
-\renewcommand{\headrulewidth}{0.3pt} 
+%\fancyhead[RE]{\bfseries\leftmark}    
+%\fancyhead[LO]{\bfseries\rightmark}     
+%\renewcommand{\headrulewidth}{0.3pt} 
 
 \end{document}
 

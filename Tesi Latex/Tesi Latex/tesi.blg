@@ -17,11 +17,11 @@ Warning--entry type for "mastersonjaheikkil" isn't style-file defined
 Warning--entry type for "maasglobal" isn't style-file defined
 --line 49 of file bibl_tesi.bib
 Warning--entry type for "oauth" isn't style-file defined
---line 79 of file bibl_tesi.bib
-Warning--entry type for "kantaraconsent" isn't style-file defined
 --line 85 of file bibl_tesi.bib
-Warning--entry type for "uma" isn't style-file defined
+Warning--entry type for "kantaraconsent" isn't style-file defined
 --line 91 of file bibl_tesi.bib
+Warning--entry type for "uma" isn't style-file defined
+--line 97 of file bibl_tesi.bib
 Warning--to sort, need author or key in mydatawebsite
 Warning--to sort, need author or key in maasglobal
 Warning--to sort, need author or key in githubmobilityprofile
@@ -36,6 +36,7 @@ Warning--to sort, need author or key in ormSugar
 Warning--to sort, need author or key in githubmydataaccount
 Warning--to sort, need author or key in githubmydataoperator
 Warning--to sort, need author or key in githubmydataserviceregistry
+Warning--to sort, need author or key in kissprinciple
 Warning--to sort, need author or key in googlecalendarapi
 Warning--to sort, need author or key in w3crdf
 Warning--to sort, need author or key in w3cdatacatalog
@@ -44,6 +45,11 @@ Warning--to sort, need author or key in javalanguagespecs
 Warning--to sort, need author or key in java8api
 Warning--to sort, need author or key in javacrypto
 Warning--to sort, need author or key in googlegson
+Warning--to sort, need author or key in githubmydatasdk
+Warning--to sort, need author or key in githubthesis
+Warning--empty author in githubthesis
+Warning--empty institution in githubthesis
+Warning--empty year in githubthesis
 Warning--empty author in w3cdatacatalog
 Warning--empty institution in w3cdatacatalog
 Warning--empty year in w3cdatacatalog
@@ -77,6 +83,9 @@ Warning--empty year in githubmydataaccount
 Warning--empty author in githubmydataoperator
 Warning--empty institution in githubmydataoperator
 Warning--empty year in githubmydataoperator
+Warning--empty author in githubmydatasdk
+Warning--empty institution in githubmydatasdk
+Warning--empty year in githubmydatasdk
 Warning--empty author in githubmydataserviceregistry
 Warning--empty institution in githubmydataserviceregistry
 Warning--empty year in githubmydataserviceregistry
@@ -100,4 +109,4 @@ Warning--empty institution in mydatawhitepaper
 Warning--empty year in mydatawhitepaper
 Warning--empty institution in wefreport
 Warning--empty year in wefreport
-(There were 84 warnings)
+(There were 93 warnings)

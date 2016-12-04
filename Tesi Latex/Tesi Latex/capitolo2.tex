@@ -2,19 +2,18 @@
 \label{capitolo2}
 \thispagestyle{empty}
 
-\cite{mydatawebsite}
 \section{Mobility As A Service}
-\textit{MyData}, grazie al coinvolgimento del Ministero dei Trasporti, ha avuto un primo banco di prova all’interno del concetto di Mobility As A Service. Il progetto finlandese ha ricevuto un notevole slancio grazie al lavoro di tesi svolto da Sonja Heikkil\"a\cite{mastersonjaheikkil}, nella quale l’autrice propone un nuovo concetto di mobilit\`a per la citt\`a di Helsinki per rispondere alle sfide sempre pi\`u frequenti poste dalla gestione della mobilit\`a urbana ed extra-urbana. Le principali difficolt\`a risiedono nell’inaffidabilit\`a dei mezzi pubblici, unico modo per raggiungere determinate mete, comparata con la difficolt\`a nell'utilizzo dell’auto di propriet\`a, causa mancanza parcheggi o traffico.
+\textit{MyData} \cite{mydatawebsite}, grazie al coinvolgimento del Ministero dei Trasporti, ha avuto un primo banco di prova all’interno del concetto di Mobility As A Service. Il progetto finlandese ha ricevuto un notevole slancio grazie al lavoro di tesi svolto da Sonja Heikkil\"a\cite{mastersonjaheikkil}, nella quale l’autrice propone un nuovo concetto di mobilit\`a per la citt\`a di Helsinki per rispondere alle sfide sempre pi\`u frequenti poste dalla gestione della mobilit\`a urbana ed extra-urbana. Le principali difficolt\`a risiedono nell’inaffidabilit\`a dei mezzi pubblici, unico modo per raggiungere determinate mete, comparata con la difficolt\`a nell'utilizzo dell’auto di propriet\`a, causa mancanza parcheggi o traffico.
 
 Il paradigma MaaS descrive un nuovo utilizzo delle tecnologie applicato ai mezzi di trasporto, che propone il passaggio dall’auto di propriet\`a a mezzi di trasporto condivisi. Non si tratta solo di una migliore gestione dei mezzi pubblici che proponga ad esempio soluzioni di pagamento online o potenziamento delle corse in base alla richiesta. Mobility As A Service si applica anche ai taxi, biciclette o sistemi di car sharing. 
 
 Questo cambiamento consentirebbe di aumentare l’efficienza nell’uso dei mezzi di trasporto, eliminando gli sprechi che inevitabilmente derivano dal possesso di un autoveicolo e dal suo inutilizzo. L’accesso del privato ai mezzi di trasporto avverrebbe, in questa nuova ottica, attraverso un software in grado di calcolare una ottimizzazione per i mezzi condivisi, ad esempio raggruppando gli utenti per fasce orarie, tratte comuni e generiche preferenze. Grazie inoltre ad una gestione comune dei mezzi di trasporto diversificati fra loro, la pianificazione del viaggio pu\`o comprendere tratte percorse in modalit\`a diverse (ad esempio automobile e bicicletta).
 
-Da questa proposta \`e nata MaaS Global\cite{maasglobal}, una startup (?) finlandese che, durante l’autunno 2016, rilascer\`a l’app per smartphone “Whim”, con la quale sar\`a possibile muoversi all’interno della citt\`a di Helsinki secondo il paradigma Mobility As A Service. Inizialmente, si potr\`a fare uso di mezzi di trasporto quali il trasporto pubblico urbano, i taxi e le auto a noleggio, ma saranno presto integrati anche i servizi di bike e car sharing.
+Da questa proposta \`e nata MaaS Global\cite{maasglobal}, una startup finlandese che, durante l’autunno 2016, rilascer\`a l’app per smartphone “Whim”, con la quale sar\`a possibile muoversi all’interno della citt\`a di Helsinki secondo il paradigma Mobility As A Service. Inizialmente, si potr\`a fare uso di mezzi di trasporto quali il trasporto pubblico urbano, i taxi e le auto a noleggio, ma saranno presto integrati anche i servizi di bike e car sharing.
 
 \subsection{Mobility Profile e Journey Planner}
 \label{sec:Contesto-MobProfJPlann}
-Come proof of concept, sono state realizzate dall’università di Aalto due applicazioni, rilasciate su piattaforma Android e iOS, Mobility Profile \cite{githubmobilityprofile} e Journey Planner \cite{githubjourneyplanner}.
+Come \textit{proof of concept}, sono state realizzate dall’universit\`a di Aalto due applicazioni, rilasciate su piattaforma Android e iOS, Mobility Profile \cite{githubmobilityprofile} e Journey Planner \cite{githubjourneyplanner}.
 
 Mobility Profile raccoglie i dati personali dell’utente, li mantiene in un database relazionale e svolge le operazioni di calcolo del prossimo viaggio pi\`u probabile. Questa applicazione funziona come base di appoggio per Journey Planner, che riceve i suggerimenti calcolati e restituisce un feedback al processo sottostante, in modo da migliorarne l’accuratezza. Le API di comunicazione fra le due sono:
 \texttt{requestSuggestions()}, \texttt{requestTransportModePreferences()}, e \texttt{sendSearchedRoute(Place startLocation, Place destination)}.
@@ -22,16 +21,10 @@ Mobility Profile raccoglie i dati personali dell’utente, li mantiene in un dat
 In questo esempio, Mobility Profile non rispetta pienamente le specifiche dettate per \textit{MyData}, ma \`e comunque possibile riconoscerne alcune caratteristiche all’interno del progetto. Ne sono esempio la richiesta esplicita di un permesso (revocabile in ogni momento) per l’utilizzo di dati personali, come gli impegni del calendario e lo storico delle posizioni GPS, e anche lo sviluppo di un'applicazione separata per l’utilizzo dei risultati (Journey Planner) rispetto a quella che raccoglie i dati e li processa.
 
 \section{Smart Mobility For All}
-Rimanendo nel filone della mobilità intelligente, il progetto Smart Mobility for All \cite{githubsmall} si sviluppa in modo indipendente da MaaS. 
+Rimanendo nel filone della mobilit\`a intelligente, il progetto Smart Mobility for All \cite{githubsmall} si sviluppa in modo indipendente da MaaS. 
 
-L’idea centrale su cui si fonda la piattaforma SMAll \`e la costruzione di un insieme di servizi di mobilità, potenzialmente anche per mezzi di trasporto molto diversi fra loro, che gestisca l’intero ciclo di vita di un viaggio, dalla prenotazione all’effettivo spostamento e all’arrivo a destinazione. Si tratta di Smart Mobility poich\'e attraverso la raccolta e l’analisi dei dati di un utente \`e possibile fare inferenze sugli spostamenti futuri, proponendo anche l’acquisto dei titoli di viaggio pi\`u adatti alle abitudini e alle necessità dell’individuo.
+L’idea centrale su cui si fonda la piattaforma SMAll \`e la costruzione di un insieme di servizi di mobilit\`a, potenzialmente anche per mezzi di trasporto molto diversi fra loro, che gestisca l’intero ciclo di vita di un viaggio, dalla prenotazione all’effettivo spostamento e all’arrivo a destinazione. Si tratta di Smart Mobility poich\'e attraverso la raccolta e l’analisi dei dati di un utente \`e possibile fare inferenze sugli spostamenti futuri, proponendo anche l’acquisto dei titoli di viaggio pi\`u adatti alle abitudini e alle necessit\`a dell’individuo.
 
-Ancora in via di sviluppo, si basa sul concetto di modularità che punta a fare di ogni servizio un modulo separato e indipendente. In questo modo si applica efficacemente il principio di suddivisione delle responsabilità e migliora la manutenibilità sia del sistema nel complesso che dei singoli servizi.
+Ancora in via di sviluppo, si basa sul concetto di modularit\`a che punta a fare di ogni servizio un modulo separato e indipendente. In questo modo si applica efficacemente il principio di suddivisione delle responsabilit\`a e migliora la manutenibilit\`a sia del sistema nel complesso che dei singoli servizi.
 
-All’interno dei vari componenti dell’infrastruttura si potrebbe prevedere un gestore di dati personali del quale si porta, in questa tesi, un esempio semplificato. In questo contesto risulta evidente l’importanza della gestione dei dati personali, non solo in termini di protezione della privacy ma anche con uno sguardo all’interoperabilità e al corretto funzionamento di un insieme di servizi eterogenei.
-
-\section{GDPR?}
-//è rilevante una sezione su questo tema?
-
-\section{Personal Clouds?}
-//è rilevante una sezione su questo tema?
+All’interno dei vari componenti dell’infrastruttura si potrebbe prevedere un gestore di dati personali del quale si porta, in questa tesi, un esempio semplificato. In questo contesto risulta evidente l’importanza della gestione dei dati personali, non solo in termini di protezione della privacy ma anche con uno sguardo all’interoperabilit\`a e al corretto funzionamento di un insieme di servizi eterogenei.

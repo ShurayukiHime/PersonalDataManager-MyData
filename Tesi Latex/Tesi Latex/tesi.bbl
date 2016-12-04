@@ -1,5 +1,10 @@
 \begin{thebibliography}{10}
 
+\bibitem{githubthesis}
+Analisi e sviluppo di un gestore di dati personali secondo il modello mydata.
+\newblock Technical report.
+\newblock Ultima visita Dic. 2016.
+
 \bibitem{kantaraconsent}
 Consent receipt specification by kantara consent \& information sharing work
   group.
@@ -40,6 +45,10 @@ Journey planner repository on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 
+\bibitem{kissprinciple}
+Kiss principle.
+\newblock Ultima visita Nov. 2016.
+
 \bibitem{maasglobal}
 Maas global website.
 \newblock Ultima visita Nov. 2016.
@@ -65,6 +74,11 @@ Mydata account implementation on github.
 
 \bibitem{githubmydataoperator}
 Mydata operator implementation on github.
+\newblock Technical report.
+\newblock Ultima visita Nov. 2016.
+
+\bibitem{githubmydatasdk}
+Mydata sdk components on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
 

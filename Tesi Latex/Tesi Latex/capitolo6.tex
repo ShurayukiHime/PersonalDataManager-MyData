@@ -2,4 +2,24 @@
 \label{capitolo6}
 \thispagestyle{empty}
 
-\noindent placeholder.
+\noindent In questa tesi si presenta un prototipo funzionante di gestore di dati personali, che permette di monitorare e gestire in tempo reale l’accesso ai dati da parte di servizi “consumatori”. Per la realizzazione del progetto si sono considerate le linee guida descritte all’interno dei documenti di specifica rilasciati dal team di sviluppo dell’universit\`a finlandese di Aalto, insieme alle relative implementazioni pubblicate su repository Github. Ulteriori spunti provengono dai protocolli e dai modelli citati all’interno di questi documenti: OAuth 2.0, UMA e il Consent Receipt Notice Specification.
+
+Per testare l’applicazione si \`e scelto un servizio di previsione del prossimo viaggio pi\`u probabile, \textit{Most Likely Next Trip} \cite{MLNT}, ma non \`e esclusa la possibilit\`a di aggiungere nuove funzionalit\`a grazie alla separazione fra infrastruttura e logica di business del singolo servizio.
+
+Anche se il gestore di dati personali \`e stato realizzato in Java come applicazione monolitica, la modularit\`a con cui sono stati sviluppati i componenti e le API di interazione fra di essi (gestione dei permessi, registrazione dei servizi, punto di \textit{policy enforcement}) \`e tale da motivare, in un possibile progetto di estensione, la loro separazione in servizi indipendenti.
+
+Un altro esempio di possibile sviluppo futuro comprende l’implementazione di un adeguato gestore delle politiche di sicurezza. Il \texttt{SecurityManager} presente all’interno del gestore di dati personali si occupa infatti solo dell’autenticazione reciproca di \textit{Source} e \textit{Sink}, fornendo un esempio di un possibile protocollo in collaborazione con il \texttt{ConsentManager}.
+
+Ci sono tuttavia molti aspetti dell’implementazione che necessiterebbero di alcune modifiche a causa di problematiche di sicurezza: un esempio banale \`e la gestione delle password di autenticazione degli utenti. Altri esempi riguardano la sicurezza della memorizzazione dei dati, la garanzia di autenticit\`a ed integrit\`a dei Consent emessi e il logging delle operazioni svolte e degli eventi.
+
+L’infrastruttura Java offre diversi strumenti disponibili per realizzare funzionalit\`a in ambito di sicurezza, come ad esempio la Java Cryptography Architecture e il package security utilizzato al suo interno.
+
+Un altro limite evidente del gestore di dati personali \`e dovuto all’assenza di un adeguato strato di persistenza. Questa problematica riguarda sia la gestione degli account che quella dei dati immagazzinati all’interno del Personal Data Storage. L’implementazione attuale consente l’utilizzo di file di testo per la simulazione di uno stato del sistema, utile anche per motivi di testing, che si limita per\`o ai soli dati contenuti all’interno del PDS.
+
+Alcuni dei possibili miglioramenti sono stati anticipati all’interno della sezione \ref{sec:A-PDS}: un esempio interessante potrebbe essere l’implementazione di uno strato di astrazione che si occupa della gestione dei dati in ingresso e in uscita dal Vault, modellandoli come \texttt{InputStream} e \texttt{OutputStream} utilizzabili a basso livello da input e output di tipo diverso (file, database, socket, ecc.).
+
+Si deve considerare, infine, che il progetto \textit{MyData} \`e stato avviato e viene portato avanti separatamente dal team di sviluppo finlandese, pertanto rientrano all’interno di queste considerazioni anche gli aggiornamenti di specifiche e implementazioni pubblicate attraverso i repository \cite{githubmydatastack} \cite{githubmobilityprofile} \cite{githubjourneyplanner} \cite{githubmydatasdk}.
+
+Durante il periodo di lavoro sulla tesi, sia di stesura che implementazione, sono stati rilasciati aggiornamenti che hanno fornito spunti di lavoro per l’arricchimento del gestore di dati personali, come ad esempio l’aggiunta delle specifiche sull’account utente. Alcune per\`o non hanno trovato spazio all’interno dell’implementazione, quali ad esempio una recente specifica sulla modalit\`a di connessione fra \textit{Source} e \textit{Sink}.
+
+Il codice sorgente del gestore di dati personali sviluppato \`e disponibile su Github \cite{githubthesis}.
