@@ -1,77 +1,64 @@
-\documentclass[11pt,a4paper,twoside,openleft]{memoir}
-
-\usepackage[pdftex]{graphicx}
-\usepackage{url}
-\usepackage{subfig}
-\usepackage{afterpage}
-%\usepackage{fancyhdr}  
-%\usepackage[scriptsize]{caption}
-\usepackage[htt]{hyphenat} 
-\hyphenation{a-gen-tiz-za-zio-ne}
-
-\newcommand*\cleartorightpage{%
-	\clearpage
-	\ifodd\value{page}\hbox{}\newpage\fi
-}
-
-\setlength{\paperwidth}{16cm}
-\setlength{\paperheight}{24cm}
-\linespread{1.1}
-
-\setlength{\textwidth}{380pt}
+\documentclass[12pt,a4paper,openright,twoside]{report}
 
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\renewcommand{\captionfont}{\normalfont \sffamily \itshape \small}
 
-\pagestyle{empty}
+\usepackage{fancyhdr}
+\usepackage{indentfirst}
+\usepackage[pdftex]{graphicx}
+\usepackage{newlfont}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{latexsym}
+\usepackage{amsthm}
+
+\oddsidemargin=30pt \evensidemargin=20pt%impostano i margini
+\usepackage[htt]{hyphenat} %per andare a capo nei typescript
+\hyphenation{sil-la-ba-zio-ne pa-ren-te-si}%serve per la sillabazione: tra parentesi 
+
+\pagestyle{fancy}\addtolength{\headwidth}{20pt}
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection \ #1}{}}
+\rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
+\cfoot{}
+
+\linespread{1.3}                       
 
 \begin{document}
-\include{frontespizio}
-\thispagestyle{empty} \normalfont \cleardoublepage
-\include{dedica}
-\thispagestyle{empty} \vspace*{.75truecm} \normalfont \cleardoublepage
-\pagestyle{plain}\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}} 
-\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
-%\fancyhead[LE,RO]{\bfseries\thepage}    
+	
+	\include{frontespizio} 
+	\clearpage{\pagestyle{empty}\cleardoublepage}%non numera l'ultima pagina sinistra
+	
+	\include{dedica}
+	\clearpage{\pagestyle{empty}\cleardoublepage}%non numera l'ultima pagina sinistra
+	
+	\pagenumbering{roman}                   %serve per mettere i numeri romani
+	\include{Abstract}
+	\addcontentsline{toc}{chapter}{Abstract}
+	\clearpage{\pagestyle{empty}\cleardoublepage}
 
-\include{indice}
-\thispagestyle{empty} \vspace*{.75truecm} \cleardoublepage
-                                        
-%\fancyhead[RE]{\bfseries\leftmark}    
-%\fancyhead[LO]{\bfseries\rightmark}     
-%\renewcommand{\headrulewidth}{0.3pt} 
+	\include{indice}                        
+	\clearpage{\pagestyle{empty}\cleardoublepage}
 
-\include{capitolo1}
-\include{capitolo2}
-\include{capitolo3}
-\include{capitolo4}
-\include{capitolo5}
-\include{capitolo6}
+	\listoffigures     
+	\clearpage{\pagestyle{empty}\cleardoublepage}
+	\pagenumbering{arabic}                  %mette i numeri arabi
 
-\cleardoublepage
-% ---- Bibliography ----
-\addcontentsline{toc}{chapter}{Bibliografia}
-\bibliographystyle{plain}
-\bibliography{bibl_tesi}
-%\nocite{*}
+	\include{capitolo1}
+	\include{capitolo2}
+	\include{capitolo3}
+	\include{capitolo4}
+	\include{capitolo5}
+	\include{capitolo6}
 
-\appendix
+	\clearpage{\pagestyle{empty}\cleardoublepage}
+	%\addcontentsline{toc}{chapter}{Bibliografia}
+	\bibliographystyle{plain}
+	\bibliography{bibl_tesi}
 
-%\pagestyle{fancy} 
-%\fancyfoot{}                                               
-\renewcommand{\chaptermark}[1]{\markboth{\appendixname\ \thechapter.\ #1}{}} 
-\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}}         
-%\fancyhead[LE,RO]{\bfseries\thepage}    
-                                        
-%\fancyhead[RE]{\bfseries\leftmark}    
-%\fancyhead[LO]{\bfseries\rightmark}     
-%\renewcommand{\headrulewidth}{0.3pt} 
+	\clearpage{\pagestyle{empty}\cleardoublepage}	
+	\include{ringraziamenti}
 
 \end{document}
-
-
-
-
-

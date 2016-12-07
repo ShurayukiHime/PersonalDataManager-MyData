@@ -1,447 +1,26 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  4 DEC 2016 19:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  7 DEC 2016 09:21
 entering extended mode
 **./tesi.tex
 (tesi.tex
 LaTeX2e <2016/02/01>
 Babel <3.9q> and hyphenation patterns for 70 language(s) loaded.
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\memoir.cls"
-Document Class: memoir 2015/07/08 v3.7e configurable book, report, article docu
-ment class
-\onelineskip=\skip41
-\lxvchars=\skip42
-\xlvchars=\skip43
-\@memcnta=\count79
-\c@@memmarkcntra=\count80
-\l@nohyphenation=\language70
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
-ty"
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is detected.
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\report.cls"
+Document Class: report 2014/09/29 v1.4h Standard LaTeX document class
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\size12.clo"
+File: size12.clo 2014/09/29 v1.4h Standard LaTeX file (size option)
 )
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\ifetex\ifetex.sty"
-Package: ifetex 2011/12/15 v1.2 ifetex
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\plain\ifetex\ifetex.tex"
-))
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\ifxetex\ifxetex.
-sty"
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
-x.sty"
-Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
-Package ifluatex Info: LuaTeX not detected.
-)
-\stockheight=\skip44
-\stockwidth=\skip45
-\trimtop=\skip46
-\trimedge=\skip47
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\mem11.clo"
-File: mem11.clo 2008/01/30 v0.3 memoir class 11pt size option
-)
-\binding=\skip48
-\spinemargin=\skip49
-\foremargin=\skip50
-\uppermargin=\skip51
-\lowermargin=\skip52
-\headdrop=\skip53
-\normalrulethickness=\skip54
-\mem@maxheadheight=\skip55
-\mem@maxfootheight=\skip56
-\headwidth=\skip57
-\c@storedpagenumber=\count81
-\memPD=\dimen102
-\m@mabparskip=\skip58
-\thanksmarkwidth=\skip59
-\thanksmarksep=\skip60
-\droptitle=\skip61
-\c@book=\count82
-\c@part=\count83
-\c@chapter=\count84
-\c@section=\count85
-\c@subsection=\count86
-\c@subsubsection=\count87
-\c@paragraph=\count88
-\c@subparagraph=\count89
-\beforechapskip=\skip62
-\midchapskip=\skip63
-\afterchapskip=\skip64
-\chapindent=\skip65
-\bottomsectionskip=\skip66
-\secindent=\skip67
-\beforesecskip=\skip68
-\aftersecskip=\skip69
-\subsecindent=\skip70
-\beforesubsecskip=\skip71
-\aftersubsecskip=\skip72
-\subsubsecindent=\skip73
-\beforesubsubsecskip=\skip74
-\aftersubsubsecskip=\skip75
-\paraindent=\skip76
-\beforeparaskip=\skip77
-\afterparaskip=\skip78
-\subparaindent=\skip79
-\beforesubparaskip=\skip80
-\aftersubparaskip=\skip81
-\pfbreakskip=\skip82
-\c@@ppsavesec=\count90
-\c@@ppsaveapp=\count91
-\ragrparindent=\dimen103
-\everylistparindent=\dimen104
-\parsepi=\skip83
-\topsepi=\skip84
-\itemsepi=\skip85
-\parsepii=\skip86
-\topsepii=\skip87
-\topsepiii=\skip88
-\itemsepii=\skip89
-\itemsepiii=\skip90
-\partopsepii=\skip91
-\partopsepiii=\skip92
-\m@msavetopsep=\skip93
-\m@msavepartopsep=\skip94
-\@enLab=\toks14
-\abstitleskip=\skip95
-\absleftindent=\skip96
-\abs@leftindent=\dimen105
-\absrightindent=\skip97
-\absparindent=\skip98
-\absparsep=\skip99
-\c@vslineno=\count92
-\c@poemline=\count93
-\c@modulo@vs=\count94
-\c@memfvsline=\count95
-\vleftskip=\skip100
-\vrightskip=\skip101
-\stanzaskip=\skip102
-\versewidth=\skip103
-\vgap=\skip104
-\vindent=\skip105
-\vleftmargin=\dimen106
-\c@verse=\count96
-\c@chrsinstr=\count97
-\beforepoemtitleskip=\skip106
-\afterpoemtitleskip=\skip107
-\c@poem=\count98
-\beforePoemTitleskip=\skip108
-\midPoemTitleskip=\skip109
-\afterPoemTitleskip=\skip110
-\col@sep=\dimen107
-\extrarowheight=\dimen108
-\NC@list=\toks15
-\extratabsurround=\skip111
-\backup@length=\skip112
-\TX@col@width=\dimen109
-\TX@old@table=\dimen110
-\TX@old@col=\dimen111
-\TX@target=\dimen112
-\TX@delta=\dimen113
-\TX@cols=\count99
-\TX@ftn=\toks16
-\heavyrulewidth=\dimen114
-\lightrulewidth=\dimen115
-\cmidrulewidth=\dimen116
-\belowrulesep=\dimen117
-\belowbottomsep=\dimen118
-\aboverulesep=\dimen119
-\abovetopsep=\dimen120
-\cmidrulesep=\dimen121
-\cmidrulekern=\dimen122
-\defaultaddspace=\dimen123
-\@cmidla=\count100
-\@cmidlb=\count101
-\@aboverulesep=\dimen124
-\@belowrulesep=\dimen125
-\@thisruleclass=\count102
-\@lastruleclass=\count103
-\@thisrulewidth=\dimen126
-\ctableftskip=\skip113
-\ctabrightskip=\skip114
-\abovecolumnspenalty=\count104
-\@linestogo=\count105
-\@cellstogo=\count106
-\@cellsincolumn=\count107
-\crtok=\toks17
-\@mincolumnwidth=\dimen127
-\c@newflo@tctr=\count108
-\mem@margin@floatbox=\box26
-\@contcwidth=\skip115
-\@contindw=\skip116
-\abovecaptionskip=\skip117
-\belowcaptionskip=\skip118
-\subfloattopskip=\skip119
-\subfloatcapskip=\skip120
-\subfloatcaptopadj=\skip121
-\subfloatbottomskip=\skip122
-\subfloatlabelskip=\skip123
-\subfloatcapmargin=\dimen128
-\c@@contsubnum=\count109
-\m@mscap@capbox=\box27
-\m@mscap@fbox=\box28
-\sidecapsep=\dimen129
-\sidecapwidth=\dimen130
-\m@m@tempdima=\dimen131
-\m@mscapraise=\dimen132
-\sidecapraise=\dimen133
-\m@mscapmainwidth=\dimen134
-\m@mscaplkern=\dimen135
-\beforeepigraphskip=\skip124
-\afterepigraphskip=\skip125
-\epigraphwidth=\skip126
-\epigraphrule=\skip127
-LaTeX Info: Redefining \em on input line 7535.
-LaTeX Info: Redefining \emph on input line 7543.
-\tocentryskip=\skip128
-\tocbaseline=\skip129
-\cftparskip=\skip130
-\cftbeforebookskip=\skip131
-\cftbookindent=\dimen136
-\cftbooknumwidth=\dimen137
-\cftbeforepartskip=\skip132
-\cftpartindent=\skip133
-\cftpartnumwidth=\skip134
-\cftbeforechapterskip=\skip135
-\cftchapterindent=\skip136
-\cftchapternumwidth=\skip137
-\cftbeforesectionskip=\skip138
-\cftsectionindent=\skip139
-\cftsectionnumwidth=\skip140
-\cftbeforesubsectionskip=\skip141
-\cftsubsectionindent=\skip142
-\cftsubsectionnumwidth=\skip143
-\cftbeforesubsubsectionskip=\skip144
-\cftsubsubsectionindent=\skip145
-\cftsubsubsectionnumwidth=\skip146
-\cftbeforeparagraphskip=\skip147
-\cftparagraphindent=\skip148
-\cftparagraphnumwidth=\skip149
-\cftbeforesubparagraphskip=\skip150
-\cftsubparagraphindent=\skip151
-\cftsubparagraphnumwidth=\skip152
-\prechapterprecisshift=\dimen138
-\c@maxsecnumdepth=\count110
-\bibindent=\dimen139
-\bibitemsep=\skip153
-\indexcolsep=\skip154
-\indexrule=\skip155
-\indexmarkstyle=\toks18
-\@indexbox=\insert199
-\glossarycolsep=\dimen140
-\glossaryrule=\dimen141
-\sideparvshift=\skip156
-\sideins=\insert198
-\sidebartopsep=\skip157
-\sidebarhsep=\skip158
-\sidebarvsep=\skip159
-\sidebarwidth=\skip160
-\footmarkwidth=\skip161
-\footmarksep=\skip162
-\footparindent=\skip163
-\footinsdim=\skip164
-\footinsv@r=\insert197
-\@mpfootinsv@r=\insert196
-\m@m@k=\count111
-\m@m@h=\dimen142
-\m@mipn@skip=\skip165
-\sidefootins=\insert195
-\sidefootadjust=\skip166
-\sidefootheight=\skip167
-\sidefoothsep=\skip168
-\sidefootvsep=\skip169
-\sidefootwidth=\skip170
-\m@mdownsf=\skip171
-\c@sidefootnote=\count112
-\sidefootmarkwidth=\skip172
-\sidefootmarksep=\skip173
-\sidefootparindent=\skip174
-\c@pagenote=\count113
-\c@pagenoteshadow=\count114
-\mem@pn@lastkern=\skip175
-\every@verbatim=\toks19
-\afterevery@verbatim=\toks20
-\verbatim@line=\toks21
-\tab@position=\count115
-\verbatim@in@stream=\read1
-\verbatimindent=\skip176
-\verbatim@out=\write3
-\bvboxsep=\skip177
-\c@memfbvline=\count116
-\c@bvlinectr=\count117
-\bvnumlength=\skip178
-\fb@frw=\dimen143
-\fb@frh=\dimen144
-\FrameRule=\dimen145
-\FrameSep=\dimen146
-\c@cp@cntr=\count118
-LaTeX Info: Redefining \: on input line 12052.
-LaTeX Info: Redefining \! on input line 12054.
-\c@ism@mctr=\count119
-\c@xsm@mctr=\count120
-\c@csm@mctr=\count121
-\c@ksm@mctr=\count122
-\c@xksm@mctr=\count123
-\c@cksm@mctr=\count124
-\c@msm@mctr=\count125
-\c@xmsm@mctr=\count126
-\c@cmsm@mctr=\count127
-\c@bsm@mctr=\count128
-\c@workm@mctr=\count129
-\c@sheetsequence=\count130
-\c@lastsheet=\count131
-\c@lastpage=\count132
-\c@figure=\count133
-\c@lofdepth=\count134
-\cftbeforefigureskip=\skip179
-\cftfigureindent=\skip180
-\cftfigurenumwidth=\skip181
-\c@table=\count135
-\c@lotdepth=\count136
-\cftbeforetableskip=\skip182
-\cfttableindent=\skip183
-\cfttablenumwidth=\skip184
-Package abstract [2008/07/23] emulated by memoir.
-Package appendix [2008/07/23] emulated by memoir.
-Package array [2008/09/09] emulated by memoir.
-Package booktabs [2008/07/23] emulated by memoir.
-Package ccaption [2008/07/23] emulated by memoir.
-Package changepage [2008/07/23] emulated by memoir.
-Package chngcntr [2008/07/23] emulated by memoir.
-Package chngpage [2008/07/23] emulated by memoir.
-Package crop emulated by memoir.
-Package dcolumn [2008/07/23] emulated by memoir.
-Package delarray [2008/07/23] emulated by memoir.
-Package enumerate [2008/07/23] emulated by memoir.
-Package epigraph [2008/07/23] emulated by memoir.
-Package ifmtarg [2008/07/23] emulated by memoir.
-Package index [2008/07/23] emulated by memoir.
-Package makeidx [2008/07/23] emulated by memoir.
-Package moreverb [2008/07/23] emulated by memoir.
-Package mparhack [2008/07/23] emulated by memoir.
-Package needspace [2008/07/23] emulated by memoir.
-Package newfile [2008/07/23] emulated by memoir.
-Package nextpage [2008/07/23] emulated by memoir.
-Package pagenote [2008/07/23] emulated by memoir.
-Package parskip [2008/07/23] emulated by memoir.
-Package patchcmd [2008/07/23] emulated by memoir.
-Package setspace [2008/07/23] emulated by memoir.
-Package shortvrb [2008/07/23] emulated by memoir.
-Package showidx [2008/07/23] emulated by memoir.
-Package tabularx [2008/07/23] emulated by memoir.
-Package titleref [2008/07/23] emulated by memoir.
-Package titling [2008/07/23] emulated by memoir.
-Package tocbibind [2008/07/23] emulated by memoir.
-Package tocloft [2008/07/23] emulated by memoir.
-Package tocvsec2 [2008/07/23] emulated by memoir.
-Package verbatim [2008/07/23] emulated by memoir.
-Package verse [2008/07/23] emulated by memoir.
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\memoir\mempatch.st
-y"
-Package: mempatch 2009/07/24 v6.0f Patches for memoir class v1.6180339
-))
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
-sty"
-Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
-y"
-Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
-\KV@toks@=\toks22
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
-sty"
-Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\graphics.
-cfg"
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: pdftex.def on input line 95.
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.
-def"
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
-rr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
-.sty"
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
-\Gread@gobject=\count137
-))
-\Gin@req@height=\dimen147
-\Gin@req@width=\dimen148
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\url\url.sty"
-\Urlmuskip=\muskip10
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\subfig\subfig.sty"
-Package: subfig 2005/06/28 ver: 1.3 subfig package
-
-Class memoir Warning: You are using the caption package with the memoir class. 
-To prepare we will now reset all captioning macros and configurations to kernel
- defaults, and then let the caption package take over. Please remember to use t
-he caption package interfaces in order to configure your captions. .
-
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption.st
-y"
-Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\caption\caption3.s
-ty"
-Package: caption3 2016/02/04 v1.7-139 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 67.
-\captionmargin=\dimen149
-\captionmargin@=\dimen150
-\captionwidth=\dimen151
-\caption@tempdima=\dimen152
-\caption@indent=\dimen153
-\caption@parindent=\dimen154
-\caption@hangindent=\dimen155
-)
-\c@ContinuedFloat=\count138
-)
-\c@KVtest=\count139
-\sf@farskip=\skip185
-\sf@captopadj=\dimen156
-\sf@capskip=\skip186
-\sf@nearskip=\skip187
-\c@subfigure=\count140
-\c@subfigure@save=\count141
-\c@subtable=\count142
-\c@subtable@save=\count143
-\sf@top=\skip188
-\sf@bottom=\skip189
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\afterpage.st
-y"
-Package: afterpage 2014/10/28 v1.08 After-Page Package (DPC)
-\AP@output=\toks23
-\AP@partial=\box29
-\AP@footins=\box30
-)
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyphenat\hyphenat.
-sty"
-Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
-
-
-Package hyphenat Warning: *******************************
-(hyphenat)                * You have used the htt option.
-(hyphenat)                * You are likely to get many Font Warning messages.
-(hyphenat)                * These can usually be ignored.
-(hyphenat)                *******************************.
-
-\langwohyphens=\language71
-LaTeX Info: Redefining \_ on input line 43.
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
 ) ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.st
 y"
 Package: babel 2016/02/09 3.9q The Babel package
@@ -460,17 +39,17 @@ Language: italian 2015/03/26 v1.3n Italian support from the babel system
 
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\babel\babel.def"
 File: babel.def 2016/02/09 3.9q Babel common definitions
-\babel@savecnt=\count144
-\U@D=\dimen157
+\babel@savecnt=\count88
+\U@D=\dimen103
 )
-\it@lettering=\count145
-\it@doublequoteactive=\count146
-\it@ISOcompliance=\count147
+\it@lettering=\count89
+\it@doublequoteactive=\count90
+\it@ISOcompliance=\count91
 ))
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\etoolbox\etoolbox.
 sty"
 Package: etoolbox 2015/08/02 v2.2a e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count148
+\etb@tempcnta=\count92
 )
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\fontenc.sty"
 Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
@@ -481,8 +60,8 @@ LaTeX Font Info:    Redeclaring font encoding T1 on input line 48.
 ))
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\inputenc.sty"
 Package: inputenc 2015/03/17 v1.2c Input encoding file
-\inpenc@prehook=\toks24
-\inpenc@posthook=\toks25
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\utf8.def"
 File: utf8.def 2015/12/03 v1.1r UTF-8 support for inputenc
 Now handling font encoding OML ...
@@ -787,42 +366,222 @@ Now handling font encoding U ...
    defining Unicode char U+2026 (decimal 8230)
    defining Unicode char U+2122 (decimal 8482)
    defining Unicode char U+2423 (decimal 9251)
-)) (tesi.aux (frontespizio.aux) (dedica.aux) (indice.aux) (capitolo1.aux)
-(capitolo2.aux) (capitolo3.aux) (capitolo4.aux) (capitolo5.aux) (capitolo6.aux)
+))
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\fancyhdr\fancyhdr.
+sty"
+\fancy@headwidth=\skip43
+\f@ncyO@elh=\skip44
+\f@ncyO@erh=\skip45
+\f@ncyO@olh=\skip46
+\f@ncyO@orh=\skip47
+\f@ncyO@elf=\skip48
+\f@ncyO@erf=\skip49
+\f@ncyO@olf=\skip50
+\f@ncyO@orf=\skip51
 )
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\tools\indentfirst.
+sty"
+Package: indentfirst 1995/11/23 v1.03 Indent first paragraph (DPC)
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphicx.
+sty"
+Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\keyval.st
+y"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks16
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\graphics.
+sty"
+Package: graphics 2016/01/03 v1.0q Standard LaTeX Graphics (DPC,SPQR)
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\00miktex\graphics.
+cfg"
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 95.
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.
+def"
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\infware
+rr.sty"
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds
+.sty"
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count93
+))
+\Gin@req@height=\dimen104
+\Gin@req@width=\dimen105
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\newlfont.sty"
+Package: newlfont 1998/08/17 v2.2m Standard LaTeX package
+LaTeX Info: Redefining \em on input line 72.
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\latexsym.sty"
+Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
+\symlasy=\mathgroup4
+LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
+(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 52.
+))
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amssymb.s
+ty"
+Package: amssymb 2013/01/14 v3.01 AMS font symbols
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.
+sty"
+Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+\@emptytoks=\toks17
+\symAMSa=\mathgroup5
+\symAMSb=\mathgroup6
+LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+))
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsmath.st
+y"
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip52
+
+For additional information on amsmath, use the `?' option.
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amstext.st
+y"
+Package: amstext 2000/06/29 v2.01
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsgen.sty
+"
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen106
+))
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsbsy.sty
+"
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen107
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsmath\amsopn.sty
+"
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count94
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count95
+\leftroot@=\count96
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count97
+\DOTSCASE@=\count98
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen108
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count99
+\c@MaxMatrixCols=\count100
+\dotsspace@=\muskip10
+\c@parentequation=\count101
+\dspbrk@lvl=\count102
+\tag@help=\toks19
+\row@=\count103
+\column@=\count104
+\maxfields@=\count105
+\andhelp@=\toks20
+\eqnshift@=\dimen109
+\alignsep@=\dimen110
+\tagshift@=\dimen111
+\tagwidth@=\dimen112
+\totwidth@=\dimen113
+\lineht@=\dimen114
+\@envbody=\toks21
+\multlinegap=\skip53
+\multlinetaggap=\skip54
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amscls\amsthm.sty"
+Package: amsthm 2015/03/04 v2.20.2
+\thm@style=\toks23
+\thm@bodyfont=\toks24
+\thm@headfont=\toks25
+\thm@notefont=\toks26
+\thm@headpunct=\toks27
+\thm@preskip=\skip55
+\thm@postskip=\skip56
+\thm@headsep=\skip57
+\dth@everypar=\toks28
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\hyphenat\hyphenat.
+sty"
+Package: hyphenat 2009/09/02 v2.3c hyphenation utilities
+
+
+Package hyphenat Warning: *******************************
+(hyphenat)                * You have used the htt option.
+(hyphenat)                * You are likely to get many Font Warning messages.
+(hyphenat)                * These can usually be ignored.
+(hyphenat)                *******************************.
+
+\langwohyphens=\language70
+LaTeX Info: Redefining \_ on input line 43.
+) (tesi.aux (frontespizio.aux) (dedica.aux) (abstract.aux) (indice.aux)
+(capitolo1.aux) (capitolo2.aux) (capitolo3.aux) (capitolo4.aux) (capitolo5.aux)
+(capitolo6.aux) (ringraziamenti.aux))
 \openout1 = `tesi.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
-LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 29.
+LaTeX Font Info:    ... okay on input line 29.
+LaTeX Info: Redefining \it@ocap on input line 29.
+LaTeX Info: Redefining \it@ccap on input line 29.
 
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\context\base\supp-pdf.mk
 ii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count149
-\scratchdimen=\dimen158
-\scratchbox=\box31
-\nofMPsegments=\count150
-\nofMParguments=\count151
-\everyMPshowfont=\toks26
-\MPscratchCnt=\count152
-\MPscratchDim=\dimen159
-\MPnumerator=\count153
-\makeMPintoPDFobject=\count154
-\everyMPtoPDFconversion=\toks27
+\scratchcounter=\count106
+\scratchdimen=\dimen115
+\scratchbox=\box28
+\nofMPsegments=\count107
+\nofMParguments=\count108
+\everyMPshowfont=\toks29
+\MPscratchCnt=\count109
+\MPscratchDim=\dimen116
+\MPnumerator=\count110
+\makeMPintoPDFobject=\count111
+\everyMPtoPDFconversion=\toks30
 )
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\pdftexc
 mds.sty"
 Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifluate
+x.sty"
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\generic\oberdiek\ifpdf.s
+ty"
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
 )
 Package pdftexcmds Info: LuaTeX not detected.
 Package pdftexcmds Info: \pdf@primitive is available.
@@ -862,111 +621,112 @@ Package grfext Info: Graphics extension search list:
 G,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 452.
 )
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: subfig package v1.3 is loaded.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 30.
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 29.
 
 ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 
 LaTeX Font Warning: Font shape `T1/cmtt/b/n' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/b/it' undefined
-(Font)              using `T1/cmtt/b/n' instead on input line 30.
+(Font)              using `T1/cmtt/b/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/b/sl' undefined
-(Font)              using `T1/cmtt/b/n' instead on input line 30.
+(Font)              using `T1/cmtt/b/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/b/sc' undefined
-(Font)              using `T1/cmtt/b/n' instead on input line 30.
+(Font)              using `T1/cmtt/b/n' instead on input line 29.
 
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 30.
-LaTeX Font Info:    Font shape `T1/cmtt/bx/it' in size <10.95> not available
-(Font)              Font shape `T1/cmtt/m/it' tried instead on input line 30.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 29.
+LaTeX Font Info:    Font shape `T1/cmtt/bx/it' in size <12> not available
+(Font)              Font shape `T1/cmtt/m/it' tried instead on input line 29.
 
 LaTeX Font Warning: Font shape `T1/cmtt/bx/sl' undefined
-(Font)              using `T1/cmtt/bx/n' instead on input line 30.
+(Font)              using `T1/cmtt/bx/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/bx/sc' undefined
-(Font)              using `T1/cmtt/bx/n' instead on input line 30.
+(Font)              using `T1/cmtt/bx/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/sb/n' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/sb/it' undefined
-(Font)              using `T1/cmtt/sb/n' instead on input line 30.
+(Font)              using `T1/cmtt/sb/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/sb/sl' undefined
-(Font)              using `T1/cmtt/sb/n' instead on input line 30.
+(Font)              using `T1/cmtt/sb/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/sb/sc' undefined
-(Font)              using `T1/cmtt/sb/n' instead on input line 30.
+(Font)              using `T1/cmtt/sb/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/c/n' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/c/it' undefined
-(Font)              using `T1/cmtt/c/n' instead on input line 30.
+(Font)              using `T1/cmtt/c/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/c/sl' undefined
-(Font)              using `T1/cmtt/c/n' instead on input line 30.
+(Font)              using `T1/cmtt/c/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/c/sc' undefined
-(Font)              using `T1/cmtt/c/n' instead on input line 30.
+(Font)              using `T1/cmtt/c/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/l/n' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/l/it' undefined
-(Font)              using `T1/cmtt/l/n' instead on input line 30.
+(Font)              using `T1/cmtt/l/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/l/sl' undefined
-(Font)              using `T1/cmtt/l/n' instead on input line 30.
+(Font)              using `T1/cmtt/l/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/l/sc' undefined
-(Font)              using `T1/cmtt/l/n' instead on input line 30.
+(Font)              using `T1/cmtt/l/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/m/ui' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/bx/ui' undefined
-(Font)              using `T1/cmtt/bx/n' instead on input line 30.
+(Font)              using `T1/cmtt/bx/n' instead on input line 29.
 
 
 LaTeX Font Warning: Font shape `T1/cmtt/m/In' undefined
-(Font)              using `T1/cmtt/m/n' instead on input line 30.
+(Font)              using `T1/cmtt/m/n' instead on input line 29.
 
-LaTeX Info: Redefining \it@ocap on input line 30.
-LaTeX Info: Redefining \it@ccap on input line 30.
 \openout2 = `frontespizio.aux'.
 
 (frontespizio.tex [1
 
 
+{C:/Users/Giada/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
 
-] [2{C:/Users/Giada/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}])
+Package Fancyhdr Warning: \headheight is too small (12.0pt): 
+ Make it at least 14.49998pt.
+ We now make it that large for the rest of the document.
+ This may cause the page layout to be inconsistent, however.
+
+[2])
 \openout2 = `dedica.aux'.
 
  (dedica.tex) [3
@@ -974,297 +734,429 @@ LaTeX Info: Redefining \it@ccap on input line 30.
 
 
 
+
 ] [4
+
+
+
+]
+\openout2 = `Abstract.aux'.
+
+ (Abstract.tex) [1
+
+
+] [2
+
+
 
 ]
 \openout2 = `indice.aux'.
 
- (indice.tex) (tesi.toc
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <10.95> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 3.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 3.
- [5
+ (indice.tex (tesi.toc
+LaTeX Font Info:    Try loading font information for U+lasy on input line 5.
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\ulasy.fd"
+File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
+)
+LaTeX Font Info:    Try loading font information for U+msa on input line 5.
+
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Try loading font information for U+msb on input line 5.
+("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [3
 
 
-]) [6] [7
+])
+\tf@toc=\write3
+\openout3 = `tesi.toc'.
 
-] [8
+) [4] (tesi.lof [5
 
-]
+
+
+
+])
+\tf@lof=\write4
+\openout4 = `tesi.lof'.
+
+ [6]
 \openout2 = `capitolo1.aux'.
 
+ (capitolo1.tex
+Capitolo 1.
 
-(capitolo1.tex [9
+Underfull \vbox (badness 5260) has occurred while \output is active []
+
+ [1
+
+
 
 
 ]
-Underfull \vbox (badness 4132) has occurred while \output is active []
-
- [10]
-[11]) [12]
+[2] [3]) [4]
 \openout2 = `capitolo2.aux'.
 
- (capitolo2.tex [13
+ (capitolo2.tex
+Capitolo 2.
+[5
 
 
 
-] [14] [15]) [16]
+] [6]) [7]
 \openout2 = `capitolo3.aux'.
 
- (capitolo3.tex [17
+ (capitolo3.tex [8
 
 
 
-] [18]
-<pictures/OAuthAbstractProtocolFlow.png, id=69, 599.23875pt x 332.74312pt>
+]
+Capitolo 3.
+[9] <pictures/OAuthAbstractProtocolFlow.png, id=73, 599.23875pt x 332.74312pt>
 File: pictures/OAuthAbstractProtocolFlow.png Graphic file (type png)
 
 <use pictures/OAuthAbstractProtocolFlow.png>
 Package pdftex.def Info: pictures/OAuthAbstractProtocolFlow.png used on input l
 ine 27.
-(pdftex.def)             Requested size: 228.00232pt x 126.60109pt.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 28.
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\t1cmss.fd"
-File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
-
-("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
-File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
-
-[19 <./pictures/OAuthAbstractProtocolFlow.png>] [20] [21]
-<pictures/UMAPhases.png, id=84, 349.305pt x 371.88937pt>
-File: pictures/UMAPhases.png Graphic file (type png)
-
-<use pictures/UMAPhases.png>
-Package pdftex.def Info: pictures/UMAPhases.png used on input line 80.
-(pdftex.def)             Requested size: 190.0pt x 202.28697pt.
- [22 <./pictures/UMAPhases.png>]) [23] [24]
-\openout2 = `capitolo4.aux'.
-
-
-(capitolo4.tex [25
-
-
-
-] [26] [27] [28] [29] [30]) [31]
-\openout2 = `capitolo5.aux'.
-
- (capitolo5.tex
-<pictures/Accounting-closed.png, id=118, 1028.34187pt x 263.48438pt>
-File: pictures/Accounting-closed.png Graphic file (type png)
-
-<use pictures/Accounting-closed.png>
-Package pdftex.def Info: pictures/Accounting-closed.png used on input line 17.
-(pdftex.def)             Requested size: 380.0pt x 97.36707pt.
+(pdftex.def)             Requested size: 234.00238pt x 129.93176pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[32
+[10]
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 35.
+ ("C:\Users\Giada\AppData\Local\Programs\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 35.
+ [11 <./pictures/OAuthAbstractProtocolFlow.png>] [12] [13]
+<pictures/UMAPhases.png, id=89, 349.305pt x 371.88937pt>
+File: pictures/UMAPhases.png Graphic file (type png)
+
+<use pictures/UMAPhases.png>
+Package pdftex.def Info: pictures/UMAPhases.png used on input line 80.
+(pdftex.def)             Requested size: 195.0pt x 207.60973pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14]
+Underfull \vbox (badness 6016) has occurred while \output is active []
+
+ [15 <./pictures/UMAPhases.png>]) [16]
+\openout2 = `capitolo4.aux'.
+
+ (capitolo4.tex
+Capitolo 4.
+[17
 
 
 
-] <pictures/Accounting-MyDataUsr.png, id=122, 794.2172pt x 347.79938pt>
+]
+Underfull \vbox (badness 5847) has occurred while \output is active []
+
+ [18]
+[19] [20]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [21]
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [22]
+Overfull \hbox (8.87456pt too wide) in paragraph at lines 83--84
+[]\T1/cmr/m/n/12 Alcuni esem-pi uti-liz-za-ti in \T1/cmr/m/it/12 My-Da-ta \T1/c
+mr/m/n/12 so-no W3C's Da-ta Ca-ta-log Vocabulary[[]]
+ []
+
+) [23]
+\openout2 = `capitolo5.aux'.
+
+ (capitolo5.tex [24
+
+
+
+]
+Capitolo 5.
+<pictures/Accounting-closed.png, id=126, 1028.34187pt x 263.48438pt>
+File: pictures/Accounting-closed.png Graphic file (type png)
+
+<use pictures/Accounting-closed.png>
+Package pdftex.def Info: pictures/Accounting-closed.png used on input line 17.
+(pdftex.def)             Requested size: 390.0pt x 99.92809pt.
+ [25]
+<pictures/Accounting-MyDataUsr.png, id=130, 794.2172pt x 347.79938pt>
 File: pictures/Accounting-MyDataUsr.png Graphic file (type png)
 
 <use pictures/Accounting-MyDataUsr.png>
 Package pdftex.def Info: pictures/Accounting-MyDataUsr.png used on input line 2
 5.
-(pdftex.def)             Requested size: 380.0pt x 166.4111pt.
- [33 <./pictures/Accounting-closed.png> <./pictures/Accounting-MyDataUsr.png>]
-<pictures/Accounting-Account.png, id=126, 599.23875pt x 245.41687pt>
+(pdftex.def)             Requested size: 390.0pt x 170.78937pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[26 <./pictures/Accounting-closed.png>]
+<pictures/Accounting-Account.png, id=134, 599.23875pt x 245.41687pt>
 File: pictures/Accounting-Account.png Graphic file (type png)
 
 <use pictures/Accounting-Account.png>
 Package pdftex.def Info: pictures/Accounting-Account.png used on input line 39.
 
-(pdftex.def)             Requested size: 360.99884pt x 147.8504pt.
-
-Overfull \hbox (6.39403pt too wide) in paragraph at lines 47--48
-\T1/cmr/m/n/10.95 dian-te l'u-ti-liz-zo com-bi-na-to del-le strut-tu-re da-ti \
-T1/cmtt/l/n/10.95 Map<ServiceConsent, -List-<Data-
- []
-
-[34 <./pictures/Accounting-Account.png>]
-<pictures/Services-closed.png, id=130, 842.39719pt x 144.54pt>
-File: pictures/Services-closed.png Graphic file (type png)
-
-<use pictures/Services-closed.png>
-Package pdftex.def Info: pictures/Services-closed.png used on input line 54.
-(pdftex.def)             Requested size: 380.0pt x 65.20117pt.
-
-<pictures/Services-open.png, id=131, 740.0147pt x 307.1475pt>
-File: pictures/Services-open.png Graphic file (type png)
-
-<use pictures/Services-open.png>
-Package pdftex.def Info: pictures/Services-open.png used on input line 62.
-(pdftex.def)             Requested size: 380.0pt x 157.72108pt.
+(pdftex.def)             Requested size: 370.49881pt x 151.74121pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[35 <./pictures/Services-closed.png>] [36 <./pictures/Services-open.png>]
-<pictures/MyData.png, id=138, 680.5425pt x 397.485pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [27 <./pictures/Accounting-MyDataUsr.png>]
+Underfull \vbox (badness 1122) has occurred while \output is active []
+
+ [28 <./pictures/Accounting-Account.png>]
+<pictures/Services-closed.png, id=142, 842.39719pt x 144.54pt>
+File: pictures/Services-closed.png Graphic file (type png)
+
+<use pictures/Services-closed.png>
+Package pdftex.def Info: pictures/Services-closed.png used on input line 54.
+(pdftex.def)             Requested size: 390.0pt x 66.91705pt.
+
+<pictures/Services-open.png, id=143, 740.0147pt x 307.1475pt>
+File: pictures/Services-open.png Graphic file (type png)
+
+<use pictures/Services-open.png>
+Package pdftex.def Info: pictures/Services-open.png used on input line 62.
+(pdftex.def)             Requested size: 390.0pt x 161.87349pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[29 <./pictures/Services-closed.png>] [30 <./pictures/Services-open.png>]
+<pictures/MyData.png, id=150, 680.5425pt x 397.485pt>
 File: pictures/MyData.png Graphic file (type png)
 
 <use pictures/MyData.png>
 Package pdftex.def Info: pictures/MyData.png used on input line 91.
-(pdftex.def)             Requested size: 304.00116pt x 177.55652pt.
- [37 <./pictures/MyData.png>]
-<pictures/Accounting-SecurityManager.png, id=143, 660.96938pt x 220.57407pt>
+(pdftex.def)             Requested size: 312.00119pt x 182.23273pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[31]
+Overfull \hbox (0.94983pt too wide) in paragraph at lines 99--100
+\T1/cmtt/l/n/12 Set da-ta-Set, In-put-Da-ta-Con-sent in-Da-ta-Con-sent)\T1/cmr/
+m/n/12 . In en-tram-bi i ca-si, vie-
+ []
+
+<pictures/Accounting-SecurityManager.png, id=154, 660.96938pt x 220.57407pt>
 File: pictures/Accounting-SecurityManager.png Graphic file (type png)
 
 <use pictures/Accounting-SecurityManager.png>
 Package pdftex.def Info: pictures/Accounting-SecurityManager.png used on input 
 line 106.
-(pdftex.def)             Requested size: 380.0pt x 126.81563pt.
-
-<pictures/ServiceRegistry.png, id=144, 274.02374pt x 214.55156pt>
-File: pictures/ServiceRegistry.png Graphic file (type png)
-
-<use pictures/ServiceRegistry.png>
-Package pdftex.def Info: pictures/ServiceRegistry.png used on input line 122.
-(pdftex.def)             Requested size: 190.0pt x 148.7675pt.
- [38 <./pictures/Accounting-SecurityManager.png>] <pictures/Auth-closed.png, id
-=148, 1162.3425pt x 392.96812pt>
-File: pictures/Auth-closed.png Graphic file (type png)
-
-<use pictures/Auth-closed.png>
-Package pdftex.def Info: pictures/Auth-closed.png used on input line 135.
-(pdftex.def)             Requested size: 380.0pt x 128.46864pt.
+(pdftex.def)             Requested size: 390.0pt x 130.15102pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-[39 <./pictures/ServiceRegistry.png>]
-<pictures/Auth-CM.png, id=152, 606.76688pt x 362.10281pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [32 <./pictures/MyData.png>]
+<pictures/ServiceRegistry.png, id=158, 274.02374pt x 214.55156pt>
+File: pictures/ServiceRegistry.png Graphic file (type png)
+
+<use pictures/ServiceRegistry.png>
+Package pdftex.def Info: pictures/ServiceRegistry.png used on input line 122.
+(pdftex.def)             Requested size: 195.0pt x 152.67969pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[33 <./pictures/Accounting-SecurityManager.png>]
+Overfull \hbox (21.71895pt too wide) in paragraph at lines 130--131
+\T1/cmtt/l/n/12 Set<String> ty-pes) \T1/cmr/m/n/12 e \T1/cmtt/l/n/12 Set<String
+> get-Me-ta-da-ta-For-Ser-vi-ce(IService ser-
+ []
+
+<pictures/Auth-closed.png, id=163, 1162.3425pt x 392.96812pt>
+File: pictures/Auth-closed.png Graphic file (type png)
+
+<use pictures/Auth-closed.png>
+Package pdftex.def Info: pictures/Auth-closed.png used on input line 135.
+(pdftex.def)             Requested size: 390.0pt x 131.8505pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [34 <./pictures/ServiceRegistry.png>]
+<pictures/Auth-CM.png, id=167, 606.76688pt x 362.10281pt>
 File: pictures/Auth-CM.png Graphic file (type png)
 
 <use pictures/Auth-CM.png>
 Package pdftex.def Info: pictures/Auth-CM.png used on input line 146.
-(pdftex.def)             Requested size: 380.0pt x 226.7778pt.
- [40 <./pictures/Auth-closed.png> <./pictures/Auth-CM.png>] <pictures/Auth-Cons
-ents.png, id=156, 1157.07281pt x 620.3175pt>
+(pdftex.def)             Requested size: 390.0pt x 232.74507pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
+Underfull \vbox (badness 1552) has occurred while \output is active []
+
+ [35 <./pictures/Auth-closed.png>]
+Overfull \hbox (2.1931pt too wide) in paragraph at lines 156--157
+\T1/cmtt/l/n/12 Ser-vi-ce (IU-ser user, ISer-vi-ce ser-vi-ce, Con-sen-tSta-tus 
+new-Sta-tus)\T1/cmr/m/n/12 ,
+ []
+
+<pictures/Auth-Consents.png, id=171, 1157.07281pt x 620.3175pt>
 File: pictures/Auth-Consents.png Graphic file (type png)
 
 <use pictures/Auth-Consents.png>
 Package pdftex.def Info: pictures/Auth-Consents.png used on input line 161.
-(pdftex.def)             Requested size: 380.0pt x 203.72102pt.
- [41 <./pictures/Auth-Consents.png>] [42]
-[43] <pictures/PersonalDataVault.png, id=167, 522.45187pt x 373.395pt>
+(pdftex.def)             Requested size: 390.0pt x 209.07835pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [36 <./pictures/Auth-CM.png>] [37 <./pictures/Auth-Consents.png>]
+Underfull \vbox (badness 4752) has occurred while \output is active []
+
+ [38]
+[39] <pictures/PersonalDataVault.png, id=185, 522.45187pt x 373.395pt>
 File: pictures/PersonalDataVault.png Graphic file (type png)
 
 <use pictures/PersonalDataVault.png>
 Package pdftex.def Info: pictures/PersonalDataVault.png used on input line 203.
 
-(pdftex.def)             Requested size: 304.00116pt x 217.27005pt.
- [44 <./pictures/PersonalDataVault.png>]
-<pictures/Metadata.png, id=171, 369.63094pt x 168.63pt>
+(pdftex.def)             Requested size: 312.00119pt x 222.99037pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[40]
+Overfull \hbox (11.89346pt too wide) in paragraph at lines 209--210
+[]\T1/cmr/m/n/12 L'interfaccia \T1/cmtt/l/n/12 IPer-so-nal-Da-ta-Vault \T1/cmr/
+m/n/12 espo-ne i me-to-di \T1/cmtt/l/n/12 get-Da-ta (Set<String>
+ []
+
+[41 <./pictures/PersonalDataVault.png>]
+<pictures/Metadata.png, id=192, 369.63094pt x 168.63pt>
 File: pictures/Metadata.png Graphic file (type png)
 
 <use pictures/Metadata.png>
 Package pdftex.def Info: pictures/Metadata.png used on input line 219.
-(pdftex.def)             Requested size: 265.99884pt x 121.35175pt.
- [45 <./pictures/Metadata.png>]
-<pictures/IDataSet.png, id=175, 500.62032pt x 217.5628pt>
+(pdftex.def)             Requested size: 272.99881pt x 124.54494pt.
+ [42 <./pictures/Metadata.png>]
+<pictures/IDataSet.png, id=196, 500.62032pt x 217.5628pt>
 File: pictures/IDataSet.png Graphic file (type png)
 
 <use pictures/IDataSet.png>
 Package pdftex.def Info: pictures/IDataSet.png used on input line 233.
-(pdftex.def)             Requested size: 380.0pt x 165.15025pt.
- [46 <./pictures/IDataSet.png>]
-Underfull \vbox (badness 1199) has occurred while \output is active []
+(pdftex.def)             Requested size: 390.0pt x 169.49579pt.
 
- [47]
-[48] <pictures/welcomePanel.png, id=185, 277.78781pt x 140.77594pt>
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[43] [44 <./pictures/IDataSet.png>] [45]
+<pictures/welcomePanel.png, id=207, 277.78781pt x 140.77594pt>
 File: pictures/welcomePanel.png Graphic file (type png)
 
 <use pictures/welcomePanel.png>
 Package pdftex.def Info: pictures/welcomePanel.png used on input line 273.
-(pdftex.def)             Requested size: 190.0pt x 96.28914pt.
+(pdftex.def)             Requested size: 195.0pt x 98.82172pt.
 
-<pictures/exampleConsentInProj.png, id=186, 286.06876pt x 297.36093pt>
+<pictures/exampleConsentInProj.png, id=208, 286.06876pt x 297.36093pt>
 File: pictures/exampleConsentInProj.png Graphic file (type png)
 
 <use pictures/exampleConsentInProj.png>
 Package pdftex.def Info: pictures/exampleConsentInProj.png used on input line 2
 79.
-(pdftex.def)             Requested size: 190.0pt x 197.50204pt.
+(pdftex.def)             Requested size: 195.0pt x 202.69733pt.
 
-<pictures/MLNTPanel.png, id=187, 889.07156pt x 557.08125pt>
+<pictures/MLNTPanel.png, id=209, 889.07156pt x 557.08125pt>
 File: pictures/MLNTPanel.png Graphic file (type png)
 
 <use pictures/MLNTPanel.png>
 Package pdftex.def Info: pictures/MLNTPanel.png used on input line 286.
-(pdftex.def)             Requested size: 323.00232pt x 202.38518pt.
+(pdftex.def)             Requested size: 331.50238pt x 207.7149pt.
 
-<pictures/DataConsentFrame.png, id=188, 421.575pt x 213.79875pt>
+<pictures/DataConsentFrame.png, id=210, 421.575pt x 213.79875pt>
 File: pictures/DataConsentFrame.png Graphic file (type png)
 
 <use pictures/DataConsentFrame.png>
 Package pdftex.def Info: pictures/DataConsentFrame.png used on input line 298.
-(pdftex.def)             Requested size: 190.0pt x 96.3586pt.
-) [49 <./pictures/welcomePanel.png> <./pictures/exampleConsentInProj.png>] [50 
-<./pictures/MLNTPanel.png> <./pictures/DataConsentFrame.png>]
+(pdftex.def)             Requested size: 195.0pt x 98.89342pt.
+) [46] [47 <./pictures/welcomePanel.png> <./pictures/exampleConsentInProj.png>]
+ [48 <./pictures/MLNTPanel.png> <./pictures/DataConsentFrame.png>]
 \openout2 = `capitolo6.aux'.
 
- (capitolo6.tex [51
+ (capitolo6.tex
+Capitolo 6.
+
+Underfull \vbox (badness 2689) has occurred while \output is active []
+
+ [49
 
 
-
-] [52]) [53] [54
-
-
-] (tesi.bbl [55
 
 ]
-bibitemlist
-[56]) [57]
-\tf@toc=\write4
-\openout4 = `tesi.toc'.
+Underfull \vbox (badness 1406) has occurred while \output is active []
 
- (tesi.aux (frontespizio.aux) (dedica.aux) (indice.aux)
-(capitolo1.aux) (capitolo2.aux) (capitolo3.aux) (capitolo4.aux) (capitolo5.aux)
-(capitolo6.aux))
+ [50])
+[51] [52
+
+
+
+] (tesi.bbl [53
+
+] [54]) [55] [56
+
+
+]
+\openout2 = `ringraziamenti.aux'.
+
+ (ringraziamenti.tex) [57
+
+
+] (tesi.aux
+(frontespizio.aux) (dedica.aux) (Abstract.aux) (indice.aux) (capitolo1.aux)
+(capitolo2.aux) (capitolo3.aux) (capitolo4.aux) (capitolo5.aux) (capitolo6.aux)
+(ringraziamenti.aux))
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 7835 strings out of 493622
- 113059 string characters out of 3135139
- 219370 words of memory out of 3000000
- 11051 multiletter control sequences out of 15000+200000
- 21322 words of font info for 46 fonts, out of 3000000 for 9000
- 1026 hyphenation exceptions out of 8191
- 47i,11n,42p,1427b,370s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 4312 strings out of 493622
+ 57406 string characters out of 3135139
+ 124704 words of memory out of 3000000
+ 7488 multiletter control sequences out of 15000+200000
+ 19776 words of font info for 52 fonts, out of 3000000 for 9000
+ 1027 hyphenation exceptions out of 8191
+ 38i,11n,43p,1425b,390s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\
-ecit1000.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
-ec\dpi600\ecsi1000.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
-\jknappen\ec\dpi600\ectt1095.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts
-\pk\ljfour\jknappen\ec\dpi600\ecbx1440.pk> <C:\Users\Giada\AppData\Local\MiKTeX
-\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1095.pk> <C:\Users\Giada\AppData\Lo
-cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2074.pk> <C:\Users\Giada\
-AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Us
-ers\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1440.
+ecbx1728.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\
+ec\dpi600\ectt1200.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour
+\jknappen\ec\dpi600\ecsl1200.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts
+\pk\ljfour\jknappen\ec\dpi600\ecti1200.pk> <C:\Users\Giada\AppData\Local\MiKTeX
+\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx2488.pk> <C:\Users\Giada\AppData\Lo
+cal\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecti1728.pk> <C:\Users\Giada\
+AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Us
+ers\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.
 pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
-\ecrm1095.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
-\ec\dpi600\ecbx1095.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
-r\jknappen\ec\dpi600\ecbx1728.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\font
-s\pk\ljfour\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Giada\AppData\Local\MiKTe
-X\2.9\fonts\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk><C:/Users/Giada/AppData/Lo
-cal/Programs/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on tesi.pdf (57 pages, 675587 bytes).
+\ecbx2074.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen
+\ec\dpi600\ecrm1440.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfou
+r\jknappen\ec\dpi600\ecbx1440.pk><C:/Users/Giada/AppData/Local/Programs/MiKTeX 
+2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on tesi.pdf (67 pages, 696206 bytes).
 PDF statistics:
- 769 PDF objects out of 1000 (max. 8388607)
+ 784 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  101 words of extra memory for PDF output out of 10000 (max. 10000000)
 
