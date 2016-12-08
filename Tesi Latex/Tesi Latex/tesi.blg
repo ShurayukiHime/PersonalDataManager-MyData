@@ -1,6 +1,7 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: tesi.aux
 A level-1 auxiliary file: frontespizio.aux
 A level-1 auxiliary file: dedica.aux
+A level-1 auxiliary file: Abstract.aux
 A level-1 auxiliary file: indice.aux
 A level-1 auxiliary file: capitolo1.aux
 A level-1 auxiliary file: capitolo2.aux
@@ -8,7 +9,8 @@ A level-1 auxiliary file: capitolo3.aux
 A level-1 auxiliary file: capitolo4.aux
 A level-1 auxiliary file: capitolo5.aux
 A level-1 auxiliary file: capitolo6.aux
-The style file: plain.bst
+The style file: plainurl.bst
+A level-1 auxiliary file: ringraziamenti.aux
 Database file #1: bibl_tesi.bib
 Warning--entry type for "mydatawebsite" isn't style-file defined
 --line 35 of file bibl_tesi.bib
@@ -16,12 +18,14 @@ Warning--entry type for "mastersonjaheikkil" isn't style-file defined
 --line 41 of file bibl_tesi.bib
 Warning--entry type for "maasglobal" isn't style-file defined
 --line 49 of file bibl_tesi.bib
+Warning--entry type for "microservices" isn't style-file defined
+--line 73 of file bibl_tesi.bib
 Warning--entry type for "oauth" isn't style-file defined
---line 85 of file bibl_tesi.bib
+--line 92 of file bibl_tesi.bib
 Warning--entry type for "kantaraconsent" isn't style-file defined
---line 91 of file bibl_tesi.bib
+--line 98 of file bibl_tesi.bib
 Warning--entry type for "uma" isn't style-file defined
---line 97 of file bibl_tesi.bib
+--line 104 of file bibl_tesi.bib
 Warning--to sort, need author or key in mydatawebsite
 Warning--to sort, need author or key in maasglobal
 Warning--to sort, need author or key in githubmobilityprofile
@@ -109,4 +113,4 @@ Warning--empty institution in mydatawhitepaper
 Warning--empty year in mydatawhitepaper
 Warning--empty institution in wefreport
 Warning--empty year in wefreport
-(There were 93 warnings)
+(There were 94 warnings)

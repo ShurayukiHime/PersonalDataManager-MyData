@@ -1,12 +1,14 @@
-\documentclass[12pt,a4paper,openright,twoside]{report}
+\documentclass[11pt,a4paper,openright,twoside]{report}
 
+\usepackage[pdftex]{graphicx}
 \usepackage[italian]{babel}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
+\usepackage{url}
+\usepackage{setspace}
 
 \usepackage{fancyhdr}
 \usepackage{indentfirst}
-\usepackage[pdftex]{graphicx}
 \usepackage{newlfont}
 
 \usepackage{amssymb}
@@ -24,7 +26,7 @@
 \rhead[\fancyplain{}{\bfseries\leftmark}]{\fancyplain{}{\bfseries\thepage}}
 \cfoot{}
 
-\linespread{1.3}                       
+%\linespread{1.3}                     
 
 \begin{document}
 	
@@ -54,8 +56,8 @@
 	\include{capitolo6}
 
 	\clearpage{\pagestyle{empty}\cleardoublepage}
-	%\addcontentsline{toc}{chapter}{Bibliografia}
-	\bibliographystyle{plain}
+	\addcontentsline{toc}{chapter}{Bibliografia}
+	\bibliographystyle{plainurl}
 	\bibliography{bibl_tesi}
 
 	\clearpage{\pagestyle{empty}\cleardoublepage}	

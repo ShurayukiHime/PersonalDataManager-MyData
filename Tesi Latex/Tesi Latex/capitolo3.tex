@@ -30,7 +30,7 @@ Al termine del \textit{Service Linking} viene prodotto un \textit{Service Link R
 \end{figure}
 OAuth \`e un protocollo per il controllo dei flussi di autorizzazioni fra applicazioni e servizi accessibili tramite richiesta HTTP, usato ad esempio all'interno di  applicazioni desktop e applicazioni e dispositivi mobili. \cite{oauth}. Se ne d\`a un breve accenno in quanto viene preso come esempio di implementazione di \textit{Service Linking} all’interno delle specifiche di \textit{MyData} \cite{githubmydatastack}.
 
-Le entit\`a coinvolte nel protocollo di autorizzazione le seguenti:
+Le entit\`a coinvolte nel protocollo di autorizzazione sono le seguenti:
 \begin{itemize}
 	\item Un’applicazione Client, che richiede l’accesso ad un account utente;
 	\item Un \textit{Resource Owner}, spesso coincidente con l’utente finale, che accorda o nega l’accesso ad una porzione del suo account;
@@ -66,13 +66,13 @@ All’interno della documentazione di \textit{MyData} \cite{githubmydatastack} v
 
 Pertanto, l’obiettivo del CNRS \`e quello di definire uno standard di implementazione per record di autorizzazioni e transazioni di dati, al fine di supportare l’interoperabilit\`a fra sistemi diversi, offrire una prova credibile di autorizzazione ricevuta e dare il via a “buone pratiche” e consuetudini coerenti con il rispetto della privacy e la tracciabilit\`a delle trasmissioni di dati.
 
-All’interno del documento viene dettagliata la terminologia specifica del settore relativo a privacy e autorizzazioni, ad esempio mediante la definizione del termine “\textit{Consent}”, che riporto di seguito perch\'e particolarmente rilevante all’interno del contesto:
+All’interno del documento viene dettagliata la terminologia specifica del settore relativo a privacy e autorizzazioni, ad esempio mediante la definizione del termine “\textit{Consent}”, che viene di seguito riportata perch\'e particolarmente rilevante all’interno del contesto:
 \begin{quote}
 A Personally identifiable information (PII) Principal’s freely given, specific and informed agreement to the processing of their PII.
 \end{quote}
 Altri esempi comprendono la definizione di \textit{Personally Identifiable Information} e \textit{Consent Recipt}.
 
-Successivamente, viene descritta la struttura dati proposta come standard di \textit{Consent Receipt}, dettagliando ogni campo presente al suo interno. Ho preso spunto da questo documento al momento di realizzare i \textit{Consent} all’interno del gestore di dati personali (sottosezione \ref{subsec:P-ServiceConsentDataConsent}).
+Successivamente, viene descritta la struttura dati proposta come standard di \textit{Consent Receipt}, dettagliando ogni campo presente al suo interno. Per la realizzazione dei \textit{Consent} all’interno del gestore di dati personali (sottosezione \ref{subsec:P-ServiceConsentDataConsent}) è stato utilizzato il presente documento.
 
 \subsection{User Managed Access}
 \begin{figure} [h]
@@ -87,7 +87,7 @@ Il protocollo UMA si articola in tre momenti principali, dai quali si \`e preso 
 
 Come prima operazione, l’utente finale deposita i suoi dati presso un \textit{Authorization Server}, definendo in modo sicuro le regole per la gestione dell’accesso. Questo \`e regolato per mezzo delle API esposte dall’\textit{Authorization Server}, che fanno uso di OAuth (o sue implementazioni).
 
-In un secondo momento, una applicazione client richiede un set di risorse ad un \textit{Resource Server} protetto mediante protocollo UMA tramite API OAuth. 
+In un secondo momento, un'applicazione client richiede un set di risorse ad un \textit{Resource Server} protetto mediante protocollo UMA tramite API OAuth. 
 
 Durante il protocollo vi \`e lo scambio e l’emissione di tre tipi di token (\textit{Protection API Token}, \textit{Requesting Party Token}, \textit{Authorization API Token}), utilizzati per provare l’affidabilit\`a, l’identit\`a e l’autorizzazione garantita al servizio per l’accesso alle risorse.
 

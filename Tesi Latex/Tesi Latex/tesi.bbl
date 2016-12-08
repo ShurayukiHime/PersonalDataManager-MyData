@@ -4,125 +4,159 @@
 Analisi e sviluppo di un gestore di dati personali secondo il modello mydata.
 \newblock Technical report.
 \newblock Ultima visita Dic. 2016.
+\newblock URL: \url{https://github.com/ShurayukiHime/tesi}.
 
 \bibitem{kantaraconsent}
 Consent receipt specification by kantara consent \& information sharing work
   group.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://kantarainitiative.org/confluence/display/infosharing/Consent+Receipt+Specification}.
 
 \bibitem{w3cdatacatalog}
 Data catalog vocabulary.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/vocab-dcat/}.
 
 \bibitem{googlecalendarapi}
 Google calendar api at google developers.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://developers.google.com/google-apps/calendar/overview}.
 
 \bibitem{googlegson}
 Google gson library on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/google/gson}.
 
 \bibitem{javacrypto}
 Java cryptography architecture (jca) reference guide.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://docs.oracle.com/javase/6/docs/technotes/guides/security/crypto/CryptoSpec.html}.
 
 \bibitem{javalanguagespecs}
 The java language specification.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://docs.oracle.com/javase/specs/jls/se8/html/index.html}.
 
 \bibitem{java8api}
 Java platform, standard edition 8 api specification.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://docs.oracle.com/javase/8/docs/api/}.
 
 \bibitem{githubjourneyplanner}
 Journey planner repository on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/mobility-profile/Mobility-Profile-API}.
 
 \bibitem{kissprinciple}
 Kiss principle.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://people.apache.org/~fhanik/kiss.html}.
 
 \bibitem{maasglobal}
 Maas global website.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://maas.global/}.
 
 \bibitem{githubmobilityprofile}
 Mobility profile repository on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/mobility-profile/Mobility-Profile}.
 
 \bibitem{githubmobilityprofilespecification}
 Mobility profile specification.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://mobility-profile.github.io/mobility-profile-specification/spec.html}.
 
 \bibitem{mydatawebsite}
 Mydata 2016. advancing human centric personal data.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{http://mydata2016.org/}.
 
 \bibitem{githubmydataaccount}
 Mydata account implementation on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/HIIT/mydata-sdk/tree/master/Account}.
 
 \bibitem{githubmydataoperator}
 Mydata operator implementation on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://github.com/HIIT/mydata-sdk/tree/master/Operator_Components}.
 
 \bibitem{githubmydatasdk}
 Mydata sdk components on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/HIIT/mydata-sdk}.
 
 \bibitem{githubmydataserviceregistry}
 Mydata service registry implementation on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://github.com/digitalhealthrevolution/serviceregistry}.
 
 \bibitem{githubmydatastack}
 Mydata specification on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/HIIT/mydata-stack}.
 
 \bibitem{oauth}
 Oauth 2.0 website.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://oauth.net/2/}.
 
 \bibitem{w3crdf}
 Rdf 1.1 concepts and abstract syntax.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/rdf11-concepts/}.
 
 \bibitem{w3cdatacube}
 The rdf data cube vocabulary.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://www.w3.org/TR/vocab-data-cube/}.
 
 \bibitem{ormSugar}
 Satyan sugar repository on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/satyan/sugar}.
 
 \bibitem{githubsmall}
 Small documentation on github.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://github.com/small-dev/SMAll.Wiki}.
 
 \bibitem{uma}
 User managed access.
 \newblock Ultima visita Nov. 2016.
+\newblock URL: \url{https://kantarainitiative.org/confluence/display/uma/Home}.
 
 \bibitem{IAFmDavis}
 Mark~E. Davis.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://informationaccountability.org/wp-content/uploads/Data-Origins-Abrams.pdf}.
 
 \bibitem{MLNT}
 Nicola Ferroni.
@@ -130,20 +164,32 @@ Nicola Ferroni.
   mobility.
 \newblock 2016.
 
+\bibitem{microservices}
+Martin Fowler.
+\newblock Microservices - a definition of this new architectural term.
+\newblock Ultima visita Dic. 2016.
+\newblock URL: \url{http://www.martinfowler.com/articles/microservices.html}.
+
 \bibitem{mastersonjaheikkil}
 Sonja Heikkil{\"a}.
 \newblock Mobility as a service – a proposal for action for the public
   administration - case helsinki, 2014.
+\newblock URL:
+  \url{https://aaltodoc.aalto.fi/bitstream/handle/123456789/13133/master_Heikkil%C3%A4_Sonja_2014.pdf?sequence=1}.
 
 \bibitem{orangeDigitalTrust}
 Orange.
 \newblock The future of digital trust.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://www.orange.com/en/content/download/21358/412063/version/5/file/Orange+Future+of+Digital+Trust+Report.pdf}.
 
 \bibitem{gdpr}
 European Parliament and Council of~the European~Union.
 \newblock General data protection regulation.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://static.ow.ly/docs/Regulation_consolidated_text_EN_47uW.pdf}.
 
 \bibitem{mydatawhitepaper}
 Antti Poikola, Kai Kuikkaniemi, and Harri Honko.
@@ -151,11 +197,15 @@ Antti Poikola, Kai Kuikkaniemi, and Harri Honko.
   and processing.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{https://www.lvm.fi/documents/20181/859937/MyData-nordic-model/2e9b4eb0-68d7-463b-9460-821493449a63?version=1.0}.
 
 \bibitem{wefreport}
 World Economic~Forum with A.~T.~Kearney.
 \newblock Rethinking personal data: A new lens for strengthening trust.
 \newblock Technical report.
 \newblock Ultima visita Nov. 2016.
+\newblock URL:
+  \url{http://www3.weforum.org/docs/WEF_RethinkingPersonalData_ANewLens_Report_2014.pdf}.
 
 \end{thebibliography}

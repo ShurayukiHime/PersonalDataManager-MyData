@@ -2,14 +2,11 @@
 \label{capitolo5}
 \thispagestyle{empty}
 
-\noindent In questo capitolo sono illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le e le differenze riscontrabili secondo quanto definito precedentemente (capitolo \ref{capitolo4}).
+\noindent In questo capitolo sono illustrate le fasi di implementazione del gestore di dati personali, motivando le scelte implementative e le differenze riscontrabili secondo quanto definito precedentemente (capitolo \ref{capitolo4}).
 
 Per la realizzazione del gestore \`e stato utilizzato il linguaggio Java\cite{javalanguagespecs} \cite{java8api}.
 
 Fra i principi generali seguiti in Progettazione troviamo l’inversione delle dipendenze, la separazione delle responsabilit\`a, il principio di sostituibilit\`a di Liskov. Secondo il principio di inversione delle dipendenze, \`e necessario che le dipendenze presenti all’interno del codice non siano fra classi ma fra interfacce, in modo da evitare che la struttura possa risentire di cambiamenti che avvengono a basso livello. Il principio di separazione delle responsabilit\`a stabilisce che a ogni classe \`e attribuito un solo compito, da svolgere e completare interamente, ma mai pi\`u di uno: lo sviluppo di classi aventi pi\`u responsabilit\`a genera dipendenze non volute fra le classi, rendendo il codice fragile. Il principio di sostituibilit\`a di Liskov, infine, si applica ai casi di ereditariet\`a fra classi e ne regola il rapporto: ogni sottoclasse deve poter essere utilizzata al posto della classe base senza che sia evidenziata la differenza.
-
-\section{Flusso del programma}
-inserire grafico
 
 \section{Accounting}
 \label{sec:P-accounting}
@@ -107,7 +104,7 @@ Si evidenzia, infine, la realizzazione della classe \texttt{MyData} come Singlet
 	\caption{Diagramma UML del gestore delle operazioni di sicurezza}
 	\label{fig:Accounting-SecurityManager}
 \end{figure}
-Come anticipato nella sezione \ref{sec:P-accounting}, si \`e resa necessaria l'implementazione di una entit\`a che garantisse il rispetto di alcune politiche di sicurezza.
+Come anticipato nella sezione \ref{sec:P-accounting}, si \`e resa necessaria l'implementazione di un'entit\`a che garantisse il rispetto di alcune politiche di sicurezza.
 
 In particolare, in questa implementazione si \`e scelto di dare maggiore rilevanza all'aspetto di reciproca autenticazione fra utente e servizio, piuttosto che ad altre problematiche quali ad esempio memorizzazione e trasmissione sicura dei dati. A tal fine si \`e scelto di utilizzare alcuni componenti gi\`a pronti all'interno dell'infrastruttura Java, in particolare all'interno della Java Cryptography Architecture \cite{javacrypto}.
 

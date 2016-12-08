@@ -3,47 +3,47 @@
 \contentsline {chapter}{Abstract}{ii}
 \contentsline {chapter}{\numberline {1}Introduzione}{1}
 \contentsline {section}{\numberline {1.1}MyData, Big Data}{2}
-\contentsline {section}{\numberline {1.2}Struttura della tesi}{4}
+\contentsline {section}{\numberline {1.2}Struttura della tesi}{3}
 \contentsline {chapter}{\numberline {2}Contesto di sviluppo}{5}
 \contentsline {section}{\numberline {2.1}Mobility As A Service}{5}
 \contentsline {subsection}{\numberline {2.1.1}Mobility Profile e Journey Planner}{6}
-\contentsline {section}{\numberline {2.2}Smart Mobility For All}{7}
+\contentsline {section}{\numberline {2.2}Smart Mobility For All}{6}
 \contentsline {chapter}{\numberline {3}Architettura MyData}{9}
 \contentsline {section}{\numberline {3.1}Entit\`a Fondamentali}{9}
-\contentsline {section}{\numberline {3.2}Service Registry, Service Linking}{10}
+\contentsline {section}{\numberline {3.2}Service Registry, Service Linking}{9}
 \contentsline {subsection}{\numberline {3.2.1}OAuth 2.0}{10}
-\contentsline {section}{\numberline {3.3}Autorizzazioni e Consent}{12}
-\contentsline {subsection}{\numberline {3.3.1}Kantara Consent Notice Receipt Specification}{13}
-\contentsline {subsection}{\numberline {3.3.2}User Managed Access}{14}
-\contentsline {section}{\numberline {3.4}Personal Data Storage}{16}
-\contentsline {chapter}{\numberline {4}Analisi e Design}{17}
-\contentsline {section}{\numberline {4.1}Accounting e servizi}{18}
-\contentsline {section}{\numberline {4.2}Operatore MyData}{19}
-\contentsline {section}{\numberline {4.3}Service Registry, Service Linking}{19}
-\contentsline {section}{\numberline {4.4}Autorizzazioni e Consent}{20}
-\contentsline {subsection}{\numberline {4.4.1}Tipi di Consent}{20}
-\contentsline {subsection}{\numberline {4.4.2}Granularit\`a di un Consent}{21}
-\contentsline {section}{\numberline {4.5}Personal Data Storage}{22}
-\contentsline {section}{\numberline {4.6}Rappresentazione di dati non noti a priori}{23}
-\contentsline {chapter}{\numberline {5}Progettazione}{25}
-\contentsline {section}{\numberline {5.1}Flusso del programma}{25}
-\contentsline {section}{\numberline {5.2}Accounting}{26}
-\contentsline {subsection}{\numberline {5.2.1}IUser, MyDataUser}{26}
-\contentsline {subsection}{\numberline {5.2.2}IAccount, Account}{28}
-\contentsline {section}{\numberline {5.3}Servizi}{29}
-\contentsline {subsection}{\numberline {5.3.1}IService, AbstractService, MostLikelyNextTrip}{29}
-\contentsline {section}{\numberline {5.4}Operatore MyData}{31}
-\contentsline {subsection}{\numberline {5.4.1}IMyData, MyData}{31}
-\contentsline {subsection}{\numberline {5.4.2}SecurityManager}{33}
-\contentsline {subsection}{\numberline {5.4.3}ServiceRegistry}{33}
-\contentsline {section}{\numberline {5.5}Autorizzazioni e Consent}{35}
-\contentsline {subsection}{\numberline {5.5.1}ConsentManager, ConsentStatus}{35}
-\contentsline {subsection}{\numberline {5.5.2}ServiceConsent, DataConsent}{37}
-\contentsline {section}{\numberline {5.6}Rappresentazione e gestione dei dati personali}{39}
-\contentsline {subsection}{\numberline {5.6.1}Memorizzazione: PersonalDataVault}{40}
-\contentsline {subsection}{\numberline {5.6.2}Rappresentazione: Metadata}{42}
-\contentsline {subsection}{\numberline {5.6.3}Trasferimento: IDataSet}{43}
-\contentsline {section}{\numberline {5.7}Uso delle eccezioni}{44}
-\contentsline {section}{\numberline {5.8}Graphical User Interface}{46}
-\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{49}
-\contentsline {chapter}{Ringraziamenti}{57}
+\contentsline {section}{\numberline {3.3}Autorizzazioni e Consent}{11}
+\contentsline {subsection}{\numberline {3.3.1}Kantara Consent Notice Receipt Specification}{12}
+\contentsline {subsection}{\numberline {3.3.2}User Managed Access}{13}
+\contentsline {section}{\numberline {3.4}Personal Data Storage}{14}
+\contentsline {chapter}{\numberline {4}Analisi e Design}{15}
+\contentsline {section}{\numberline {4.1}Accounting e servizi}{15}
+\contentsline {section}{\numberline {4.2}Operatore MyData}{16}
+\contentsline {section}{\numberline {4.3}Service Registry, Service Linking}{17}
+\contentsline {section}{\numberline {4.4}Autorizzazioni e Consent}{17}
+\contentsline {subsection}{\numberline {4.4.1}Tipi di Consent}{17}
+\contentsline {subsection}{\numberline {4.4.2}Granularit\`a di un Consent}{18}
+\contentsline {section}{\numberline {4.5}Personal Data Storage}{18}
+\contentsline {section}{\numberline {4.6}Rappresentazione di dati non noti a priori}{19}
+\contentsline {chapter}{\numberline {5}Progettazione}{21}
+\contentsline {section}{\numberline {5.1}Accounting}{21}
+\contentsline {subsection}{\numberline {5.1.1}IUser, MyDataUser}{22}
+\contentsline {subsection}{\numberline {5.1.2}IAccount, Account}{23}
+\contentsline {section}{\numberline {5.2}Servizi}{24}
+\contentsline {subsection}{\numberline {5.2.1}IService, AbstractService, MostLikelyNextTrip}{24}
+\contentsline {section}{\numberline {5.3}Operatore MyData}{25}
+\contentsline {subsection}{\numberline {5.3.1}IMyData, MyData}{26}
+\contentsline {subsection}{\numberline {5.3.2}SecurityManager}{27}
+\contentsline {subsection}{\numberline {5.3.3}ServiceRegistry}{27}
+\contentsline {section}{\numberline {5.4}Autorizzazioni e Consent}{28}
+\contentsline {subsection}{\numberline {5.4.1}ConsentManager, ConsentStatus}{29}
+\contentsline {subsection}{\numberline {5.4.2}ServiceConsent, DataConsent}{30}
+\contentsline {section}{\numberline {5.5}Rappresentazione e gestione dei dati personali}{31}
+\contentsline {subsection}{\numberline {5.5.1}Memorizzazione: PersonalDataVault}{33}
+\contentsline {subsection}{\numberline {5.5.2}Rappresentazione: Metadata}{34}
+\contentsline {subsection}{\numberline {5.5.3}Trasferimento: IDataSet}{35}
+\contentsline {section}{\numberline {5.6}Uso delle eccezioni}{36}
+\contentsline {section}{\numberline {5.7}Graphical User Interface}{37}
+\contentsline {chapter}{\numberline {6}Conclusioni e sviluppi futuri}{41}
+\contentsline {chapter}{Bibliografia}{43}
+\contentsline {chapter}{Ringraziamenti}{47}

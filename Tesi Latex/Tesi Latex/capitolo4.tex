@@ -2,7 +2,7 @@
 \label{capitolo4}
 \thispagestyle{empty}
 
-\noindent Il progetto del gestore di dati personali \`e cominciato con un’analisi delle specifiche \textit{MyData} all’interno di uno studio di fattibilit\`a. Le soluzioni adottate sono generalmente di portata “enterprise” e come tali inadatte ad un progetto di tesi. Per questo motivo ho cercato di seguire, durante il progetto, le stesse linee guida e i principi posti alla base di \textit{MyData} preferendo, quando possibile, una implementazione pi\`u semplice e adatta al contesto.
+\noindent Il progetto del gestore di dati personali \`e cominciato con un’analisi delle specifiche \textit{MyData} all’interno di uno studio di fattibilit\`a. Le soluzioni adottate sono generalmente di portata “enterprise” e come tali inadatte ad un progetto di tesi. Per questo motivo ho cercato di seguire, durante il progetto, le stesse linee guida e i principi posti alla base di \textit{MyData} preferendo, quando possibile, un'implementazione pi\`u semplice e adatta al contesto.
 
 Da quanto emerso nei paragrafi precedenti, si rende necessaria la presenza dei componenti di alto livello per la realizzazione del gestore di dati personali. Questi sono:
 \begin{itemize}
@@ -27,7 +27,7 @@ Per quanto riguarda il servizio \textit{Most Likely Next Trip}, si \`e scelto di
 \label{sec:A-mydataop}
 La realizzazione di un completo \textit{MyData Operator} comporta la realizzazione di diversi componenti. Le funzioni dell’Operatore comprendono la gestione del \textit{Service Registry}, degli account utente e del processo di \textit{Service Linking}. L’Operatore deve inoltre occuparsi della reciproca identificazione fra le parti sia nel processo di autorizzazione del servizio, che durante la firma dei \textit{Consent}, e autorizzare il flusso di dati al momento della richiesta.
 
-In questo lavoro si \`e preferito suddividere le responsabilit\`a corrispondenti a queste operazioni in una molteplicit\`a di classi, invece che un’unica entit\`a, secondo il principio KISS (Keep It Simple, Stupid) \cite{kissprinciple}. Pertanto si realizzeranno separatamente:
+In questo lavoro si \`e preferito suddividere le responsabilit\`a corrispondenti a queste operazioni in una molteplicit\`a di classi, invece che un’unica entit\`a, secondo il paradigma KISS (Keep It Simple, Stupid) \cite{kissprinciple}. Pertanto si realizzeranno separatamente:
 \begin{itemize}
 	\item Un gestore di \textit{Consent}, che si occupa dell’emissione dei permessi e del cambio di stato degli stessi in caso di richiesta da parte dell’utente.
 	\item Un \textit{Service Registry} semplificato, dove ogni servizio si registra per poter essere accessibile all’interno di \textit{MyData}.
