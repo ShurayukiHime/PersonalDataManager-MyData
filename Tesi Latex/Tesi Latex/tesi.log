@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  8 DEC 2016 02:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2016.3.18)  12 DEC 2016 17:24
 entering extended mode
 **./tesi.tex
 (tesi.tex
@@ -970,12 +970,6 @@ File: pictures/Auth-Consents.png Graphic file (type png)
 Package pdftex.def Info: pictures/Auth-Consents.png used on input line 158.
 (pdftex.def)             Requested size: 360.0pt x 192.99687pt.
  [30 <./pictures/Auth-Consents.png>] [31]
-Overfull \hbox (22.62682pt too wide) in paragraph at lines 188--189
-\T1/cmr/m/n/10.95 gra-zie ai me-to-di \T1/cmtt/l/n/10.95 gson.toJson(obj) \T1/c
-mr/m/n/10.95 per la se-ria-liz-za-zio-ne e \T1/cmtt/l/n/10.95 gson.fromJson(jso
-n,
- []
-
 [32] <pictures/PersonalDataVault.png, id=163, 522.45187pt x 373.395pt>
 File: pictures/PersonalDataVault.png Graphic file (type png)
 
@@ -1165,7 +1159,7 @@ pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\fonts\pk\ljfour\jknappen\ec\dpi600
 r\jknappen\ec\dpi600\ecrm1200.pk> <C:\Users\Giada\AppData\Local\MiKTeX\2.9\font
 s\pk\ljfour\jknappen\ec\dpi600\ecbx1200.pk><C:/Users/Giada/AppData/Local/Progra
 ms/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on tesi.pdf (57 pages, 691051 bytes).
+Output written on tesi.pdf (57 pages, 691179 bytes).
 PDF statistics:
  777 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

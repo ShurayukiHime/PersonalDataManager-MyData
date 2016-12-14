@@ -314,12 +314,11 @@ public class MyDataProfile extends JFrame implements ActionListener {
 
 	private void setWithdrawnStatusButtonClicked() {
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
-		// passo solo solo il servizio, perchè questo bottone è cliccabile solo
-		// se l'utente è autenticato
 		this.controller.withdrawConsentForService(selectedService);
-		// non faccio controlli sulle eccezioni perchè in teoria dovrebbe andare
-		// tutto bene
 		this.statusTField.setText("Withdrawn");
+		this.toggleDisabledStatusCheckBox.setEnabled(false);
+		this.setWithdrawnStatusButton.setEnabled(false);
+		this.requestServiceButton.setEnabled(false);
 		this.viewPastSConsents();
 		this.newServiceConsentButton.setEnabled(true);
 	}
@@ -333,6 +332,9 @@ public class MyDataProfile extends JFrame implements ActionListener {
 		IService selectedService = servicesComboBox.getItemAt(servicesComboBox.getSelectedIndex());
 		this.controller.addNewServiceConsent(selectedService);
 		this.newServiceConsentButton.setEnabled(false);
+		this.toggleDisabledStatusCheckBox.setEnabled(true);
+		this.setWithdrawnStatusButton.setEnabled(true);
+		this.requestServiceButton.setEnabled(true);
 		this.actionPerformed(null);
 	}
 
@@ -346,10 +348,12 @@ public class MyDataProfile extends JFrame implements ActionListener {
 	private void callServiceRegistry() {
 		this.controller.getUserInteractor().showInfoMessage("Sto invocando il Service Registry... (forse)");
 		// barbatrucco per aggiungere MLNT la prima volta
-		if (this.servicesComboBox.getItemCount() == 0)
 			try {
-				this.controller.addService(null);
-			} catch (SecurityException e) {
+				if (this.servicesComboBox.getItemCount() == 0)
+					this.controller.addService(null);
+				else 
+					this.controller.getUserInteractor().showInfoMessage("Can't invoke Service Registry :(");
+			} catch (SecurityException | IllegalArgumentException e) {
 				e.printStackTrace();
 				this.controller.getUserInteractor().showErrorMessage(e.getMessage());
 			}

@@ -232,7 +232,7 @@ public class MyController implements IController {
 		for (IAccount a : authenticatedUser.getAllAccounts())
 			if (a.getService().equals(selectedService))
 				return a.getActiveDisabledSC().getConsentStatus() == ConsentStatus.ACTIVE ? true : false;
-		throw new IllegalArgumentException("Current user does not have an Active or Disabled account to the selected service.");
+		throw new IllegalArgumentException("Current user does not have an Active or Disabled account to the " + selectedService.toString() + " service.");
 	}
 
 	@Override

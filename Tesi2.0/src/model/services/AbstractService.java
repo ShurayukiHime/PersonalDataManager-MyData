@@ -13,6 +13,15 @@ import model.consents.ServiceConsent;
 import model.security.ISecurityManager;
 import model.users.IUser;
 
+/**
+ * Any new service should extend this class to be invokable within the
+ * infrastructure. This does not comprehend service registration, which should
+ * be done by the extending class.
+ * 
+ * @author Giada
+ *
+ */
+
 public abstract class AbstractService implements IService {
 
 	private IMyData myDataInstance;
@@ -71,7 +80,7 @@ public abstract class AbstractService implements IService {
 
 	@Override
 	public abstract boolean equals(Object obj);
-	
+
 	@Override
 	public abstract String toString();
 }

@@ -16,6 +16,16 @@ import model.userdata.ICalendar;
 import model.userdata.IPreference;
 import model.userdata.suggestions.SuggesterManager;
 
+/**
+ * This is an example of MyData compliant service. The business logic could be
+ * implemented here or separated in another class (as showed in this example).
+ * In any case, each service must define its own name and Set of identifiers,
+ * since they are required for identification and registration.
+ * 
+ * @author Giada
+ *
+ */
+
 public class MostLikelyNextTrip extends AbstractService {
 	private final String name = "Most Likely Next Trip";
 	private final Set<String> identifiers = new HashSet<String>();
